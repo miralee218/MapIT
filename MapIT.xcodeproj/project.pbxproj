@@ -13,6 +13,19 @@
 		491169192254563200347310 /* MapIT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 491169172254563200347310 /* MapIT.xcdatamodeld */; };
 		4911691B2254563800347310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4911691A2254563800347310 /* Assets.xcassets */; };
 		4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4911691C2254563800347310 /* LaunchScreen.storyboard */; };
+		4911692B22545D0800347310 /* MITabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911692A22545D0800347310 /* MITabBarViewController.swift */; };
+		4911692E2254614600347310 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911692D2254614600347310 /* UIImage+Extension.swift */; };
+		491169302254629700347310 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4911692F2254629700347310 /* Lobby.storyboard */; };
+		49116932225462E800347310 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49116931225462E800347310 /* Profile.storyboard */; };
+		491169342254633400347310 /* Mapping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491169332254633400347310 /* Mapping.storyboard */; };
+		491169362254634800347310 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491169352254634800347310 /* Notification.storyboard */; };
+		491169382254639300347310 /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491169372254639300347310 /* Record.storyboard */; };
+		4911693A2254644500347310 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169392254644500347310 /* LobbyViewController.swift */; };
+		4911693C2254645500347310 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911693B2254645400347310 /* RecordViewController.swift */; };
+		4911693F2254647400347310 /* MappingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911693E2254647400347310 /* MappingViewController.swift */; };
+		491169412254648200347310 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169402254648200347310 /* NotificationViewController.swift */; };
+		491169432254648F00347310 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169422254648F00347310 /* ProfileViewController.swift */; };
+		491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169442254653100347310 /* UIStoryboard+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +37,19 @@
 		4911691A2254563800347310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4911691D2254563800347310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4911691F2254563800347310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4911692A22545D0800347310 /* MITabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MITabBarViewController.swift; sourceTree = "<group>"; };
+		4911692D2254614600347310 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		4911692F2254629700347310 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
+		49116931225462E800347310 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		491169332254633400347310 /* Mapping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mapping.storyboard; sourceTree = "<group>"; };
+		491169352254634800347310 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		491169372254639300347310 /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
+		491169392254644500347310 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		4911693B2254645400347310 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		4911693E2254647400347310 /* MappingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappingViewController.swift; sourceTree = "<group>"; };
+		491169402254648200347310 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		491169422254648F00347310 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		491169442254653100347310 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +82,60 @@
 		4911690F2254563200347310 /* MapIT */ = {
 			isa = PBXGroup;
 			children = (
+				4911692C2254613200347310 /* Exrension */,
+				4911692722545B5A00347310 /* Controller */,
+				4911692622545B4C00347310 /* Model */,
+				4911692522545B4300347310 /* View */,
 				491169102254563200347310 /* AppDelegate.swift */,
 				491169122254563200347310 /* ViewController.swift */,
-				491169142254563200347310 /* Main.storyboard */,
 				4911691A2254563800347310 /* Assets.xcassets */,
-				4911691C2254563800347310 /* LaunchScreen.storyboard */,
 				4911691F2254563800347310 /* Info.plist */,
 				491169172254563200347310 /* MapIT.xcdatamodeld */,
 			);
 			path = MapIT;
+			sourceTree = "<group>";
+		};
+		4911692522545B4300347310 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				491169142254563200347310 /* Main.storyboard */,
+				4911692F2254629700347310 /* Lobby.storyboard */,
+				491169372254639300347310 /* Record.storyboard */,
+				491169332254633400347310 /* Mapping.storyboard */,
+				491169352254634800347310 /* Notification.storyboard */,
+				49116931225462E800347310 /* Profile.storyboard */,
+				4911691C2254563800347310 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4911692622545B4C00347310 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4911692722545B5A00347310 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4911692A22545D0800347310 /* MITabBarViewController.swift */,
+				491169392254644500347310 /* LobbyViewController.swift */,
+				4911693B2254645400347310 /* RecordViewController.swift */,
+				4911693E2254647400347310 /* MappingViewController.swift */,
+				491169402254648200347310 /* NotificationViewController.swift */,
+				491169422254648F00347310 /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4911692C2254613200347310 /* Exrension */ = {
+			isa = PBXGroup;
+			children = (
+				4911692D2254614600347310 /* UIImage+Extension.swift */,
+				491169442254653100347310 /* UIStoryboard+Extension.swift */,
+			);
+			path = Exrension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +198,12 @@
 			files = (
 				4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */,
 				4911691B2254563800347310 /* Assets.xcassets in Resources */,
+				49116932225462E800347310 /* Profile.storyboard in Resources */,
 				491169162254563200347310 /* Main.storyboard in Resources */,
+				491169302254629700347310 /* Lobby.storyboard in Resources */,
+				491169342254633400347310 /* Mapping.storyboard in Resources */,
+				491169362254634800347310 /* Notification.storyboard in Resources */,
+				491169382254639300347310 /* Record.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4911692B22545D0800347310 /* MITabBarViewController.swift in Sources */,
+				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
+				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
+				491169432254648F00347310 /* ProfileViewController.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
+				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
+				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
+				491169412254648200347310 /* NotificationViewController.swift in Sources */,
+				4911693A2254644500347310 /* LobbyViewController.swift in Sources */,
 				491169112254563200347310 /* AppDelegate.swift in Sources */,
 				491169192254563200347310 /* MapIT.xcdatamodeld in Sources */,
 			);
