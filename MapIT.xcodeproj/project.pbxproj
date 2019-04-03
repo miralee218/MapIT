@@ -26,6 +26,9 @@
 		491169412254648200347310 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169402254648200347310 /* NotificationViewController.swift */; };
 		491169432254648F00347310 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169422254648F00347310 /* ProfileViewController.swift */; };
 		491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169442254653100347310 /* UIStoryboard+Extension.swift */; };
+		491169472254879B00347310 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169462254879B00347310 /* UIColor+Extension.swift */; };
+		491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169482254893E00347310 /* CAGradientLayer+Extension.swift */; };
+		4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911694A225489EC00347310 /* Navigation+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		491169402254648200347310 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		491169422254648F00347310 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		491169442254653100347310 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		491169462254879B00347310 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		491169482254893E00347310 /* CAGradientLayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Extension.swift"; sourceTree = "<group>"; };
+		4911694A225489EC00347310 /* Navigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,9 @@
 			children = (
 				4911692D2254614600347310 /* UIImage+Extension.swift */,
 				491169442254653100347310 /* UIStoryboard+Extension.swift */,
+				491169462254879B00347310 /* UIColor+Extension.swift */,
+				491169482254893E00347310 /* CAGradientLayer+Extension.swift */,
+				4911694A225489EC00347310 /* Navigation+Extension.swift */,
 			);
 			path = Exrension;
 			sourceTree = "<group>";
@@ -217,10 +226,13 @@
 				4911692B22545D0800347310 /* MITabBarViewController.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
+				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,
 				491169432254648F00347310 /* ProfileViewController.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
+				491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */,
+				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
 				4911693A2254644500347310 /* LobbyViewController.swift in Sources */,
 				491169112254563200347310 /* AppDelegate.swift in Sources */,

@@ -13,18 +13,14 @@ class NotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let layer = CAGradientLayer()
+        layer.frame = view.bounds
+        layer.colors = [UIColor.hexStringToUIColor(hex: "FA508C").cgColor, UIColor.hexStringToUIColor(hex: "FFC86E").cgColor]
+        layer.startPoint = CGPoint(x: 0, y: 1)
+        layer.endPoint = CGPoint(x:1, y:0)
+        view.layer.addSublayer(layer)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
