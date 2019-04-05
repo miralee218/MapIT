@@ -22,6 +22,10 @@ enum ImageAsset: String {
     case Icons_User_Unselected
     case Icons_User_Selected
     
+    case Icons_Calendar_Selected
+    case Icons_Calendar_Unselected
+    case Icons_Search_Selected
+    case Icons_Search_Unselected
 
 }
 

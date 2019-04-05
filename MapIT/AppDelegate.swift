@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+//        GMSServices.provideAPIKey("AIzaSyBLJFZ8iWtjUN6CFwKIXq8Xua8rC4NPCcw")
+//        GMSPlacesClient.provideAPIKey("AIzaSyBLJFZ8iWtjUN6CFwKIXq8Xua8rC4NPCcw")
         
         return true
     }

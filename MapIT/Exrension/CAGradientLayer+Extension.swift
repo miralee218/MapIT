@@ -13,6 +13,7 @@ extension CAGradientLayer {
     enum Point {
         case topRight, topLeft
         case bottomRight, bottomLeft
+        case right, left
         case custion(point: CGPoint)
         
         var point: CGPoint {
@@ -21,6 +22,8 @@ extension CAGradientLayer {
             case .topLeft: return CGPoint(x: 0, y: 0)
             case .bottomRight: return CGPoint(x: 1, y: 1)
             case .bottomLeft: return CGPoint(x: 0, y: 1)
+            case .right: return CGPoint(x: 1, y: 0.5)
+            case .left: return CGPoint(x: 0, y: 0.5)
             case .custion(let point): return point
             }
         }
@@ -35,8 +38,11 @@ extension CAGradientLayer {
     }
     
     convenience init(frame: CGRect, colors: [UIColor], startPoint: Point, endPoint: Point) {
-        self.init(frame: frame, colors: colors, startPoint: startPoint.point, endPoint: endPoint.point)
+        self.init(frame: frame, colors: colors, startPoint: startPoint.point, endPoint: endPoint.point )
     }
+    
+
+
     
     
     func createGradientImage() -> UIImage? {

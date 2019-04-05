@@ -100,8 +100,6 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         delegate = self
         
-//        guard let center = tabBar.items else {return}
-//        center[2].imageInsets = UIEdgeInsets(top: -15.0, left: 0.0, bottom: 15.0, right: 0)
     }
     
     

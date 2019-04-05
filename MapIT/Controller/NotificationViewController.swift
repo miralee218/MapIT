@@ -12,6 +12,7 @@ class NotificationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.setGradientBackground(colors: UIColor.mainColor as! [UIColor])
 
         let layer = CAGradientLayer()
         layer.frame = view.bounds

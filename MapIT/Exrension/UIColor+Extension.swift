@@ -14,6 +14,12 @@ private enum MIColor: String {
     
     case EndYellow
     
+    case B1
+    
+    case B3
+    
+    case B5
+    
 
 }
 
