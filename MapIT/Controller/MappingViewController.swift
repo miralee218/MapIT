@@ -20,6 +20,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var checkListButton: UIButton!
     
+    var checkInButtonCenter: CGPoint!
+    var puaseButtonCenter: CGPoint!
+    var stopButtonCenter: CGPoint!
+    var checkListButtonCenter: CGPoint!
     
     let locationManager = CLLocationManager()
     
@@ -30,17 +34,45 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkInButtonCenter = checkInButton.center
+        puaseButtonCenter = puaseButton.center
+        stopButtonCenter = stopButton.center
+        checkListButtonCenter = checkListButton.center
+        
+        checkInButton.center = moreButton.center
+        puaseButton.center = moreButton.center
+        stopButton.center = moreButton.center
+        checkListButton.center = moreButton.center
+        
+        
         setupLayout()
         
         mapView.delegate = self
         mapView.showsUserLocation = true
         
         //back current location
-        let buttonItem = MKUserTrackingBarButtonItem(mapView: mapView)
-        self.navigationItem.rightBarButtonItem = buttonItem
+        
+        let buttonItem = MKUserTrackingButton(mapView: mapView)
+        buttonItem.tintColor = UIColor.red
+        buttonItem.backgroundColor = UIColor.white
+        buttonItem.frame = CGRect(origin: CGPoint(x:5, y: 25), size: CGSize(width: 40, height: 40))
+        
+        mapView.addSubview(buttonItem)
+
         
         
-         if CLLocationManager.locationServicesEnabled() == true {
+        
+        locationService()
+        setMapview()
+        
+        
+    
+
+    }
+    
+    func locationService() {
+        
+        if CLLocationManager.locationServicesEnabled() == true {
             
             if CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||  CLLocationManager.authorizationStatus() == .notDetermined {
                 locationManager.requestWhenInUseAuthorization()
@@ -52,9 +84,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             print("PLease turn on location services or GPS")
         }
         
-        setMapview()
-    
-
     }
     
     //MARK:- CLLocationManager Delegates
@@ -96,9 +125,50 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         navigationController?.navigationBar.setGradientBackground(colors: UIColor.mainColor as! [UIColor])
         
     }
-
     
+    
+    @IBAction func moreClicked(_ sender: UIButton) {
+        if moreButton.currentImage == UIImage(named: ImageAsset.Icons_Mapping_Unselected.rawValue)!{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.checkInButton.alpha = 1
+                self.puaseButton.alpha = 1
+                self.stopButton.alpha = 1
+                self.checkListButton.alpha = 1
+                
+                self.checkInButton.center = self.checkInButtonCenter
+                self.puaseButton.center = self.puaseButtonCenter
+                self.stopButton.center = self.stopButtonCenter
+                self.checkListButton.center = self.checkListButtonCenter
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.checkInButton.alpha = 0
+                self.puaseButton.alpha = 0
+                self.stopButton.alpha = 0
+                self.checkListButton.alpha = 0
+                
+                self.checkInButton.center = self.moreButton.center
+                self.puaseButton.center = self.moreButton.center
+                self.stopButton.center = self.moreButton.center
+                self.checkListButton.center = self.moreButton.center
+            })
 
+        }
+        toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Mapping_Selected.rawValue
+            )! , offImage: UIImage(named: ImageAsset.Icons_Mapping_Unselected.rawValue)!)
+    }
+    
+    @IBAction func checkInClicked(_ sender: UIButton) {
+    }    
+    @IBAction func puaseClicked(_ sender: UIButton) {
+        toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Puase.rawValue
+            )! , offImage: UIImage(named: ImageAsset.Icons_Play.rawValue)!)
+    }
+    @IBAction func stopClicked(_ sender: UIButton) {
+    }
+    @IBAction func ListClicked(_ sender: UIButton) {
+    }
+    
 }
 
 extension MappingViewController: UIGestureRecognizerDelegate {
@@ -142,5 +212,17 @@ extension MappingViewController: UIGestureRecognizerDelegate {
             return
         }
     }
+}
+
+extension MappingViewController {
+    
+    func toggleButton(button: UIButton, onImage: UIImage, offImage: UIImage) {
+        if button.currentImage == offImage{
+            button.setImage(onImage, for: .normal)
+        } else {
+            button.setImage(offImage, for: .normal)
+        }
+    }
+    
 }
 

@@ -17,10 +17,18 @@ enum ImageAsset: String {
     case Icons_Notification_Selected
     case Icons_Mapping_Selected
     case Icons_Mapping_Unselected
+    case Icons_Mapit_Selected
+    case Icons_Mapit_Unselected
     case Icons_Book_Unselected
     case Icons_Book_Selected
     case Icons_User_Unselected
     case Icons_User_Selected
+    
+    case Icons_Checkin
+    case Icons_Puase
+    case Icons_Play
+    case Icons_Stop
+    case Icons_List
     
     case Icons_Calendar_Selected
     case Icons_Calendar_Unselected

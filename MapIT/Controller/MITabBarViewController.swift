@@ -67,8 +67,8 @@ private enum Tab {
         case .mapping:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_Mapping_Unselected),
-                selectedImage: UIImage.asset(.Icons_Mapping_Selected)
+                image: UIImage.asset(.Icons_Mapit_Unselected),
+                selectedImage: UIImage.asset(.Icons_Mapit_Selected)
                 
             )
             

@@ -25,26 +25,41 @@
                                 <rect key="frame" x="324" y="717" width="78" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Icons_Mapping_Unselected"/>
+                                <connections>
+                                    <action selector="moreClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="TqD-AP-h15"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bni-F2-ACB">
                                 <rect key="frame" x="349" y="638" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Mapping_Selected"/>
+                                <state key="normal" image="Icons_Checkin"/>
+                                <connections>
+                                    <action selector="checkInClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="tNj-Av-7dp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaU-hy-CxF">
                                 <rect key="frame" x="296" y="651" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Mapping_Selected"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bN-oU-ij0">
-                                <rect key="frame" x="254" y="689" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Mapping_Selected"/>
+                                <state key="normal" image="Icons_Puase"/>
+                                <connections>
+                                    <action selector="puaseClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="xpl-Xd-HWD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1K-TP-8Gp">
-                                <rect key="frame" x="245" y="742" width="45" height="45"/>
+                                <rect key="frame" x="257" y="692" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Mapping_Selected"/>
+                                <state key="normal" image="Icons_List"/>
+                                <connections>
+                                    <action selector="ListClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="TRB-Dl-GHc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bN-oU-ij0">
+                                <rect key="frame" x="241" y="745" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Icons_Stop"/>
+                                <connections>
+                                    <action selector="stopClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="3qK-0R-Jd0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,7 +74,7 @@
                     <navigationItem key="navigationItem" id="DeD-iU-4bk"/>
                     <connections>
                         <outlet property="checkInButton" destination="bni-F2-ACB" id="hV9-Ex-Mxr"/>
-                        <outlet property="checkListButton" destination="W1K-TP-8Gp" id="CbH-Ay-BLv"/>
+                        <outlet property="checkListButton" destination="W1K-TP-8Gp" id="z7Y-n5-oRv"/>
                         <outlet property="mapView" destination="IIw-Oy-9eT" id="mCW-ux-IDt"/>
                         <outlet property="moreButton" destination="ygd-qm-0w3" id="dLb-MV-JfE"/>
                         <outlet property="puaseButton" destination="EaU-hy-CxF" id="hdf-Il-CzG"/>
@@ -90,7 +105,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icons_Mapping_Selected" width="45" height="45"/>
+        <image name="Icons_Checkin" width="45" height="45"/>
+        <image name="Icons_List" width="45" height="45"/>
         <image name="Icons_Mapping_Unselected" width="78" height="78"/>
+        <image name="Icons_Puase" width="45" height="45"/>
+        <image name="Icons_Stop" width="45" height="45"/>
     </resources>
 </document>
