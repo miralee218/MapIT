@@ -16,6 +16,7 @@ enum ImageAsset: String {
     case Icons_Notification_Unselected
     case Icons_Notification_Selected
     case Icons_Mapping_Selected
+    case Icons_StartRecord
     case Icons_Mapping_Unselected
     case Icons_Mapit_Selected
     case Icons_Mapit_Unselected
@@ -29,6 +30,10 @@ enum ImageAsset: String {
     case Icons_Play
     case Icons_Stop
     case Icons_List
+    
+    case Icons_Pause_50
+    case Icons_Go
+    case Icons_Walking
     
     case Icons_Calendar_Selected
     case Icons_Calendar_Unselected

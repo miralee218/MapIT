@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import MBProgressHUD
+import PullUpController
 
 class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -19,16 +21,30 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var puaseButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var checkListButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
     
     var checkInButtonCenter: CGPoint!
     var puaseButtonCenter: CGPoint!
     var stopButtonCenter: CGPoint!
     var checkListButtonCenter: CGPoint!
     
+    @IBOutlet weak var puaseShadowView: UIView!
+    
+    
     let locationManager = CLLocationManager()
     
     var lat = Double()
     var lon = Double()
+    
+    
+    //MARK:- View AddLocationCViewController
+    private func makeSearchViewControllerIfNeeded() -> RecordListCViewController {
+        let currentPullUpController = children
+            .filter({ $0 is RecordListCViewController })
+            .first as? RecordListCViewController
+        let pullUpController: RecordListCViewController = currentPullUpController ?? UIStoryboard(name: "Mapping",bundle: nil).instantiateViewController(withIdentifier: "RecordListCViewController") as! RecordListCViewController
+        return pullUpController
+    }
     
 
     override func viewDidLoad() {
@@ -66,8 +82,18 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         setMapview()
         
         
-    
+        
 
+
+    }
+    
+    private func addPullUpController() {
+        let pullUpController = makeSearchViewControllerIfNeeded()
+        _ = pullUpController.view // call pullUpController.viewDidLoad()
+        addPullUpController(pullUpController,
+                            initialStickyPointOffset: pullUpController.initialPointOffset,
+                            animated: true)
+        
     }
     
     func locationService() {
@@ -126,9 +152,16 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
     }
     
+    @IBAction func addRecordClick(_ sender: UIButton) {
+        
+        MRProgressHUD.startRecord(view: self.view)
+        recordButton.alpha = 0
+        moreButton.alpha = 1
+
+    }
     
     @IBAction func moreClicked(_ sender: UIButton) {
-        if moreButton.currentImage == UIImage(named: ImageAsset.Icons_Mapping_Unselected.rawValue)!{
+        if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!{
             UIView.animate(withDuration: 0.3, animations: {
                 self.checkInButton.alpha = 1
                 self.puaseButton.alpha = 1
@@ -155,18 +188,39 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
         }
         toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Mapping_Selected.rawValue
-            )! , offImage: UIImage(named: ImageAsset.Icons_Mapping_Unselected.rawValue)!)
+            )! , offImage: UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!)
     }
     
     @IBAction func checkInClicked(_ sender: UIButton) {
-    }    
+    }
     @IBAction func puaseClicked(_ sender: UIButton) {
-        toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Puase.rawValue
-            )! , offImage: UIImage(named: ImageAsset.Icons_Play.rawValue)!)
+        if sender.currentImage == UIImage(named: ImageAsset.Icons_Puase.rawValue)!
+        {
+            self.puaseShadowView.isHidden = false
+            MRProgressHUD.puase(view: self.puaseShadowView)
+            sender.setImage(UIImage(named: ImageAsset.Icons_Play.rawValue)!, for: .normal)
+        } else {
+            self.puaseShadowView.isHidden = true
+            sender.setImage(UIImage(named: ImageAsset.Icons_Puase.rawValue)!, for: .normal)
+            }
     }
-    @IBAction func stopClicked(_ sender: UIButton) {
-    }
+    var isViewList = false
     @IBAction func ListClicked(_ sender: UIButton) {
+        //        guard
+        //            children.filter({ $0 is RecordListCViewController }).count == 1
+        //            else { return }
+        if isViewList == false {
+            addPullUpController()
+            isViewList = true
+        } else {
+            let pullUpController = makeSearchViewControllerIfNeeded()
+            removePullUpController(pullUpController, animated: true)
+            isViewList = false
+        }
+        
+    }
+    
+    @IBAction func stopClicked(_ sender: UIButton) {
     }
     
 }

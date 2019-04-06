@@ -6,20 +6,32 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.0.3):
     - GoogleMaps/Base (= 3.0.3)
+  - JGProgressHUD (2.0.3)
+  - MBProgressHUD (1.1.0)
+  - PullUpController (0.6.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - JGProgressHUD
+  - MBProgressHUD
+  - PullUpController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GoogleMaps
     - GooglePlaces
+    - JGProgressHUD
+    - MBProgressHUD
+    - PullUpController
 
 SPEC CHECKSUMS:
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  PullUpController: 55d372633d55345a209add771458962abcdfbbf9
 
-PODFILE CHECKSUM: de208d055b9567c1950c10f6d6859f1a1df2bff7
+PODFILE CHECKSUM: 1f5fb7e6f7a745f45ebd07cc37ac1c9fc6dbc1f9
 
 COCOAPODS: 1.6.1

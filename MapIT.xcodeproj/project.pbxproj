@@ -29,9 +29,17 @@
 		491169472254879B00347310 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169462254879B00347310 /* UIColor+Extension.swift */; };
 		491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169482254893E00347310 /* CAGradientLayer+Extension.swift */; };
 		4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911694A225489EC00347310 /* Navigation+Extension.swift */; };
+		4911694D22583E0200347310 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911694C22583E0200347310 /* AlertController.swift */; };
+		4911694F22583E2400347310 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911694E22583E2400347310 /* NavigationView.swift */; };
+		4911695422583FFD00347310 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911695322583FFD00347310 /* JGProgressHUDWrapper.swift */; };
+		4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911695522584C9000347310 /* MBProgressHUDWrapper.swift */; };
+		4911695B2258911B00347310 /* RecordListCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169592258911B00347310 /* RecordListCViewController.swift */; };
+		494EB3552258AF8300ECCA72 /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3542258AF8300ECCA72 /* PullUpController.swift */; };
+		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapIT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4911690D2254563200347310 /* MapIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491169102254563200347310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491169122254563200347310 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +64,12 @@
 		491169462254879B00347310 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		491169482254893E00347310 /* CAGradientLayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Extension.swift"; sourceTree = "<group>"; };
 		4911694A225489EC00347310 /* Navigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Extension.swift"; sourceTree = "<group>"; };
+		4911694C22583E0200347310 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		4911694E22583E2400347310 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		4911695322583FFD00347310 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
+		4911695522584C9000347310 /* MBProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDWrapper.swift; sourceTree = "<group>"; };
+		491169592258911B00347310 /* RecordListCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListCViewController.swift; sourceTree = "<group>"; };
+		494EB3542258AF8300ECCA72 /* PullUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullUpController.swift; path = "../../../../../../../Downloads/PullUpController-master/PullUpController/PullUpController.swift"; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +107,15 @@
 		4911690F2254563200347310 /* MapIT */ = {
 			isa = PBXGroup;
 			children = (
+				4911695222583FEC00347310 /* Third Party Wrapper */,
 				4911692C2254613200347310 /* Exrension */,
 				4911692722545B5A00347310 /* Controller */,
 				4911692622545B4C00347310 /* Model */,
 				4911692522545B4300347310 /* View */,
 				491169102254563200347310 /* AppDelegate.swift */,
 				491169122254563200347310 /* ViewController.swift */,
+				4911694C22583E0200347310 /* AlertController.swift */,
+				4911694E22583E2400347310 /* NavigationView.swift */,
 				4911691A2254563800347310 /* Assets.xcassets */,
 				4911691F2254563800347310 /* Info.plist */,
 				491169172254563200347310 /* MapIT.xcdatamodeld */,
@@ -133,8 +151,10 @@
 				491169392254644500347310 /* LobbyViewController.swift */,
 				4911693B2254645400347310 /* RecordViewController.swift */,
 				4911693E2254647400347310 /* MappingViewController.swift */,
+				491169592258911B00347310 /* RecordListCViewController.swift */,
 				491169402254648200347310 /* NotificationViewController.swift */,
 				491169422254648F00347310 /* ProfileViewController.swift */,
+				494EB3542258AF8300ECCA72 /* PullUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -151,9 +171,19 @@
 			path = Exrension;
 			sourceTree = "<group>";
 		};
+		4911695222583FEC00347310 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				4911695322583FFD00347310 /* JGProgressHUDWrapper.swift */,
+				4911695522584C9000347310 /* MBProgressHUDWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
 		635C7606C42D2FC920CFD63F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,6 +209,7 @@
 				4911690A2254563200347310 /* Frameworks */,
 				4911690B2254563200347310 /* Resources */,
 				5E2C9E223BD4857ADB494F7E /* [CP] Copy Pods Resources */,
+				A4185C1EE0A397902907FA47 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -287,6 +318,32 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A4185C1EE0A397902907FA47 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapIT/Pods-MapIT-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullUpController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapIT/Pods-MapIT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -295,14 +352,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4911692B22545D0800347310 /* MITabBarViewController.swift in Sources */,
+				4911695422583FFD00347310 /* JGProgressHUDWrapper.swift in Sources */,
+				4911694D22583E0200347310 /* AlertController.swift in Sources */,
+				494EB3552258AF8300ECCA72 /* PullUpController.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
+				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
 				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,
+				4911695B2258911B00347310 /* RecordListCViewController.swift in Sources */,
 				491169432254648F00347310 /* ProfileViewController.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
 				491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */,
+				4911694F22583E2400347310 /* NavigationView.swift in Sources */,
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
 				4911693A2254644500347310 /* LobbyViewController.swift in Sources */,
