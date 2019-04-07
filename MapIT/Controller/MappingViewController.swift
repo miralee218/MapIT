@@ -43,6 +43,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             .filter({ $0 is RecordListCViewController })
             .first as? RecordListCViewController
         let pullUpController: RecordListCViewController = currentPullUpController ?? UIStoryboard(name: "Mapping",bundle: nil).instantiateViewController(withIdentifier: "RecordListCViewController") as! RecordListCViewController
+
         return pullUpController
     }
     

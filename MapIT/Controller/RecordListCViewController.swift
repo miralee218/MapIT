@@ -111,7 +111,14 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             for: indexPath
         )
         
-        return cell
+        guard let routeCell = cell as? RouteTableViewCell else { return cell }
+        
+        routeCell.actionBlock = {
+            self.present(routeCell.sheet, animated: true, completion: nil)
+        }
+        
+        
+        return routeCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

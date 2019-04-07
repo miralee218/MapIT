@@ -13,6 +13,7 @@ class RouteTableViewCell: UITableViewCell {
     @IBOutlet weak var pointTitleLabel: UILabel!
     @IBOutlet weak var pointRecordTimeLabel: UILabel!
     @IBOutlet weak var pointDescriptionLabel: UILabel!
+    var actionBlock: (() -> Void)? = nil
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             
@@ -26,13 +27,23 @@ class RouteTableViewCell: UITableViewCell {
 //            )
         }
     }
+    let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    let action3 = UIAlertAction(title: "編輯", style: .default) { (action) in
+    }
+    let action1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+    let action2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
+        print("YOU HAVE DELETED YOUR RECORD")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.mr_registerCellWithNib(identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
             
-        
+
+        sheet.addAction(action3)
+        sheet.addAction(action2)
+        sheet.addAction(action1)
 
     }
 
@@ -40,8 +51,12 @@ class RouteTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    
     @IBAction func moreOption(_ sender: UIButton) {
         
+        actionBlock?()
+
     }
     
 
