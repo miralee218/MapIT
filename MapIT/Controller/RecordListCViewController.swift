@@ -12,6 +12,14 @@ import PullUpController
 
 class RecordListCViewController: PullUpController {
     
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            
+            tableView.dataSource = self
+            
+            tableView.delegate = self
+        }
+    }
     var initialPointOffset: CGFloat {
 
         return swipeView.frame.height + 65
@@ -19,7 +27,16 @@ class RecordListCViewController: PullUpController {
     }
     @IBOutlet weak var firstPreviewView: UIView!
     @IBOutlet weak var secondPreviewView: UIView!
-    @IBOutlet weak var swipeView: UIView!
+    @IBOutlet weak var swipeView: UIView! {
+        didSet {
+            swipeView.layer.cornerRadius = 15.0
+        }
+    }
+    @IBOutlet weak var searchSeparatorView: UIView!{
+        didSet {
+            searchSeparatorView.layer.cornerRadius = searchSeparatorView.frame.height/2
+        }
+    }
     
     private var locations = [(title: String, location: CLLocationCoordinate2D)]()
     
@@ -34,7 +51,7 @@ class RecordListCViewController: PullUpController {
         portraitSize = CGSize(width: min(UIScreen.main.bounds.width, UIScreen.main.bounds.height),
                               height: secondPreviewView.frame.maxY)
         
-        
+        tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
     }
     
@@ -79,4 +96,27 @@ class RecordListCViewController: PullUpController {
 
 
 
+}
+
+
+extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: RouteTableViewCell.self),
+            for: indexPath
+        )
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 195
+    }
+    
+    
 }

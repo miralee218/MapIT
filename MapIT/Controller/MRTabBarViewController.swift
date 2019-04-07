@@ -89,7 +89,7 @@ private enum Tab {
 }
 
 
-class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
+class MRTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     private let tabs: [Tab] = [.lobby, .record, .mapping, .notification, .profile]
     
@@ -100,6 +100,7 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         delegate = self
         
+   
     }
     
     

@@ -16,9 +16,15 @@ private enum MIColor: String {
     
     case B1
     
+    case B2
+    
     case B3
     
+    case B4
+    
     case B5
+    
+    case B6
     
 
 }
@@ -30,6 +36,15 @@ extension UIColor {
     static let EndYellow = MIColor(.EndYellow)
     
     static let mainColor = MIColor2(.StartPink, .EndYellow)
+    
+    static let B1 = MIColor(.B1)
+    
+    static let B2 = MIColor(.B2)
+    
+    static let B4 = MIColor(.B4)
+    
+    static let B5 = MIColor(.B6)
+    
     
     private static func MIColor(_ color: MIColor) -> UIColor? {
         

@@ -192,6 +192,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     @IBAction func checkInClicked(_ sender: UIButton) {
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "AddLocationCViewController") as? AddLocationCViewController{
+            present(vc, animated: true, completion: nil)
+        }
     }
     @IBAction func puaseClicked(_ sender: UIButton) {
         if sender.currentImage == UIImage(named: ImageAsset.Icons_Puase.rawValue)!
@@ -221,6 +225,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     @IBAction func stopClicked(_ sender: UIButton) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "StoredMapCViewController") as? StoredMapCViewController{
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

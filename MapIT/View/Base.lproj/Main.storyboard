@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +11,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="nXW-Za-ZaQ">
             <objects>
-                <tabBarController id="kej-al-WHf" customClass="STTabBarViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="kej-al-WHf" customClass="MRTabBarViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gba-4S-Psq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

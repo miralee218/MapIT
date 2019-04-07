@@ -13,7 +13,7 @@
 		491169192254563200347310 /* MapIT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 491169172254563200347310 /* MapIT.xcdatamodeld */; };
 		4911691B2254563800347310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4911691A2254563800347310 /* Assets.xcassets */; };
 		4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4911691C2254563800347310 /* LaunchScreen.storyboard */; };
-		4911692B22545D0800347310 /* MITabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911692A22545D0800347310 /* MITabBarViewController.swift */; };
+		4911692B22545D0800347310 /* MRTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911692A22545D0800347310 /* MRTabBarViewController.swift */; };
 		4911692E2254614600347310 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911692D2254614600347310 /* UIImage+Extension.swift */; };
 		491169302254629700347310 /* Lobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4911692F2254629700347310 /* Lobby.storyboard */; };
 		49116932225462E800347310 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49116931225462E800347310 /* Profile.storyboard */; };
@@ -35,6 +35,14 @@
 		4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911695522584C9000347310 /* MBProgressHUDWrapper.swift */; };
 		4911695B2258911B00347310 /* RecordListCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491169592258911B00347310 /* RecordListCViewController.swift */; };
 		494EB3552258AF8300ECCA72 /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3542258AF8300ECCA72 /* PullUpController.swift */; };
+		494EB3592258D1AB00ECCA72 /* AddLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3582258D1AB00ECCA72 /* AddLocationCViewController.swift */; };
+		494EB35B2258D55D00ECCA72 /* StoredMapCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB35A2258D55D00ECCA72 /* StoredMapCViewController.swift */; };
+		494EB3612259023900ECCA72 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB35F2259023900ECCA72 /* RouteTableViewCell.swift */; };
+		494EB3622259023900ECCA72 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB3602259023900ECCA72 /* RouteTableViewCell.xib */; };
+		494EB36422599D1700ECCA72 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB36322599D1700ECCA72 /* UITableView+Extension.swift */; };
+		494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3692259BE2500ECCA72 /* UICollectionView+Extension.swift */; };
+		494EB36E2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB36C2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift */; };
+		494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +56,7 @@
 		4911691A2254563800347310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4911691D2254563800347310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4911691F2254563800347310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4911692A22545D0800347310 /* MITabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MITabBarViewController.swift; sourceTree = "<group>"; };
+		4911692A22545D0800347310 /* MRTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRTabBarViewController.swift; sourceTree = "<group>"; };
 		4911692D2254614600347310 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4911692F2254629700347310 /* Lobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lobby.storyboard; sourceTree = "<group>"; };
 		49116931225462E800347310 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -70,6 +78,14 @@
 		4911695522584C9000347310 /* MBProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		491169592258911B00347310 /* RecordListCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListCViewController.swift; sourceTree = "<group>"; };
 		494EB3542258AF8300ECCA72 /* PullUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullUpController.swift; path = "../../../../../../../Downloads/PullUpController-master/PullUpController/PullUpController.swift"; sourceTree = "<group>"; };
+		494EB3582258D1AB00ECCA72 /* AddLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationCViewController.swift; sourceTree = "<group>"; };
+		494EB35A2258D55D00ECCA72 /* StoredMapCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredMapCViewController.swift; sourceTree = "<group>"; };
+		494EB35F2259023900ECCA72 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
+		494EB3602259023900ECCA72 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
+		494EB36322599D1700ECCA72 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		494EB3692259BE2500ECCA72 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		494EB36C2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutePictureCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +142,7 @@
 		4911692522545B4300347310 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				494EB35E2259020A00ECCA72 /* RouteCell */,
 				491169142254563200347310 /* Main.storyboard */,
 				4911692F2254629700347310 /* Lobby.storyboard */,
 				491169372254639300347310 /* Record.storyboard */,
@@ -147,11 +164,13 @@
 		4911692722545B5A00347310 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4911692A22545D0800347310 /* MITabBarViewController.swift */,
+				4911692A22545D0800347310 /* MRTabBarViewController.swift */,
 				491169392254644500347310 /* LobbyViewController.swift */,
 				4911693B2254645400347310 /* RecordViewController.swift */,
 				4911693E2254647400347310 /* MappingViewController.swift */,
+				494EB3582258D1AB00ECCA72 /* AddLocationCViewController.swift */,
 				491169592258911B00347310 /* RecordListCViewController.swift */,
+				494EB35A2258D55D00ECCA72 /* StoredMapCViewController.swift */,
 				491169402254648200347310 /* NotificationViewController.swift */,
 				491169422254648F00347310 /* ProfileViewController.swift */,
 				494EB3542258AF8300ECCA72 /* PullUpController.swift */,
@@ -165,6 +184,8 @@
 				4911692D2254614600347310 /* UIImage+Extension.swift */,
 				491169442254653100347310 /* UIStoryboard+Extension.swift */,
 				491169462254879B00347310 /* UIColor+Extension.swift */,
+				494EB36322599D1700ECCA72 /* UITableView+Extension.swift */,
+				494EB3692259BE2500ECCA72 /* UICollectionView+Extension.swift */,
 				491169482254893E00347310 /* CAGradientLayer+Extension.swift */,
 				4911694A225489EC00347310 /* Navigation+Extension.swift */,
 			);
@@ -178,6 +199,17 @@
 				4911695522584C9000347310 /* MBProgressHUDWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		494EB35E2259020A00ECCA72 /* RouteCell */ = {
+			isa = PBXGroup;
+			children = (
+				494EB35F2259023900ECCA72 /* RouteTableViewCell.swift */,
+				494EB3602259023900ECCA72 /* RouteTableViewCell.xib */,
+				494EB36C2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift */,
+				494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */,
+			);
+			path = RouteCell;
 			sourceTree = "<group>";
 		};
 		635C7606C42D2FC920CFD63F /* Frameworks */ = {
@@ -260,8 +292,10 @@
 			files = (
 				4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */,
 				4911691B2254563800347310 /* Assets.xcassets in Resources */,
+				494EB3622259023900ECCA72 /* RouteTableViewCell.xib in Resources */,
 				49116932225462E800347310 /* Profile.storyboard in Resources */,
 				491169162254563200347310 /* Main.storyboard in Resources */,
+				494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */,
 				491169302254629700347310 /* Lobby.storyboard in Resources */,
 				491169342254633400347310 /* Mapping.storyboard in Resources */,
 				491169362254634800347310 /* Notification.storyboard in Resources */,
@@ -351,7 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4911692B22545D0800347310 /* MITabBarViewController.swift in Sources */,
+				4911692B22545D0800347310 /* MRTabBarViewController.swift in Sources */,
 				4911695422583FFD00347310 /* JGProgressHUDWrapper.swift in Sources */,
 				4911694D22583E0200347310 /* AlertController.swift in Sources */,
 				494EB3552258AF8300ECCA72 /* PullUpController.swift in Sources */,
@@ -359,18 +393,24 @@
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
 				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,
+				494EB35B2258D55D00ECCA72 /* StoredMapCViewController.swift in Sources */,
 				4911695B2258911B00347310 /* RecordListCViewController.swift in Sources */,
 				491169432254648F00347310 /* ProfileViewController.swift in Sources */,
+				494EB3592258D1AB00ECCA72 /* AddLocationCViewController.swift in Sources */,
+				494EB3612259023900ECCA72 /* RouteTableViewCell.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
+				494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */,
 				491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */,
 				4911694F22583E2400347310 /* NavigationView.swift in Sources */,
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
+				494EB36E2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift in Sources */,
 				4911693A2254644500347310 /* LobbyViewController.swift in Sources */,
 				491169112254563200347310 /* AppDelegate.swift in Sources */,
 				491169192254563200347310 /* MapIT.xcdatamodeld in Sources */,
+				494EB36422599D1700ECCA72 /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

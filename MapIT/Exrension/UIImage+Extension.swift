@@ -40,6 +40,7 @@ enum ImageAsset: String {
     case Icons_Search_Selected
     case Icons_Search_Unselected
 
+    case Icons_RoutePoint
 }
 
 
