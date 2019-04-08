@@ -114,7 +114,23 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
         guard let routeCell = cell as? RouteTableViewCell else { return cell }
         
         routeCell.actionBlock = {
-            self.present(routeCell.sheet, animated: true, completion: nil)
+            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let option3 = UIAlertAction(title: "編輯", style: .default) { (action) in
+                let vc = UIStoryboard.mapping.instantiateViewController(withIdentifier: String(describing: EditLocationCViewController.self))
+                self.present(vc, animated: false, completion: nil)
+
+            }
+            let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
+                print("YOU HAVE DELETED YOUR RECORD")
+            }
+            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(option3)
+            sheet.addAction(option2)
+            sheet.addAction(option1)
+
+            self.present(sheet, animated: true, completion: nil)
+            
+
         }
         
         

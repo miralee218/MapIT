@@ -1,59 +1,40 @@
 //
-//  RouteTableViewCell.swift
+//  RecordTableViewCell.swift
 //  MapIT
 //
-//  Created by Mira on 2019/4/6.
+//  Created by Mira on 2019/4/8.
 //  Copyright © 2019 AppWork. All rights reserved.
 //
 
 import UIKit
 
-class RouteTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var pointTitleLabel: UILabel!
-    @IBOutlet weak var pointRecordTimeLabel: UILabel!
-    @IBOutlet weak var pointDescriptionLabel: UILabel!
-    var actionBlock: (() -> Void)? = nil
-    var editLocation: (() -> Void)? = nil
+class RecordTableViewCell: UITableViewCell {
+
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            
-            collectionView?.dataSource = self
-            
-            collectionView?.delegate = self
-            
+            collectionView.delegate = self
+            collectionView.dataSource = self
         }
     }
-
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         collectionView.mr_registerCellWithNib(identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
-            
-
-        
- 
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        // Configure the view for the selected state
     }
-    
-    
     @IBAction func moreOption(_ sender: UIButton) {
-        
-        actionBlock?()
-
     }
-    
-
     
 }
 
-extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RecordTableViewCell : UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
     }

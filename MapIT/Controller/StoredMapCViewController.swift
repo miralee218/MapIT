@@ -10,12 +10,23 @@ import UIKit
 
 class StoredMapCViewController: UIViewController {
 
+    @IBOutlet weak var toolBarView: UIView!
+    @IBOutlet weak var storeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toolBarView.layer.cornerRadius
+            = 10.0
 
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func cancelStore(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func store(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
 
+    }
+    
 
 }

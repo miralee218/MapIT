@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="Nq8-hw-MoW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Pv-25-z7p">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" name="B6"/>
+                                <color key="sectionIndexBackgroundColor" name="B6"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="StW-ru-Z8Z" id="XBT-lS-KEC"/>
+                                    <outlet property="delegate" destination="StW-ru-Z8Z" id="5VI-2u-DLD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cjt-r6-J37" firstAttribute="bottom" secondItem="2Pv-25-z7p" secondAttribute="bottom" id="5A2-QQ-F6D"/>
+                            <constraint firstItem="2Pv-25-z7p" firstAttribute="leading" secondItem="cjt-r6-J37" secondAttribute="leading" id="86R-Mr-iTe"/>
+                            <constraint firstItem="cjt-r6-J37" firstAttribute="trailing" secondItem="2Pv-25-z7p" secondAttribute="trailing" id="Nzn-87-Dms"/>
+                            <constraint firstItem="2Pv-25-z7p" firstAttribute="top" secondItem="cjt-r6-J37" secondAttribute="top" id="PUM-2q-GlU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cjt-r6-J37"/>
                     </view>
                     <navigationItem key="navigationItem" id="Coc-hB-exz">
@@ -29,6 +47,9 @@
                             <barButtonItem title="Item" image="Icons_Calendar_Unselected" id="4jV-Q0-jkb"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="2Pv-25-z7p" id="QqU-W5-RZH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbz-uH-85T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,5 +77,8 @@
     <resources>
         <image name="Icons_Calendar_Unselected" width="24" height="22"/>
         <image name="Icons_Search_Unselected" width="24" height="24"/>
+        <namedColor name="B6">
+            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

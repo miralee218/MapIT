@@ -16,7 +16,7 @@ class AddLocationNameCollectionViewCell: UICollectionViewCell {
         
         locationNameLabel.layer.borderWidth = 1
         locationNameLabel.layer.borderColor = UIColor.MiraBlue?.cgColor
-        locationNameLabel.layer.cornerRadius = 5
+        locationNameLabel.layer.cornerRadius = 10
     }
     
 

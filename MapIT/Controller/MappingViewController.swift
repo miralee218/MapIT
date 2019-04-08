@@ -226,8 +226,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     
     @IBAction func stopClicked(_ sender: UIButton) {
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "StoredMapCViewController") as? StoredMapCViewController{
-            navigationController?.pushViewController(vc, animated: true)
+            present(vc, animated: true, completion: nil)
         }
     }
     
