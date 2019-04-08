@@ -19,26 +19,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkr-XB-uSq">
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkr-XB-uSq">
                         <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qfq-h6-dZk">
-                                <rect key="frame" x="25" y="5" width="60" height="80"/>
+                                <rect key="frame" x="-5" y="16" width="120" height="58"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD0-Pw-gIh">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
-                                        <state key="normal" title="從相機">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD0-Pw-gIh">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <state key="normal" title=" 從相機" image="Icons_Camera">
                                             <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="openCamera:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hJ1-d8-Qof"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-FY-vA5">
-                                        <rect key="frame" x="0.0" y="40" width="60" height="40"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
-                                        <state key="normal" title="從相簿">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bc6-2A-Elz">
+                                        <rect key="frame" x="0.0" y="22" width="120" height="15"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="Dty-bl-hUP"/>
+                                            <constraint firstAttribute="height" constant="15" id="ljz-d3-5Uq"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-FY-vA5">
+                                        <rect key="frame" x="0.0" y="37" width="120" height="21"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <state key="normal" title=" 從相簿" image="Icons_Folder">
                                             <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
@@ -67,6 +75,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Icons_Camera" width="25" height="22"/>
+        <image name="Icons_Folder" width="25" height="17"/>
         <namedColor name="MiraBlue">
             <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
