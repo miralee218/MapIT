@@ -9,10 +9,19 @@
 import UIKit
 
 class AddPictureMethodCollectionViewCell: UICollectionViewCell {
+    
+    var openCamera: (() -> Void)? = nil
+    var openLibrary: (() -> Void)? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    @IBAction func openCamera(_ sender: UIButton) {
+        openCamera?()
+    }
+    @IBAction func openPhotoLibrary(_ sender: UIButton) {
+        openLibrary?()
+    }
+    
 }

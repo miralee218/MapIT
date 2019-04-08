@@ -47,6 +47,7 @@
 		494EB37C225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB37A225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib */; };
 		494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */; };
 		494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */; };
+		494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		494EB37A225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddLocationNameCollectionViewCell.xib; sourceTree = "<group>"; };
 		494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureMethodCollectionViewCell.swift; sourceTree = "<group>"; };
 		494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPictureMethodCollectionViewCell.xib; sourceTree = "<group>"; };
+		494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhoto.swift; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 		4911692622545B4C00347310 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				494EB36E2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift in Sources */,
 				4911693A2254644500347310 /* LobbyViewController.swift in Sources */,
 				491169112254563200347310 /* AppDelegate.swift in Sources */,
+				494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */,
 				491169192254563200347310 /* MapIT.xcdatamodeld in Sources */,
 				494EB36422599D1700ECCA72 /* UITableView+Extension.swift in Sources */,
 			);

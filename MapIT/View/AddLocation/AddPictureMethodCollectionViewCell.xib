@@ -19,47 +19,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3r-4i-MR3">
-                        <rect key="frame" x="0.0" y="0.0" width="120" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_PictureMethod" translatesAutoresizingMaskIntoConstraints="NO" id="HaU-bi-Ygj">
-                        <rect key="frame" x="1" y="21" width="48" height="48"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkr-XB-uSq">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qfq-h6-dZk">
+                                <rect key="frame" x="25" y="5" width="60" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD0-Pw-gIh">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <state key="normal" title="從相機">
+                                            <color key="titleColor" name="MiraBlue"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openCamera:" destination="gTV-IL-0wX" eventType="touchUpInside" id="hJ1-d8-Qof"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-FY-vA5">
+                                        <rect key="frame" x="0.0" y="40" width="60" height="40"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <state key="normal" title="從相簿">
+                                            <color key="titleColor" name="MiraBlue"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openPhotoLibrary:" destination="gTV-IL-0wX" eventType="touchUpInside" id="92G-GJ-wow"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="48" id="a4R-Jc-kUi"/>
-                            <constraint firstAttribute="height" constant="48" id="iHu-N2-NmG"/>
+                            <constraint firstItem="qfq-h6-dZk" firstAttribute="centerX" secondItem="gkr-XB-uSq" secondAttribute="centerX" id="4YZ-gU-Ye2"/>
+                            <constraint firstItem="qfq-h6-dZk" firstAttribute="centerY" secondItem="gkr-XB-uSq" secondAttribute="centerY" id="pLi-Jy-IFu"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選擇相片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B9-93-5p9">
-                        <rect key="frame" x="53" y="36.5" width="58" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" name="MiraBlue"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvN-jj-6TM">
-                        <rect key="frame" x="0.0" y="0.0" width="110" height="90"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </button>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NvN-jj-6TM" secondAttribute="trailing" id="8fI-IQ-o6Q"/>
-                <constraint firstItem="NvN-jj-6TM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="96E-dK-XWm"/>
-                <constraint firstItem="HaU-bi-Ygj" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="HJh-ks-c0N"/>
-                <constraint firstItem="HaU-bi-Ygj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="YAR-t8-UQv"/>
-                <constraint firstItem="6B9-93-5p9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="eI8-dD-o1Z"/>
-                <constraint firstItem="6B9-93-5p9" firstAttribute="leading" secondItem="HaU-bi-Ygj" secondAttribute="trailing" constant="4" id="pf5-vN-B3D"/>
-                <constraint firstAttribute="bottom" secondItem="NvN-jj-6TM" secondAttribute="bottom" id="ukD-zh-VrI"/>
-                <constraint firstItem="NvN-jj-6TM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="z09-G8-Qya"/>
+                <constraint firstAttribute="bottom" secondItem="gkr-XB-uSq" secondAttribute="bottom" id="ZYi-5A-hDj"/>
+                <constraint firstAttribute="trailing" secondItem="gkr-XB-uSq" secondAttribute="trailing" id="aNz-p2-jZk"/>
+                <constraint firstItem="gkr-XB-uSq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="h0R-cB-KrV"/>
+                <constraint firstItem="gkr-XB-uSq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zwI-id-BfZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Icons_PictureMethod" width="166.5" height="139"/>
         <namedColor name="MiraBlue">
             <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

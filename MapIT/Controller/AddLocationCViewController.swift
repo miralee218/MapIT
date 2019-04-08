@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddLocationCViewController: UIViewController {
+class AddLocationCViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var stireButton: UIButton!
@@ -52,6 +52,11 @@ class AddLocationCViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    var photoImage = UIImage()
+    var mutableArray = NSMutableArray()
+    
+
+    
 }
 
 extension AddLocationCViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -62,7 +67,7 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
             
         } else {
             
-            return 4
+            return mutableArray.count + 1
             
         }
     }
@@ -77,19 +82,31 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
             
             return cell
         } else if collectionView == self.pictureCollectionView {
-            //            let cell = photoCollectionView.dequeueReusableCell(
-            //                withReuseIdentifier: String(describing: RoutePictureCollectionViewCell.self),
-            //                for: indexPath
-            //            )
-            //
-            //            return cell
+
             if indexPath.row == 0 {
+
                 let cell = pictureCollectionView.dequeueReusableCell(
                     withReuseIdentifier: String(describing: AddPictureMethodCollectionViewCell.self),
                     for: indexPath
                 )
+                guard let optionCell = cell as? AddPictureMethodCollectionViewCell else {return cell}
                 
-                return cell
+                optionCell.openCamera = {
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        AccessPhoto.accessCamera(viewController: self)
+                    }
+                }
+                
+                optionCell.openLibrary = {
+                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                        AccessPhoto.accessLibrary(viewController: self)
+                        
+
+                    }
+                }
+                
+                return optionCell
+
                 
             } else {
                 let cell = pictureCollectionView.dequeueReusableCell(
@@ -97,10 +114,16 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                     for: indexPath
                 )
                 
-                return cell
+                guard let photoCell = cell as? RoutePictureCollectionViewCell else {return cell}
+                
+                guard (self.mutableArray.count > 0)  else { return photoCell }
+                photoCell.photoImageView.image = self.mutableArray[indexPath.row - 1] as? UIImage
+                
+                return photoCell
                 
                 
             }
+            
             
         }
         return UICollectionViewCell()
@@ -117,6 +140,17 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
         return 10
         
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        mutableArray.add(image)
+        self.pictureCollectionView.reloadData()
+        picker.dismiss(animated:true, completion: nil)
+        
+        
+    }
+
 
     
     

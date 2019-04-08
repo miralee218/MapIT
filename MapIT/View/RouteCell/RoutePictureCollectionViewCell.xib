@@ -31,6 +31,9 @@
                 <constraint firstAttribute="bottom" secondItem="GtI-TC-x36" secondAttribute="bottom" id="uLA-gw-OOH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="photoImageView" destination="GtI-TC-x36" id="e98-na-qOU"/>
+            </connections>
             <point key="canvasLocation" x="100.00000000000001" y="61.607142857142854"/>
         </collectionViewCell>
     </objects>
