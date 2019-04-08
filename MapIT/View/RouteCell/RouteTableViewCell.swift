@@ -21,10 +21,6 @@ class RouteTableViewCell: UITableViewCell {
             
             collectionView?.delegate = self
             
-//            collectionView?.register(
-//                ProductColorCell.self,
-//                forCellWithReuseIdentifier: String(describing: ProductColorCell.self)
-//            )
         }
     }
     let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

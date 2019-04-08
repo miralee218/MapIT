@@ -70,7 +70,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         //back current location
         
         let buttonItem = MKUserTrackingButton(mapView: mapView)
-        buttonItem.tintColor = UIColor.red
+        buttonItem.tintColor = UIColor.StartPink
         buttonItem.backgroundColor = UIColor.white
         buttonItem.frame = CGRect(origin: CGPoint(x:5, y: 25), size: CGSize(width: 40, height: 40))
         

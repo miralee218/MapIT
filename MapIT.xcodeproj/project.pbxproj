@@ -43,6 +43,10 @@
 		494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3692259BE2500ECCA72 /* UICollectionView+Extension.swift */; };
 		494EB36E2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB36C2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift */; };
 		494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */; };
+		494EB37B225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB379225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.swift */; };
+		494EB37C225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB37A225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib */; };
+		494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */; };
+		494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		494EB3692259BE2500ECCA72 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		494EB36C2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutePictureCollectionViewCell.xib; sourceTree = "<group>"; };
+		494EB379225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationNameCollectionViewCell.swift; sourceTree = "<group>"; };
+		494EB37A225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddLocationNameCollectionViewCell.xib; sourceTree = "<group>"; };
+		494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureMethodCollectionViewCell.swift; sourceTree = "<group>"; };
+		494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPictureMethodCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +150,7 @@
 		4911692522545B4300347310 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				494EB370225A1A8300ECCA72 /* AddLocation */,
 				494EB35E2259020A00ECCA72 /* RouteCell */,
 				491169142254563200347310 /* Main.storyboard */,
 				4911692F2254629700347310 /* Lobby.storyboard */,
@@ -210,6 +219,17 @@
 				494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */,
 			);
 			path = RouteCell;
+			sourceTree = "<group>";
+		};
+		494EB370225A1A8300ECCA72 /* AddLocation */ = {
+			isa = PBXGroup;
+			children = (
+				494EB379225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.swift */,
+				494EB37A225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib */,
+				494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */,
+				494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */,
+			);
+			path = AddLocation;
 			sourceTree = "<group>";
 		};
 		635C7606C42D2FC920CFD63F /* Frameworks */ = {
@@ -298,6 +318,8 @@
 				494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */,
 				491169302254629700347310 /* Lobby.storyboard in Resources */,
 				491169342254633400347310 /* Mapping.storyboard in Resources */,
+				494EB37C225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib in Resources */,
+				494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */,
 				491169362254634800347310 /* Notification.storyboard in Resources */,
 				491169382254639300347310 /* Record.storyboard in Resources */,
 			);
@@ -385,9 +407,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				494EB37B225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.swift in Sources */,
 				4911692B22545D0800347310 /* MRTabBarViewController.swift in Sources */,
 				4911695422583FFD00347310 /* JGProgressHUDWrapper.swift in Sources */,
 				4911694D22583E0200347310 /* AlertController.swift in Sources */,
+				494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */,
 				494EB3552258AF8300ECCA72 /* PullUpController.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
