@@ -48,5 +48,7 @@ extension RecordTableViewCell : UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
+
+    
     
 }

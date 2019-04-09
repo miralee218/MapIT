@@ -12,18 +12,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RecordTableViewCell" customModule="MapIT" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="379" id="KGk-i7-Jjw" customClass="RecordTableViewCell" customModule="MapIT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="379"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="349.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="378.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fy0-R0-eTe">
-                        <rect key="frame" x="20" y="12" width="374" height="337.5"/>
+                        <rect key="frame" x="20" y="12" width="374" height="366.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_Background" translatesAutoresizingMaskIntoConstraints="NO" id="NMt-Z9-lrY">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="337.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="366.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日月潭之旅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ap-5l-cfE">
                                 <rect key="frame" x="18" y="12" width="91" height="26"/>
@@ -38,10 +38,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mgc-Jd-RY1">
-                                <rect key="frame" x="16" y="63" width="342" height="200"/>
+                                <rect key="frame" x="16" y="63" width="342" height="220"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="SIe-Fz-Kgd"/>
+                                    <constraint firstAttribute="height" constant="220" id="SIe-Fz-Kgd"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2F0-nS-JZw">
                                     <size key="itemSize" width="342" height="220"/>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIf-3o-ozA">
-                                <rect key="frame" x="20" y="267" width="334" height="67.5"/>
+                                <rect key="frame" x="20" y="287" width="334" height="67.5"/>
                                 <string key="text">The day started well with tutors attending the morning classes and setting the afternoon for assignments. I caught up with old friends and we spent a wonderful time in the Music concert. </string>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <color key="textColor" name="B2"/>
@@ -106,7 +106,7 @@
             <connections>
                 <outlet property="collectionView" destination="mgc-Jd-RY1" id="K3U-R8-Xua"/>
             </connections>
-            <point key="canvasLocation" x="156.52173913043478" y="83.705357142857139"/>
+            <point key="canvasLocation" x="155.07246376811597" y="93.415178571428569"/>
         </tableViewCell>
     </objects>
     <resources>

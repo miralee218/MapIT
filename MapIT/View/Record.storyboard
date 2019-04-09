@@ -13,11 +13,35 @@
         <!--Record View Controller-->
         <scene sceneID="P5f-P2-U14">
             <objects>
-                <viewController id="StW-ru-Z8Z" customClass="RecordViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordViewController" id="StW-ru-Z8Z" customClass="RecordViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nq8-hw-MoW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-nW-ALl" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="-212" width="414" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="D9T-Yr-xUg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" name="B3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" name="MiraBlue2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" red="0.9919324517250061" green="0.60285776853561401" blue="0.53081816434860229" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" name="B5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                        <color key="value" name="B2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Pv-25-z7p">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" name="B6"/>
@@ -32,8 +56,11 @@
                         <constraints>
                             <constraint firstItem="cjt-r6-J37" firstAttribute="bottom" secondItem="2Pv-25-z7p" secondAttribute="bottom" id="5A2-QQ-F6D"/>
                             <constraint firstItem="2Pv-25-z7p" firstAttribute="leading" secondItem="cjt-r6-J37" secondAttribute="leading" id="86R-Mr-iTe"/>
+                            <constraint firstItem="uNS-nW-ALl" firstAttribute="leading" secondItem="cjt-r6-J37" secondAttribute="leading" id="EzZ-jg-Vc3"/>
+                            <constraint firstItem="uNS-nW-ALl" firstAttribute="trailing" secondItem="cjt-r6-J37" secondAttribute="trailing" id="Fgh-vs-1FF"/>
+                            <constraint firstItem="uNS-nW-ALl" firstAttribute="top" secondItem="cjt-r6-J37" secondAttribute="top" constant="-300" id="Fke-Yb-K2u"/>
                             <constraint firstItem="cjt-r6-J37" firstAttribute="trailing" secondItem="2Pv-25-z7p" secondAttribute="trailing" id="Nzn-87-Dms"/>
-                            <constraint firstItem="2Pv-25-z7p" firstAttribute="top" secondItem="cjt-r6-J37" secondAttribute="top" id="PUM-2q-GlU"/>
+                            <constraint firstItem="2Pv-25-z7p" firstAttribute="top" secondItem="uNS-nW-ALl" secondAttribute="bottom" id="Z1v-kc-5ud"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cjt-r6-J37"/>
                     </view>
@@ -44,16 +71,52 @@
                                     <action selector="searchRecord:" destination="StW-ru-Z8Z" id="u6Y-HD-TwW"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="Icons_Calendar_Unselected" id="4jV-Q0-jkb"/>
+                            <barButtonItem title="Item" image="Icons_Calendar_Unselected" id="4jV-Q0-jkb">
+                                <connections>
+                                    <action selector="searchByCalendar:" destination="StW-ru-Z8Z" id="zkr-yd-gw7"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarButton" destination="4jV-Q0-jkb" id="TvK-BP-emB"/>
+                        <outlet property="calendarTopConstraints" destination="Fke-Yb-K2u" id="XD2-5B-Vpv"/>
+                        <outlet property="calendarView" destination="uNS-nW-ALl" id="YCi-Cj-YQA"/>
+                        <outlet property="searchBarButton" destination="OVp-c3-dyT" id="Trd-Vw-RyM"/>
                         <outlet property="tableView" destination="2Pv-25-z7p" id="QqU-W5-RZH"/>
+                        <segue destination="fpi-gz-U30" kind="show" identifier="SegueToRecordDetail" id="bOZ-sI-vWG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbz-uH-85T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="986.95652173913049" y="-165.40178571428569"/>
+        </scene>
+        <!--Record Detail View Controller-->
+        <scene sceneID="5jc-pT-fI5">
+            <objects>
+                <viewController storyboardIdentifier="RecordDetailViewController" id="fpi-gz-U30" customClass="RecordDetailViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Do0-sA-rWh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Flm-FY-fEx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cnw-We-tef" firstAttribute="trailing" secondItem="Flm-FY-fEx" secondAttribute="trailing" id="0bt-v2-slM"/>
+                            <constraint firstItem="Flm-FY-fEx" firstAttribute="top" secondItem="cnw-We-tef" secondAttribute="top" id="erB-rY-q9c"/>
+                            <constraint firstItem="Flm-FY-fEx" firstAttribute="leading" secondItem="cnw-We-tef" secondAttribute="leading" id="nBQ-Mc-9Gh"/>
+                            <constraint firstItem="cnw-We-tef" firstAttribute="bottom" secondItem="Flm-FY-fEx" secondAttribute="bottom" id="pfx-wA-1n2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cnw-We-tef"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clw-CT-WA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1913" y="-164"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u4l-dx-b4L">
@@ -77,8 +140,20 @@
     <resources>
         <image name="Icons_Calendar_Unselected" width="24" height="22"/>
         <image name="Icons_Search_Unselected" width="24" height="24"/>
+        <namedColor name="B2">
+            <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B3">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B5">
+            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="B6">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MiraBlue2">
+            <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

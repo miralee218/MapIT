@@ -51,6 +51,8 @@ class RecordListCViewController: PullUpController {
         portraitSize = CGSize(width: min(UIScreen.main.bounds.width, UIScreen.main.bounds.height),
                               height: secondPreviewView.frame.maxY)
         
+        tableView.separatorStyle = .none
+        
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
     }
@@ -114,15 +116,24 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
         guard let routeCell = cell as? RouteTableViewCell else { return cell }
         
         routeCell.actionBlock = {
+            
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let option3 = UIAlertAction(title: "編輯", style: .default) { (action) in
+            
+            let option3 = UIAlertAction(title: "編輯", style: .default) { [weak self] (action) in
+                
                 let vc = UIStoryboard.mapping.instantiateViewController(withIdentifier: String(describing: EditLocationCViewController.self))
-                self.present(vc, animated: false, completion: nil)
-
+                
+                self?.present(vc, animated: true, completion: nil)
+                
+//                sheet.dismiss(animated: true, completion: {
+//                    self?.present(vc, animated: false, completion: nil)
+//                })
             }
+            
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
                 print("YOU HAVE DELETED YOUR RECORD")
             }
+            
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             sheet.addAction(option3)
             sheet.addAction(option2)
@@ -130,7 +141,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
             self.present(sheet, animated: true, completion: nil)
             
-
         }
         
         

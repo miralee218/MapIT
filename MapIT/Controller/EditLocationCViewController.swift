@@ -21,6 +21,7 @@ class EditLocationCViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {
     }

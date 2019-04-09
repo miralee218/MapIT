@@ -136,6 +136,13 @@
                                                 <constraint firstItem="ckN-NS-Jc2" firstAttribute="top" secondItem="0Lr-MG-U1C" secondAttribute="top" constant="8" id="sco-My-Ql9"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhp-bx-oRg">
+                                            <rect key="frame" x="12" y="44" width="390" height="5"/>
+                                            <color key="backgroundColor" name="B5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="5" id="2ig-bk-Sf7"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8X-51-YGp">
                                             <rect key="frame" x="0.0" y="45" width="414" height="200"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,6 +168,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="rhp-bx-oRg" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" constant="12" id="1UN-Sr-nm7"/>
                                         <constraint firstItem="Dfn-Yf-jzE" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="8es-rF-qc3"/>
                                         <constraint firstAttribute="trailing" secondItem="0Lr-MG-U1C" secondAttribute="trailing" id="DSZ-aX-pYD"/>
                                         <constraint firstItem="0Lr-MG-U1C" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="GD8-6y-zmF"/>
@@ -168,9 +176,11 @@
                                         <constraint firstAttribute="trailing" secondItem="x8X-51-YGp" secondAttribute="trailing" id="QlY-CH-gzF"/>
                                         <constraint firstItem="BCM-vw-zli" firstAttribute="top" secondItem="0Lr-MG-U1C" secondAttribute="bottom" id="bLf-xY-ie4"/>
                                         <constraint firstItem="x8X-51-YGp" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="bNw-I3-MEs"/>
+                                        <constraint firstItem="rhp-bx-oRg" firstAttribute="bottom" secondItem="0Lr-MG-U1C" secondAttribute="bottom" constant="-11" id="coW-wS-fph"/>
                                         <constraint firstItem="BCM-vw-zli" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="dZq-YQ-OUX"/>
                                         <constraint firstItem="x8X-51-YGp" firstAttribute="top" secondItem="0Lr-MG-U1C" secondAttribute="bottom" constant="-15" id="eJh-mp-0KK"/>
                                         <constraint firstAttribute="trailing" secondItem="Dfn-Yf-jzE" secondAttribute="trailing" id="hBK-b9-RXk"/>
+                                        <constraint firstAttribute="trailing" secondItem="rhp-bx-oRg" secondAttribute="trailing" constant="12" id="hJO-cN-KSm"/>
                                         <constraint firstItem="0Lr-MG-U1C" firstAttribute="top" secondItem="4ji-4R-qNZ" secondAttribute="top" id="naj-k4-Kyt"/>
                                         <constraint firstItem="Dfn-Yf-jzE" firstAttribute="top" secondItem="x8X-51-YGp" secondAttribute="bottom" id="pUY-BL-Tgs"/>
                                         <constraint firstItem="BCM-vw-zli" firstAttribute="bottom" secondItem="Dfn-Yf-jzE" secondAttribute="bottom" id="wpb-Om-7wZ"/>
@@ -232,7 +242,7 @@
                                         <rect key="frame" x="16" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="取消">
-                                            <color key="titleColor" name="Color"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="cancelStore:" destination="y5h-pU-4JE" eventType="touchUpInside" id="hEL-gl-LVv"/>
@@ -346,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-Lr-a8S">
-                                <rect key="frame" x="0.0" y="68" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="444" width="414" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kS9-GH-6Wd">
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
@@ -368,7 +378,7 @@
                                         <rect key="frame" x="16" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="取消">
-                                            <color key="titleColor" name="Color"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="cancelAdd:" destination="HoJ-8B-AEu" eventType="touchUpInside" id="mWO-jd-qWB"/>
@@ -397,7 +407,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tex-nj-pkm">
-                                <rect key="frame" x="0.0" y="118" width="414" height="744"/>
+                                <rect key="frame" x="0.0" y="494" width="414" height="368"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-af-w1I">
                                         <rect key="frame" x="16" y="16" width="382" height="28"/>
@@ -441,7 +451,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="361-ZO-sMU">
-                                        <rect key="frame" x="20" y="198" width="374" height="546"/>
+                                        <rect key="frame" x="20" y="198" width="374" height="170"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="5Yj-Sl-Uzp">
                                             <size key="itemSize" width="110" height="72"/>
@@ -479,7 +489,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="tex-nj-pkm" firstAttribute="top" secondItem="CWk-Lr-a8S" secondAttribute="bottom" constant="-10" id="7OS-Ho-r7y"/>
-                            <constraint firstItem="CWk-Lr-a8S" firstAttribute="top" secondItem="3GB-bH-wQD" secondAttribute="top" constant="24" id="Kor-bM-M3v"/>
+                            <constraint firstItem="CWk-Lr-a8S" firstAttribute="top" secondItem="3GB-bH-wQD" secondAttribute="top" constant="400" id="Kor-bM-M3v"/>
                             <constraint firstItem="CWk-Lr-a8S" firstAttribute="trailing" secondItem="3GB-bH-wQD" secondAttribute="trailing" id="QYM-aC-uEN"/>
                             <constraint firstItem="3GB-bH-wQD" firstAttribute="trailing" secondItem="tex-nj-pkm" secondAttribute="trailing" id="slc-gX-mQw"/>
                             <constraint firstItem="CWk-Lr-a8S" firstAttribute="leading" secondItem="3GB-bH-wQD" secondAttribute="leading" id="vcc-kU-UbO"/>
@@ -530,7 +540,7 @@
                                         <rect key="frame" x="16" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="取消">
-                                            <color key="titleColor" name="Color"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="cancel:" destination="tQI-TP-ELy" eventType="touchUpInside" id="HZd-CK-B1M"/>
@@ -599,10 +609,6 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="tQI-TP-ELy" id="g08-ED-l8T"/>
-                                            <outlet property="delegate" destination="tQI-TP-ELy" id="9kF-dq-OrS"/>
-                                        </connections>
                                     </collectionView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start writing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc">
                                         <rect key="frame" x="16" y="92" width="382" height="90"/>
@@ -624,10 +630,6 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="tQI-TP-ELy" id="Ska-UJ-WGx"/>
-                                            <outlet property="delegate" destination="tQI-TP-ELy" id="drk-Ba-qnA"/>
-                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -670,67 +672,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sX5-vf-S3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZa-Ss-rjb">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXH-cV-ipU">
-                            <rect key="frame" x="368" y="14" width="30" height="32"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                            <state key="normal" title="儲存">
-                                <color key="titleColor" name="B4"/>
-                            </state>
-                            <connections>
-                                <action selector="store:" destination="y5h-pU-4JE" eventType="touchUpInside" id="Bxm-1C-dHd"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="儲存旅程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85w-UP-gCE">
-                            <rect key="frame" x="167" y="16" width="80" height="28"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
-                            <color key="textColor" name="B1"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtD-bf-c9I">
-                            <rect key="frame" x="16" y="14" width="30" height="32"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                            <state key="normal" title="取消">
-                                <color key="titleColor" name="Color"/>
-                            </state>
-                            <connections>
-                                <action selector="cancelStore:" destination="y5h-pU-4JE" eventType="touchUpInside" id="Fr5-8I-mmG"/>
-                            </connections>
-                        </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-uW-ZBC">
-                            <rect key="frame" x="0.0" y="58" width="414" height="1"/>
-                            <color key="backgroundColor" name="B5"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="etJ-de-Iwu"/>
-                            </constraints>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84P-Qr-wiW">
-                            <rect key="frame" x="300" y="14" width="56" height="32"/>
-                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                            <state key="normal" title="放棄紀錄">
-                                <color key="titleColor" name="MiraBlue"/>
-                            </state>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="aXH-cV-ipU" firstAttribute="leading" secondItem="84P-Qr-wiW" secondAttribute="trailing" constant="12" id="3EJ-E2-I3J"/>
-                        <constraint firstAttribute="bottom" secondItem="eKf-uW-ZBC" secondAttribute="bottom" constant="1" id="5bf-LX-Da0"/>
-                        <constraint firstItem="mtD-bf-c9I" firstAttribute="centerY" secondItem="JZa-Ss-rjb" secondAttribute="centerY" id="BPp-uq-Z2d"/>
-                        <constraint firstItem="eKf-uW-ZBC" firstAttribute="leading" secondItem="JZa-Ss-rjb" secondAttribute="leading" id="JrT-Er-hgT"/>
-                        <constraint firstAttribute="height" constant="60" id="POB-Sp-dUy"/>
-                        <constraint firstItem="85w-UP-gCE" firstAttribute="centerY" secondItem="JZa-Ss-rjb" secondAttribute="centerY" id="VY5-ie-D3d"/>
-                        <constraint firstItem="84P-Qr-wiW" firstAttribute="centerY" secondItem="JZa-Ss-rjb" secondAttribute="centerY" id="bvR-1p-yF8"/>
-                        <constraint firstAttribute="trailing" secondItem="eKf-uW-ZBC" secondAttribute="trailing" id="flJ-Gj-VKD"/>
-                        <constraint firstItem="aXH-cV-ipU" firstAttribute="centerY" secondItem="JZa-Ss-rjb" secondAttribute="centerY" id="ljf-SQ-Xrw"/>
-                        <constraint firstItem="mtD-bf-c9I" firstAttribute="leading" secondItem="JZa-Ss-rjb" secondAttribute="leading" constant="16" id="qKb-z3-70W"/>
-                        <constraint firstAttribute="trailing" secondItem="aXH-cV-ipU" secondAttribute="trailing" constant="16" id="tck-T6-bnI"/>
-                        <constraint firstItem="85w-UP-gCE" firstAttribute="centerX" secondItem="JZa-Ss-rjb" secondAttribute="centerX" id="tpA-E4-dc8"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="fAe-af-dqF"/>
-                </view>
             </objects>
             <point key="canvasLocation" x="2970" y="-159"/>
         </scene>
@@ -768,9 +709,6 @@
         </namedColor>
         <namedColor name="B5">
             <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Color">
-            <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MiraBlue">
             <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>

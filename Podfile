@@ -13,6 +13,6 @@ target 'MapIT' do
 
   pod 'PullUpController'
  
-
+  pod 'FSCalendar'
 
 end
