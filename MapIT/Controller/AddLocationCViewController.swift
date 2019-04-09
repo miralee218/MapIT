@@ -11,7 +11,7 @@ import UIKit
 class AddLocationCViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     @IBOutlet weak var toolBarView: UIView!
-    @IBOutlet weak var stireButton: UIButton!
+    @IBOutlet weak var storeButton: UIButton!
     @IBOutlet weak var locationNameCollectionView: UICollectionView!{
         didSet {
             
@@ -52,7 +52,6 @@ class AddLocationCViewController: UIViewController,UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
-    var photoImage = UIImage()
     var mutableArray = NSMutableArray()
     
 

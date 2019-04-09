@@ -124,10 +124,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                 let vc = UIStoryboard.mapping.instantiateViewController(withIdentifier: String(describing: EditLocationCViewController.self))
                 
                 self?.present(vc, animated: true, completion: nil)
-                
-//                sheet.dismiss(animated: true, completion: {
-//                    self?.present(vc, animated: false, completion: nil)
-//                })
             }
             
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in

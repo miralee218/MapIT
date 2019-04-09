@@ -609,6 +609,9 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells/>
+                                        <connections>
+                                            <outlet property="delegate" destination="tQI-TP-ELy" id="c69-0F-Vjp"/>
+                                        </connections>
                                     </collectionView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start writing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc">
                                         <rect key="frame" x="16" y="92" width="382" height="90"/>
@@ -630,6 +633,10 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="tQI-TP-ELy" id="Uf5-3y-NCq"/>
+                                            <outlet property="delegate" destination="tQI-TP-ELy" id="8dq-ul-Buj"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

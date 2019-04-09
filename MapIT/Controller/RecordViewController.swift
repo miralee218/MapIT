@@ -25,6 +25,7 @@ class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setGradientBackground(colors: UIColor.mainColor as! [UIColor])
+        navigationController?.navigationBar.isTranslucent = false
         
         tableView.separatorStyle = .none
         

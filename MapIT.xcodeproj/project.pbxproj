@@ -52,6 +52,12 @@
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
 		4985372D225B533E008CB391 /* PullUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985372C225B533E008CB391 /* PullUpController.swift */; };
 		4985372F225C2D23008CB391 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985372E225C2D22008CB391 /* RecordDetailViewController.swift */; };
+		49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853752225C78FA008CB391 /* RecordImageTableViewCell.swift */; };
+		49853755225C78FA008CB391 /* RecordImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853753225C78FA008CB391 /* RecordImageTableViewCell.xib */; };
+		49853758225C791B008CB391 /* RecordDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853756225C791B008CB391 /* RecordDescriptionTableViewCell.swift */; };
+		49853759225C791B008CB391 /* RecordDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853757225C791B008CB391 /* RecordDescriptionTableViewCell.xib */; };
+		4985375C225C966D008CB391 /* EditArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985375A225C966D008CB391 /* EditArticleTableViewCell.swift */; };
+		4985375D225C966D008CB391 /* EditArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4985375B225C966D008CB391 /* EditArticleTableViewCell.xib */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +110,12 @@
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		4985372C225B533E008CB391 /* PullUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullUpController.swift; sourceTree = "<group>"; };
 		4985372E225C2D22008CB391 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		49853752225C78FA008CB391 /* RecordImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordImageTableViewCell.swift; sourceTree = "<group>"; };
+		49853753225C78FA008CB391 /* RecordImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordImageTableViewCell.xib; sourceTree = "<group>"; };
+		49853756225C791B008CB391 /* RecordDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		49853757225C791B008CB391 /* RecordDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		4985375A225C966D008CB391 /* EditArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArticleTableViewCell.swift; sourceTree = "<group>"; };
+		4985375B225C966D008CB391 /* EditArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditArticleTableViewCell.xib; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +264,8 @@
 			children = (
 				49853728225B3E3D008CB391 /* RecordTableViewCell.swift */,
 				49853729225B3E3D008CB391 /* RecordTableViewCell.xib */,
+				4985375A225C966D008CB391 /* EditArticleTableViewCell.swift */,
+				4985375B225C966D008CB391 /* EditArticleTableViewCell.xib */,
 			);
 			path = RecordCell;
 			sourceTree = "<group>";
@@ -259,6 +273,10 @@
 		49853751225C753A008CB391 /* RecordDetailCell */ = {
 			isa = PBXGroup;
 			children = (
+				49853752225C78FA008CB391 /* RecordImageTableViewCell.swift */,
+				49853753225C78FA008CB391 /* RecordImageTableViewCell.xib */,
+				49853756225C791B008CB391 /* RecordDescriptionTableViewCell.swift */,
+				49853757225C791B008CB391 /* RecordDescriptionTableViewCell.xib */,
 			);
 			path = RecordDetailCell;
 			sourceTree = "<group>";
@@ -341,14 +359,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49853759225C791B008CB391 /* RecordDescriptionTableViewCell.xib in Resources */,
 				4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */,
 				4911691B2254563800347310 /* Assets.xcassets in Resources */,
 				494EB3622259023900ECCA72 /* RouteTableViewCell.xib in Resources */,
 				49116932225462E800347310 /* Profile.storyboard in Resources */,
 				491169162254563200347310 /* Main.storyboard in Resources */,
 				494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */,
+				49853755225C78FA008CB391 /* RecordImageTableViewCell.xib in Resources */,
 				491169302254629700347310 /* Lobby.storyboard in Resources */,
 				491169342254633400347310 /* Mapping.storyboard in Resources */,
+				4985375D225C966D008CB391 /* EditArticleTableViewCell.xib in Resources */,
 				4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */,
 				494EB37C225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib in Resources */,
 				494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */,
@@ -449,9 +470,11 @@
 				494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
+				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
 				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,
 				494EB35B2258D55D00ECCA72 /* StoredMapCViewController.swift in Sources */,
+				4985375C225C966D008CB391 /* EditArticleTableViewCell.swift in Sources */,
 				4911695B2258911B00347310 /* RecordListCViewController.swift in Sources */,
 				491169432254648F00347310 /* ProfileViewController.swift in Sources */,
 				494EB3592258D1AB00ECCA72 /* AddLocationCViewController.swift in Sources */,
@@ -473,6 +496,7 @@
 				494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */,
 				491169192254563200347310 /* MapIT.xcdatamodeld in Sources */,
 				494EB36422599D1700ECCA72 /* UITableView+Extension.swift in Sources */,
+				49853758225C791B008CB391 /* RecordDescriptionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
