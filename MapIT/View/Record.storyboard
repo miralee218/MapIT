@@ -133,16 +133,16 @@
             </objects>
             <point key="canvasLocation" x="1913" y="-164"/>
         </scene>
-        <!--View Controller-->
+        <!--Shared Option View Controller-->
         <scene sceneID="KO3-ND-Fu7">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="Wop-88-R0e" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SharedOptionViewController" modalPresentationStyle="overCurrentContext" id="Wop-88-R0e" customClass="SharedOptionViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sec-Xt-xsE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lp-VR-kdb">
-                                <rect key="frame" x="0.0" y="602" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="622" width="414" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-g4-FJJ">
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
@@ -150,6 +150,9 @@
                                         <state key="normal" title="確定">
                                             <color key="titleColor" name="MiraBlue"/>
                                         </state>
+                                        <connections>
+                                            <action selector="submit:" destination="Wop-88-R0e" eventType="touchUpInside" id="4Ed-jM-10d"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享項目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-db-V0e">
                                         <rect key="frame" x="167" y="16" width="80" height="28"/>
@@ -163,6 +166,9 @@
                                         <state key="normal" title="取消">
                                             <color key="titleColor" name="MiraBlue"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="Wop-88-R0e" eventType="touchUpInside" id="bGk-Wa-yEf"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zLy-ft-dwW">
                                         <rect key="frame" x="0.0" y="58" width="414" height="1"/>
@@ -186,23 +192,32 @@
                                     <constraint firstItem="x1N-QF-JRv" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="q9x-k2-gWp"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUR-Mb-nJJ">
-                                <rect key="frame" x="0.0" y="662" width="414" height="200"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUR-Mb-nJJ">
+                                <rect key="frame" x="0.0" y="672" width="414" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wop-88-R0e" id="Mbl-ZP-MZz"/>
+                                    <outlet property="delegate" destination="Wop-88-R0e" id="Isa-AW-d6O"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5Lp-VR-kdb" firstAttribute="leading" secondItem="sec-Xt-xsE" secondAttribute="leading" id="8ry-7l-gOv"/>
                             <constraint firstItem="cUR-Mb-nJJ" firstAttribute="leading" secondItem="Blr-Oy-2cK" secondAttribute="leading" id="Cwx-Qx-cdz"/>
-                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="top" secondItem="5Lp-VR-kdb" secondAttribute="bottom" id="Efh-NF-L2a"/>
+                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="top" secondItem="5Lp-VR-kdb" secondAttribute="bottom" constant="-10" id="Efh-NF-L2a"/>
                             <constraint firstItem="cUR-Mb-nJJ" firstAttribute="trailing" secondItem="Blr-Oy-2cK" secondAttribute="trailing" id="QgU-0m-Ugd"/>
-                            <constraint firstItem="Blr-Oy-2cK" firstAttribute="bottom" secondItem="5Lp-VR-kdb" secondAttribute="bottom" constant="200" id="Zgh-Eg-Rhz"/>
+                            <constraint firstItem="Blr-Oy-2cK" firstAttribute="bottom" secondItem="5Lp-VR-kdb" secondAttribute="bottom" constant="180" id="Zgh-Eg-Rhz"/>
                             <constraint firstAttribute="trailing" secondItem="5Lp-VR-kdb" secondAttribute="trailing" id="dwS-Mw-tEH"/>
                             <constraint firstItem="cUR-Mb-nJJ" firstAttribute="bottom" secondItem="Blr-Oy-2cK" secondAttribute="bottom" id="eFM-9o-kVC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Blr-Oy-2cK"/>
                     </view>
+                    <connections>
+                        <outlet property="submitButton" destination="zbR-g4-FJJ" id="pyY-yK-TEz"/>
+                        <outlet property="tableView" destination="cUR-Mb-nJJ" id="DTP-po-f54"/>
+                        <outlet property="toolBarView" destination="5Lp-VR-kdb" id="0x7-j0-6YE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTa-si-8ZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

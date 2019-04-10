@@ -113,7 +113,7 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
 
                 guard let photoCell = cell as? RoutePictureCollectionViewCell else {return cell}
 
-                guard (self.mutableArray.count > 0)  else { return photoCell }
+                guard self.mutableArray.count > 0  else { return photoCell }
                 photoCell.photoImageView.image = self.mutableArray[indexPath.row - 1] as? UIImage
 
                 return photoCell

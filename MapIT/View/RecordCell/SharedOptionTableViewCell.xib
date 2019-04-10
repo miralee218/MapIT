@@ -19,24 +19,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="409" height="108.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5S-vM-J4I">
+                        <rect key="frame" x="16" y="43" width="24" height="23"/>
+                        <state key="normal" image="Icons_Book_Unselected"/>
+                        <state key="selected" image="Icons_Book_Selected"/>
+                        <connections>
+                            <action selector="optionAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aDD-Bg-ixv"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文章連結" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2E-60-R9r">
-                        <rect key="frame" x="231" y="8" width="76" height="92.5"/>
+                        <rect key="frame" x="64" y="41" width="76" height="27"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="19"/>
                         <color key="textColor" name="B2"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="R2E-60-R9r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="832-3w-psK"/>
-                    <constraint firstItem="R2E-60-R9r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="231" id="Hbh-uW-4Rd"/>
-                    <constraint firstAttribute="bottom" secondItem="R2E-60-R9r" secondAttribute="bottom" constant="8" id="TMo-To-ryj"/>
+                    <constraint firstItem="b5S-vM-J4I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9Dg-CH-szp"/>
+                    <constraint firstItem="b5S-vM-J4I" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TkF-UT-pWd"/>
+                    <constraint firstItem="R2E-60-R9r" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lf4-3L-UCM"/>
+                    <constraint firstItem="R2E-60-R9r" firstAttribute="leading" secondItem="b5S-vM-J4I" secondAttribute="trailing" constant="24" id="wsb-8j-3W5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="optionButton" destination="b5S-vM-J4I" id="vHx-R0-CwE"/>
+                <outlet property="optionTitleLabel" destination="R2E-60-R9r" id="h63-dZ-bDo"/>
+            </connections>
             <point key="canvasLocation" x="202.17391304347828" y="108.14732142857143"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Icons_Book_Selected" width="24" height="23"/>
+        <image name="Icons_Book_Unselected" width="24" height="23"/>
         <namedColor name="B2">
             <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

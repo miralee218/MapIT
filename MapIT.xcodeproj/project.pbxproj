@@ -47,6 +47,7 @@
 		494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */; };
 		494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */; };
 		494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */; };
+		497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0579225D97640010D142 /* SharedOptionViewController.swift */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -109,6 +110,7 @@
 		494EB385225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureMethodCollectionViewCell.swift; sourceTree = "<group>"; };
 		494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPictureMethodCollectionViewCell.xib; sourceTree = "<group>"; };
 		494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhoto.swift; sourceTree = "<group>"; };
+		497A0579225D97640010D142 /* SharedOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionViewController.swift; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		4911692522545B4300347310 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				497A057B225DD8140010D142 /* ProfileCell */,
 				49853751225C753A008CB391 /* RecordDetailCell */,
 				49853727225B3E1A008CB391 /* RecordCell */,
 				494EB370225A1A8300ECCA72 /* AddLocation */,
@@ -210,6 +213,7 @@
 				491169392254644500347310 /* LobbyViewController.swift */,
 				4911693B2254645400347310 /* RecordViewController.swift */,
 				4985372E225C2D22008CB391 /* RecordDetailViewController.swift */,
+				497A0579225D97640010D142 /* SharedOptionViewController.swift */,
 				4911693E2254647400347310 /* MappingViewController.swift */,
 				494EB3582258D1AB00ECCA72 /* AddLocationCViewController.swift */,
 				491169592258911B00347310 /* RecordListCViewController.swift */,
@@ -265,6 +269,13 @@
 				494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */,
 			);
 			path = AddLocation;
+			sourceTree = "<group>";
+		};
+		497A057B225DD8140010D142 /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileCell;
 			sourceTree = "<group>";
 		};
 		49853727225B3E1A008CB391 /* RecordCell */ = {
@@ -513,6 +524,7 @@
 				494EB3592258D1AB00ECCA72 /* AddLocationCViewController.swift in Sources */,
 				494EB3612259023900ECCA72 /* RouteTableViewCell.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
+				497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
 				494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */,
