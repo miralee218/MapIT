@@ -9,11 +9,11 @@
 import UIKit
 
 extension UICollectionView {
-    
+
     func mr_registerCellWithNib(identifier: String, bundle: Bundle?) {
-        
+
         let nib = UINib(nibName: identifier, bundle: bundle)
-        
+
         register(nib, forCellWithReuseIdentifier: identifier)
     }
 }

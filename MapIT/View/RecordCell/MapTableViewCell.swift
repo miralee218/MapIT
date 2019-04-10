@@ -1,14 +1,14 @@
 //
-//  RecordDescriptionTableViewCell.swift
+//  MapTableViewCell.swift
 //  MapIT
 //
-//  Created by Mira on 2019/4/9.
+//  Created by Mira on 2019/4/10.
 //  Copyright © 2019 AppWork. All rights reserved.
 //
 
 import UIKit
 
-class RecordDescriptionTableViewCell: UITableViewCell {
+class MapTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +20,4 @@ class RecordDescriptionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

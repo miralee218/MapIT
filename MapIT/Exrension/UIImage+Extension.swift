@@ -9,8 +9,9 @@
 import UIKit
 
 enum ImageAsset: String {
-    
+
     // Profile tab - Tab
+    // swiftlint:disable identifier_name
     case Icons_Home_Unselected
     case Icons_Home_Selected
     case Icons_Notification_Unselected
@@ -24,17 +25,17 @@ enum ImageAsset: String {
     case Icons_Book_Selected
     case Icons_User_Unselected
     case Icons_User_Selected
-    
+
     case Icons_Checkin
     case Icons_Puase
     case Icons_Play
     case Icons_Stop
     case Icons_List
-    
+
     case Icons_Pause_50
     case Icons_Go
     case Icons_Walking
-    
+
     case Icons_Calendar_Selected
     case Icons_Calendar_Unselected
     case Icons_Search_Selected
@@ -42,13 +43,12 @@ enum ImageAsset: String {
 
     case Icons_RoutePoint
 }
-
-
+// swiftlint:enable identifier_name
 
 extension UIImage {
-    
+
     static func asset(_ asset: ImageAsset) -> UIImage? {
-        
+
         return UIImage(named: asset.rawValue)
     }
 }

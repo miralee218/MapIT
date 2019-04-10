@@ -1,14 +1,14 @@
 //
-//  RecordDescriptionTableViewCell.swift
+//  SharedOptionTableViewCell.swift
 //  MapIT
 //
-//  Created by Mira on 2019/4/9.
+//  Created by Mira on 2019/4/10.
 //  Copyright © 2019 AppWork. All rights reserved.
 //
 
 import UIKit
 
-class RecordDescriptionTableViewCell: UITableViewCell {
+class SharedOptionTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +19,5 @@ class RecordDescriptionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-
+    }    
 }

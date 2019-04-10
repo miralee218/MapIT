@@ -9,9 +9,9 @@
 import UIKit
 
 class AddPictureMethodCollectionViewCell: UICollectionViewCell {
-    
-    var openCamera: (() -> Void)? = nil
-    var openLibrary: (() -> Void)? = nil
+
+    var openCamera: (() -> Void)?
+    var openLibrary: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +23,5 @@ class AddPictureMethodCollectionViewCell: UICollectionViewCell {
     @IBAction func openPhotoLibrary(_ sender: UIButton) {
         openLibrary?()
     }
-    
+
 }

@@ -14,7 +14,5 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
-
 
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EditArticleTableViewCell" customModule="MapIT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="399.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="旅程名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V7y-IK-NHW">
+                        <rect key="frame" x="16" y="16" width="382" height="28"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="156-vr-DVi">
+                        <rect key="frame" x="16" y="43" width="382" height="1"/>
+                        <color key="backgroundColor" name="B5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="4cC-SN-RMb"/>
+                        </constraints>
+                    </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start writing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Kw-sl-8Zm">
+                        <rect key="frame" x="16" y="52" width="382" height="347.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" name="B4"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="156-vr-DVi" firstAttribute="leading" secondItem="V7y-IK-NHW" secondAttribute="leading" id="4Ic-D5-amJ"/>
+                    <constraint firstItem="3Kw-sl-8Zm" firstAttribute="top" secondItem="V7y-IK-NHW" secondAttribute="bottom" constant="8" id="4jn-04-SPY"/>
+                    <constraint firstItem="V7y-IK-NHW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="6CP-bp-P77"/>
+                    <constraint firstItem="156-vr-DVi" firstAttribute="trailing" secondItem="V7y-IK-NHW" secondAttribute="trailing" id="7hz-nW-6Fl"/>
+                    <constraint firstAttribute="trailing" secondItem="V7y-IK-NHW" secondAttribute="trailing" constant="16" id="8AV-Un-Z3I"/>
+                    <constraint firstItem="3Kw-sl-8Zm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HC6-w5-vol"/>
+                    <constraint firstItem="V7y-IK-NHW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HKr-r6-OsW"/>
+                    <constraint firstAttribute="bottom" secondItem="3Kw-sl-8Zm" secondAttribute="bottom" id="dUy-v4-a9x"/>
+                    <constraint firstItem="156-vr-DVi" firstAttribute="bottom" secondItem="V7y-IK-NHW" secondAttribute="bottom" id="j63-sN-enS"/>
+                    <constraint firstAttribute="trailing" secondItem="3Kw-sl-8Zm" secondAttribute="trailing" constant="16" id="tA0-vc-4u3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="47.826086956521742" y="61.607142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="B4">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B5">
+            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -9,7 +9,7 @@
 import MBProgressHUD
 
 class MRProgressHUD {
-    
+
     static func startRecord(view: UIView) {
         let popView = MBProgressHUD.showAdded(to: view, animated: true)
         popView.mode = MBProgressHUDMode.customView
@@ -20,7 +20,7 @@ class MRProgressHUD {
         popView.bezelView.alpha = 0.5
         popView.hide(animated: true, afterDelay: 1.5)
     }
-    
+
     static func puase(view: UIView) {
         let popView = MBProgressHUD.showAdded(to: view, animated: true)
         popView.mode = MBProgressHUDMode.customView
@@ -30,4 +30,3 @@ class MRProgressHUD {
         popView.bezelView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
 }
-

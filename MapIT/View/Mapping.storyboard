@@ -54,7 +54,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Icons_List"/>
                                 <connections>
-                                    <action selector="ListClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="TRB-Dl-GHc"/>
+                                    <action selector="listClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="TRB-Dl-GHc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bN-oU-ij0">
@@ -282,48 +282,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-fN-S1q">
                                 <rect key="frame" x="0.0" y="118" width="414" height="744"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bno-QJ-kqn">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="450" id="84i-Oq-Feo"/>
-                                        </constraints>
-                                    </mapView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入旅程名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SUR-VJ-9nV">
-                                        <rect key="frame" x="16" y="466" width="382" height="28"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RY6-iE-RA1">
-                                        <rect key="frame" x="16" y="493" width="382" height="1"/>
-                                        <color key="backgroundColor" name="B5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="SvL-Bz-efG"/>
-                                        </constraints>
-                                    </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start writing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="atr-MY-aTb">
-                                        <rect key="frame" x="16" y="502" width="382" height="234"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-ki-Bxm">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" name="B4"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <connections>
+                                            <outlet property="dataSource" destination="y5h-pU-4JE" id="Swn-O2-2cF"/>
+                                            <outlet property="delegate" destination="y5h-pU-4JE" id="Lef-eO-Df8"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="atr-MY-aTb" secondAttribute="trailing" constant="16" id="CWz-ke-Q4v"/>
-                                    <constraint firstAttribute="trailing" secondItem="SUR-VJ-9nV" secondAttribute="trailing" constant="16" id="DBd-Qz-Kef"/>
-                                    <constraint firstAttribute="trailing" secondItem="bno-QJ-kqn" secondAttribute="trailing" id="DfV-Uu-yh6"/>
-                                    <constraint firstItem="SUR-VJ-9nV" firstAttribute="top" secondItem="bno-QJ-kqn" secondAttribute="bottom" constant="16" id="EWs-LG-xtN"/>
-                                    <constraint firstItem="RY6-iE-RA1" firstAttribute="trailing" secondItem="SUR-VJ-9nV" secondAttribute="trailing" id="H7w-vB-tjq"/>
-                                    <constraint firstItem="RY6-iE-RA1" firstAttribute="bottom" secondItem="SUR-VJ-9nV" secondAttribute="bottom" id="Hj8-UG-nms"/>
-                                    <constraint firstItem="SUR-VJ-9nV" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" constant="16" id="Q4e-0u-Csc"/>
-                                    <constraint firstItem="bno-QJ-kqn" firstAttribute="top" secondItem="Aqy-fN-S1q" secondAttribute="top" id="T3j-2F-JMV"/>
-                                    <constraint firstItem="bno-QJ-kqn" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" id="Ue2-Cv-6mj"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="atr-MY-aTb" secondAttribute="bottom" id="VX9-Ns-Wdw"/>
-                                    <constraint firstItem="RY6-iE-RA1" firstAttribute="leading" secondItem="SUR-VJ-9nV" secondAttribute="leading" id="Xs2-gS-pr6"/>
-                                    <constraint firstItem="atr-MY-aTb" firstAttribute="top" secondItem="SUR-VJ-9nV" secondAttribute="bottom" constant="8" id="ocS-I8-D0E"/>
-                                    <constraint firstItem="atr-MY-aTb" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" constant="16" id="sw0-xp-Kvm"/>
+                                    <constraint firstAttribute="bottom" secondItem="hTY-ki-Bxm" secondAttribute="bottom" id="6o8-0f-7U4"/>
+                                    <constraint firstAttribute="trailing" secondItem="hTY-ki-Bxm" secondAttribute="trailing" id="Kjj-81-xrd"/>
+                                    <constraint firstItem="hTY-ki-Bxm" firstAttribute="top" secondItem="Aqy-fN-S1q" secondAttribute="top" id="QQE-i3-FCh"/>
+                                    <constraint firstItem="hTY-ki-Bxm" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" id="Vy6-BG-dvt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -340,6 +313,7 @@
                     </view>
                     <connections>
                         <outlet property="storeButton" destination="WbI-QN-bAu" id="bf5-cK-RfZ"/>
+                        <outlet property="tableView" destination="hTY-ki-Bxm" id="8Ra-Vh-HQ0"/>
                         <outlet property="toolBarView" destination="neV-fI-XhW" id="hqH-TM-HpA"/>
                     </connections>
                 </viewController>
@@ -501,7 +475,7 @@
                     <connections>
                         <outlet property="locationNameCollectionView" destination="54I-rh-Zcy" id="ckT-28-73n"/>
                         <outlet property="pictureCollectionView" destination="361-ZO-sMU" id="q9I-1Q-Fa3"/>
-                        <outlet property="stireButton" destination="kS9-GH-6Wd" id="DD2-me-ohk"/>
+                        <outlet property="storeButton" destination="kS9-GH-6Wd" id="UmX-4i-eNg"/>
                         <outlet property="toolBarView" destination="CWk-Lr-a8S" id="CW5-nx-N9y"/>
                     </connections>
                 </viewController>

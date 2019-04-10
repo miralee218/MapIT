@@ -133,6 +133,81 @@
             </objects>
             <point key="canvasLocation" x="1913" y="-164"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="KO3-ND-Fu7">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="Wop-88-R0e" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sec-Xt-xsE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lp-VR-kdb">
+                                <rect key="frame" x="0.0" y="602" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-g4-FJJ">
+                                        <rect key="frame" x="368" y="14" width="30" height="32"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                        <state key="normal" title="確定">
+                                            <color key="titleColor" name="MiraBlue"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享項目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-db-V0e">
+                                        <rect key="frame" x="167" y="16" width="80" height="28"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <color key="textColor" name="B1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1N-QF-JRv">
+                                        <rect key="frame" x="16" y="14" width="30" height="32"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                        <state key="normal" title="取消">
+                                            <color key="titleColor" name="MiraBlue"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zLy-ft-dwW">
+                                        <rect key="frame" x="0.0" y="58" width="414" height="1"/>
+                                        <color key="backgroundColor" name="B5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="tLD-CP-bE8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zLy-ft-dwW" secondAttribute="bottom" constant="1" id="2La-e6-9cB"/>
+                                    <constraint firstAttribute="height" constant="60" id="6DM-BM-uLW"/>
+                                    <constraint firstItem="x1N-QF-JRv" firstAttribute="leading" secondItem="5Lp-VR-kdb" secondAttribute="leading" constant="16" id="NpR-vD-wM3"/>
+                                    <constraint firstItem="0bw-db-V0e" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="UF1-66-qRC"/>
+                                    <constraint firstItem="zbR-g4-FJJ" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="XIl-37-DI5"/>
+                                    <constraint firstItem="zLy-ft-dwW" firstAttribute="leading" secondItem="5Lp-VR-kdb" secondAttribute="leading" id="Xaw-aP-AJr"/>
+                                    <constraint firstItem="0bw-db-V0e" firstAttribute="centerX" secondItem="5Lp-VR-kdb" secondAttribute="centerX" id="bGi-4V-SIC"/>
+                                    <constraint firstAttribute="trailing" secondItem="zbR-g4-FJJ" secondAttribute="trailing" constant="16" id="iTr-qz-aVJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="zLy-ft-dwW" secondAttribute="trailing" id="lOD-dw-LDd"/>
+                                    <constraint firstItem="x1N-QF-JRv" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="q9x-k2-gWp"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUR-Mb-nJJ">
+                                <rect key="frame" x="0.0" y="662" width="414" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Lp-VR-kdb" firstAttribute="leading" secondItem="sec-Xt-xsE" secondAttribute="leading" id="8ry-7l-gOv"/>
+                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="leading" secondItem="Blr-Oy-2cK" secondAttribute="leading" id="Cwx-Qx-cdz"/>
+                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="top" secondItem="5Lp-VR-kdb" secondAttribute="bottom" id="Efh-NF-L2a"/>
+                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="trailing" secondItem="Blr-Oy-2cK" secondAttribute="trailing" id="QgU-0m-Ugd"/>
+                            <constraint firstItem="Blr-Oy-2cK" firstAttribute="bottom" secondItem="5Lp-VR-kdb" secondAttribute="bottom" constant="200" id="Zgh-Eg-Rhz"/>
+                            <constraint firstAttribute="trailing" secondItem="5Lp-VR-kdb" secondAttribute="trailing" id="dwS-Mw-tEH"/>
+                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="bottom" secondItem="Blr-Oy-2cK" secondAttribute="bottom" id="eFM-9o-kVC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Blr-Oy-2cK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTa-si-8ZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2802.898550724638" y="-165.40178571428569"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="u4l-dx-b4L">
             <objects>
@@ -164,6 +239,9 @@
         <image name="Icons_Calendar_Unselected" width="24" height="22"/>
         <image name="Icons_Search_Unselected" width="24" height="24"/>
         <image name="Icons_more" width="25" height="8"/>
+        <namedColor name="B1">
+            <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="B2">
             <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -175,6 +253,9 @@
         </namedColor>
         <namedColor name="B6">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MiraBlue">
+            <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MiraBlue2">
             <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -2,7 +2,7 @@
 //  EditArticleTableViewCell.swift
 //  MapIT
 //
-//  Created by Mira on 2019/4/9.
+//  Created by Mira on 2019/4/10.
 //  Copyright © 2019 AppWork. All rights reserved.
 //
 
@@ -20,5 +20,4 @@ class EditArticleTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

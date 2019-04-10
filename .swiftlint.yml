@@ -1,0 +1,22 @@
+disabled_rules:
+  - railing_whitespace
+  - (identifier_name
+
+identifier_name:
+  min_length: # only min_length
+    error: 2 # only error
+  excluded: # excluded via string array
+    - id
+    - URL
+    - url
+    - app
+    - nib
+    - vc
+    - key
+
+excluded:
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/ExcludedFile.swift
+  - Source/*/ExcludedFile.swift

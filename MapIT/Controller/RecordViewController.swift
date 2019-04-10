@@ -19,33 +19,34 @@ class RecordViewController: UIViewController {
         didSet {
             tableView?.delegate = self
             tableView?.dataSource = self
-            
+
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setGradientBackground(colors: UIColor.mainColor as! [UIColor])
+        navigationController?.navigationBar.setGradientBackground(
+            colors: UIColor.mainColor.compactMap({ color in
+                return color
+            })
+        )
         navigationController?.navigationBar.isTranslucent = false
-        
+
         tableView.separatorStyle = .none
-        
+
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
-        
-        
-        
 
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
     }
-    
+
     var searchByCalendar = false
     @IBAction func searchByCalendar(_ sender: UIBarButtonItem) {
         if searchByCalendar == false {
             selectCalendarImage()
-            
+
             searchBarButton.image = UIImage(named: ImageAsset.Icons_Search_Unselected.rawValue)
             searchBySearchBar = false
         } else {
@@ -53,9 +54,9 @@ class RecordViewController: UIViewController {
             unselectCalendarImage()
 
         }
-        
+
     }
-    
+
     var searchBySearchBar = false
     @IBAction func searchRecord(_ sender: UIBarButtonItem) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -63,12 +64,11 @@ class RecordViewController: UIViewController {
         searchController.searchBar.tintColor = .white
         navigationItem.searchController = searchController
 
-        if searchBySearchBar == false && searchByCalendar == true{
+        if searchBySearchBar == false && searchByCalendar == true {
             searchBarButton.image = UIImage(named: ImageAsset.Icons_Search_Selected.rawValue)
             searchBySearchBar = true
-            
-            unselectCalendarImage()
 
+            unselectCalendarImage()
 
         } else if searchBySearchBar == false {
             searchBarButton.image = UIImage(named: ImageAsset.Icons_Search_Selected.rawValue)
@@ -79,9 +79,8 @@ class RecordViewController: UIViewController {
 
         }
 
-        
     }
-    
+
     func selectCalendarImage() {
         calendarButton.image = UIImage(named: ImageAsset.Icons_Calendar_Selected.rawValue)
         calendarView.isHidden = false
@@ -98,9 +97,8 @@ class RecordViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         searchByCalendar = false
-        
+
     }
-    
 
 }
 
@@ -108,25 +106,36 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: RecordTableViewCell.self),
             for: indexPath
         )
-        
-        return cell
-        
+        guard let recordCell = cell as? RecordTableViewCell else { return cell }
+        recordCell.actionBlock = {
+            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let option3 = UIAlertAction(title: "分享", style: .default) { (_) in
+            }
+            let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
+                print("YOU HAVE DELETED YOUR RECORD")
+            }
+            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(option3)
+            sheet.addAction(option2)
+            sheet.addAction(option1)
+            self.present(sheet, animated: true, completion: nil)
+        }
+        return recordCell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 380
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "SegueToRecordDetail", sender: indexPath)
     }
-    
-    
+
 }

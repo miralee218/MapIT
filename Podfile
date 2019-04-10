@@ -14,5 +14,7 @@ target 'MapIT' do
   pod 'PullUpController'
  
   pod 'FSCalendar'
+  
+  pod 'SwiftLint'
 
 end

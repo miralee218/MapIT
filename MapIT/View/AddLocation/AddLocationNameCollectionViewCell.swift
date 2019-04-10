@@ -13,12 +13,10 @@ class AddLocationNameCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var locationNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         locationNameLabel.layer.borderWidth = 1
         locationNameLabel.layer.borderColor = UIColor.MiraBlue?.cgColor
         locationNameLabel.layer.cornerRadius = 10
     }
-    
-
 
 }
