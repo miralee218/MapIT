@@ -27,9 +27,7 @@ class LobbyViewController: UIViewController {
     private func setupLayout() {
 
         navigationController?.navigationBar.setGradientBackground(
-            colors: UIColor.mainColor.compactMap({ color in
-                return color
-            })
+            colors: UIColor.mainColor
         )
 
     }

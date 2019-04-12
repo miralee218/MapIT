@@ -136,7 +136,7 @@
         <!--Shared Option View Controller-->
         <scene sceneID="KO3-ND-Fu7">
             <objects>
-                <viewController storyboardIdentifier="SharedOptionViewController" modalPresentationStyle="overCurrentContext" id="Wop-88-R0e" customClass="SharedOptionViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SharedOptionViewController" modalPresentationStyle="overFullScreen" id="Wop-88-R0e" customClass="SharedOptionViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sec-Xt-xsE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,7 +193,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUR-Mb-nJJ">
-                                <rect key="frame" x="0.0" y="672" width="414" height="190"/>
+                                <rect key="frame" x="0.0" y="672" width="414" height="224"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Wop-88-R0e" id="Mbl-ZP-MZz"/>
@@ -204,12 +204,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5Lp-VR-kdb" firstAttribute="leading" secondItem="sec-Xt-xsE" secondAttribute="leading" id="8ry-7l-gOv"/>
+                            <constraint firstAttribute="bottom" secondItem="cUR-Mb-nJJ" secondAttribute="bottom" id="BaD-wH-TPW"/>
                             <constraint firstItem="cUR-Mb-nJJ" firstAttribute="leading" secondItem="Blr-Oy-2cK" secondAttribute="leading" id="Cwx-Qx-cdz"/>
                             <constraint firstItem="cUR-Mb-nJJ" firstAttribute="top" secondItem="5Lp-VR-kdb" secondAttribute="bottom" constant="-10" id="Efh-NF-L2a"/>
                             <constraint firstItem="cUR-Mb-nJJ" firstAttribute="trailing" secondItem="Blr-Oy-2cK" secondAttribute="trailing" id="QgU-0m-Ugd"/>
                             <constraint firstItem="Blr-Oy-2cK" firstAttribute="bottom" secondItem="5Lp-VR-kdb" secondAttribute="bottom" constant="180" id="Zgh-Eg-Rhz"/>
                             <constraint firstAttribute="trailing" secondItem="5Lp-VR-kdb" secondAttribute="trailing" id="dwS-Mw-tEH"/>
-                            <constraint firstItem="cUR-Mb-nJJ" firstAttribute="bottom" secondItem="Blr-Oy-2cK" secondAttribute="bottom" id="eFM-9o-kVC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Blr-Oy-2cK"/>
                     </view>

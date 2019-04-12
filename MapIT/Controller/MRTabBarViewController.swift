@@ -9,7 +9,7 @@
 import UIKit
 
 private enum Tab {
-    case lobby
+//    case lobby
     case record
     case mapping
     case notification
@@ -21,7 +21,7 @@ private enum Tab {
 
         switch self {
 
-        case .lobby: controller = UIStoryboard.lobby.instantiateInitialViewController()!
+//        case .lobby: controller = UIStoryboard.lobby.instantiateInitialViewController()!
 
         case .record: controller = UIStoryboard.record.instantiateInitialViewController()!
 
@@ -45,12 +45,12 @@ private enum Tab {
 
         switch self {
 
-        case .lobby:
-            return UITabBarItem(
-                title: nil,
-                image: UIImage.asset(.Icons_Home_Unselected),
-                selectedImage: UIImage.asset(.Icons_Home_Selected)
-            )
+//        case .lobby:
+//            return UITabBarItem(
+//                title: nil,
+//                image: UIImage.asset(.Icons_Home_Unselected),
+//                selectedImage: UIImage.asset(.Icons_Home_Selected)
+//            )
 
         case .record:
             return UITabBarItem(
@@ -85,7 +85,7 @@ private enum Tab {
 
 class MRTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.lobby, .record, .mapping, .notification, .profile]
+    private let tabs: [Tab] = [.record, .mapping, .notification, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()

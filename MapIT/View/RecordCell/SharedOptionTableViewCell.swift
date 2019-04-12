@@ -29,14 +29,10 @@ class SharedOptionTableViewCell: UITableViewCell {
         optionButton.addTarget(self, action: #selector(self.radioButtonTapped), for: .touchUpInside)
     }
     @objc func radioButtonTapped(_ radioButton: UIButton) {
-        print("radio button tapped")
-        let isSelected = !self.optionButton.isSelected
-        self.optionButton.isSelected = isSelected
-        if isSelected {
-            deselectOtherButton()
-        }
+        self.optionButton.isSelected = true
+        deselectOtherButton()
         guard let tableView = self.superview as? UITableView else { return }
-        let tappedCellIndexPath = tableView.indexPath(for: self)!
+        guard let tappedCellIndexPath = tableView.indexPath(for: self) else { return }
         delegate?.buttonDidTap(self, tappedCellIndexPath)
     }
 

@@ -214,7 +214,7 @@
         <!--Stored MapC View Controller-->
         <scene sceneID="0cC-Y5-gND">
             <objects>
-                <viewController storyboardIdentifier="StoredMapCViewController" modalPresentationStyle="overCurrentContext" id="y5h-pU-4JE" customClass="StoredMapCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StoredMapCViewController" modalPresentationStyle="overFullScreen" id="y5h-pU-4JE" customClass="StoredMapCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VME-XX-LCh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,10 +280,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-fN-S1q">
-                                <rect key="frame" x="0.0" y="118" width="414" height="744"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-ki-Bxm">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="744"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="y5h-pU-4JE" id="Swn-O2-2cF"/>
@@ -302,12 +302,12 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Aqy-fN-S1q" firstAttribute="leading" secondItem="1Xi-D4-yrY" secondAttribute="leading" id="LHO-KZ-NhV"/>
+                            <constraint firstAttribute="bottom" secondItem="Aqy-fN-S1q" secondAttribute="bottom" id="Nma-UA-uD8"/>
                             <constraint firstItem="Aqy-fN-S1q" firstAttribute="trailing" secondItem="1Xi-D4-yrY" secondAttribute="trailing" id="SLU-m9-1hC"/>
                             <constraint firstItem="neV-fI-XhW" firstAttribute="top" secondItem="1Xi-D4-yrY" secondAttribute="top" constant="24" id="baX-dD-YaE"/>
                             <constraint firstItem="neV-fI-XhW" firstAttribute="trailing" secondItem="1Xi-D4-yrY" secondAttribute="trailing" id="f59-Yo-o9O"/>
                             <constraint firstItem="Aqy-fN-S1q" firstAttribute="top" secondItem="neV-fI-XhW" secondAttribute="bottom" constant="-10" id="o8C-lN-J34"/>
                             <constraint firstItem="neV-fI-XhW" firstAttribute="leading" secondItem="1Xi-D4-yrY" secondAttribute="leading" id="soX-Ow-vOg"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Aqy-fN-S1q" secondAttribute="bottom" id="wWH-rL-x1r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Xi-D4-yrY"/>
                     </view>
@@ -319,12 +319,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gek-hl-Rwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2070" y="1266"/>
+            <point key="canvasLocation" x="2069.5652173913045" y="1265.625"/>
         </scene>
         <!--Add LocationC View Controller-->
         <scene sceneID="3qk-51-Qdt">
             <objects>
-                <viewController storyboardIdentifier="AddLocationCViewController" modalPresentationStyle="overCurrentContext" id="HoJ-8B-AEu" customClass="AddLocationCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationCViewController" modalPresentationStyle="overFullScreen" id="HoJ-8B-AEu" customClass="AddLocationCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Guf-mZ-lEV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,7 +381,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tex-nj-pkm">
-                                <rect key="frame" x="0.0" y="494" width="414" height="368"/>
+                                <rect key="frame" x="0.0" y="494" width="414" height="402"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-af-w1I">
                                         <rect key="frame" x="16" y="16" width="382" height="28"/>
@@ -425,7 +425,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="361-ZO-sMU">
-                                        <rect key="frame" x="20" y="198" width="374" height="170"/>
+                                        <rect key="frame" x="20" y="198" width="374" height="204"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="5Yj-Sl-Uzp">
                                             <size key="itemSize" width="110" height="72"/>
@@ -463,11 +463,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="tex-nj-pkm" firstAttribute="top" secondItem="CWk-Lr-a8S" secondAttribute="bottom" constant="-10" id="7OS-Ho-r7y"/>
+                            <constraint firstAttribute="bottom" secondItem="tex-nj-pkm" secondAttribute="bottom" id="JHW-G0-7Aa"/>
                             <constraint firstItem="CWk-Lr-a8S" firstAttribute="top" secondItem="3GB-bH-wQD" secondAttribute="top" constant="400" id="Kor-bM-M3v"/>
                             <constraint firstItem="CWk-Lr-a8S" firstAttribute="trailing" secondItem="3GB-bH-wQD" secondAttribute="trailing" id="QYM-aC-uEN"/>
                             <constraint firstItem="3GB-bH-wQD" firstAttribute="trailing" secondItem="tex-nj-pkm" secondAttribute="trailing" id="slc-gX-mQw"/>
                             <constraint firstItem="CWk-Lr-a8S" firstAttribute="leading" secondItem="3GB-bH-wQD" secondAttribute="leading" id="vcc-kU-UbO"/>
-                            <constraint firstItem="3GB-bH-wQD" firstAttribute="bottom" secondItem="tex-nj-pkm" secondAttribute="bottom" id="wy6-9i-1eR"/>
                             <constraint firstItem="tex-nj-pkm" firstAttribute="leading" secondItem="3GB-bH-wQD" secondAttribute="leading" id="zWp-y9-bR1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3GB-bH-wQD"/>
@@ -486,7 +486,7 @@
         <!--Edit LocationC View Controller-->
         <scene sceneID="Qhh-Nd-zdQ">
             <objects>
-                <viewController storyboardIdentifier="EditLocationCViewController" modalPresentationStyle="overCurrentContext" id="tQI-TP-ELy" customClass="EditLocationCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditLocationCViewController" modalPresentationStyle="overFullScreen" id="tQI-TP-ELy" customClass="EditLocationCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FDH-Bv-Cw4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -555,7 +555,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUd-Xn-xJD">
-                                <rect key="frame" x="0.0" y="118" width="414" height="744"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-ht-lEy">
                                         <rect key="frame" x="16" y="16" width="382" height="28"/>
@@ -598,7 +598,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bof-E0-Y5d">
-                                        <rect key="frame" x="20" y="198" width="374" height="546"/>
+                                        <rect key="frame" x="20" y="198" width="374" height="580"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="vcn-Om-3hf">
                                             <size key="itemSize" width="110" height="72"/>
@@ -640,7 +640,7 @@
                             <constraint firstItem="SUd-Xn-xJD" firstAttribute="trailing" secondItem="Ug7-Av-tIO" secondAttribute="trailing" id="CRF-Xg-x97"/>
                             <constraint firstItem="cFN-vg-CXT" firstAttribute="top" secondItem="Ug7-Av-tIO" secondAttribute="top" constant="24" id="U13-3f-re0"/>
                             <constraint firstItem="SUd-Xn-xJD" firstAttribute="top" secondItem="cFN-vg-CXT" secondAttribute="bottom" constant="-10" id="W7a-Uo-Wtv"/>
-                            <constraint firstItem="SUd-Xn-xJD" firstAttribute="bottom" secondItem="Ug7-Av-tIO" secondAttribute="bottom" id="coP-9o-Byh"/>
+                            <constraint firstAttribute="bottom" secondItem="SUd-Xn-xJD" secondAttribute="bottom" id="aPQ-el-Vvd"/>
                             <constraint firstItem="SUd-Xn-xJD" firstAttribute="leading" secondItem="Ug7-Av-tIO" secondAttribute="leading" id="qcH-pX-VwJ"/>
                             <constraint firstItem="cFN-vg-CXT" firstAttribute="leading" secondItem="Ug7-Av-tIO" secondAttribute="leading" id="xZ0-m4-DUI"/>
                         </constraints>
@@ -654,7 +654,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sX5-vf-S3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2970" y="-159"/>
+            <point key="canvasLocation" x="2969.5652173913045" y="-159.375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JIN-R0-WXP">

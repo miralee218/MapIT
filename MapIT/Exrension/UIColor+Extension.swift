@@ -53,9 +53,14 @@ extension UIColor {
         return UIColor(named: color.rawValue)
     }
 
-    private static func MIColor2(_ startColor: MIColor, _ endColor: MIColor) -> [UIColor?] {
+    private static func MIColor2(_ startColor: MIColor, _ endColor: MIColor) -> [UIColor] {
 
-        return [MIColor(startColor), MIColor(endColor)]
+        guard let startColor = MIColor(startColor),
+              let endColor = MIColor(endColor)
+        else {
+            return []
+        }
+        return [startColor, endColor]
     }
 
     static func hexStringToUIColor(hex: String) -> UIColor {

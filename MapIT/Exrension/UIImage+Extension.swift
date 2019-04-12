@@ -42,6 +42,13 @@ enum ImageAsset: String {
     case Icons_Search_Unselected
 
     case Icons_RoutePoint
+    case Icons_Archive
+    case Icons_Photos
+    case Icons_Setting
+    case Image_SignUp_Selected
+    case Image_SignUp_Unselected
+    case Image_Login_Selected
+    case Image_Login_Unselected
 }
 // swiftlint:enable identifier_name
 

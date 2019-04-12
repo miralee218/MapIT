@@ -48,6 +48,11 @@
 		494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */; };
 		494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */; };
 		497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0579225D97640010D142 /* SharedOptionViewController.swift */; };
+		497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */; };
+		497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */; };
+		497A0582225DF2990010D142 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0581225DF2990010D142 /* SignInViewController.swift */; };
+		497A0586225DF7E50010D142 /* LoginContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0585225DF7E50010D142 /* LoginContainerViewController.swift */; };
+		497A0588225DF7FE0010D142 /* SignUpContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -111,6 +116,12 @@
 		494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPictureMethodCollectionViewCell.xib; sourceTree = "<group>"; };
 		494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhoto.swift; sourceTree = "<group>"; };
 		497A0579225D97640010D142 /* SharedOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionViewController.swift; sourceTree = "<group>"; };
+		497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		497A0581225DF2990010D142 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		497A0585225DF7E50010D142 /* LoginContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainerViewController.swift; sourceTree = "<group>"; };
+		497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewController.swift; sourceTree = "<group>"; };
+		497A05C5226045370010D142 /* Taiwan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Taiwan.gpx; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -221,6 +232,9 @@
 				49853725225B2380008CB391 /* EditLocationCViewController.swift */,
 				491169402254648200347310 /* NotificationViewController.swift */,
 				491169422254648F00347310 /* ProfileViewController.swift */,
+				497A0581225DF2990010D142 /* SignInViewController.swift */,
+				497A0585225DF7E50010D142 /* LoginContainerViewController.swift */,
+				497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -245,6 +259,7 @@
 				4911695322583FFD00347310 /* JGProgressHUDWrapper.swift */,
 				4911695522584C9000347310 /* MBProgressHUDWrapper.swift */,
 				4985372C225B533E008CB391 /* PullUpController.swift */,
+				497A05C5226045370010D142 /* Taiwan.gpx */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
@@ -274,6 +289,8 @@
 		497A057B225DD8140010D142 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
+				497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */,
+				497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */,
 			);
 			path = ProfileCell;
 			sourceTree = "<group>";
@@ -393,6 +410,7 @@
 				494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */,
 				49853755225C78FA008CB391 /* RecordImageTableViewCell.xib in Resources */,
 				491169302254629700347310 /* Lobby.storyboard in Resources */,
+				497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */,
 				491169342254633400347310 /* Mapping.storyboard in Resources */,
 				4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */,
 				494EB37C225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib in Resources */,
@@ -525,6 +543,8 @@
 				494EB3612259023900ECCA72 /* RouteTableViewCell.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
 				497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */,
+				497A0586225DF7E50010D142 /* LoginContainerViewController.swift in Sources */,
+				497A0588225DF7FE0010D142 /* SignUpContainerViewController.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
 				494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */,
@@ -534,12 +554,14 @@
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				4985372D225B533E008CB391 /* PullUpController.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
+				497A0582225DF2990010D142 /* SignInViewController.swift in Sources */,
 				4985372F225C2D23008CB391 /* RecordDetailViewController.swift in Sources */,
 				494EB36E2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift in Sources */,
 				4911693A2254644500347310 /* LobbyViewController.swift in Sources */,
 				49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */,
 				491169112254563200347310 /* AppDelegate.swift in Sources */,
 				494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */,
+				497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */,
 				49853769225D7E95008CB391 /* SharedOptionTableViewCell.swift in Sources */,
 				491169192254563200347310 /* MapIT.xcdatamodeld in Sources */,
 				494EB36422599D1700ECCA72 /* UITableView+Extension.swift in Sources */,

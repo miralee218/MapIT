@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MapIT would like to access your location.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>MapIT would like to access your photo.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -11,7 +13,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>MapIT would like to access your location.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>MapIT would like to access your location.</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechromes</string>

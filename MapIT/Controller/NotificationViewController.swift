@@ -14,9 +14,7 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.navigationBar.setGradientBackground(
-            colors: UIColor.mainColor.compactMap({ color in
-                return color
-            })
+            colors: UIColor.mainColor
         )
 
         let layer = CAGradientLayer()

@@ -25,9 +25,7 @@ class RecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setGradientBackground(
-            colors: UIColor.mainColor.compactMap({ color in
-                return color
-            })
+            colors: UIColor.mainColor
         )
         navigationController?.navigationBar.isTranslucent = false
 

@@ -31,6 +31,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var puaseShadowView: UIView!
 
     let locationManager = CLLocationManager()
+    var currentLocation: CLLocationCoordinate2D?
 
     var lat = Double()
     var lon = Double()
@@ -63,24 +64,24 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         puaseButton.center = moreButton.center
         stopButton.center = moreButton.center
         checkListButton.center = moreButton.center
+        locationService()
 
         setupLayout()
-
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-
         //back current location
 
         let buttonItem = MKUserTrackingButton(mapView: mapView)
         buttonItem.tintColor = UIColor.StartPink
         buttonItem.backgroundColor = UIColor.white
-        buttonItem.frame = CGRect(origin: CGPoint(x: 5, y: 25), size: CGSize(width: 40, height: 40))
+        buttonItem.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
 
         mapView.addSubview(buttonItem)
-
-        locationService()
-        setMapview()
-
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        mapView.showsUserLocation = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        mapView.showsUserLocation = false
     }
 
     private func addPullUpController() {
@@ -104,8 +105,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
+
         } else {
             print("PLease turn on location services or GPS")
+        }
+        mapView.delegate = self
+        mapView.mapType = .standard
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
+        mapView.showsUserLocation = true
+        if let coor = mapView.userLocation.location?.coordinate {
+            mapView.setCenter(coor, animated: true)
         }
 
     }
@@ -124,34 +134,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         print("Unable to access your current location")
     }
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-
-        if annotation is MKUserLocation {
-            return nil
-        }
-
-        let identifier = "Icons_Mapping_Selected"
-        var result = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
-        if result == nil {
-            result = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        } else {
-            result?.annotation = annotation
-        }
-        result?.canShowCallout = false
-
-        let image = UIImage (named: "Icons_Mapping_Selected")
-        result?.image = image
-
-        return result
-    }
-
     private func setupLayout() {
 
         navigationController?.navigationBar.setGradientBackground(
-            colors: UIColor.mainColor.compactMap({ color in
-                return color
-            })
+            colors: UIColor.mainColor
         )
 
     }
@@ -236,49 +222,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
 
-}
-
-extension MappingViewController: UIGestureRecognizerDelegate {
-
-    func setMapview() {
-        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureReconizer:)))
-        lpgr.minimumPressDuration = 0.1
-        lpgr.delaysTouchesBegan = false
-        lpgr.delegate = self
-        self.mapView.addGestureRecognizer(lpgr)
-    }
-
-    @objc func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-        //4
-        if gestureReconizer.state != UIGestureRecognizer.State.ended {
-            return
-        }
-        //1
-        if gestureReconizer.state != UIGestureRecognizer.State.began {
-            //2
-            let touchLocation = gestureReconizer.location(in: mapView)
-            let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
-            lat = locationCoordinate.latitude
-            lon = locationCoordinate.longitude
-            print("Tapped at lat: \(locationCoordinate.latitude) long: \(locationCoordinate.longitude)")
-
-            //3
-            let allAnnotations = self.mapView.annotations
-            self.mapView.removeAnnotations(allAnnotations)
-
-            if lat != 0.0 {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate.latitude = lat
-                annotation.coordinate.longitude = lon
-
-                //delay 0.5s
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.mapView.addAnnotation(annotation)
-                }
-            }
-            return
-        }
-    }
 }
 
 extension MappingViewController {
