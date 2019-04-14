@@ -23,6 +23,8 @@ enum ImageAsset: String {
     case Icons_Mapit_Unselected
     case Icons_Book_Unselected
     case Icons_Book_Selected
+    case Icons_Album_Selected
+    case Icons_Album_Unselected
     case Icons_User_Unselected
     case Icons_User_Selected
 

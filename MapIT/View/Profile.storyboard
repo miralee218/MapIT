@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FgZ-wd-CGD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oqL-eQ-rfg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Profile View Controller-->
         <scene sceneID="VWj-8f-3oZ">
             <objects>
-                <viewController id="FgZ-wd-CGD" customClass="ProfileViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="FgZ-wd-CGD" customClass="ProfileViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nAB-jk-Upc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,13 +190,13 @@ to love and be loved.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_SignBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Nji-dQ-Xq5">
-                                <rect key="frame" x="0.0" y="-2" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="-2" width="414" height="250.00000000000011"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="jTa-nK-QnN"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="W02-Wi-Xui">
-                                <rect key="frame" x="186.5" y="162" width="41" height="16"/>
+                                <rect key="frame" x="121.5" y="111" width="171" height="67"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="W02-Wi-Xui" secondAttribute="height" multiplier="171:67" id="e9l-pZ-cuc"/>
                                 </constraints>
@@ -235,17 +235,46 @@ to love and be loved.</string>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqw-0w-MIK">
-                                <rect key="frame" x="0.0" y="304" width="414" height="558"/>
+                                <rect key="frame" x="0.0" y="304" width="414" height="458"/>
                                 <connections>
                                     <segue destination="f0S-0i-Xj7" kind="embed" identifier="SegueSignUp" id="dV7-wv-RNS"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8w-FT-lfL">
-                                <rect key="frame" x="0.0" y="304" width="414" height="558"/>
+                                <rect key="frame" x="0.0" y="304" width="414" height="458"/>
                                 <connections>
                                     <segue destination="7Ic-H4-KFp" kind="embed" identifier="SegueLogIn" id="sIT-Ss-KMR"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaJ-gX-Ccr">
+                                <rect key="frame" x="40" y="792" width="334" height="48"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_SignButton" translatesAutoresizingMaskIntoConstraints="NO" id="nac-nM-wVr">
+                                        <rect key="frame" x="-5" y="0.0" width="344" height="48"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vay-NW-LtW">
+                                        <rect key="frame" x="50" y="6" width="234" height="36"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="7Ic-H4-KFp" eventType="touchUpInside" id="rg4-wm-cTj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vay-NW-LtW" firstAttribute="centerX" secondItem="RaJ-gX-Ccr" secondAttribute="centerX" id="6ff-z2-SiD"/>
+                                    <constraint firstAttribute="trailing" secondItem="vay-NW-LtW" secondAttribute="trailing" constant="50" id="BGD-iB-W5C"/>
+                                    <constraint firstAttribute="height" constant="48" id="Pm6-az-yuW"/>
+                                    <constraint firstItem="vay-NW-LtW" firstAttribute="centerY" secondItem="RaJ-gX-Ccr" secondAttribute="centerY" id="RG2-Ko-eBJ"/>
+                                    <constraint firstItem="vay-NW-LtW" firstAttribute="leading" secondItem="RaJ-gX-Ccr" secondAttribute="leading" constant="50" id="aXR-nt-J8n"/>
+                                    <constraint firstItem="nac-nM-wVr" firstAttribute="centerX" secondItem="RaJ-gX-Ccr" secondAttribute="centerX" id="avq-Ba-FD7"/>
+                                    <constraint firstItem="nac-nM-wVr" firstAttribute="centerY" secondItem="RaJ-gX-Ccr" secondAttribute="centerY" id="d7F-Qm-HeE"/>
+                                    <constraint firstAttribute="width" secondItem="RaJ-gX-Ccr" secondAttribute="height" multiplier="334:48" id="iYc-tr-OCp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -256,18 +285,22 @@ to love and be loved.</string>
                             <constraint firstItem="wgQ-Kl-u44" firstAttribute="centerY" secondItem="x7l-dI-VqF" secondAttribute="centerY" id="Fgw-WO-CHz"/>
                             <constraint firstItem="Nji-dQ-Xq5" firstAttribute="leading" secondItem="UMf-qW-lpm" secondAttribute="leading" id="Flx-ae-9sd"/>
                             <constraint firstItem="Yqw-0w-MIK" firstAttribute="bottom" secondItem="F8w-FT-lfL" secondAttribute="bottom" id="G30-o1-IcL"/>
+                            <constraint firstItem="RaJ-gX-Ccr" firstAttribute="width" secondItem="RaJ-gX-Ccr" secondAttribute="height" multiplier="334:48" id="GR9-Yy-zMZ"/>
                             <constraint firstItem="F8w-FT-lfL" firstAttribute="top" secondItem="x7l-dI-VqF" secondAttribute="bottom" constant="8" id="Lzr-Ke-C5v"/>
+                            <constraint firstItem="RaJ-gX-Ccr" firstAttribute="centerX" secondItem="7ut-yJ-Hsf" secondAttribute="centerX" id="RnU-zU-7IF"/>
                             <constraint firstItem="Yqw-0w-MIK" firstAttribute="trailing" secondItem="F8w-FT-lfL" secondAttribute="trailing" id="S6X-ec-99d"/>
                             <constraint firstItem="UMf-qW-lpm" firstAttribute="trailing" secondItem="x7l-dI-VqF" secondAttribute="trailing" id="UIT-qU-dgd"/>
                             <constraint firstItem="W02-Wi-Xui" firstAttribute="centerX" secondItem="7ut-yJ-Hsf" secondAttribute="centerX" id="UfX-LB-K8Y"/>
+                            <constraint firstItem="RaJ-gX-Ccr" firstAttribute="top" secondItem="Yqw-0w-MIK" secondAttribute="bottom" constant="30" id="WYM-dn-UQ1"/>
                             <constraint firstItem="Yqw-0w-MIK" firstAttribute="leading" secondItem="F8w-FT-lfL" secondAttribute="leading" id="clp-P9-Ioq"/>
                             <constraint firstItem="Yqw-0w-MIK" firstAttribute="top" secondItem="F8w-FT-lfL" secondAttribute="top" id="f70-CW-aC2"/>
                             <constraint firstItem="wgQ-Kl-u44" firstAttribute="height" secondItem="x7l-dI-VqF" secondAttribute="height" id="ilL-tE-jpr"/>
+                            <constraint firstItem="UMf-qW-lpm" firstAttribute="bottom" secondItem="F8w-FT-lfL" secondAttribute="bottom" constant="100" id="qOE-hc-qlc"/>
                             <constraint firstItem="Nji-dQ-Xq5" firstAttribute="trailing" secondItem="UMf-qW-lpm" secondAttribute="trailing" id="qfj-uj-wXA"/>
+                            <constraint firstItem="RaJ-gX-Ccr" firstAttribute="width" secondItem="RaJ-gX-Ccr" secondAttribute="height" multiplier="334:48" id="rA3-XN-l5E"/>
                             <constraint firstItem="F8w-FT-lfL" firstAttribute="leading" secondItem="UMf-qW-lpm" secondAttribute="leading" id="tKI-9r-UgG"/>
                             <constraint firstItem="W02-Wi-Xui" firstAttribute="bottom" secondItem="Nji-dQ-Xq5" secondAttribute="bottom" constant="-70" id="uVx-JB-ccT"/>
                             <constraint firstItem="Nji-dQ-Xq5" firstAttribute="top" secondItem="7ut-yJ-Hsf" secondAttribute="top" constant="-2" id="wOj-I9-rA5"/>
-                            <constraint firstItem="F8w-FT-lfL" firstAttribute="bottom" secondItem="UMf-qW-lpm" secondAttribute="bottom" id="xVh-Od-Fkl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UMf-qW-lpm"/>
                     </view>
@@ -287,7 +320,7 @@ to love and be loved.</string>
             <objects>
                 <viewController id="7Ic-H4-KFp" customClass="LoginContainerViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BYg-pt-SPu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="558"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="458"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BWZ-3N-6vL">
@@ -316,30 +349,6 @@ to love and be loved.</string>
                                     <constraint firstAttribute="height" constant="1" id="Mdq-dB-nDF"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZr-Hy-zQl">
-                                <rect key="frame" x="40" y="498" width="334" height="48"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_SignButton" translatesAutoresizingMaskIntoConstraints="NO" id="bHD-T3-4Xf">
-                                        <rect key="frame" x="-5" y="0.0" width="344" height="48"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbq-qz-lZx">
-                                        <rect key="frame" x="139" y="6" width="56" height="36"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="bHD-T3-4Xf" firstAttribute="centerX" secondItem="iZr-Hy-zQl" secondAttribute="centerX" id="CdJ-ac-Dnr"/>
-                                    <constraint firstAttribute="height" constant="48" id="Fzc-ye-8cF"/>
-                                    <constraint firstAttribute="width" secondItem="iZr-Hy-zQl" secondAttribute="height" multiplier="334:48" id="GPZ-eT-OdJ"/>
-                                    <constraint firstItem="vbq-qz-lZx" firstAttribute="centerY" secondItem="iZr-Hy-zQl" secondAttribute="centerY" id="Q7X-NT-nYQ"/>
-                                    <constraint firstItem="bHD-T3-4Xf" firstAttribute="centerY" secondItem="iZr-Hy-zQl" secondAttribute="centerY" id="Riu-XX-8Kq"/>
-                                    <constraint firstItem="vbq-qz-lZx" firstAttribute="centerX" secondItem="iZr-Hy-zQl" secondAttribute="centerX" id="eaC-5s-WNx"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -348,56 +357,29 @@ to love and be loved.</string>
                             <constraint firstItem="n14-1v-dZr" firstAttribute="trailing" secondItem="yxz-iF-FQi" secondAttribute="trailing" id="89S-hX-nUg"/>
                             <constraint firstAttribute="trailing" secondItem="BWZ-3N-6vL" secondAttribute="trailing" constant="20" id="9aE-AF-ufU"/>
                             <constraint firstItem="yxz-iF-FQi" firstAttribute="top" secondItem="BWZ-3N-6vL" secondAttribute="bottom" constant="35" id="NLV-RR-snk"/>
-                            <constraint firstItem="iZr-Hy-zQl" firstAttribute="centerX" secondItem="BYg-pt-SPu" secondAttribute="centerX" id="OOj-Il-Tae"/>
                             <constraint firstItem="BWZ-3N-6vL" firstAttribute="top" secondItem="BYg-pt-SPu" secondAttribute="top" constant="50" id="OsH-dV-q3E"/>
-                            <constraint firstItem="iZr-Hy-zQl" firstAttribute="width" secondItem="iZr-Hy-zQl" secondAttribute="height" multiplier="334:48" id="T8t-RW-aib"/>
                             <constraint firstItem="1vE-it-6cg" firstAttribute="leading" secondItem="BWZ-3N-6vL" secondAttribute="leading" id="aX5-1c-jej"/>
                             <constraint firstItem="n14-1v-dZr" firstAttribute="leading" secondItem="yxz-iF-FQi" secondAttribute="leading" id="baP-LL-mUC"/>
                             <constraint firstItem="yxz-iF-FQi" firstAttribute="leading" secondItem="BYg-pt-SPu" secondAttribute="leading" constant="20" id="f3V-TV-kxN"/>
                             <constraint firstItem="1vE-it-6cg" firstAttribute="bottom" secondItem="BWZ-3N-6vL" secondAttribute="bottom" id="ho8-Fg-OZf"/>
                             <constraint firstItem="1vE-it-6cg" firstAttribute="trailing" secondItem="BWZ-3N-6vL" secondAttribute="trailing" id="jUw-V7-be5"/>
                             <constraint firstItem="n14-1v-dZr" firstAttribute="bottom" secondItem="yxz-iF-FQi" secondAttribute="bottom" id="t92-wc-gn1"/>
-                            <constraint firstAttribute="bottom" secondItem="iZr-Hy-zQl" secondAttribute="bottom" constant="12" id="x09-xq-v4A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mVr-KP-eK1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LD-m6-dnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="560"/>
+            <point key="canvasLocation" x="2444.9275362318845" y="559.82142857142856"/>
         </scene>
         <!--Sign Up Container View Controller-->
         <scene sceneID="zjb-DP-YK1">
             <objects>
                 <viewController id="f0S-0i-Xj7" customClass="SignUpContainerViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HyC-qf-emE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="558"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="458"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7n-xh-zhx">
-                                <rect key="frame" x="40" y="498" width="334" height="48"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_SignButton" translatesAutoresizingMaskIntoConstraints="NO" id="hdd-Ge-eUE">
-                                        <rect key="frame" x="-5" y="0.0" width="344" height="48"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mky-lx-f6g">
-                                        <rect key="frame" x="139" y="6" width="56" height="36"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Q7n-xh-zhx" secondAttribute="height" multiplier="334:48" id="ADX-CO-NId"/>
-                                    <constraint firstItem="Mky-lx-f6g" firstAttribute="centerY" secondItem="Q7n-xh-zhx" secondAttribute="centerY" id="FXV-XM-eph"/>
-                                    <constraint firstItem="hdd-Ge-eUE" firstAttribute="centerY" secondItem="Q7n-xh-zhx" secondAttribute="centerY" id="M7E-sP-uxT"/>
-                                    <constraint firstAttribute="height" constant="48" id="g4X-Ok-3pz"/>
-                                    <constraint firstItem="hdd-Ge-eUE" firstAttribute="centerX" secondItem="Q7n-xh-zhx" secondAttribute="centerX" id="nXc-Bk-Wyw"/>
-                                    <constraint firstItem="Mky-lx-f6g" firstAttribute="centerX" secondItem="Q7n-xh-zhx" secondAttribute="centerX" id="vAE-Or-erc"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cuu-y8-yFJ">
                                 <rect key="frame" x="20" y="50" width="374" height="20"/>
                                 <color key="textColor" name="B1"/>
@@ -463,8 +445,6 @@ to love and be loved.</string>
                             <constraint firstItem="1TB-e5-FK5" firstAttribute="leading" secondItem="EHP-ld-tZt" secondAttribute="leading" id="Dn6-BR-qhk"/>
                             <constraint firstItem="1TB-e5-FK5" firstAttribute="bottom" secondItem="EHP-ld-tZt" secondAttribute="bottom" id="ER6-Y0-EjQ"/>
                             <constraint firstItem="4eS-P9-Hl8" firstAttribute="bottom" secondItem="abt-iw-Nue" secondAttribute="bottom" id="EfE-7H-5d1"/>
-                            <constraint firstAttribute="bottom" secondItem="Q7n-xh-zhx" secondAttribute="bottom" constant="12" id="GgV-J9-epG"/>
-                            <constraint firstItem="Q7n-xh-zhx" firstAttribute="centerX" secondItem="HyC-qf-emE" secondAttribute="centerX" id="JFd-QM-mRa"/>
                             <constraint firstItem="dia-Ok-V0l" firstAttribute="bottom" secondItem="cuu-y8-yFJ" secondAttribute="bottom" id="MqJ-Ls-dAy"/>
                             <constraint firstItem="cuu-y8-yFJ" firstAttribute="leading" secondItem="HyC-qf-emE" secondAttribute="leading" constant="20" id="Qlj-fn-zO5"/>
                             <constraint firstItem="EHP-ld-tZt" firstAttribute="top" secondItem="abt-iw-Nue" secondAttribute="bottom" constant="35" id="XxM-4b-DBd"/>

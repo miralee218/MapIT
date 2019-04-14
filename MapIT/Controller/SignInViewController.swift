@@ -23,7 +23,6 @@ class SignInViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
     }
     @IBAction func viewSignUp(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, animations: {

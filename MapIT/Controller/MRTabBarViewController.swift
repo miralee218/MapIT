@@ -70,8 +70,8 @@ private enum Tab {
         case .notification:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_Notification_Unselected),
-                selectedImage: UIImage.asset(.Icons_Notification_Selected)
+                image: UIImage.asset(.Icons_Album_Unselected),
+                selectedImage: UIImage.asset(.Icons_Album_Selected)
             )
         case .profile:
             return UITabBarItem(
