@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Mapping View Controller-->
+        <!--紀錄日誌-->
         <scene sceneID="fwV-2H-ZLz">
             <objects>
                 <viewController id="WO5-Vl-oBc" customClass="MappingViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6nP-IN-aZc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DeD-iU-4bk"/>
+                    <navigationItem key="navigationItem" title="紀錄日誌" id="DeD-iU-4bk"/>
                     <connections>
                         <outlet property="checkInButton" destination="bni-F2-ACB" id="hV9-Ex-Mxr"/>
                         <outlet property="checkListButton" destination="W1K-TP-8Gp" id="z7Y-n5-oRv"/>
@@ -664,6 +664,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NDy-qt-8Dy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

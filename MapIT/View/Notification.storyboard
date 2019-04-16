@@ -4,23 +4,44 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Notification View Controller-->
+        <!--相冊-->
         <scene sceneID="QSg-zD-PTE">
             <objects>
                 <viewController id="S5Y-qH-c6x" customClass="NotificationViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tPJ-ma-Jmr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7nc-Me-cFD">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h2Y-Th-zox">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7nc-Me-cFD" firstAttribute="top" secondItem="lOK-aM-pmy" secondAttribute="top" id="21y-WI-2Tp"/>
+                            <constraint firstItem="7nc-Me-cFD" firstAttribute="leading" secondItem="lOK-aM-pmy" secondAttribute="leading" id="GSh-YG-E3k"/>
+                            <constraint firstItem="lOK-aM-pmy" firstAttribute="trailing" secondItem="7nc-Me-cFD" secondAttribute="trailing" id="IHW-zm-q72"/>
+                            <constraint firstItem="lOK-aM-pmy" firstAttribute="bottom" secondItem="7nc-Me-cFD" secondAttribute="bottom" id="gDo-pb-9iB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lOK-aM-pmy"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nVV-BX-mSb"/>
+                    <navigationItem key="navigationItem" title="相冊" id="nVV-BX-mSb"/>
+                    <connections>
+                        <outlet property="collectionView" destination="7nc-Me-cFD" id="JAY-YG-P40"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baa-Zk-RgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -34,6 +55,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kNO-h8-Ieo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
