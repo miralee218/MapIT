@@ -27,7 +27,7 @@ class GradientPathRenderer: MKOverlayPathRenderer {
         })
     }
 
-    //MARK: - Initializers
+    // MARK: - Initializers
     /// Initializes a new Gradient Path Renderer from a given polyline and an array of colors
     ///
     /// - Parameters:
@@ -55,7 +55,7 @@ class GradientPathRenderer: MKOverlayPathRenderer {
         super.init(overlay: polyline)
     }
 
-    //MARK: - Override methods
+    // MARK: - Override methods
     override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
 
         /*
@@ -137,7 +137,7 @@ class GradientPathRenderer: MKOverlayPathRenderer {
         }
         self.path = path
     }
-    //MARK: Helper Methods
+    // MARK: Helper Methods
     private func calculateNumberOfStops() -> [CGFloat] {
 
         let stopDifference = (1 / Double(cgColors.count))

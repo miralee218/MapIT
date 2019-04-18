@@ -31,9 +31,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var puaseButtonCenter: CGPoint!
     var stopButtonCenter: CGPoint!
     var checkListButtonCenter: CGPoint!
-    var places: [MKMapItem] = []
-    var mapItemList: [MKMapItem] = []
-    let params: [String] = ["bar", "shop", "restaurant", "cinema"]
     //route
     private var locationList: [ShortRoute] = []
     var initLoaction: CLLocation?
@@ -72,8 +69,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         mapView.showsUserLocation = false
-        locationManager.stopUpdatingLocation()
-        self.places.removeAll()
     }
 
     private func addPullUpController() {
@@ -121,28 +116,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         )
 
     }
-    func nearByLocation() {
-        let request = MKLocalSearch.Request()
-        request.region = mapView.region
-        for param in params {
-            request.naturalLanguageQuery = param
-            let search = MKLocalSearch(request: request)
-            search.start { [unowned self] response, error in
-                guard let response = response else { return }
-                self.mapItemList = response.mapItems
-                for item in self.mapItemList {
-                    let annotation = PlaceAnnotation()
-                    annotation.coordinate = item.placemark.location!.coordinate
-                    annotation.title = item.name
-                    annotation.url = item.url
-                    annotation.detailAddress = item.placemark.title
-//                    self.mapView!.addAnnotation(annotation)
-                    self.places.append(item)
-                }
-                self.places.shuffle()
-            }
-        }
-    }
 
     @IBAction func addRecordClick(_ sender: UIButton) {
 
@@ -166,7 +139,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func moreClicked(_ sender: UIButton) {
-        nearByLocation()
         if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)! {
             UIView.animate(withDuration: 0.3, animations: {
                 self.checkInButton.alpha = 1
@@ -203,7 +175,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddLocationCViewController" {
             guard let controller = segue.destination as? AddLocationCViewController else { return }
-            controller.places = self.places
+            controller.mapView = self.mapView
         }
     }
     @IBAction func puaseClicked(_ sender: UIButton) {

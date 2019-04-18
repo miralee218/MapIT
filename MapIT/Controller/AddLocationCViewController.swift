@@ -36,6 +36,9 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
     }
     var places: [MKMapItem] = []
+    var mapItemList: [MKMapItem] = []
+    let params: [String] = ["bar", "shop", "restaurant", "cinema"]
+    var mapView = MKMapView()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,14 +51,48 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
             identifier: String(describing: AddPictureMethodCollectionViewCell.self), bundle: nil)
         pictureCollectionView.mr_registerCellWithNib(
             identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+
+        nearByLocation()
         if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
+            //            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
             layout.itemSize = UICollectionViewFlowLayout.automaticSize
             layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
+    }
+
+    func nearByLocation() {
+        let request = MKLocalSearch.Request()
+        request.region = mapView.region
+        for param in params {
+            request.naturalLanguageQuery = param
+            let search = MKLocalSearch(request: request)
+            search.start { [weak self] response, _ in
+
+                guard let strongSelf = self else { return }
+
+                guard let response = response else { return }
+                strongSelf.mapItemList = response.mapItems
+                for item in strongSelf.mapItemList {
+                    let annotation = PlaceAnnotation()
+                    annotation.coordinate = item.placemark.location!.coordinate
+                    annotation.title = item.name
+                    annotation.url = item.url
+                    annotation.detailAddress = item.placemark.title
+                    strongSelf.places.append(item)
+                }
+//                strongSelf.places.shuffle()
+                strongSelf.locationNameCollectionView.reloadData()
+            }
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+////            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
+//            layout.itemSize = UICollectionViewFlowLayout.automaticSize
+//            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        }
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
@@ -71,6 +108,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
 extension AddLocationCViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if collectionView == self.locationNameCollectionView {
 
             return places.count
@@ -150,11 +188,9 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
             else {
                 return
         }
-
         mutableArray.add(image)
         self.pictureCollectionView.reloadData()
         picker.dismiss(animated: true, completion: nil)
-
     }
 }
 
