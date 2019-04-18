@@ -384,7 +384,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tex-nj-pkm">
                                 <rect key="frame" x="0.0" y="494" width="414" height="402"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-af-w1I">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-af-w1I">
                                         <rect key="frame" x="16" y="16" width="382" height="28"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
@@ -415,7 +415,7 @@
                                             <outlet property="delegate" destination="HoJ-8B-AEu" id="YzU-U3-z0f"/>
                                         </connections>
                                     </collectionView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start writing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-q8-wKV">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-q8-wKV">
                                         <rect key="frame" x="16" y="92" width="382" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -475,6 +475,7 @@
                         <viewLayoutGuide key="safeArea" id="3GB-bH-wQD"/>
                     </view>
                     <connections>
+                        <outlet property="contentTextView" destination="KAr-q8-wKV" id="HhR-gQ-gjs"/>
                         <outlet property="locationName" destination="lSf-af-w1I" id="jnU-Ra-hqS"/>
                         <outlet property="locationNameCollectionView" destination="54I-rh-Zcy" id="ckT-28-73n"/>
                         <outlet property="pictureCollectionView" destination="361-ZO-sMU" id="q9I-1Q-Fa3"/>
@@ -560,7 +561,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUd-Xn-xJD">
                                 <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-ht-lEy">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-ht-lEy">
                                         <rect key="frame" x="16" y="16" width="382" height="28"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
@@ -590,7 +591,7 @@
                                             <outlet property="delegate" destination="tQI-TP-ELy" id="c69-0F-Vjp"/>
                                         </connections>
                                     </collectionView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start writing..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc">
                                         <rect key="frame" x="16" y="92" width="382" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

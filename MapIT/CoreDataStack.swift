@@ -31,10 +31,12 @@ class CoreDataStack {
 
         do {
             try context.save()
+            print("Save")
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+
     }
     class func fetch<T: NSManagedObject>(_ objectType: T.Type) -> [T] {
 

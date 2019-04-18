@@ -14,6 +14,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var storeButton: UIButton!
     @IBOutlet weak var locationName: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var locationNameCollectionView: UICollectionView! {
         didSet {
 
@@ -39,6 +40,9 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     var mapItemList: [MKMapItem] = []
     let params: [String] = ["bar", "shop", "restaurant", "cinema"]
     var mapView = MKMapView()
+    var locationPost: LocationPost?
+    let recordListVC = RecordListCViewController()
+    private var locationManager = LocationManager.shared
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,6 +62,10 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
             layout.itemSize = UICollectionViewFlowLayout.automaticSize
             layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
+
+        contentTextView.layer.borderWidth = 1
+        contentTextView.layer.cornerRadius = 4
+        contentTextView.layer.borderColor = UIColor.B5?.cgColor
     }
 
     func nearByLocation() {
@@ -80,7 +88,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
                     annotation.detailAddress = item.placemark.title
                     strongSelf.places.append(item)
                 }
-//                strongSelf.places.shuffle()
+                strongSelf.places.shuffle()
                 strongSelf.locationNameCollectionView.reloadData()
             }
         }
@@ -88,15 +96,28 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-////            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
-//            layout.itemSize = UICollectionViewFlowLayout.automaticSize
-//            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        }
+
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
+
+        saveLocation()
         dismiss(animated: true, completion: nil)
+    }
+    private func saveLocation() {
+        guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+
+        let newLocaiotn = LocationPost(context: CoreDataStack.context)
+        newLocaiotn.timestamp = Date()
+        newLocaiotn.title = self.locationName.text
+        newLocaiotn.content = self.contentTextView.text
+        newLocaiotn.latitude = locValue.latitude
+        newLocaiotn.longitude = locValue.longitude
+
+        CoreDataStack.saveContext()
+
+        locationPost = newLocaiotn
     }
     @IBAction func cancelAdd(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

@@ -6,18 +6,29 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="shortRoute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShortRoute" syncable="YES"/>
     </entity>
+    <entity name="LocationPost" representedClassName="LocationPost" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ShortRoute" representedClassName="ShortRoute" syncable="YES" codeGenerationType="class">
         <relationship name="end" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" syncable="YES"/>
         <relationship name="start" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" syncable="YES"/>
         <relationship name="travel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Travel" inverseName="locations" inverseEntity="Travel" syncable="YES"/>
     </entity>
     <entity name="Travel" representedClassName="Travel" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ShortRoute" inverseName="travel" inverseEntity="ShortRoute" syncable="YES"/>
     </entity>
     <elements>
         <element name="Location" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Travel" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="Travel" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="ShortRoute" positionX="-36" positionY="9" width="128" height="90"/>
+        <element name="LocationPost" positionX="-18" positionY="54" width="128" height="135"/>
     </elements>
 </model>

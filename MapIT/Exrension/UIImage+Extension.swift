@@ -53,6 +53,7 @@ enum ImageAsset: String {
     case Image_Login_Unselected
     case Icons_radio_Seleted
     case Icons_radio_Unseleted
+    case Icons_cursor
 }
 // swiftlint:enable identifier_name
 

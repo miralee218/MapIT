@@ -98,6 +98,7 @@ class StoredMapCViewController: UIViewController {
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 present(alert, animated: true)
+                self.dismiss(animated: true, completion: nil)
                 return
         }
 
@@ -128,10 +129,6 @@ class StoredMapCViewController: UIViewController {
 
         mapView.setRegion(region, animated: true)
     }
-}
-struct Coord {
-    let latitude: Double
-    let longitude: Double
 }
 
 extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {

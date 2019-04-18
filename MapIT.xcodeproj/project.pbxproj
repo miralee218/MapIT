@@ -58,6 +58,7 @@
 		497AC91C22680129005E8856 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91B22680129005E8856 /* LocationManager.swift */; };
 		497AC91E22680143005E8856 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91D22680143005E8856 /* GradientPathRenderer.swift */; };
 		497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataStack.swift */; };
+		497AC92622687D90005E8856 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92522687D90005E8856 /* Coordinate.swift */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -132,6 +133,7 @@
 		497AC91B22680129005E8856 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = ../LocationManager.swift; sourceTree = "<group>"; };
 		497AC91D22680143005E8856 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientPathRenderer.swift; path = ../GradientPathRenderer.swift; sourceTree = "<group>"; };
 		497AC91F2268015A005E8856 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
+		497AC92522687D90005E8856 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = ../Controller/Coordinate.swift; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				497A05C5226045370010D142 /* Taiwan.gpx */,
+				497AC92522687D90005E8856 /* Coordinate.swift */,
 				494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */,
 				497A05DC2266C2420010D142 /* PlaceAnnotation.swift */,
 				497AC91922680110005E8856 /* FormatDisplay.swift */,
@@ -576,6 +579,7 @@
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				4985372D225B533E008CB391 /* PullUpController.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
+				497AC92622687D90005E8856 /* Coordinate.swift in Sources */,
 				497A0582225DF2990010D142 /* SignInViewController.swift in Sources */,
 				4985372F225C2D23008CB391 /* RecordDetailViewController.swift in Sources */,
 				494EB36E2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift in Sources */,

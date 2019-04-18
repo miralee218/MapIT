@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import PullUpController
+import CoreData
 
 class RecordListCViewController: PullUpController {
 
@@ -43,6 +44,9 @@ class RecordListCViewController: PullUpController {
     public var portraitSize: CGSize = .zero
     public var landscapeFrame: CGRect = .zero
 
+    var travel = [Travel]()
+    var locationPost = [LocationPost]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +57,7 @@ class RecordListCViewController: PullUpController {
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
+        getTravel()
     }
 
     // MARK: - PullUpController
@@ -88,13 +93,25 @@ class RecordListCViewController: PullUpController {
                            completion: completion)
         }
     }
+    
+    func getTravel() {
+        //Core Data - Fetch Data
+        let fetchRequest: NSFetchRequest<LocationPost> = LocationPost.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: false)]
+        do {
+            let locationPost = try CoreDataStack.context.fetch(fetchRequest)
+            self.locationPost = locationPost
+        } catch {
+            
+        }
+    }
 
 }
 
 extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return locationPost.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -129,7 +146,10 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             self?.present(sheet, animated: true, completion: nil)
 
         }
-
+        routeCell.pointTitleLabel.text = locationPost[indexPath.row].title
+        routeCell.pointDescriptionLabel.text = locationPost[indexPath.row].content
+        let formattedDate = FormatDisplay.date(locationPost[indexPath.row].timestamp)
+        routeCell.pointRecordTimeLabel.text = formattedDate
         return routeCell
     }
 

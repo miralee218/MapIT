@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let shared = UIApplication.shared.delegate as! AppDelegate
     // swiftlint:enable force_cast
     var window: UIWindow?
-
+    let gradientColor: UIColor = UIColor.init(patternImage: UIImage(named: ImageAsset.Icons_cursor.rawValue)!)
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(urls[urls.count - 1] as URL)
             IQKeyboardManager.shared.enable = true
             IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+            UITextField.appearance().tintColor = gradientColor
+            UITextView.appearance().tintColor = gradientColor
 
         return true
     }
