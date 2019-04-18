@@ -54,6 +54,10 @@
 		497A0586225DF7E50010D142 /* LoginContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0585225DF7E50010D142 /* LoginContainerViewController.swift */; };
 		497A0588225DF7FE0010D142 /* SignUpContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */; };
 		497A05DD2266C2420010D142 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A05DC2266C2420010D142 /* PlaceAnnotation.swift */; };
+		497AC91A22680110005E8856 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91922680110005E8856 /* FormatDisplay.swift */; };
+		497AC91C22680129005E8856 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91B22680129005E8856 /* LocationManager.swift */; };
+		497AC91E22680143005E8856 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91D22680143005E8856 /* GradientPathRenderer.swift */; };
+		497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataStack.swift */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -124,6 +128,10 @@
 		497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewController.swift; sourceTree = "<group>"; };
 		497A05C5226045370010D142 /* Taiwan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Taiwan.gpx; sourceTree = "<group>"; };
 		497A05DC2266C2420010D142 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		497AC91922680110005E8856 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
+		497AC91B22680129005E8856 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		497AC91D22680143005E8856 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPathRenderer.swift; sourceTree = "<group>"; };
+		497AC91F2268015A005E8856 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +193,10 @@
 				491169122254563200347310 /* ViewController.swift */,
 				4911694C22583E0200347310 /* AlertController.swift */,
 				4911694E22583E2400347310 /* NavigationView.swift */,
+				497AC91922680110005E8856 /* FormatDisplay.swift */,
+				497AC91B22680129005E8856 /* LocationManager.swift */,
+				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
+				497AC91F2268015A005E8856 /* CoreDataStack.swift */,
 				4911691A2254563800347310 /* Assets.xcassets */,
 				4911691F2254563800347310 /* Info.plist */,
 				491169172254563200347310 /* MapIT.xcdatamodeld */,
@@ -537,17 +549,21 @@
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,
+				497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
 				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,
 				494EB35B2258D55D00ECCA72 /* StoredMapCViewController.swift in Sources */,
 				4911695B2258911B00347310 /* RecordListCViewController.swift in Sources */,
 				491169432254648F00347310 /* ProfileViewController.swift in Sources */,
+				497AC91E22680143005E8856 /* GradientPathRenderer.swift in Sources */,
 				494EB3592258D1AB00ECCA72 /* AddLocationCViewController.swift in Sources */,
 				494EB3612259023900ECCA72 /* RouteTableViewCell.swift in Sources */,
+				497AC91C22680129005E8856 /* LocationManager.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
 				497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */,
 				497A0586225DF7E50010D142 /* LoginContainerViewController.swift in Sources */,
 				497A0588225DF7FE0010D142 /* SignUpContainerViewController.swift in Sources */,
+				497AC91A22680110005E8856 /* FormatDisplay.swift in Sources */,
 				497A05DD2266C2420010D142 /* PlaceAnnotation.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,

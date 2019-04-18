@@ -34,6 +34,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var places: [MKMapItem] = []
     var mapItemList: [MKMapItem] = []
     let params: [String] = ["bar", "shop", "restaurant", "cinema"]
+    //route
+    private var locationList: [ShortRoute] = []
+    var initLoaction: CLLocation?
+    private var locationManagerShared = LocationManager.shared
+    var travel: Travel?
+//    var location: Location?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,6 +72,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         mapView.showsUserLocation = false
+        locationManager.stopUpdatingLocation()
         self.places.removeAll()
     }
 
@@ -82,9 +89,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
         if CLLocationManager.locationServicesEnabled() == true {
 
-            if CLLocationManager.authorizationStatus() == .restricted ||
-                CLLocationManager.authorizationStatus() == .denied ||
-                CLLocationManager.authorizationStatus() == .notDetermined {
+            let status = CLLocationManager.authorizationStatus()
+            if status == .notDetermined || status == .denied || status == .authorizedWhenInUse {
+                locationManager.requestAlwaysAuthorization()
                 locationManager.requestWhenInUseAuthorization()
             }
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -96,13 +103,15 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
         mapView.delegate = self
         mapView.mapType = .standard
+        mapView.userTrackingMode = MKUserTrackingMode.follow
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
         mapView.showsUserLocation = true
         if let coor = mapView.userLocation.location?.coordinate {
             mapView.setCenter(coor, animated: true)
         }
-
+        locationManager.startUpdatingHeading()
+        locationManager.stopUpdatingLocation()
     }
 
     private func setupLayout() {
@@ -141,6 +150,19 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         recordButton.alpha = 0
         moreButton.alpha = 1
 
+        startRun()
+        locationManager.startUpdatingLocation()
+
+    }
+    private func startRun() {
+        startLocationUpdates()
+    }
+
+    private func startLocationUpdates() {
+        locationManager.delegate = self
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 10
+        locationManager.startUpdatingLocation()
     }
 
     @IBAction func moreClicked(_ sender: UIButton) {
@@ -189,10 +211,15 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             self.puaseShadowView.isHidden = false
             MRProgressHUD.puase(view: self.puaseShadowView)
             sender.setImage(UIImage(named: ImageAsset.Icons_Play.rawValue)!, for: .normal)
+            locationManager.stopUpdatingLocation()
+            self.initLoaction = nil
         } else {
             self.puaseShadowView.isHidden = true
             sender.setImage(UIImage(named: ImageAsset.Icons_Puase.rawValue)!, for: .normal)
+            startRun()
+            locationManager.startUpdatingLocation()
             }
+
     }
     var isViewList = false
     @IBAction func listClicked(_ sender: UIButton) {
@@ -212,10 +239,25 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     @IBAction func stopClicked(_ sender: UIButton) {
 
+        self.saveRun()
+        locationManager.stopUpdatingLocation()
+        self.initLoaction = nil
+
         if let vc = storyboard?.instantiateViewController(
             withIdentifier: "StoredMapCViewController") as? StoredMapCViewController {
             present(vc, animated: true, completion: nil)
         }
+
+    }
+
+    private func saveRun() {
+        let newTravel = Travel(context: CoreDataStack.context)
+        newTravel.timestamp = Date()
+        newTravel.locations = NSOrderedSet(array: locationList)
+
+        CoreDataStack.saveContext()
+
+        travel = newTravel
     }
     // MARK: - View AddLocationCViewController
     private func makeSearchViewControllerIfNeeded() -> RecordListCViewController {
@@ -233,12 +275,65 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     // MARK: - CLLocationManager Delegates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
-        let region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(
-                latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude),
-            span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
-        self.mapView.setRegion(region, animated: true)
+//        self.locationManager.stopUpdatingLocation()
+//        let region = MKCoordinateRegion(
+//            center: CLLocationCoordinate2D(
+//                latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude),
+//            span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+//        self.mapView.setRegion(region, animated: true)
+        guard locations[0].horizontalAccuracy < 20 else {
+            locationManager.stopUpdatingLocation()
+            return
+        }
+
+        guard let start = initLoaction else {
+
+            return initLoaction = locations.first
+        }
+
+        guard let end = locations.last else {
+
+            return
+        }
+
+        if end.distance(from: start) > 10 {
+
+            let coordinates = [start.coordinate, end.coordinate]
+
+            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+
+            let region = MKCoordinateRegion(center: end.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+
+            mapView.setRegion(region, animated: true)
+
+            let date = Date()
+
+            let mira = ShortRoute(context: CoreDataStack.context)
+
+            let startLocation = Location(context: CoreDataStack.context)
+
+            startLocation.latitude = start.coordinate.latitude
+
+            startLocation.longitude = start.coordinate.longitude
+
+            startLocation.timestamp = date
+
+            let endLocation = Location(context: CoreDataStack.context)
+
+            endLocation.latitude = end.coordinate.latitude
+
+            endLocation.longitude = end.coordinate.longitude
+
+            endLocation.timestamp = date
+
+            mira.start = startLocation
+
+            mira.end = endLocation
+
+            locationList.append(mira)
+
+            initLoaction = end
+        }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Unable to access your current location")
@@ -256,4 +351,20 @@ extension MappingViewController {
         }
     }
 
+}
+
+extension MappingViewController {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let polyline = overlay as? MKPolyline else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
+                let renderer = MKPolylineRenderer(polyline: polyline)
+                renderer.strokeColor = .red
+                renderer.lineWidth = 10
+                return renderer
+//        let gradientColors = [UIColor.green, UIColor.blue, UIColor.yellow, UIColor.red]
+//        let renderer = GradientPathRenderer(polyline: polyline, colors: gradientColors)
+//        renderer.lineWidth = 10
+//        return renderer
+    }
 }
