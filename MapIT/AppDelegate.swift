@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,9 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool {
-
-//        GMSServices.provideAPIKey("AIzaSyBLJFZ8iWtjUN6CFwKIXq8Xua8rC4NPCcw")
-//        GMSPlacesClient.provideAPIKey("AIzaSyBLJFZ8iWtjUN6CFwKIXq8Xua8rC4NPCcw")
+            let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            print(urls[urls.count - 1] as URL)
+            IQKeyboardManager.shared.enable = true
+            IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 
         return true
     }

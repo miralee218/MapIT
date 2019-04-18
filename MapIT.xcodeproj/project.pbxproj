@@ -128,10 +128,10 @@
 		497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewController.swift; sourceTree = "<group>"; };
 		497A05C5226045370010D142 /* Taiwan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Taiwan.gpx; sourceTree = "<group>"; };
 		497A05DC2266C2420010D142 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
-		497AC91922680110005E8856 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
-		497AC91B22680129005E8856 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		497AC91D22680143005E8856 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPathRenderer.swift; sourceTree = "<group>"; };
-		497AC91F2268015A005E8856 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		497AC91922680110005E8856 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormatDisplay.swift; path = ../FormatDisplay.swift; sourceTree = "<group>"; };
+		497AC91B22680129005E8856 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = ../LocationManager.swift; sourceTree = "<group>"; };
+		497AC91D22680143005E8856 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientPathRenderer.swift; path = ../GradientPathRenderer.swift; sourceTree = "<group>"; };
+		497AC91F2268015A005E8856 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -193,10 +193,6 @@
 				491169122254563200347310 /* ViewController.swift */,
 				4911694C22583E0200347310 /* AlertController.swift */,
 				4911694E22583E2400347310 /* NavigationView.swift */,
-				497AC91922680110005E8856 /* FormatDisplay.swift */,
-				497AC91B22680129005E8856 /* LocationManager.swift */,
-				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
-				497AC91F2268015A005E8856 /* CoreDataStack.swift */,
 				4911691A2254563800347310 /* Assets.xcassets */,
 				4911691F2254563800347310 /* Info.plist */,
 				491169172254563200347310 /* MapIT.xcdatamodeld */,
@@ -228,6 +224,10 @@
 			children = (
 				494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */,
 				497A05DC2266C2420010D142 /* PlaceAnnotation.swift */,
+				497AC91922680110005E8856 /* FormatDisplay.swift */,
+				497AC91B22680129005E8856 /* LocationManager.swift */,
+				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
+				497AC91F2268015A005E8856 /* CoreDataStack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -514,6 +514,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MapIT/Pods-MapIT-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework",
@@ -523,6 +524,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullUpController.framework",

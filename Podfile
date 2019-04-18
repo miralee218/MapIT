@@ -17,4 +17,6 @@ target 'MapIT' do
   
   pod 'SwiftLint'
 
+  pod 'IQKeyboardManagerSwift'
+
 end
