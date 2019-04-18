@@ -126,7 +126,7 @@
 		497A0581225DF2990010D142 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		497A0585225DF7E50010D142 /* LoginContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContainerViewController.swift; sourceTree = "<group>"; };
 		497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContainerViewController.swift; sourceTree = "<group>"; };
-		497A05C5226045370010D142 /* Taiwan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Taiwan.gpx; sourceTree = "<group>"; };
+		497A05C5226045370010D142 /* Taiwan.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Taiwan.gpx; path = "../Third Party Wrapper/Taiwan.gpx"; sourceTree = "<group>"; };
 		497A05DC2266C2420010D142 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		497AC91922680110005E8856 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormatDisplay.swift; path = ../FormatDisplay.swift; sourceTree = "<group>"; };
 		497AC91B22680129005E8856 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = ../LocationManager.swift; sourceTree = "<group>"; };
@@ -222,6 +222,7 @@
 		4911692622545B4C00347310 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				497A05C5226045370010D142 /* Taiwan.gpx */,
 				494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */,
 				497A05DC2266C2420010D142 /* PlaceAnnotation.swift */,
 				497AC91922680110005E8856 /* FormatDisplay.swift */,
@@ -274,7 +275,6 @@
 				4911695322583FFD00347310 /* JGProgressHUDWrapper.swift */,
 				4911695522584C9000347310 /* MBProgressHUDWrapper.swift */,
 				4985372C225B533E008CB391 /* PullUpController.swift */,
-				497A05C5226045370010D142 /* Taiwan.gpx */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";

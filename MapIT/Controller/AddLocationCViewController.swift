@@ -108,7 +108,6 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
 extension AddLocationCViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if collectionView == self.locationNameCollectionView {
 
             return places.count

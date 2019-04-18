@@ -69,6 +69,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         mapView.showsUserLocation = false
+
+        self.checkInButton.alpha = 0
+        self.puaseButton.alpha = 0
+        self.stopButton.alpha = 0
+        self.checkListButton.alpha = 0
+
+        self.checkInButton.center = self.moreButton.center
+        self.puaseButton.center = self.moreButton.center
+        self.stopButton.center = self.moreButton.center
+        self.checkListButton.center = self.moreButton.center
+        self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
     }
 
     private func addPullUpController() {
