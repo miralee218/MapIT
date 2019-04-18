@@ -13,6 +13,7 @@ class RouteTableViewCell: UITableViewCell {
     @IBOutlet weak var pointTitleLabel: UILabel!
     @IBOutlet weak var pointRecordTimeLabel: UILabel!
     @IBOutlet weak var pointDescriptionLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
     var actionBlock: (() -> Void)?
     var editLocation: (() -> Void)?
     @IBOutlet weak var collectionView: UICollectionView! {

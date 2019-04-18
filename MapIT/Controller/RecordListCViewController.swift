@@ -57,7 +57,7 @@ class RecordListCViewController: PullUpController {
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
-        getTravel()
+        getLocationPost()
     }
 
     // MARK: - PullUpController
@@ -93,16 +93,14 @@ class RecordListCViewController: PullUpController {
                            completion: completion)
         }
     }
-    
-    func getTravel() {
+    func getLocationPost() {
         //Core Data - Fetch Data
         let fetchRequest: NSFetchRequest<LocationPost> = LocationPost.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: true)]
         do {
             let locationPost = try CoreDataStack.context.fetch(fetchRequest)
             self.locationPost = locationPost
         } catch {
-            
         }
     }
 
@@ -134,8 +132,20 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                 self?.present(vc, animated: true, completion: nil)
             }
 
-            let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
-                print("YOU HAVE DELETED YOUR RECORD")
+            let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
+//                func removeCell(sender: UIButton) {
+//
+//                    let removeRow = sender.tag
+//                    guard let removeOrder = self?.locationPost[removeRow] else { return }
+//                    CoreDataStack.delete(removeOrder)
+//                    self?.getLocationPost()
+//                }
+                
+                guard let removeOrder = self?.locationPost[indexPath.row] else { return }
+                CoreDataStack.delete(removeOrder)
+                self?.getLocationPost()
+
+                print("Delete Button tapped. Row item value = \(self?.locationPost[indexPath.row])")
             }
 
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -146,6 +156,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             self?.present(sheet, animated: true, completion: nil)
 
         }
+
         routeCell.pointTitleLabel.text = locationPost[indexPath.row].title
         routeCell.pointDescriptionLabel.text = locationPost[indexPath.row].content
         let formattedDate = FormatDisplay.date(locationPost[indexPath.row].timestamp)

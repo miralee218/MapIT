@@ -51,5 +51,10 @@ class CoreDataStack {
             return [T]()
         }
     }
+    //DELETE
+    class func delete(_ object: NSManagedObject) {
+        context.delete(object)
+        saveContext()
+    }
 
 }

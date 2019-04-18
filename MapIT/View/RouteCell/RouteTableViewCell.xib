@@ -98,6 +98,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="dtz-cR-7yG" id="8yP-9R-Ahd"/>
+                <outlet property="moreButton" destination="OuT-vG-zZM" id="N04-Qw-Djt"/>
                 <outlet property="pointDescriptionLabel" destination="Qf3-vM-b7l" id="PWe-bo-F8h"/>
                 <outlet property="pointRecordTimeLabel" destination="MHK-uC-uiK" id="BgZ-UG-oaM"/>
                 <outlet property="pointTitleLabel" destination="9yb-NH-ydJ" id="7GO-FV-r6k"/>
