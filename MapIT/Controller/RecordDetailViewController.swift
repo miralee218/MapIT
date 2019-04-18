@@ -108,7 +108,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
             guard let routeCell = cell as? RouteTableViewCell else { return cell }
 
-            routeCell.actionBlock = {
+            routeCell.actionBlock = { [weak self] in
 
                 let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
@@ -135,7 +135,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 sheet.addAction(option2)
                 sheet.addAction(option1)
 
-                self.present(sheet, animated: true, completion: nil)
+                self?.present(sheet, animated: true, completion: nil)
 
             }
 

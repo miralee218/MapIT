@@ -19,32 +19,48 @@
                 <rect key="frame" x="0.0" y="0.0" width="133" height="57"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水社碼頭廣場" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7d-fi-Mgn">
-                        <rect key="frame" x="8" y="16.5" width="117" height="24"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                        <color key="textColor" name="MiraBlue"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trq-eA-AFT">
+                        <rect key="frame" x="10" y="0.0" width="113" height="57"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="MiraBlue2"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-vT-70N">
+                        <rect key="frame" x="0.0" y="0.0" width="133" height="57"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
+                        <state key="normal">
+                            <color key="titleColor" name="MiraBlue2"/>
+                        </state>
+                        <connections>
+                            <action selector="changeLocationName:" destination="gTV-IL-0wX" eventType="touchUpInside" id="lkz-cV-6Qu"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="k7d-fi-Mgn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="8y1-XL-Qpl"/>
-                <constraint firstItem="k7d-fi-Mgn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="VfF-TY-qik"/>
-                <constraint firstItem="k7d-fi-Mgn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="h8J-ph-2af"/>
-                <constraint firstAttribute="trailing" secondItem="k7d-fi-Mgn" secondAttribute="trailing" constant="8" id="tPL-Ln-djo"/>
+                <constraint firstItem="Trq-eA-AFT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Ei1-lp-hYJ"/>
+                <constraint firstItem="Ib7-vT-70N" firstAttribute="centerY" secondItem="Trq-eA-AFT" secondAttribute="centerY" id="GFe-2h-hca"/>
+                <constraint firstItem="Ib7-vT-70N" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Trq-eA-AFT" secondAttribute="trailing" constant="10" id="Gjq-yf-77P"/>
+                <constraint firstItem="Ib7-vT-70N" firstAttribute="bottom" secondItem="Trq-eA-AFT" secondAttribute="bottom" id="N9E-b9-8sZ"/>
+                <constraint firstAttribute="bottom" secondItem="Trq-eA-AFT" secondAttribute="bottom" id="NEu-jO-gGO"/>
+                <constraint firstItem="Ib7-vT-70N" firstAttribute="centerX" secondItem="Trq-eA-AFT" secondAttribute="centerX" id="R0T-Tg-M2f"/>
+                <constraint firstItem="Ib7-vT-70N" firstAttribute="top" secondItem="Trq-eA-AFT" secondAttribute="top" id="eF6-j8-eJr"/>
+                <constraint firstItem="Trq-eA-AFT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eP9-E0-CW3"/>
+                <constraint firstAttribute="trailing" secondItem="Trq-eA-AFT" secondAttribute="trailing" constant="10" id="fiU-e5-feC"/>
+                <constraint firstItem="Ib7-vT-70N" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Trq-eA-AFT" secondAttribute="leading" constant="-10" id="z3V-hy-eh3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="175" height="57"/>
             <connections>
-                <outlet property="locationNameLabel" destination="k7d-fi-Mgn" id="KWi-nQ-uKs"/>
+                <outlet property="locationNameButton" destination="Ib7-vT-70N" id="5bS-3e-Kik"/>
+                <outlet property="locationNameLabel" destination="Trq-eA-AFT" id="uzt-7r-646"/>
             </connections>
             <point key="canvasLocation" x="90.579710144927546" y="19.084821428571427"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="MiraBlue">
-            <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="0.80000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="MiraBlue2">
+            <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

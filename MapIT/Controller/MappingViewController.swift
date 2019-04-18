@@ -23,35 +23,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var checkListButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
 
-    var checkInButtonCenter: CGPoint!
-    var puaseButtonCenter: CGPoint!
-    var stopButtonCenter: CGPoint!
-    var checkListButtonCenter: CGPoint!
-
     @IBOutlet weak var puaseShadowView: UIView!
 
     let locationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
-
-    var lat = Double()
-    var lon = Double()
-
-    // MARK: - View AddLocationCViewController
-    private func makeSearchViewControllerIfNeeded() -> RecordListCViewController {
-        let currentPullUpController = children
-            .filter({ $0 is RecordListCViewController })
-            .first as? RecordListCViewController
-        guard let pullUpController: RecordListCViewController =
-            currentPullUpController ?? UIStoryboard(
-                name: "Mapping", bundle: nil).instantiateViewController(
-                    withIdentifier: "RecordListCViewController") as? RecordListCViewController
-            else {
-             return RecordListCViewController()
-        }
-
-        return pullUpController
-    }
-
+    var checkInButtonCenter: CGPoint!
+    var puaseButtonCenter: CGPoint!
+    var stopButtonCenter: CGPoint!
+    var checkListButtonCenter: CGPoint!
+    var places: [MKMapItem] = []
+    var mapItemList: [MKMapItem] = []
+    let params: [String] = ["bar", "shop", "restaurant", "cinema"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,13 +57,16 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonItem.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
 
         mapView.addSubview(buttonItem)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         mapView.showsUserLocation = true
     }
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
         mapView.showsUserLocation = false
+        self.places.removeAll()
     }
 
     private func addPullUpController() {
@@ -120,26 +105,34 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     }
 
-    // MARK: - CLLocationManager Delegates
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
-        let region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(
-                latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude),
-            span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
-        self.mapView.setRegion(region, animated: true)
-    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Unable to access your current location")
-    }
-
     private func setupLayout() {
 
         navigationController?.navigationBar.setGradientBackground(
             colors: UIColor.mainColor
         )
 
+    }
+    func nearByLocation() {
+        let request = MKLocalSearch.Request()
+        request.region = mapView.region
+        for param in params {
+            request.naturalLanguageQuery = param
+            let search = MKLocalSearch(request: request)
+            search.start { [unowned self] response, error in
+                guard let response = response else { return }
+                self.mapItemList = response.mapItems
+                for item in self.mapItemList {
+                    let annotation = PlaceAnnotation()
+                    annotation.coordinate = item.placemark.location!.coordinate
+                    annotation.title = item.name
+                    annotation.url = item.url
+                    annotation.detailAddress = item.placemark.title
+//                    self.mapView!.addAnnotation(annotation)
+                    self.places.append(item)
+                }
+                self.places.shuffle()
+            }
+        }
     }
 
     @IBAction func addRecordClick(_ sender: UIButton) {
@@ -151,6 +144,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func moreClicked(_ sender: UIButton) {
+        nearByLocation()
         if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)! {
             UIView.animate(withDuration: 0.3, animations: {
                 self.checkInButton.alpha = 1
@@ -182,10 +176,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func checkInClicked(_ sender: UIButton) {
-
-        if let vc = storyboard?.instantiateViewController(
-            withIdentifier: "AddLocationCViewController") as? AddLocationCViewController {
-            present(vc, animated: true, completion: nil)
+        performSegue(withIdentifier: "AddLocationCViewController", sender: sender)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddLocationCViewController" {
+            guard let controller = segue.destination as? AddLocationCViewController else { return }
+            controller.places = self.places
         }
     }
     @IBAction func puaseClicked(_ sender: UIButton) {
@@ -220,6 +216,32 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             withIdentifier: "StoredMapCViewController") as? StoredMapCViewController {
             present(vc, animated: true, completion: nil)
         }
+    }
+    // MARK: - View AddLocationCViewController
+    private func makeSearchViewControllerIfNeeded() -> RecordListCViewController {
+        let currentPullUpController = children
+            .filter({ $0 is RecordListCViewController })
+            .first as? RecordListCViewController
+        guard let pullUpController: RecordListCViewController =
+            currentPullUpController ?? UIStoryboard(
+                name: "Mapping", bundle: nil).instantiateViewController(
+                    withIdentifier: "RecordListCViewController") as? RecordListCViewController
+            else {
+                return RecordListCViewController()
+        }
+        return pullUpController
+    }
+    // MARK: - CLLocationManager Delegates
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude),
+            span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+        self.mapView.setRegion(region, animated: true)
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Unable to access your current location")
     }
 
 }

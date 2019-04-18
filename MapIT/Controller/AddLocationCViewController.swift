@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class AddLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var storeButton: UIButton!
+    @IBOutlet weak var locationName: UITextField!
     @IBOutlet weak var locationNameCollectionView: UICollectionView! {
         didSet {
 
@@ -33,6 +35,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         }
 
     }
+    var places: [MKMapItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,11 +44,18 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
         locationNameCollectionView.mr_registerCellWithNib(
             identifier: String(describing: AddLocationNameCollectionViewCell.self), bundle: nil)
-
         pictureCollectionView.mr_registerCellWithNib(
             identifier: String(describing: AddPictureMethodCollectionViewCell.self), bundle: nil)
         pictureCollectionView.mr_registerCellWithNib(
             identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
+            layout.itemSize = UICollectionViewFlowLayout.automaticSize
+            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
@@ -63,7 +73,7 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.locationNameCollectionView {
 
-            return 4
+            return places.count
 
         } else {
 
@@ -82,8 +92,12 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                 withReuseIdentifier: String(describing: AddLocationNameCollectionViewCell.self),
                 for: indexPath
             )
-
-            return cell
+            guard let placeCell = cell as? AddLocationNameCollectionViewCell else { return cell }
+            placeCell.locationNameLabel.text = places[indexPath.row].name
+            placeCell.actionBlock = { [weak self] in
+                self?.locationName.text =  placeCell.locationNameLabel.text
+            }
+            return placeCell
         } else if collectionView == self.pictureCollectionView {
 
             if indexPath.row == 0 {
@@ -125,27 +139,8 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
             }
 
         }
+
         return UICollectionViewCell()
-    }
-
-    //item 行 間距
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int)
-        -> CGFloat {
-        return 24
-    }
-
-    //item 間距
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int)
-        -> CGFloat {
-
-        return 10
-
     }
 
     func imagePickerController(
@@ -161,5 +156,23 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
         picker.dismiss(animated: true, completion: nil)
 
     }
+}
 
+extension AddLocationCViewController: UICollectionViewDelegateFlowLayout {
+    //item 行 間距
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int)
+        -> CGFloat {
+            return 10
+    }
+    //item 間距
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int)
+        -> CGFloat {
+            return 5
+    }
 }

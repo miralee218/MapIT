@@ -2,25 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>MapIT would like to access your location.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>MapIT would like to access your photo.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>MapIT would like to access your photo.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>MapIT would like to access your camera.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>MapIT would like to access your location.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>MapIT would like to access your location.</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>googlechromes</string>
-		<string>comgooglemaps</string>
-	</array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -37,8 +18,27 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>MapIT would like to access your camera.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MapIT would like to access your location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>MapIT would like to access your location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MapIT would like to access your location.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>MapIT would like to access your photo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MapIT would like to access your photo.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

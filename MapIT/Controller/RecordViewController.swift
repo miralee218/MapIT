@@ -112,9 +112,9 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             for: indexPath
         )
         guard let recordCell = cell as? RecordTableViewCell else { return cell }
-        recordCell.actionBlock = {
+        recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let option3 = UIAlertAction(title: "分享", style: .default) {  [weak self] (_) in
+            let option3 = UIAlertAction(title: "分享", style: .default) { [weak self] (_) in
                 let vc = UIStoryboard.record.instantiateViewController(
                     withIdentifier: String(describing: SharedOptionViewController.self))
                 self?.present(vc, animated: true, completion: nil)
@@ -126,7 +126,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             sheet.addAction(option3)
             sheet.addAction(option2)
             sheet.addAction(option1)
-            self.present(sheet, animated: true, completion: nil)
+            self?.present(sheet, animated: true, completion: nil)
         }
         return recordCell
     }
