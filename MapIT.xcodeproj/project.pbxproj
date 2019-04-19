@@ -190,6 +190,7 @@
 		4911690F2254563200347310 /* MapIT */ = {
 			isa = PBXGroup;
 			children = (
+				497AC92E2269B216005E8856 /* CoreData */,
 				4911695222583FEC00347310 /* Third Party Wrapper */,
 				4911692C2254613200347310 /* Exrension */,
 				4911692722545B5A00347310 /* Controller */,
@@ -317,6 +318,13 @@
 				497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */,
 			);
 			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		497AC92E2269B216005E8856 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		49853727225B3E1A008CB391 /* RecordCell */ = {

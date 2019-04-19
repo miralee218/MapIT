@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import MBProgressHUD
 import PullUpController
+import CoreData
 
 class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -36,7 +37,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var initLoaction: CLLocation?
     private var locationManagerShared = LocationManager.shared
     var travel: Travel?
-//    var location: Location?
+    var allTravel = [Travel]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,7 +61,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonItem.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
 
         mapView.addSubview(buttonItem)
+        let isEditting = isEdittingTravel()
+        print(isEditting)
 
+        if isEditting == true {
+            MRProgressHUD.coutinueRecord(view: self.view)
+            recordButton.alpha = 0
+            moreButton.alpha = 1
+        } else {
+            recordButton.alpha = 1
+            moreButton.alpha = 0
+        }
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -130,16 +141,53 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func addRecordClick(_ sender: UIButton) {
-
         MRProgressHUD.startRecord(view: self.view)
         recordButton.alpha = 0
         moreButton.alpha = 1
 
-        startRun()
+        startNewRun()
         locationManager.startUpdatingLocation()
 
     }
-    private func startRun() {
+
+    func isEdittingTravel() -> Bool {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        let isEditting = "1"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
+        do {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+                print("no present")
+                return false
+            } else if count == 1 {
+                // at least one matching object exists
+                let edittingTravel = allTravel.last
+                self.travel = edittingTravel
+                print("only:\(count) continue editing...")
+                return true
+            } else {
+                print("matching items found:\(count)")
+                return false
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    private func startNewRun() {
+        startLocationUpdates()
+
+        let newTravel = Travel(context: CoreDataStack.context)
+        newTravel.createTimestamp = Date()
+        newTravel.isEditting = true
+
+        CoreDataStack.saveContext()
+        travel = newTravel
+    }
+    private func continueRun() {
         startLocationUpdates()
     }
 
@@ -200,7 +248,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             self.puaseShadowView.isHidden = true
             sender.setImage(UIImage(named: ImageAsset.Icons_Puase.rawValue)!, for: .normal)
-            startRun()
+            continueRun()
             locationManager.startUpdatingLocation()
             }
 
@@ -235,13 +283,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     private func saveRun() {
-        let newTravel = Travel(context: CoreDataStack.context)
-        newTravel.timestamp = Date()
-        newTravel.locations = NSOrderedSet(array: locationList)
 
+        self.travel?.endTimestamp = Date()
+        self.travel?.isEditting = false
+        self.travel?.locations = NSOrderedSet(array: locationList)
         CoreDataStack.saveContext()
 
-        travel = newTravel
     }
     // MARK: - View AddLocationCViewController
     private func makeSearchViewControllerIfNeeded() -> RecordListCViewController {
@@ -259,12 +306,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     // MARK: - CLLocationManager Delegates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        self.locationManager.stopUpdatingLocation()
-//        let region = MKCoordinateRegion(
-//            center: CLLocationCoordinate2D(
-//                latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude),
-//            span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
-//        self.mapView.setRegion(region, animated: true)
+
         guard locations[0].horizontalAccuracy < 20 else {
             locationManager.stopUpdatingLocation()
             return

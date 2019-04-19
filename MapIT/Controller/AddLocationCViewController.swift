@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class AddLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -36,14 +37,14 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         }
 
     }
-    var mutableArray = NSMutableArray()
     var places: [MKMapItem] = []
     var mapItemList: [MKMapItem] = []
     let params: [String] = ["bar", "shop", "restaurant", "cinema"]
     var mapView = MKMapView()
-    var locationPost: LocationPost?
+    var travel = [Travel]()
     let recordListVC = RecordListCViewController()
     private var locationManager = LocationManager.shared
+    var photoSelected = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,6 +68,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         contentTextView.layer.borderWidth = 1
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor
+
     }
 
     func nearByLocation() {
@@ -109,23 +111,24 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
 
-        let newLocaiotn = LocationPost(context: CoreDataStack.context)
-        newLocaiotn.timestamp = Date()
-        newLocaiotn.title = self.locationName.text
-        newLocaiotn.content = self.contentTextView.text
-        newLocaiotn.latitude = locValue.latitude
-        newLocaiotn.longitude = locValue.longitude
+        let newLocation = LocationPost(context: CoreDataStack.context)
+        newLocation.timestamp = Date()
+        newLocation.title = self.locationName.text
+        newLocation.content = self.contentTextView.text
+        newLocation.latitude = locValue.latitude
+        newLocation.longitude = locValue.longitude
 
-//        let newPicture = Picture(context: CoreDataStack.context)
-//        for picture in 1...mutableArray.count {
-//            newPicture.picture = mutableArray[picture] as? String
-//        }
-//        print(newPicture)
+        guard photoSelected.count <= 0 else {
+            for picture in 0...photoSelected.count - 1 {
+                newLocation.photo = photoSelected[picture]
+            }
+            return
+        }
 
         CoreDataStack.saveContext()
 
-        locationPost = newLocaiotn
     }
+
     @IBAction func cancelAdd(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -140,7 +143,7 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
 
         } else {
 
-            return mutableArray.count + 1
+            return photoSelected.count + 1
 
         }
     }
@@ -194,10 +197,10 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
 
                 guard let photoCell = cell as? RoutePictureCollectionViewCell else {return cell}
 
-                guard self.mutableArray.count > 0  else { return photoCell }
-                photoCell.photoImageView.image = self.mutableArray[indexPath.row - 1] as? UIImage
+                guard self.photoSelected.count > 0  else { return photoCell }
+                photoCell.photoImageView.image = self.photoSelected[indexPath.row - 1]
                 photoCell.actionBlock = {[weak self] in
-                    self?.mutableArray.removeObject(at: indexPath.row - 1)
+                    self?.photoSelected.remove(at: indexPath.row - 1)
                     self?.pictureCollectionView.reloadData()
                 }
                 return photoCell
@@ -214,12 +217,16 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
             else {
+                print("selected image is nil")
                 return
         }
-        mutableArray.add(image)
+        // resize our selected image
+        let resizedImage = image.convert(toSize: CGSize(width: 120.0, height: 90.0), scale: UIScreen.main.scale)
+        photoSelected.append(resizedImage)
         self.pictureCollectionView.reloadData()
         picker.dismiss(animated: true, completion: nil)
     }
+
 }
 
 extension AddLocationCViewController: UICollectionViewDelegateFlowLayout {
@@ -240,3 +247,4 @@ extension AddLocationCViewController: UICollectionViewDelegateFlowLayout {
             return 5
     }
 }
+

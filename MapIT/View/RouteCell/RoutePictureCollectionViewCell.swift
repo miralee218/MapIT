@@ -20,5 +20,5 @@ class RoutePictureCollectionViewCell: UICollectionViewCell {
     @IBAction func cancelImage(_ sender: UIButton) {
         actionBlock?()
     }
-    
+
 }

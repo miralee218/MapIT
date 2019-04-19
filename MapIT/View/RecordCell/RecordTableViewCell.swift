@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordTableViewCell: UITableViewCell {
 
@@ -17,11 +18,15 @@ class RecordTableViewCell: UITableViewCell {
         }
     }
     var actionBlock: (() -> Void)?
+    var pictures = [Picture]()
+    var travel = [Travel]()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
+
+        getLocationPost()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,11 +38,22 @@ class RecordTableViewCell: UITableViewCell {
         actionBlock?()
     }
 
+    func getLocationPost() {
+        //Core Data - Fetch Data
+        let fetchRequest: NSFetchRequest<Picture> = Picture.fetchRequest()
+        do {
+            let pictures = try CoreDataStack.context.fetch(fetchRequest)
+            self.pictures = pictures
+        } catch {
+        }
+        collectionView.reloadData()
+    }
+
 }
 
 extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return pictures.count
     }
 
     func collectionView(
@@ -48,8 +64,9 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
             withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
             for: indexPath
         )
+        guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
 
-        return cell
+        return photoCell
     }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AccessPhoto {
     static func accessCamera(viewController: UIViewController) {
@@ -14,6 +15,9 @@ class AccessPhoto {
         imagePicker.delegate = viewController as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
+        //button size
+        let scaleView = imagePicker.view
+        scaleView?.transform = CGAffineTransform(scaleX: 1, y: 1)
 
         viewController.present(imagePicker, animated: true, completion: nil)
 

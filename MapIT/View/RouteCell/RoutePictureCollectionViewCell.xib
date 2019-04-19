@@ -20,7 +20,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-TC-x36">
                         <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
-                        <color key="backgroundColor" red="1" green="0.77019732519999995" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-JI-QfI">
                         <rect key="frame" x="68" y="0.0" width="20" height="20"/>
@@ -36,12 +36,12 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="GtI-TC-x36" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uxg-Yx-82v"/>
-                <constraint firstItem="GtI-TC-x36" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Wmu-Zx-40M"/>
-                <constraint firstItem="Hm1-JI-QfI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Xic-bl-ik3"/>
-                <constraint firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="cSv-iS-T1Q"/>
-                <constraint firstAttribute="trailing" secondItem="Hm1-JI-QfI" secondAttribute="trailing" id="rJ8-CO-VLN"/>
-                <constraint firstAttribute="bottom" secondItem="GtI-TC-x36" secondAttribute="bottom" id="uLA-gw-OOH"/>
+                <constraint firstItem="Hm1-JI-QfI" firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="6zB-2s-Vnr"/>
+                <constraint firstItem="GtI-TC-x36" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9PZ-kl-Hih"/>
+                <constraint firstItem="GtI-TC-x36" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JuM-mB-LVC"/>
+                <constraint firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="Q6K-Ul-Bl8"/>
+                <constraint firstAttribute="bottom" secondItem="GtI-TC-x36" secondAttribute="bottom" id="mDj-w6-sNT"/>
+                <constraint firstItem="Hm1-JI-QfI" firstAttribute="top" secondItem="GtI-TC-x36" secondAttribute="top" id="ube-qr-wDe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>

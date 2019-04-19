@@ -32,26 +32,31 @@
                             <constraint firstAttribute="height" constant="1" id="4cC-SN-RMb"/>
                         </constraints>
                     </view>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start writing..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGJ-k8-QLI">
-                        <rect key="frame" x="20" y="56" width="374" height="17"/>
-                        <nil key="textColor"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ESG-hW-ugb">
+                        <rect key="frame" x="20" y="60" width="374" height="329"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="156-vr-DVi" firstAttribute="leading" secondItem="V7y-IK-NHW" secondAttribute="leading" id="4Ic-D5-amJ"/>
                     <constraint firstItem="V7y-IK-NHW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="6CP-bp-P77"/>
                     <constraint firstItem="156-vr-DVi" firstAttribute="trailing" secondItem="V7y-IK-NHW" secondAttribute="trailing" id="7hz-nW-6Fl"/>
                     <constraint firstAttribute="trailing" secondItem="V7y-IK-NHW" secondAttribute="trailing" constant="16" id="8AV-Un-Z3I"/>
-                    <constraint firstAttribute="trailing" secondItem="EGJ-k8-QLI" secondAttribute="trailing" constant="20" id="8VA-RD-FDb"/>
-                    <constraint firstItem="EGJ-k8-QLI" firstAttribute="top" secondItem="V7y-IK-NHW" secondAttribute="bottom" constant="12" id="AGM-pq-fmB"/>
                     <constraint firstItem="V7y-IK-NHW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HKr-r6-OsW"/>
-                    <constraint firstItem="EGJ-k8-QLI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fQf-8f-DRa"/>
+                    <constraint firstItem="ESG-hW-ugb" firstAttribute="top" secondItem="V7y-IK-NHW" secondAttribute="bottom" constant="16" id="OYe-nz-xyS"/>
+                    <constraint firstItem="ESG-hW-ugb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="aHc-EY-g1G"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ESG-hW-ugb" secondAttribute="bottom" id="duY-Uy-ose"/>
                     <constraint firstItem="156-vr-DVi" firstAttribute="bottom" secondItem="V7y-IK-NHW" secondAttribute="bottom" id="j63-sN-enS"/>
+                    <constraint firstAttribute="trailing" secondItem="ESG-hW-ugb" secondAttribute="trailing" constant="20" id="uQy-rb-vA9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contentTextView" destination="ESG-hW-ugb" id="IlX-CK-ewZ"/>
+                <outlet property="travelNameTextField" destination="V7y-IK-NHW" id="ZF6-SS-WfE"/>
+            </connections>
             <point key="canvasLocation" x="47.826086956521742" y="61.607142857142854"/>
         </tableViewCell>
     </objects>

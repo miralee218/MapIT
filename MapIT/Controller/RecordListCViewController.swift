@@ -46,6 +46,7 @@ class RecordListCViewController: PullUpController {
 
     var travel = [Travel]()
     var locationPost = [LocationPost]()
+    var picture = [Picture]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

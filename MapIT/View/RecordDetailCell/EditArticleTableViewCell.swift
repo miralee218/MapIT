@@ -10,9 +10,13 @@ import UIKit
 
 class EditArticleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var travelNameTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        contentTextView.layer.borderWidth = 1
+        contentTextView.layer.cornerRadius = 4
+        contentTextView.layer.borderColor = UIColor.B5?.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

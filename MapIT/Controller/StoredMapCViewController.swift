@@ -48,7 +48,7 @@ class StoredMapCViewController: UIViewController {
     func getTravel() {
         //Core Data - Fetch Data
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.timestamp), ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
         do {
             let travel = try CoreDataStack.context.fetch(fetchRequest)
             self.travel = travel
@@ -174,7 +174,7 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
         case 0:
             return 400
         case 1:
-            return UITableView.automaticDimension
+            return 500
         default:
             return 0
         }
