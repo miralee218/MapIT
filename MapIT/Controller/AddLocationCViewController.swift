@@ -36,6 +36,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         }
 
     }
+    var mutableArray = NSMutableArray()
     var places: [MKMapItem] = []
     var mapItemList: [MKMapItem] = []
     let params: [String] = ["bar", "shop", "restaurant", "cinema"]
@@ -115,6 +116,12 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         newLocaiotn.latitude = locValue.latitude
         newLocaiotn.longitude = locValue.longitude
 
+//        let newPicture = Picture(context: CoreDataStack.context)
+//        for picture in 1...mutableArray.count {
+//            newPicture.picture = mutableArray[picture] as? String
+//        }
+//        print(newPicture)
+
         CoreDataStack.saveContext()
 
         locationPost = newLocaiotn
@@ -122,8 +129,6 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func cancelAdd(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-
-    var mutableArray = NSMutableArray()
 
 }
 
@@ -191,7 +196,10 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
 
                 guard self.mutableArray.count > 0  else { return photoCell }
                 photoCell.photoImageView.image = self.mutableArray[indexPath.row - 1] as? UIImage
-
+                photoCell.actionBlock = {[weak self] in
+                    self?.mutableArray.removeObject(at: indexPath.row - 1)
+                    self?.pictureCollectionView.reloadData()
+                }
                 return photoCell
 
             }

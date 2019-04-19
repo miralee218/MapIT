@@ -22,19 +22,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
                         <color key="backgroundColor" red="1" green="0.77019732519999995" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-JI-QfI">
+                        <rect key="frame" x="68" y="0.0" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="0Fm-eF-GpN"/>
+                            <constraint firstAttribute="width" constant="20" id="p8U-Rf-xm3"/>
+                        </constraints>
+                        <state key="normal" image="Icons_Mapping_Selected"/>
+                        <connections>
+                            <action selector="cancelImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="dAj-k3-Fwa"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="GtI-TC-x36" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Uxg-Yx-82v"/>
                 <constraint firstItem="GtI-TC-x36" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Wmu-Zx-40M"/>
+                <constraint firstItem="Hm1-JI-QfI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Xic-bl-ik3"/>
                 <constraint firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="cSv-iS-T1Q"/>
+                <constraint firstAttribute="trailing" secondItem="Hm1-JI-QfI" secondAttribute="trailing" id="rJ8-CO-VLN"/>
                 <constraint firstAttribute="bottom" secondItem="GtI-TC-x36" secondAttribute="bottom" id="uLA-gw-OOH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="cancelButton" destination="Hm1-JI-QfI" id="Ef2-Xn-UDO"/>
                 <outlet property="photoImageView" destination="GtI-TC-x36" id="e98-na-qOU"/>
             </connections>
             <point key="canvasLocation" x="100.00000000000001" y="61.607142857142854"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Icons_Mapping_Selected" width="45" height="45"/>
+    </resources>
 </document>

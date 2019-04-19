@@ -70,7 +70,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="龍鳳宮月老廟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yb-NH-ydJ">
-                        <rect key="frame" x="64" y="14" width="109" height="26"/>
+                        <rect key="frame" x="64" y="14" width="300" height="26"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="18"/>
                         <color key="textColor" name="B2"/>
                         <nil key="highlightedColor"/>
@@ -82,6 +82,7 @@
                     <constraint firstItem="dtz-cR-7yG" firstAttribute="top" secondItem="Qf3-vM-b7l" secondAttribute="bottom" constant="6" id="7Nz-Bt-wW5"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="centerX" secondItem="Jcx-j9-Iae" secondAttribute="centerX" id="BIX-EH-38I"/>
                     <constraint firstItem="OuT-vG-zZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CCn-D9-XhP"/>
+                    <constraint firstAttribute="trailing" secondItem="9yb-NH-ydJ" secondAttribute="trailing" constant="50" id="CD1-EK-uGA"/>
                     <constraint firstAttribute="trailing" secondItem="OuT-vG-zZM" secondAttribute="trailing" constant="16" id="GpS-iB-Q1u"/>
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="MHK-uC-uiK" secondAttribute="bottom" constant="6" id="LCa-KO-yFa"/>
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="leading" secondItem="MHK-uC-uiK" secondAttribute="leading" id="S4j-g5-Zrt"/>

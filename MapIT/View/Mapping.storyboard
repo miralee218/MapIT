@@ -426,7 +426,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="361-ZO-sMU">
-                                        <rect key="frame" x="20" y="198" width="374" height="204"/>
+                                        <rect key="frame" x="20" y="198" width="374" height="162"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="5Yj-Sl-Uzp">
                                             <size key="itemSize" width="110" height="72"/>
@@ -444,7 +444,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="361-ZO-sMU" firstAttribute="top" secondItem="KAr-q8-wKV" secondAttribute="bottom" constant="16" id="1ix-G5-uH3"/>
-                                    <constraint firstAttribute="bottom" secondItem="361-ZO-sMU" secondAttribute="bottom" id="1lb-yT-f7P"/>
                                     <constraint firstAttribute="trailing" secondItem="361-ZO-sMU" secondAttribute="trailing" constant="20" id="4p2-56-qd5"/>
                                     <constraint firstItem="361-ZO-sMU" firstAttribute="leading" secondItem="tex-nj-pkm" secondAttribute="leading" constant="20" id="Dv5-Fp-mLw"/>
                                     <constraint firstAttribute="trailing" secondItem="lSf-af-w1I" secondAttribute="trailing" constant="16" id="GAB-HP-FXu"/>
@@ -452,6 +451,7 @@
                                     <constraint firstItem="45Z-z6-FMx" firstAttribute="trailing" secondItem="lSf-af-w1I" secondAttribute="trailing" id="TKd-mg-Owi"/>
                                     <constraint firstAttribute="trailing" secondItem="54I-rh-Zcy" secondAttribute="trailing" id="Txe-yo-wOc"/>
                                     <constraint firstItem="KAr-q8-wKV" firstAttribute="leading" secondItem="tex-nj-pkm" secondAttribute="leading" constant="16" id="WeA-KJ-0J1"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="361-ZO-sMU" secondAttribute="bottom" id="eYE-U2-66n"/>
                                     <constraint firstItem="45Z-z6-FMx" firstAttribute="bottom" secondItem="lSf-af-w1I" secondAttribute="bottom" id="i5Z-AS-VQ5"/>
                                     <constraint firstItem="lSf-af-w1I" firstAttribute="top" secondItem="tex-nj-pkm" secondAttribute="top" constant="16" id="i5f-HQ-mrH"/>
                                     <constraint firstItem="KAr-q8-wKV" firstAttribute="top" secondItem="54I-rh-Zcy" secondAttribute="bottom" constant="8" id="tNL-6P-0zf"/>

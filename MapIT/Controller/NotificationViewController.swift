@@ -23,7 +23,7 @@ class NotificationViewController: UIViewController {
             colors: UIColor.mainColor
         )
         collectionView.mr_registerCellWithNib(
-            identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
+            identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
     }
 //    func grabPhoto() {
 //        let imgManager = PHImageManager.default()
@@ -51,7 +51,7 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: RoutePictureCollectionViewCell.self),
+            withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
             for: indexPath
         )
         return cell

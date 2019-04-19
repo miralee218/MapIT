@@ -102,6 +102,7 @@ class RecordListCViewController: PullUpController {
             self.locationPost = locationPost
         } catch {
         }
+        tableView.reloadData()
     }
 
 }
@@ -133,18 +134,9 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             }
 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
-//                func removeCell(sender: UIButton) {
-//
-//                    let removeRow = sender.tag
-//                    guard let removeOrder = self?.locationPost[removeRow] else { return }
-//                    CoreDataStack.delete(removeOrder)
-//                    self?.getLocationPost()
-//                }
-                
                 guard let removeOrder = self?.locationPost[indexPath.row] else { return }
                 CoreDataStack.delete(removeOrder)
                 self?.getLocationPost()
-
                 print("Delete Button tapped. Row item value = \(self?.locationPost[indexPath.row])")
             }
 

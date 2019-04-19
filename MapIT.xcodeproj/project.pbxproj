@@ -59,6 +59,8 @@
 		497AC91E22680143005E8856 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91D22680143005E8856 /* GradientPathRenderer.swift */; };
 		497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataStack.swift */; };
 		497AC92622687D90005E8856 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92522687D90005E8856 /* Coordinate.swift */; };
+		497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */; };
+		497AC92D22698A74005E8856 /* NormalPictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -134,6 +136,8 @@
 		497AC91D22680143005E8856 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientPathRenderer.swift; path = ../GradientPathRenderer.swift; sourceTree = "<group>"; };
 		497AC91F2268015A005E8856 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
 		497AC92522687D90005E8856 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = ../Controller/Coordinate.swift; sourceTree = "<group>"; };
+		497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalPictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalPictureCollectionViewCell.xib; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 				494EB3602259023900ECCA72 /* RouteTableViewCell.xib */,
 				494EB36C2259C28000ECCA72 /* RoutePictureCollectionViewCell.swift */,
 				494EB36D2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib */,
+				497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */,
+				497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */,
 			);
 			path = RouteCell;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				4985376A225D7E95008CB391 /* SharedOptionTableViewCell.xib in Resources */,
 				4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */,
 				4911691B2254563800347310 /* Assets.xcassets in Resources */,
+				497AC92D22698A74005E8856 /* NormalPictureCollectionViewCell.xib in Resources */,
 				494EB3622259023900ECCA72 /* RouteTableViewCell.xib in Resources */,
 				49116932225462E800347310 /* Profile.storyboard in Resources */,
 				491169162254563200347310 /* Main.storyboard in Resources */,
@@ -589,6 +596,7 @@
 				494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */,
 				497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */,
 				49853769225D7E95008CB391 /* SharedOptionTableViewCell.swift in Sources */,
+				497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */,
 				491169192254563200347310 /* MapIT.xcdatamodeld in Sources */,
 				494EB36422599D1700ECCA72 /* UITableView+Extension.swift in Sources */,
 				49853758225C791B008CB391 /* RecordDescriptionTableViewCell.swift in Sources */,

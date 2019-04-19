@@ -30,7 +30,7 @@ class RouteTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         collectionView.mr_registerCellWithNib(
-            identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
+            identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
     }
 
@@ -57,7 +57,7 @@ extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: RoutePictureCollectionViewCell.self),
+            withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
             for: indexPath
         )
 
