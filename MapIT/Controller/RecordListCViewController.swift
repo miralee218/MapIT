@@ -45,10 +45,7 @@ class RecordListCViewController: PullUpController {
     public var landscapeFrame: CGRect = .zero
 
     var travel: Travel?
-//    var locationPost = [LocationPost]()
-    lazy var isEditting = isEdittingTravel()
     lazy var locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
-//    var picture = [Picture]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,14 +56,8 @@ class RecordListCViewController: PullUpController {
         tableView.separatorStyle = .none
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
-        
-        if isEditting == true {
-            print("有拿到該travel")
-        } else {
-            print("bug-沒拿到該travel")
-        }
 
-        getLocationPost()
+        getEdittingTravel()
 
     }
 
@@ -103,9 +94,9 @@ class RecordListCViewController: PullUpController {
                            completion: completion)
         }
     }
-    
-    func isEdittingTravel() -> Bool {
+    func getEdittingTravel() {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
         let isEditting = "1"
         fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
         fetchRequest.fetchLimit = 0
@@ -115,36 +106,33 @@ class RecordListCViewController: PullUpController {
             if count == 0 {
                 // no matching object
                 print("no present")
-                return false
+
             } else if count == 1 {
                 // at least one matching object exists
                 let edittingTravel = try? context.fetch(fetchRequest).first
                 self.travel = edittingTravel
                 print("only:\(count) continue editing...")
-                return true
+
             } else {
                 print("matching items found:\(count)")
-                return false
-
             }
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        return false
+
     }
     
-    func getLocationPost() {
-//        //Core Data - Fetch Data
-//        let fetchRequest: NSFetchRequest<LocationPost> = LocationPost.fetchRequest()
-//
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: true)]
-//        do {
-//            let locationPost = try CoreDataStack.context.fetch(fetchRequest)
-//            self.locationPost = locationPost
-//        } catch {
-//        }
-//        tableView.reloadData()
+    private func showEditVC(travel: Travel) {
 
+        let vc = UIStoryboard.mapping.instantiateViewController(withIdentifier:
+            String(describing: EditLocationCViewController.self)
+        )
+
+        guard let editVC = vc as? EditLocationCViewController else { return }
+
+        editVC.travel = travel
+
+        show(editVC, sender: nil)
     }
 
 }
@@ -171,14 +159,17 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
                 let vc = UIStoryboard.mapping.instantiateViewController(
                     withIdentifier: String(describing: EditLocationCViewController.self))
+                guard let detailVC = vc as? EditLocationCViewController else { return }
 
-                self?.present(vc, animated: true, completion: nil)
+                detailVC.travel = self?.travel
+
+                self?.present(detailVC, animated: true, completion: nil)
             }
 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
                 guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
                 CoreDataStack.delete(removeOrder)
-                self?.getLocationPost()
+                self?.getEdittingTravel()
                 print("Delete Button tapped. Row item value = \(self?.locationPost?[indexPath.row])")
             }
 
@@ -193,7 +184,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
         routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
         routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
-        let formattedDate = FormatDisplay.date(locationPost?[indexPath.row].timestamp)
+        let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
         routeCell.pointRecordTimeLabel.text = formattedDate
         return routeCell
     }

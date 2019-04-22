@@ -11,6 +11,10 @@ import UIKit
 class EditLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var toolBarView: UIView!
+    
+    @IBOutlet weak var postNameTextFeild: UITextField!
+
+    @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var locationNameCollectionView: UICollectionView! {
         didSet {
             locationNameCollectionView.delegate = self
@@ -25,9 +29,16 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     }
 
     var mutableArray = NSMutableArray()
+    var travel: Travel?
+//    lazy var locationPost = self.travel?.locationPosts?.allObjects as? LocationPost
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         toolBarView.layer.cornerRadius = 10
+
+        contentTextView.layer.borderWidth = 1
+        contentTextView.layer.cornerRadius = 4
+        contentTextView.layer.borderColor = UIColor.B5?.cgColor
 
         locationNameCollectionView.mr_registerCellWithNib(
             identifier: String(
@@ -42,6 +53,14 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
             identifier: String(
                 describing: RoutePictureCollectionViewCell.self),
             bundle: nil)
+
+        guard let locationPost = travel?.locationPosts?.allObjects as? [LocationPost],
+              let title = locationPost.first?.title, let content = locationPost.first?.content
+        else {
+            return
+        }
+        postNameTextFeild.text = title
+        contentTextView.text = content
 
     }
 

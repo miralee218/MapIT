@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreData
 
 class RecordDetailViewController: UIViewController {
 
@@ -16,16 +18,22 @@ class RecordDetailViewController: UIViewController {
             tableView.dataSource = self
         }
     }
+    var travel: Travel?
+    lazy var locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
+    var long = [Double]()
+    var lat = [Double]()
+    var startCoordinates: [CLLocationCoordinate2D] = []
+    var endCoordinates: [CLLocationCoordinate2D] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       navigationItem.title = "OwO"
+       navigationItem.title = travel?.title
 
         tableView.separatorStyle = .none
 
         tableView.mr_registerCellWithNib(
-            identifier: String(describing: RecordImageTableViewCell.self), bundle: nil)
+            identifier: String(describing: MapTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(
             identifier: String(describing: RecordDescriptionTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(
@@ -62,9 +70,76 @@ class RecordDetailViewController: UIViewController {
         self.present(sheet, animated: true, completion: nil)
     }
 
+    private func mapRegion(mapView: MKMapView) -> MKCoordinateRegion? {
+        guard
+            let locations = travel?.locations,
+            locations.count > 0
+            else {
+                return nil
+        }
+        let startLatitudes = locations.map { location -> Double in
+            guard let location = location as? ShortRoute else { return 0.0 }
+            lat.append(location.start!.latitude)
+            return location.start!.latitude
+        }
+        let startLongitudes = locations.map { location -> Double in
+            guard let location = location as? ShortRoute else { return 0.0 }
+            long.append(location.self.start!.longitude)
+            return location.start!.longitude
+        }
+        let maxLat = startLatitudes.max()!
+        let minLat = startLatitudes.min()!
+        let maxLong = startLongitudes.max()!
+        let minLong = startLongitudes.min()!
+
+        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
+                                            longitude: (minLong + maxLong) / 2)
+
+        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 4,
+                                    longitudeDelta: (maxLong - minLong) * 4)
+        return MKCoordinateRegion(center: center, span: span)
+
+    }
+    private func loadMap(mapView: MKMapView) {
+        guard
+            let locations = travel?.locations,
+            locations.count > 0,
+            let region = mapRegion(mapView: mapView)
+            else {
+                return
+        }
+
+        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
+            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.start!.latitude,
+                longitude: location.start!.longitude)
+            self.startCoordinates.append(coordinate)
+            return coordinate
+        }
+
+        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
+            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.end!.latitude,
+                longitude: location.start!.longitude)
+            self.endCoordinates.append(coordinate)
+            return coordinate
+        }
+        for coordinate in 0...startCoordinates.count - 1 {
+
+            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
+
+            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+
+        }
+
+        mapView.setRegion(region, animated: true)
+    }
+
 }
 
-extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -76,20 +151,32 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             return 1
         case 2:
-            return 5
+            guard let locations = travel?.locationPosts,
+            locations.count > 0 else {
+                return 0
+            }
+            return locations.count
         default:
             return 0
         }
 
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: RecordImageTableViewCell.self),
+                withIdentifier: String(describing: MapTableViewCell.self),
                 for: indexPath
             )
+            guard let mapCell = cell as? MapTableViewCell else { return cell }
+            mapCell.mapView.delegate = self
+            mapCell.mapView.isZoomEnabled = true
+            mapCell.mapView.isScrollEnabled = true
+            loadMap(mapView: mapCell.mapView)
 
             return cell
 
@@ -98,6 +185,9 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 withIdentifier: String(describing: RecordDescriptionTableViewCell.self),
                 for: indexPath
             )
+            guard let recordCell = cell as? RecordDescriptionTableViewCell else { return cell }
+
+            recordCell.travelContentLabel.text = self.travel?.content
 
             return cell
         case 2:
@@ -125,6 +215,9 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
+                    guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
+                    CoreDataStack.delete(removeOrder)
+                    tableView.reloadData()
                     print("YOU HAVE DELETED YOUR RECORD")
                 }
 
@@ -138,6 +231,10 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 self?.present(sheet, animated: true, completion: nil)
 
             }
+            routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
+            routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
+            let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
+            routeCell.pointRecordTimeLabel.text = formattedDate
 
             return routeCell
 
@@ -159,4 +256,18 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
 
+}
+
+// MARK: - Map View Delegate
+
+extension RecordDetailViewController {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let polyline = overlay as? MKPolyline else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
+        let renderer = MKPolylineRenderer(polyline: polyline)
+        renderer.strokeColor = UIColor.red
+        renderer.lineWidth = 10
+        return renderer
+    }
 }

@@ -76,6 +76,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        reloadView()
         mapView.showsUserLocation = true
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,6 +87,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func reloadView() {
+
         self.checkInButton.alpha = 0
         self.puaseButton.alpha = 0
         self.stopButton.alpha = 0
@@ -286,6 +288,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.saveRun()
         locationManager.stopUpdatingLocation()
         self.initLoaction = nil
+        
 
         if let vc = storyboard?.instantiateViewController(
             withIdentifier: "StoredMapCViewController") as? StoredMapCViewController {
@@ -297,7 +300,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     private func saveRun() {
 
         self.travel?.endTimestamp = Date()
-        self.travel?.isEditting = false
         self.travel?.locations = NSOrderedSet(array: locationList)
         CoreDataStack.saveContext()
 

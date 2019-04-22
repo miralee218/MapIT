@@ -105,6 +105,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="mgc-Jd-RY1" id="K3U-R8-Xua"/>
+                <outlet property="travelContentLabel" destination="NIf-3o-ozA" id="Wsl-Kg-Quj"/>
+                <outlet property="travelNameLabel" destination="3Ap-5l-cfE" id="8Zg-7I-0RI"/>
+                <outlet property="travelTimeLabel" destination="RvL-7x-sOV" id="5CO-Ns-0l6"/>
             </connections>
             <point key="canvasLocation" x="155.07246376811597" y="93.415178571428569"/>
         </tableViewCell>

@@ -20,7 +20,9 @@ class StoredMapCViewController: UIViewController {
             tableView.dataSource = self
         }
     }
-    var travel = [Travel]()
+    @IBOutlet weak var travelNameTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
+    var travel: Travel?
     var long = [Double]()
     var lat = [Double]()
 
@@ -29,37 +31,66 @@ class StoredMapCViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        contentTextView.layer.borderWidth = 1
+        contentTextView.layer.cornerRadius = 4
+        contentTextView.layer.borderColor = UIColor.B5?.cgColor
+
         toolBarView.layer.cornerRadius
             = 10.0
         tableView.separatorStyle = .none
-        tableView.mr_registerCellWithNib(identifier: String(describing: EditArticleTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
 
-        getTravel()
+        getEdittingTravel()
     }
 
     @IBAction func cancelStore(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {
+        saveTravelContent()
         dismiss(animated: true, completion: nil)
 
     }
-    func getTravel() {
-        //Core Data - Fetch Data
+    func getEdittingTravel() {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: true)]
+        let isEditting = "1"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
         do {
-            let travel = try CoreDataStack.context.fetch(fetchRequest)
-            self.travel = travel
-        } catch {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+                print("no present")
 
+            } else if count == 1 {
+                // at least one matching object exists
+                let edittingTravel = try? context.fetch(fetchRequest).first
+                self.travel = edittingTravel
+                print("only:\(count) continue editing...")
+
+            } else {
+                print("matching items found:\(count)")
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
         }
+
     }
 
+    func saveTravelContent() {
+
+        self.travel?.isEditting = false
+        self.travel?.endTimestamp = Date()
+        self.travel?.content = self.contentTextView.text
+        self.travel?.title = self.travelNameTextField.text
+        CoreDataStack.saveContext()
+
+    }
     private func mapRegion(mapView: MKMapView) -> MKCoordinateRegion? {
         guard
-            let locations = travel.first?.locations,
+            let locations = travel?.locations,
             locations.count > 0
             else {
                 return nil
@@ -89,7 +120,7 @@ class StoredMapCViewController: UIViewController {
     }
     private func loadMap(mapView: MKMapView) {
         guard
-            let locations = travel.first?.locations,
+            let locations = travel?.locations,
             locations.count > 0,
             let region = mapRegion(mapView: mapView)
             else {
@@ -132,52 +163,26 @@ class StoredMapCViewController: UIViewController {
 }
 
 extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        default:
-            return 0
-        }
+        return 1
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch  indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: MapTableViewCell.self),
-                for: indexPath
-            )
-            guard let mapCell = cell as? MapTableViewCell else { return cell }
-            mapCell.mapView.delegate = self
-            mapCell.mapView.isZoomEnabled = true
-            mapCell.mapView.isScrollEnabled = true
-            loadMap(mapView: mapCell.mapView)
-            return mapCell
 
-        case 1:
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: EditArticleTableViewCell.self),
-                for: indexPath
-            )
-            return cell
-        default:
-            return UITableViewCell()
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: MapTableViewCell.self),
+            for: indexPath
+        )
+        guard let mapCell = cell as? MapTableViewCell else { return cell }
+        mapCell.mapView.delegate = self
+        mapCell.mapView.isZoomEnabled = true
+        mapCell.mapView.isScrollEnabled = true
+        loadMap(mapView: mapCell.mapView)
+        return mapCell
+
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 400
-        case 1:
-            return 500
-        default:
-            return 0
-        }
+        return view.bounds.height / 2
     }
 }
 

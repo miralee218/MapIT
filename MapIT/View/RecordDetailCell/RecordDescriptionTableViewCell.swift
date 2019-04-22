@@ -10,6 +10,7 @@ import UIKit
 
 class RecordDescriptionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var travelContentLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

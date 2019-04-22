@@ -17,18 +17,17 @@ class RecordTableViewCell: UITableViewCell {
             collectionView.dataSource = self
         }
     }
-    var actionBlock: (() -> Void)?
-//    var pictures = LocationPost
-    var locationPost: LocationPost?
+    @IBOutlet weak var travelNameLabel: UILabel!
+    @IBOutlet weak var travelTimeLabel: UILabel!
+    @IBOutlet weak var travelContentLabel: UILabel!
     
-    var travel = [Travel]()
+    var actionBlock: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
-//        getLocationPost()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,16 +39,6 @@ class RecordTableViewCell: UITableViewCell {
         actionBlock?()
     }
 
-//    func getLocationPost() {
-//        //Core Data - Fetch Data
-//        let fetchRequest: NSFetchRequest<Picture> = Picture.fetchRequest()
-//        do {
-//            let pictures = try CoreDataStack.context.fetch(fetchRequest)
-//            self.pictures = pictures
-//        } catch {
-//        }
-//        collectionView.reloadData()
-//    }
 
 }
 

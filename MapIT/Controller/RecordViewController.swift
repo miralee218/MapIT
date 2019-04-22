@@ -23,8 +23,10 @@ class RecordViewController: UIViewController {
 
         }
     }
-    var travel = [Travel]()
-    let label =  UILabel()
+    @IBOutlet weak var noDataView: UIView!
+
+    var allTravel = [Travel]()
+    lazy var selectedTravel = Travel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class RecordViewController: UIViewController {
         getTravel()
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getTravel()
+    }
 
     func getTravel() {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
@@ -52,12 +58,14 @@ class RecordViewController: UIViewController {
             let count = try context.count(for: fetchRequest)
             if count == 0 {
                 // no matching object
-                view.addSubview(label)
+
+                noDataView.isHidden = false
                 print("no present")
             } else {
                 // at least one matching object exists
                 let edittingTravel = try? context.fetch(fetchRequest)
-                self.travel = edittingTravel!
+                self.allTravel = edittingTravel!
+                noDataView.isHidden = true
                 print("have\(count) travel")
             }
         } catch let error as NSError {
@@ -83,6 +91,7 @@ class RecordViewController: UIViewController {
 
     var searchBySearchBar = false
     @IBAction func searchRecord(_ sender: UIBarButtonItem) {
+        tableView.reloadData()
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search..."
         searchController.searchBar.tintColor = .white
@@ -124,11 +133,30 @@ class RecordViewController: UIViewController {
 
     }
 
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "SegueToRecordDetail" {
+//            guard let controller = segue.destination as? RecordDetailViewController else { return }
+//            controller.travel = self.selectedTravel
+//        }
+//    }
+    private func showDetailVC(travel: Travel) {
+
+        let vc = UIStoryboard.record.instantiateViewController(withIdentifier:
+            String(describing: RecordDetailViewController.self)
+        )
+
+        guard let detailVC = vc as? RecordDetailViewController else { return }
+
+        detailVC.travel = selectedTravel
+
+        show(detailVC, sender: nil)
+    }
+
 }
 
 extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return travel.count
+        return allTravel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,7 +173,11 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                     withIdentifier: String(describing: SharedOptionViewController.self))
                 self?.present(vc, animated: true, completion: nil)
             }
-            let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
+            let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
+                guard let removeOrder = self?.allTravel[indexPath.row] else { return }
+                CoreDataStack.delete(removeOrder)
+                self?.getTravel()
+                tableView.reloadData()
                 print("YOU HAVE DELETED YOUR RECORD")
             }
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -154,6 +186,11 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             sheet.addAction(option1)
             self?.present(sheet, animated: true, completion: nil)
         }
+        recordCell.travelNameLabel.text = allTravel[indexPath.row].title
+        let formattedDate = FormatDisplay.travelDate(allTravel[indexPath.row].createTimestamp)
+        recordCell.travelTimeLabel.text = formattedDate
+        recordCell.travelContentLabel.text = allTravel[indexPath.row].content
+
         return recordCell
     }
 
@@ -162,7 +199,10 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "SegueToRecordDetail", sender: indexPath)
+        self.selectedTravel = allTravel[indexPath.row]
+        showDetailVC(travel: selectedTravel)
+
+//        performSegue(withIdentifier: "SegueToRecordDetail", sender: indexPath)
     }
 
 }
