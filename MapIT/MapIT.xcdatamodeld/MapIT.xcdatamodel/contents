@@ -13,12 +13,7 @@
         <attribute name="photo" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="locationPost" inverseEntity="Picture" syncable="YES"/>
         <relationship name="travel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Travel" inverseName="locationPosts" inverseEntity="Travel" syncable="YES"/>
-    </entity>
-    <entity name="Picture" representedClassName="Picture" syncable="YES" codeGenerationType="class">
-        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="locationPost" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationPost" inverseName="pictures" inverseEntity="LocationPost" syncable="YES"/>
     </entity>
     <entity name="ShortRoute" representedClassName="ShortRoute" syncable="YES" codeGenerationType="class">
         <relationship name="end" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" syncable="YES"/>
@@ -36,9 +31,8 @@
     </entity>
     <elements>
         <element name="Location" positionX="-57.46484375" positionY="-17.06640625" width="128" height="105"/>
-        <element name="LocationPost" positionX="84.54296875" positionY="6.609375" width="128" height="163"/>
+        <element name="LocationPost" positionX="84.54296875" positionY="6.609375" width="128" height="150"/>
         <element name="ShortRoute" positionX="-309.265625" positionY="-72.84375" width="128" height="90"/>
-        <element name="Travel" positionX="-269.70703125" positionY="149.5390625" width="128" height="148"/>
-        <element name="Picture" positionX="-127.84765625" positionY="274.5859375" width="128" height="73"/>
+        <element name="Travel" positionX="-269.70703125" positionY="149.5390625" width="128" height="150"/>
     </elements>
 </model>

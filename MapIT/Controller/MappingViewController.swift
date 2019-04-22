@@ -37,7 +37,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var initLoaction: CLLocation?
     private var locationManagerShared = LocationManager.shared
     var travel: Travel?
-    var allTravel = [Travel]()
+
+    lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,7 +62,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonItem.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
 
         mapView.addSubview(buttonItem)
-        let isEditting = isEdittingTravel()
         print(isEditting)
 
         if isEditting == true {
@@ -82,6 +82,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewWillDisappear(true)
         mapView.showsUserLocation = false
 
+        reloadView()
+    }
+
+    func reloadView() {
         self.checkInButton.alpha = 0
         self.puaseButton.alpha = 0
         self.stopButton.alpha = 0
@@ -92,8 +96,16 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.stopButton.center = self.moreButton.center
         self.checkListButton.center = self.moreButton.center
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
-    }
 
+        if self.travel?.isEditting == true {
+            MRProgressHUD.coutinueRecord(view: self.view)
+            recordButton.alpha = 0
+            moreButton.alpha = 1
+        } else {
+            recordButton.alpha = 1
+            moreButton.alpha = 0
+        }
+    }
     private func addPullUpController() {
         let pullUpController = makeSearchViewControllerIfNeeded()
         _ = pullUpController.view // call pullUpController.viewDidLoad()
@@ -164,7 +176,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 return false
             } else if count == 1 {
                 // at least one matching object exists
-                let edittingTravel = allTravel.last
+                let edittingTravel = try? context.fetch(fetchRequest).first
                 self.travel = edittingTravel
                 print("only:\(count) continue editing...")
                 return true
@@ -289,6 +301,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.travel?.locations = NSOrderedSet(array: locationList)
         CoreDataStack.saveContext()
 
+        reloadView()
     }
     // MARK: - View AddLocationCViewController
     private func makeSearchViewControllerIfNeeded() -> RecordListCViewController {

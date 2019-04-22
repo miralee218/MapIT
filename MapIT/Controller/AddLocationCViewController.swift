@@ -41,10 +41,11 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     var mapItemList: [MKMapItem] = []
     let params: [String] = ["bar", "shop", "restaurant", "cinema"]
     var mapView = MKMapView()
-    var travel = [Travel]()
+    var travel: Travel?
     let recordListVC = RecordListCViewController()
     private var locationManager = LocationManager.shared
     var photoSelected = [UIImage]()
+    lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,6 +69,10 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         contentTextView.layer.borderWidth = 1
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor
+
+        if isEditting == true {
+            print("123")
+        }
 
     }
 
@@ -96,6 +101,33 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
             }
         }
     }
+    func isEdittingTravel() -> Bool {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        let isEditting = "1"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
+        do {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+                print("no present")
+                return false
+            } else if count == 1 {
+                // at least one matching object exists
+                let edittingTravel = try? context.fetch(fetchRequest).first
+                self.travel = edittingTravel
+                print("only:\(count) continue editing...")
+                return true
+            } else {
+                print("matching items found:\(count)")
+                return false
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return false
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -112,6 +144,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         print("locations = \(locValue.latitude) \(locValue.longitude)")
 
         let newLocation = LocationPost(context: CoreDataStack.context)
+
         newLocation.timestamp = Date()
         newLocation.title = self.locationName.text
         newLocation.content = self.contentTextView.text
@@ -124,6 +157,8 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
             }
             return
         }
+        newLocation.travel = travel
+        self.travel?.locationPosts?.adding(newLocation)
 
         CoreDataStack.saveContext()
 
@@ -247,4 +282,3 @@ extension AddLocationCViewController: UICollectionViewDelegateFlowLayout {
             return 5
     }
 }
-

@@ -27,7 +27,7 @@
                                 <state key="normal" image="Icons_Checkin"/>
                                 <connections>
                                     <action selector="checkInClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="tNj-Av-7dp"/>
-                                    <segue destination="HoJ-8B-AEu" kind="presentation" identifier="AddLocationCViewController" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="Fqw-mQ-dHD"/>
+                                    <segue destination="HoJ-8B-AEu" kind="presentation" identifier="AddLocationCViewController" id="Fqw-mQ-dHD"/>
                                 </connections>
                             </button>
                             <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-XJ-pP3">
@@ -325,7 +325,7 @@
         <!--Add LocationC View Controller-->
         <scene sceneID="3qk-51-Qdt">
             <objects>
-                <viewController storyboardIdentifier="AddLocationCViewController" modalPresentationStyle="overFullScreen" id="HoJ-8B-AEu" customClass="AddLocationCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationCViewController" modalPresentationStyle="overCurrentContext" id="HoJ-8B-AEu" customClass="AddLocationCViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Guf-mZ-lEV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

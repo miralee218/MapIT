@@ -44,9 +44,11 @@ class RecordListCViewController: PullUpController {
     public var portraitSize: CGSize = .zero
     public var landscapeFrame: CGRect = .zero
 
-    var travel = [Travel]()
-    var locationPost = [LocationPost]()
-    var picture = [Picture]()
+    var travel: Travel?
+//    var locationPost = [LocationPost]()
+    lazy var isEditting = isEdittingTravel()
+    lazy var locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
+//    var picture = [Picture]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +59,15 @@ class RecordListCViewController: PullUpController {
         tableView.separatorStyle = .none
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
+        
+        if isEditting == true {
+            print("有拿到該travel")
+        } else {
+            print("bug-沒拿到該travel")
+        }
 
         getLocationPost()
+
     }
 
     // MARK: - PullUpController
@@ -94,16 +103,48 @@ class RecordListCViewController: PullUpController {
                            completion: completion)
         }
     }
-    func getLocationPost() {
-        //Core Data - Fetch Data
-        let fetchRequest: NSFetchRequest<LocationPost> = LocationPost.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: true)]
+    
+    func isEdittingTravel() -> Bool {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        let isEditting = "1"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
         do {
-            let locationPost = try CoreDataStack.context.fetch(fetchRequest)
-            self.locationPost = locationPost
-        } catch {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+                print("no present")
+                return false
+            } else if count == 1 {
+                // at least one matching object exists
+                let edittingTravel = try? context.fetch(fetchRequest).first
+                self.travel = edittingTravel
+                print("only:\(count) continue editing...")
+                return true
+            } else {
+                print("matching items found:\(count)")
+                return false
+
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
         }
-        tableView.reloadData()
+        return false
+    }
+    
+    func getLocationPost() {
+//        //Core Data - Fetch Data
+//        let fetchRequest: NSFetchRequest<LocationPost> = LocationPost.fetchRequest()
+//
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: true)]
+//        do {
+//            let locationPost = try CoreDataStack.context.fetch(fetchRequest)
+//            self.locationPost = locationPost
+//        } catch {
+//        }
+//        tableView.reloadData()
+
     }
 
 }
@@ -111,7 +152,7 @@ class RecordListCViewController: PullUpController {
 extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locationPost.count
+        return locationPost!.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,10 +176,10 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             }
 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
-                guard let removeOrder = self?.locationPost[indexPath.row] else { return }
+                guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
                 CoreDataStack.delete(removeOrder)
                 self?.getLocationPost()
-                print("Delete Button tapped. Row item value = \(self?.locationPost[indexPath.row])")
+                print("Delete Button tapped. Row item value = \(self?.locationPost?[indexPath.row])")
             }
 
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -150,9 +191,9 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
         }
 
-        routeCell.pointTitleLabel.text = locationPost[indexPath.row].title
-        routeCell.pointDescriptionLabel.text = locationPost[indexPath.row].content
-        let formattedDate = FormatDisplay.date(locationPost[indexPath.row].timestamp)
+        routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
+        routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
+        let formattedDate = FormatDisplay.date(locationPost?[indexPath.row].timestamp)
         routeCell.pointRecordTimeLabel.text = formattedDate
         return routeCell
     }

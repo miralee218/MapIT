@@ -8,6 +8,7 @@
 
 import UIKit
 import FSCalendar
+import CoreData
 
 class RecordViewController: UIViewController {
 
@@ -22,6 +23,9 @@ class RecordViewController: UIViewController {
 
         }
     }
+    var travel = [Travel]()
+    let label =  UILabel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setGradientBackground(
@@ -33,11 +37,33 @@ class RecordViewController: UIViewController {
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
 
+        getTravel()
+
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
+    func getTravel() {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
+        let isEditting = "0"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
+        do {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+                view.addSubview(label)
+                print("no present")
+            } else {
+                // at least one matching object exists
+                let edittingTravel = try? context.fetch(fetchRequest)
+                self.travel = edittingTravel!
+                print("have\(count) travel")
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        tableView.reloadData()
     }
 
     var searchByCalendar = false
@@ -102,7 +128,7 @@ class RecordViewController: UIViewController {
 
 extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return travel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
