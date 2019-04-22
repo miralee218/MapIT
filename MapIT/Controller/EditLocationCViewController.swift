@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
 class EditLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var toolBarView: UIView!
-    
     @IBOutlet weak var postNameTextFeild: UITextField!
 
     @IBOutlet weak var contentTextView: UITextView!
@@ -30,8 +30,12 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
 
     var mutableArray = NSMutableArray()
     var travel: Travel?
-//    lazy var locationPost = self.travel?.locationPosts?.allObjects as? LocationPost
-    
+    lazy var locationPost = self.travel?.locationPosts?.allObjects as? [LocationPost]
+    let params: [String] = ["bar", "shop", "restaurant", "cinema"]
+    var currentLocation: CLLocationCoordinate2D?
+    var places: [MKMapItem] = []
+    var mapItemList: [MKMapItem] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         toolBarView.layer.cornerRadius = 10
@@ -54,13 +58,22 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
                 describing: RoutePictureCollectionViewCell.self),
             bundle: nil)
 
-        guard let locationPost = travel?.locationPosts?.allObjects as? [LocationPost],
-              let title = locationPost.first?.title, let content = locationPost.first?.content
-        else {
-            return
+        guard let title = locationPost?.first?.title,
+            let content = locationPost?.first?.content,
+            let latitude = locationPost?.first?.latitude,
+            let longitude = locationPost?.first?.longitude
+            else {
+                return
         }
         postNameTextFeild.text = title
         contentTextView.text = content
+        currentLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        nearByLocation()
+        if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            //            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
+            layout.itemSize = UICollectionViewFlowLayout.automaticSize
+            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
 
     }
 
@@ -68,8 +81,39 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
         dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {
+        self.locationPost?.first?.title = self.postNameTextFeild.text
+        self.locationPost?.first?.content = self.contentTextView.text
+        CoreDataStack.saveContext()
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func deleteLocation(_ sender: UIButton) {
+    }
+    
+    func nearByLocation() {
+        let request = MKLocalSearch.Request()
+        
+        request.region = MKCoordinateRegion(center: currentLocation!, latitudinalMeters: 10, longitudinalMeters: 10)
+        for param in params {
+            request.naturalLanguageQuery = param
+            let search = MKLocalSearch(request: request)
+            search.start { [weak self] response, _ in
+                
+                guard let strongSelf = self else { return }
+                
+                guard let response = response else { return }
+                strongSelf.mapItemList = response.mapItems
+                for item in strongSelf.mapItemList {
+                    let annotation = PlaceAnnotation()
+                    annotation.coordinate = item.placemark.location!.coordinate
+                    annotation.title = item.name
+                    annotation.url = item.url
+                    annotation.detailAddress = item.placemark.title
+                    strongSelf.places.append(item)
+                }
+                strongSelf.places.shuffle()
+                strongSelf.locationNameCollectionView.reloadData()
+            }
+        }
     }
 
 }
@@ -78,7 +122,7 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.locationNameCollectionView {
 
-            return 4
+            return places.count
 
         } else {
 
@@ -98,7 +142,13 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
                 for: indexPath
             )
 
-            return cell
+//            return cell
+            guard let placeCell = cell as? AddLocationNameCollectionViewCell else { return cell }
+            placeCell.locationNameLabel.text = places[indexPath.row].name
+            placeCell.actionBlock = { [weak self] in
+                self?.postNameTextFeild.text =  placeCell.locationNameLabel.text
+            }
+            return placeCell
         } else if collectionView == self.photoCollectionView {
 
             if indexPath.row == 0 {

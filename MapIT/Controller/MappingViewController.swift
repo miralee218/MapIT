@@ -27,7 +27,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBOutlet weak var puaseShadowView: UIView!
 
     let locationManager = CLLocationManager()
-    var currentLocation: CLLocationCoordinate2D?
     var checkInButtonCenter: CGPoint!
     var puaseButtonCenter: CGPoint!
     var stopButtonCenter: CGPoint!

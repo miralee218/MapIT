@@ -39,8 +39,6 @@ class RecordListCViewController: PullUpController {
         }
     }
 
-    private var locations = [(title: String, location: CLLocationCoordinate2D)]()
-
     public var portraitSize: CGSize = .zero
     public var landscapeFrame: CGRect = .zero
 
@@ -60,9 +58,7 @@ class RecordListCViewController: PullUpController {
         getEdittingTravel()
 
     }
-
     // MARK: - PullUpController
-
     override var pullUpControllerPreferredSize: CGSize {
         return portraitSize
     }
@@ -88,6 +84,7 @@ class RecordListCViewController: PullUpController {
                            options: .curveEaseInOut,
                            animations: animations,
                            completion: completion)
+            tableView.reloadData()
         default:
             UIView.animate(withDuration: 0.3,
                            animations: animations,
@@ -119,9 +116,10 @@ class RecordListCViewController: PullUpController {
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        tableView.reloadData()
 
     }
-    
+
     private func showEditVC(travel: Travel) {
 
         let vc = UIStoryboard.mapping.instantiateViewController(withIdentifier:
