@@ -41,6 +41,13 @@ struct FormatDisplay {
         formatter.dateStyle = .long
         return formatter.string(from: timestamp)
     }
+    static func storeDate(_ timestamp: Date?) -> String {
+        guard let timestamp = timestamp as Date? else { return "" }
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.MM.dd.HH.mm.ss-"
+        return formatter.string(from: timestamp)
+    }
     static func travelDate(_ timestamp: Date?) -> String {
         guard let timestamp = timestamp as Date? else { return "" }
 

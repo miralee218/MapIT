@@ -56,5 +56,7 @@ class CoreDataStack {
         context.delete(object)
         saveContext()
     }
+//    let fileManager = FileManager.default
+//    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 
 }

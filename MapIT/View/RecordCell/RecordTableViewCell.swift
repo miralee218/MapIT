@@ -20,7 +20,6 @@ class RecordTableViewCell: UITableViewCell {
     @IBOutlet weak var travelNameLabel: UILabel!
     @IBOutlet weak var travelTimeLabel: UILabel!
     @IBOutlet weak var travelContentLabel: UILabel!
-    
     var actionBlock: (() -> Void)?
 
     override func awakeFromNib() {
