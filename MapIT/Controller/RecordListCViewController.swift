@@ -43,7 +43,7 @@ class RecordListCViewController: PullUpController {
     public var landscapeFrame: CGRect = .zero
 
     var travel: Travel?
-    lazy var locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
+    lazy var locationPost = (travel?.locationPosts?.allObjects as? [LocationPost])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,10 @@ class RecordListCViewController: PullUpController {
 
         getEdittingTravel()
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     // MARK: - PullUpController
     override var pullUpControllerPreferredSize: CGSize {
@@ -120,24 +124,12 @@ class RecordListCViewController: PullUpController {
 
     }
 
-    private func showEditVC(travel: Travel) {
-
-        let vc = UIStoryboard.mapping.instantiateViewController(withIdentifier:
-            String(describing: EditLocationCViewController.self)
-        )
-
-        guard let editVC = vc as? EditLocationCViewController else { return }
-
-        editVC.travel = travel
-
-        show(editVC, sender: nil)
-    }
-
 }
 
 extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return locationPost!.count
     }
 
@@ -157,11 +149,11 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
                 let vc = UIStoryboard.mapping.instantiateViewController(
                     withIdentifier: String(describing: EditLocationCViewController.self))
-                guard let detailVC = vc as? EditLocationCViewController else { return }
+                guard let editVC = vc as? EditLocationCViewController else { return }
 
-                detailVC.travel = self?.travel
+                editVC.seletedPost = self?.locationPost?[indexPath.row]
 
-                self?.present(detailVC, animated: true, completion: nil)
+                self?.present(editVC, animated: true, completion: nil)
             }
 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in

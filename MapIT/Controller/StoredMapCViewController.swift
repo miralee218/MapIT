@@ -40,6 +40,13 @@ class StoredMapCViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
 
+//        guard let titleName = travel?.title,
+//            let content = travel?.content else {
+//                return
+//        }
+//        travelNameTextField.text = titleName
+//        contentTextView.text = content
+
         getEdittingTravel()
     }
 

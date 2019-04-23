@@ -45,6 +45,7 @@ class RecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getTravel()
+        tableView.reloadData()
     }
 
     func getTravel() {
@@ -133,12 +134,6 @@ class RecordViewController: UIViewController {
 
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "SegueToRecordDetail" {
-//            guard let controller = segue.destination as? RecordDetailViewController else { return }
-//            controller.travel = self.selectedTravel
-//        }
-//    }
     private func showDetailVC(travel: Travel) {
 
         let vc = UIStoryboard.record.instantiateViewController(withIdentifier:
@@ -202,7 +197,6 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
         self.selectedTravel = allTravel[indexPath.row]
         showDetailVC(travel: selectedTravel)
 
-//        performSegue(withIdentifier: "SegueToRecordDetail", sender: indexPath)
     }
 
 }

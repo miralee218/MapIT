@@ -151,12 +151,12 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         newLocation.latitude = locValue.latitude
         newLocation.longitude = locValue.longitude
 
-        guard photoSelected.count <= 0 else {
-            for picture in 0...photoSelected.count - 1 {
-                newLocation.photo = photoSelected[picture]
-            }
-            return
-        }
+//        guard photoSelected.count <= 0 else {
+//            for picture in 0...photoSelected.count - 1 {
+//                newLocation.photo = photoSelected[picture]
+//            }
+//            return
+//        }
         newLocation.travel = travel
         self.travel?.locationPosts?.adding(newLocation)
 

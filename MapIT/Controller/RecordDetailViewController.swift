@@ -40,7 +40,6 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
     }
-
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
@@ -51,9 +50,12 @@ class RecordDetailViewController: UIViewController {
         let option3 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
 
             let vc = UIStoryboard.mapping.instantiateViewController(
-                withIdentifier: String(describing: StoredMapCViewController.self))
+                withIdentifier: String(describing: EditTravelCViewController.self))
 
-            self?.present(vc, animated: true, completion: nil)
+            guard let editTravelVC = vc as? EditTravelCViewController else { return }
+            editTravelVC.travel = self?.travel
+            self?.present(editTravelVC, animated: true, completion: nil)
+
         }
 
         let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
@@ -211,7 +213,9 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                     let vc = UIStoryboard.mapping.instantiateViewController(
                         withIdentifier: String(describing: EditLocationCViewController.self))
 
-                    self?.present(vc, animated: true, completion: nil)
+                    guard let editVC = vc as? EditLocationCViewController else { return }
+                    editVC.seletedPost = self?.locationPost?[indexPath.row]
+                    self?.present(editVC, animated: true, completion: nil)
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in

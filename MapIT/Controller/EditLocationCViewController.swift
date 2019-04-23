@@ -35,6 +35,7 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     var currentLocation: CLLocationCoordinate2D?
     var places: [MKMapItem] = []
     var mapItemList: [MKMapItem] = []
+    var seletedPost: LocationPost?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,17 +59,14 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
                 describing: RoutePictureCollectionViewCell.self),
             bundle: nil)
 
-        guard let title = locationPost?.first?.title,
-            let content = locationPost?.first?.content,
-            let latitude = locationPost?.first?.latitude,
-            let longitude = locationPost?.first?.longitude
+        guard let latitude = seletedPost?.latitude,
+            let longitude = seletedPost?.longitude
             else {
                 return
         }
-        postNameTextFeild.text = title
-        contentTextView.text = content
+        postNameTextFeild.text = seletedPost?.title
+        contentTextView.text = seletedPost?.content
         currentLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        nearByLocation()
         if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             //            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
             layout.itemSize = UICollectionViewFlowLayout.automaticSize
@@ -76,30 +74,34 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
         }
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nearByLocation()
+    }
 
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {
-        self.locationPost?.first?.title = self.postNameTextFeild.text
-        self.locationPost?.first?.content = self.contentTextView.text
+        self.seletedPost?.title = self.postNameTextFeild.text
+        self.seletedPost?.content = self.contentTextView.text
         CoreDataStack.saveContext()
         dismiss(animated: true, completion: nil)
     }
     @IBAction func deleteLocation(_ sender: UIButton) {
     }
-    
+
     func nearByLocation() {
         let request = MKLocalSearch.Request()
-        
+
         request.region = MKCoordinateRegion(center: currentLocation!, latitudinalMeters: 10, longitudinalMeters: 10)
         for param in params {
             request.naturalLanguageQuery = param
             let search = MKLocalSearch(request: request)
             search.start { [weak self] response, _ in
-                
+
                 guard let strongSelf = self else { return }
-                
+
                 guard let response = response else { return }
                 strongSelf.mapItemList = response.mapItems
                 for item in strongSelf.mapItemList {
@@ -142,7 +144,6 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
                 for: indexPath
             )
 
-//            return cell
             guard let placeCell = cell as? AddLocationNameCollectionViewCell else { return cell }
             placeCell.locationNameLabel.text = places[indexPath.row].name
             placeCell.actionBlock = { [weak self] in

@@ -38,8 +38,6 @@ class RecordTableViewCell: UITableViewCell {
     @IBAction func moreOption(_ sender: UIButton) {
         actionBlock?()
     }
-
-
 }
 
 extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
