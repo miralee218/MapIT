@@ -160,7 +160,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                 guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
                 CoreDataStack.delete(removeOrder)
                 self?.getEdittingTravel()
-                print("Delete Button tapped. Row item value = \(self?.locationPost?[indexPath.row])")
+                print("Delete Button tapped. Row item value = \(String(describing: self?.locationPost?[indexPath.row]))")
             }
 
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -174,6 +174,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
         routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
         routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
+
         let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
         routeCell.pointRecordTimeLabel.text = formattedDate
         return routeCell

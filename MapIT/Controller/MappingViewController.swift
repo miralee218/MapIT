@@ -157,9 +157,16 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         MRProgressHUD.startRecord(view: self.view)
         recordButton.alpha = 0
         moreButton.alpha = 1
-
-        startNewRun()
-        locationManager.startUpdatingLocation()
+        DispatchQueue.global().async {
+            self.startNewRun()
+            self.locationManager.startUpdatingLocation()
+        }
+//        MRProgressHUD.startRecord(view: self.view)
+//        recordButton.alpha = 0
+//        moreButton.alpha = 1
+//
+//        startNewRun()
+//        locationManager.startUpdatingLocation()
 
     }
 
@@ -243,19 +250,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func checkInClicked(_ sender: UIButton) {
-//        performSegue(withIdentifier: "AddLocationCViewController", sender: sender)
         if let vc = storyboard?.instantiateViewController(
             withIdentifier: "AddLocationCViewController") as? AddLocationCViewController {
             vc.mapView = self.mapView
             present(vc, animated: true, completion: nil)
         }
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "AddLocationCViewController" {
-//            guard let controller = segue.destination as? AddLocationCViewController else { return }
-//            controller.mapView = self.mapView
-//        }
-//    }
+
     @IBAction func puaseClicked(_ sender: UIButton) {
         if sender.currentImage == UIImage(named: ImageAsset.Icons_Puase.rawValue)! {
             self.puaseShadowView.isHidden = false

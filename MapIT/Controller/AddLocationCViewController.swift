@@ -46,8 +46,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     private var locationManager = LocationManager.shared
     var photoSelected = [UIImage]()
     lazy var isEditting = isEdittingTravel()
-    var imageFilePath = [String?]()
-    var imageIndex:String = ""
+    var imageFilePath = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -159,7 +158,25 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 //            }
 //            return
 //        }
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 
+        // create image data and write to filePath
+        do {
+            for index in 0...self.photoSelected.count - 1 {
+                if let seletedImage = photoSelected[index].pngData() {
+                    guard let filePath =
+                        documentsURL?.appendingPathComponent("\(String(Date().timeIntervalSince1970)).png") else {
+                        return
+                    }
+                    try seletedImage.write(to: filePath, options: .atomic)
+                    imageFilePath.append(filePath.path)
+                }
+            }
+        } catch {
+            print("couldn't wirte image")
+        }
+        newLocation.photo = imageFilePath
         newLocation.travel = travel
         self.travel?.locationPosts?.adding(newLocation)
 
@@ -168,7 +185,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     }
 
     @IBAction func cancelAdd(_ sender: UIButton) {
-        
+
         dismiss(animated: true, completion: nil)
     }
 
@@ -239,40 +256,8 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                 guard self.photoSelected.count > 0  else { return photoCell }
                 photoCell.photoImageView.image = self.photoSelected[indexPath.row - 1]
 
-                self.imageIndex = String(indexPath.row - 1)
-                let fileManager = FileManager.default
-                let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-                let documentPath = documentsURL?.path
-
-                guard let filePath = documentsURL?.appendingPathComponent("\(travel?.createTimestamp)\(String(imageIndex)).png") else {
-                    return cell
-                }
-                print(filePath.path)
-                //check for existing image data
-                do {
-                    let files = try fileManager.contentsOfDirectory(atPath: "\(String(describing: documentPath))")
-
-                    for file in files {
-                        if "\(String(describing: documentPath))/\(file)" == filePath.path {
-                            try fileManager.removeItem(atPath: filePath.path)
-                        }
-                    }
-                } catch {
-                    print("Could not add image")
-                }
-                // create image data and write to filePath
-                do {
-                    if let seletedImage = self.photoSelected[indexPath.row - 1].pngData() {
-                        try seletedImage.write(to: filePath, options: .atomic)
-                    }
-
-                } catch {
-                    print("couldn't wirte image")
-                }
-
                 photoCell.actionBlock = {[weak self] in
                     self?.photoSelected.remove(at: indexPath.row - 1)
-
                     self?.pictureCollectionView.reloadData()
                 }
                 return photoCell
