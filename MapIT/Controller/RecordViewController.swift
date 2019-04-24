@@ -148,6 +148,37 @@ class RecordViewController: UIViewController {
     }
 
 }
+extension RecordViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(date)
+        let date = date.toLocalTime()
+        print(date)
+    }
+}
+extension Date {
+    // Convert UTC (or GMT) to local time
+
+    func toLocalTime() -> Date {
+
+        let timezone = TimeZone.current
+
+        let seconds = TimeInterval(timezone.secondsFromGMT(for: self))
+
+        return Date(timeInterval: seconds, since: self)
+
+    }
+    // Convert local time to UTC (or GMT)
+    func toGlobalTime() -> Date {
+
+        let timezone = TimeZone.current
+
+        let seconds = -TimeInterval(timezone.secondsFromGMT(for: self))
+
+        return Date(timeInterval: seconds, since: self)
+
+    }
+
+}
 
 extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -162,21 +162,31 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 
         // create image data and write to filePath
-        do {
-            for index in 0...self.photoSelected.count - 1 {
-                if let seletedImage = photoSelected[index].pngData() {
-                    guard let filePath =
-                        documentsURL?.appendingPathComponent("\(String(Date().timeIntervalSince1970)).png") else {
-                        return
+        if photoSelected.count > 0 {
+            do {
+                for index in 0...self.photoSelected.count - 1 {
+                    if let seletedImage = photoSelected[index].pngData() {
+
+                        let date = Int(Date().timeIntervalSince1970 * 1000.0)
+
+                        let path = "\(String(date)).png"
+
+                        guard let filePath =
+                            documentsURL?.appendingPathComponent(path) else {
+                                return
+                        }
+                        try seletedImage.write(to: filePath, options: .atomic)
+                        imageFilePath.append(path)
                     }
-                    try seletedImage.write(to: filePath, options: .atomic)
-                    imageFilePath.append(filePath.path)
                 }
+            } catch {
+                print("couldn't wirte image")
             }
-        } catch {
-            print("couldn't wirte image")
+            newLocation.photo = imageFilePath
+        } else {
+            newLocation.photo = nil
         }
-        newLocation.photo = imageFilePath
+
         newLocation.travel = travel
         self.travel?.locationPosts?.adding(newLocation)
 

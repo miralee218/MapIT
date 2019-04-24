@@ -16,8 +16,13 @@ class RouteTableViewCell: UITableViewCell {
     @IBOutlet weak var pointDescriptionLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     var actionBlock: (() -> Void)?
-    var editLocation: (() -> Void)?
-    var locationPost = [LocationPost]()
+
+    var locationPost = LocationPost() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
 
@@ -34,18 +39,6 @@ class RouteTableViewCell: UITableViewCell {
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
-        getLocationPost()
-    }
-    func getLocationPost() {
-        //Core Data - Fetch Data
-        let fetchRequest: NSFetchRequest<LocationPost> = LocationPost.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(LocationPost.timestamp), ascending: true)]
-        do {
-            let locationPost = try CoreDataStack.context.fetch(fetchRequest)
-            self.locationPost = locationPost
-        } catch {
-        }
-        collectionView.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -63,11 +56,10 @@ class RouteTableViewCell: UITableViewCell {
 
 extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard let count = locationPost[section].photo?.count else {
-//            return 0
-//        }
-//        return count
-        return 5
+        guard let count = locationPost.photo?.count else {
+            return 0
+        }
+        return count
     }
 
     func collectionView(
@@ -78,13 +70,28 @@ extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
             withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
             for: indexPath
         )
-//        guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
-//            guard let photo = locationPost[indexPath.item].photo else { return cell }
-//            photoCell.photoImageView.image = UIImage(data: photo, scale: 1.0)
-//
-//        return photoCell
 
-            return cell
+            guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
+
+            guard let photo = locationPost.photo?[indexPath.item]  else {
+
+                photoCell.photoImageView.image = nil
+
+                return photoCell
+            }
+
+            let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+            let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+            let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+
+            if let dirPath = paths.first {
+                let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photo)
+                let image    = UIImage(contentsOfFile: imageURL.path)
+                photoCell.photoImageView.image = image
+                // Do whatever you want with the image
+            }
+
+            return photoCell
 
     }
 }

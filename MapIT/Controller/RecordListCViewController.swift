@@ -88,7 +88,7 @@ class RecordListCViewController: PullUpController {
                            options: .curveEaseInOut,
                            animations: animations,
                            completion: completion)
-            tableView.reloadData()
+//            tableView.reloadData()
         default:
             UIView.animate(withDuration: 0.3,
                            animations: animations,
@@ -149,7 +149,13 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
                 let vc = UIStoryboard.mapping.instantiateViewController(
                     withIdentifier: String(describing: EditLocationCViewController.self))
+
                 guard let editVC = vc as? EditLocationCViewController else { return }
+
+                editVC.saveHandler = {
+
+                    self?.tableView.reloadData()
+                }
 
                 editVC.seletedPost = self?.locationPost?[indexPath.row]
 
@@ -157,10 +163,18 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             }
 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
-                guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
+
+                print("Delete Button tapped. Row item value =\(String(describing: self?.locationPost?[indexPath.row]))")
+
+                guard let removeOrder = self?.locationPost?[indexPath.row]
+                    else { return }
+
                 CoreDataStack.delete(removeOrder)
-                self?.getEdittingTravel()
-                print("Delete Button tapped. Row item value = \(String(describing: self?.locationPost?[indexPath.row]))")
+
+                self?.locationPost?.remove(at: indexPath.row)
+
+                tableView.reloadData()
+
             }
 
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -174,7 +188,10 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
         routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
         routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
-
+        guard let currentLocationPost = self.locationPost?[indexPath.row] else {
+            return cell
+        }
+        routeCell.locationPost = currentLocationPost
         let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
         routeCell.pointRecordTimeLabel.text = formattedDate
         return routeCell

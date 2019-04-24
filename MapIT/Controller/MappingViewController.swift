@@ -50,10 +50,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         puaseButton.center = moreButton.center
         stopButton.center = moreButton.center
         checkListButton.center = moreButton.center
+
         locationService()
 
         setupLayout()
-        //back current location
 
         let buttonItem = MKUserTrackingButton(mapView: mapView)
         buttonItem.tintColor = UIColor.StartPink
@@ -154,19 +154,19 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func addRecordClick(_ sender: UIButton) {
-        MRProgressHUD.startRecord(view: self.view)
-        recordButton.alpha = 0
-        moreButton.alpha = 1
-        DispatchQueue.global().async {
-            self.startNewRun()
-            self.locationManager.startUpdatingLocation()
-        }
 //        MRProgressHUD.startRecord(view: self.view)
 //        recordButton.alpha = 0
 //        moreButton.alpha = 1
-//
-//        startNewRun()
-//        locationManager.startUpdatingLocation()
+//        DispatchQueue.global().async {
+//            self.startNewRun()
+//            self.locationManager.startUpdatingLocation()
+//        }
+        MRProgressHUD.startRecord(view: self.view)
+        recordButton.alpha = 0
+        moreButton.alpha = 1
+
+        startNewRun()
+        locationManager.startUpdatingLocation()
 
     }
 

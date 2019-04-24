@@ -14,6 +14,8 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var postNameTextFeild: UITextField!
 
+    var saveHandler: ( () -> Void )?
+
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var locationNameCollectionView: UICollectionView! {
         didSet {
@@ -86,6 +88,7 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
         self.seletedPost?.title = self.postNameTextFeild.text
         self.seletedPost?.content = self.contentTextView.text
         CoreDataStack.saveContext()
+        saveHandler?()
         dismiss(animated: true, completion: nil)
     }
     @IBAction func deleteLocation(_ sender: UIButton) {
