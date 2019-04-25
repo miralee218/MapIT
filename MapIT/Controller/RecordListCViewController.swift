@@ -56,11 +56,12 @@ class RecordListCViewController: PullUpController {
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
         getEdittingTravel()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadRecordList), name: Notification.Name("reloadRecordList"), object: nil)
 
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
+    @objc func reloadRecordList() {
+        getEdittingTravel()
+        self.tableView.reloadData()
     }
     // MARK: - PullUpController
     override var pullUpControllerPreferredSize: CGSize {
@@ -88,7 +89,6 @@ class RecordListCViewController: PullUpController {
                            options: .curveEaseInOut,
                            animations: animations,
                            completion: completion)
-//            tableView.reloadData()
         default:
             UIView.animate(withDuration: 0.3,
                            animations: animations,
@@ -172,6 +172,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                 CoreDataStack.delete(removeOrder)
 
                 self?.locationPost?.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
 
                 tableView.reloadData()
 

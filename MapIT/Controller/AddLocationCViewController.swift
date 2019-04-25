@@ -136,8 +136,8 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
-
         saveLocation()
+        NotificationCenter.default.post(name: .reloadRecordList, object: nil)
         dismiss(animated: true, completion: nil)
     }
     private func saveLocation() {
@@ -152,12 +152,6 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         newLocation.latitude = locValue.latitude
         newLocation.longitude = locValue.longitude
 
-//        guard photoSelected.count <= 0 else {
-//            for picture in 0...photoSelected.count - 1 {
-//                newLocation.photo = photoSelected[picture]
-//            }
-//            return
-//        }
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 
@@ -313,4 +307,7 @@ extension AddLocationCViewController: UICollectionViewDelegateFlowLayout {
         -> CGFloat {
             return 5
     }
+}
+extension Notification.Name {
+    static let reloadRecordList = Notification.Name("reloadRecordList")
 }

@@ -14,8 +14,6 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var postNameTextFeild: UITextField!
 
-    var saveHandler: ( () -> Void )?
-
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var locationNameCollectionView: UICollectionView! {
         didSet {
@@ -30,7 +28,6 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
         }
     }
 
-    var mutableArray = NSMutableArray()
     var travel: Travel?
     lazy var locationPost = self.travel?.locationPosts?.allObjects as? [LocationPost]
     let params: [String] = ["bar", "shop", "restaurant", "cinema"]
@@ -38,7 +35,10 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     var places: [MKMapItem] = []
     var mapItemList: [MKMapItem] = []
     var seletedPost: LocationPost?
+    var saveHandler: (() -> Void)?
 
+    var imageFilePath = [String]()
+    var totalPhoto = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
         toolBarView.layer.cornerRadius = 10
@@ -75,6 +75,19 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
             layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
 
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+
+        guard let photos = seletedPost?.photo else { return }
+        if let dirPath = paths.first {
+            for photo in 0...photos.count - 1 {
+                let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photos[photo])
+                let image    = UIImage(contentsOfFile: imageURL.path)!
+                totalPhoto.append(image)
+            }
+
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -87,6 +100,36 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     @IBAction func store(_ sender: UIButton) {
         self.seletedPost?.title = self.postNameTextFeild.text
         self.seletedPost?.content = self.contentTextView.text
+
+        let fileManager = FileManager.default
+        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+
+        // create image data and write to filePath
+        if totalPhoto.count > 0 {
+            do {
+                for index in 0...self.totalPhoto.count - 1 {
+                    if let seletedImage = totalPhoto[index].pngData() {
+
+                        let date = Int(Date().timeIntervalSince1970 * 1000.0)
+
+                        let path = "\(String(date)).png"
+
+                        guard let filePath =
+                            documentsURL?.appendingPathComponent(path) else {
+                                return
+                        }
+                        try seletedImage.write(to: filePath, options: .atomic)
+                        imageFilePath.append(path)
+                    }
+                }
+            } catch {
+                print("couldn't wirte image")
+            }
+            self.seletedPost?.photo = imageFilePath
+        } else {
+            self.seletedPost?.photo = nil
+        }
+
         CoreDataStack.saveContext()
         saveHandler?()
         dismiss(animated: true, completion: nil)
@@ -131,7 +174,11 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
 
         } else {
 
-            return mutableArray.count + 1
+//            guard let count = seletedPost?.photo?.count else {
+//                return 1
+//            }
+//            return count + 1
+            return totalPhoto.count + 1
 
         }
     }
@@ -183,11 +230,21 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
                     withReuseIdentifier: String(describing: RoutePictureCollectionViewCell.self),
                     for: indexPath
                 )
+                guard let photoCell = cell as? RoutePictureCollectionViewCell else { return cell }
 
-                guard let photoCell = cell as? RoutePictureCollectionViewCell else {return cell}
+                guard totalPhoto.count > 0 else {
 
-                guard self.mutableArray.count > 0  else { return photoCell }
-                photoCell.photoImageView.image = self.mutableArray[indexPath.row - 1] as? UIImage
+                    photoCell.photoImageView.image = nil
+
+                    return photoCell
+                }
+
+                photoCell.photoImageView.image = totalPhoto[indexPath.row - 1]
+
+                photoCell.actionBlock = {[weak self] in
+                    self?.totalPhoto.remove(at: indexPath.row - 1)
+                    self?.photoCollectionView.reloadData()
+                }
 
                 return photoCell
 
@@ -221,7 +278,7 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        mutableArray.add(image)
+        totalPhoto.append(image)
         self.photoCollectionView.reloadData()
         picker.dismiss(animated: true, completion: nil)
     }
