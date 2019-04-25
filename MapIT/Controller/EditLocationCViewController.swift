@@ -38,6 +38,7 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     var saveHandler: (() -> Void)?
 
     var imageFilePath = [String]()
+    var originPhoto = [URL]()
     var totalPhoto = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +82,14 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
 
         guard let photos = seletedPost?.photo else { return }
         if let dirPath = paths.first {
-            for photo in 0...photos.count - 1 {
-                let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photos[photo])
-                let image    = UIImage(contentsOfFile: imageURL.path)!
-                totalPhoto.append(image)
+            if photos.count > 0 {
+                for photo in 0...photos.count - 1 {
+                    let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photos[photo])
+                    let image    = UIImage(contentsOfFile: imageURL.path)!
+                    originPhoto.append(imageURL)
+                    totalPhoto.append(image)
+                }
             }
-
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -128,6 +131,14 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
             self.seletedPost?.photo = imageFilePath
         } else {
             self.seletedPost?.photo = nil
+        }
+        if originPhoto.count > 0 {
+            for photo in 0...originPhoto.count - 1 {
+                do {
+                    try fileManager.removeItem(at: originPhoto[photo])
+                } catch {
+                }
+            }
         }
 
         CoreDataStack.saveContext()
@@ -173,11 +184,7 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
             return places.count
 
         } else {
-
-//            guard let count = seletedPost?.photo?.count else {
-//                return 1
-//            }
-//            return count + 1
+            
             return totalPhoto.count + 1
 
         }

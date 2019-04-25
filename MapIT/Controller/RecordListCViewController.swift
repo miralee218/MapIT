@@ -56,11 +56,14 @@ class RecordListCViewController: PullUpController {
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
         getEdittingTravel()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadRecordList), name: Notification.Name("reloadRecordList"), object: nil)
-
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadRecordList),
+                                               name: Notification.Name("reloadRecordList"),
+                                               object: nil)
     }
     @objc func reloadRecordList() {
         getEdittingTravel()
+        self.locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
         self.tableView.reloadData()
     }
     // MARK: - PullUpController
@@ -168,6 +171,23 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
                 guard let removeOrder = self?.locationPost?[indexPath.row]
                     else { return }
+                let fileManager = FileManager.default
+                let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+
+                guard let totalPhoto = self?.locationPost?[indexPath.row].photo, totalPhoto.count <= 0 else {
+                    CoreDataStack.delete(removeOrder)
+                    self?.locationPost?.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadData()
+                    return
+                }
+
+                for photo in 0...totalPhoto.count - 1 {
+                    do {
+                        try fileManager.removeItem(at: (documentsURL?.appendingPathComponent(totalPhoto[photo]))!)
+                    } catch {
+                    }
+                }
 
                 CoreDataStack.delete(removeOrder)
 

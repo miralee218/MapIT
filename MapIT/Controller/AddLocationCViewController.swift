@@ -281,9 +281,9 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                 print("selected image is nil")
                 return
         }
-        // resize our selected image
-        let resizedImage = image.convert(toSize: CGSize(width: 120.0, height: 90.0), scale: UIScreen.main.scale)
-        photoSelected.append(resizedImage)
+//        // resize our selected image
+//        let resizedImage = image.convert(toSize: CGSize(width: 120.0, height: 90.0), scale: UIScreen.main.scale)
+        photoSelected.append(image)
         self.pictureCollectionView.reloadData()
         picker.dismiss(animated: true, completion: nil)
     }
