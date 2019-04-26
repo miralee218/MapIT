@@ -8,10 +8,22 @@
 
 import MBProgressHUD
 
+class MRUIProgressHUD: MBProgressHUD {
+    
+    override var areDefaultMotionEffectsEnabled: Bool {
+        get {
+            return false
+        }
+        set {
+            
+        }
+    }
+}
+
 class MRProgressHUD {
 
     static func startRecord(view: UIView) {
-        let popView = MBProgressHUD.showAdded(to: view, animated: true)
+        let popView = MRUIProgressHUD.showAdded(to: view, animated: true)
         popView.mode = MBProgressHUDMode.customView
         popView.customView = UIImageView(image: UIImage(named: ImageAsset.Icons_Walking.rawValue))
         popView.label.text = "開始紀錄"
@@ -21,7 +33,8 @@ class MRProgressHUD {
         popView.hide(animated: true, afterDelay: 1.5)
     }
     static func coutinueRecord(view: UIView) {
-        let popView = MBProgressHUD.showAdded(to: view, animated: true)
+        
+        let popView = MRUIProgressHUD.showAdded(to: view, animated: true)
         popView.mode = MBProgressHUDMode.customView
         popView.customView = UIImageView(image: UIImage(named: ImageAsset.Icons_Walking.rawValue))
         popView.label.text = "繼續紀錄"

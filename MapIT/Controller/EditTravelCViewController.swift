@@ -14,6 +14,7 @@ class EditTravelCViewController: UIViewController {
     @IBOutlet weak var contentTextView: UITextView!
 
     @IBOutlet weak var toolBarView: UIView!
+    var saveHandler: (() -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
         toolBarView.layer.cornerRadius
@@ -40,6 +41,7 @@ class EditTravelCViewController: UIViewController {
         self.travel?.content = self.contentTextView.text
         self.travel?.title = self.travelNameTextField.text
         CoreDataStack.saveContext()
+        saveHandler?()
 
     }
     @IBAction func cancel(_ sender: UIButton) {

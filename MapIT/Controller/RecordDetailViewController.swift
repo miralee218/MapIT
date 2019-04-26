@@ -53,6 +53,10 @@ class RecordDetailViewController: UIViewController {
                 withIdentifier: String(describing: EditTravelCViewController.self))
 
             guard let editTravelVC = vc as? EditTravelCViewController else { return }
+            editTravelVC.saveHandler = {
+                self?.navigationItem.title = self?.travel?.title
+                self?.tableView.reloadData()
+            }
             editTravelVC.travel = self?.travel
             self?.present(editTravelVC, animated: true, completion: nil)
 
@@ -191,7 +195,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
             recordCell.travelContentLabel.text = self.travel?.content
 
-            return cell
+            return recordCell
         case 2:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: RouteTableViewCell.self),
@@ -214,14 +218,23 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                         withIdentifier: String(describing: EditLocationCViewController.self))
 
                     guard let editVC = vc as? EditLocationCViewController else { return }
+
+                    editVC.saveHandler = {
+
+                        self?.tableView.reloadData()
+                    }
+
                     editVC.seletedPost = self?.locationPost?[indexPath.row]
                     self?.present(editVC, animated: true, completion: nil)
+                    
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
                     guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
                     CoreDataStack.delete(removeOrder)
-                    tableView.reloadData()
+
+                    self?.locationPost?.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
                     print("YOU HAVE DELETED YOUR RECORD")
                 }
 
@@ -237,6 +250,10 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
             routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
+            guard let currentLocationPost = self.locationPost?[indexPath.row] else {
+                return cell
+            }
+            routeCell.locationPost = currentLocationPost
             let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
             routeCell.pointRecordTimeLabel.text = formattedDate
 

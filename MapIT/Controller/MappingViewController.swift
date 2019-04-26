@@ -51,8 +51,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         stopButton.center = moreButton.center
         checkListButton.center = moreButton.center
 
-        locationService()
-
         setupLayout()
 
         let buttonItem = MKUserTrackingButton(mapView: mapView)
@@ -64,7 +62,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         print(isEditting)
 
         if isEditting == true {
+            
             MRProgressHUD.coutinueRecord(view: self.view)
+
             recordButton.alpha = 0
             moreButton.alpha = 1
         } else {
@@ -75,13 +75,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        locationService()
         reloadView()
         mapView.showsUserLocation = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         mapView.showsUserLocation = false
-
         reloadView()
     }
 
@@ -99,6 +99,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
 
         if self.travel?.isEditting == true {
+
             MRProgressHUD.coutinueRecord(view: self.view)
             recordButton.alpha = 0
             moreButton.alpha = 1
@@ -132,15 +133,26 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             print("PLease turn on location services or GPS")
         }
-        mapView.delegate = self
-        mapView.mapType = .standard
-        mapView.userTrackingMode = MKUserTrackingMode.follow
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
-        mapView.showsUserLocation = true
-        if let coor = mapView.userLocation.location?.coordinate {
-            mapView.setCenter(coor, animated: true)
+        DispatchQueue.main.async {
+            self.mapView.delegate = self
+            self.mapView.mapType = .standard
+            self.mapView.userTrackingMode = MKUserTrackingMode.follow
+            self.mapView.isZoomEnabled = true
+            self.mapView.isScrollEnabled = true
+            self.mapView.showsUserLocation = true
+            if let coor = self.mapView.userLocation.location?.coordinate {
+                self.mapView.setCenter(coor, animated: true)
+            }
         }
+//        mapView.delegate = self
+//        mapView.mapType = .standard
+//        mapView.userTrackingMode = MKUserTrackingMode.follow
+//        mapView.isZoomEnabled = true
+//        mapView.isScrollEnabled = true
+//        mapView.showsUserLocation = true
+//        if let coor = mapView.userLocation.location?.coordinate {
+//            mapView.setCenter(coor, animated: true)
+//        }
         locationManager.startUpdatingHeading()
         locationManager.stopUpdatingLocation()
     }
@@ -154,13 +166,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     @IBAction func addRecordClick(_ sender: UIButton) {
-//        MRProgressHUD.startRecord(view: self.view)
-//        recordButton.alpha = 0
-//        moreButton.alpha = 1
-//        DispatchQueue.global().async {
-//            self.startNewRun()
-//            self.locationManager.startUpdatingLocation()
-//        }
+
         MRProgressHUD.startRecord(view: self.view)
         recordButton.alpha = 0
         moreButton.alpha = 1

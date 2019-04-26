@@ -25,7 +25,7 @@ class RecordViewController: UIViewController {
     }
     @IBOutlet weak var noDataView: UIView!
 
-    var allTravel = [Travel]()
+    var allTravel: [Travel]?
     lazy var selectedTravel = Travel()
 
     override func viewDidLoad() {
@@ -182,7 +182,10 @@ extension Date {
 
 extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allTravel.count
+        guard let count = allTravel?.count else {
+            return 0
+        }
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -200,7 +203,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 self?.present(vc, animated: true, completion: nil)
             }
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                guard let removeOrder = self?.allTravel[indexPath.row] else { return }
+                guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
                 CoreDataStack.delete(removeOrder)
                 self?.getTravel()
                 tableView.reloadData()
@@ -212,11 +215,14 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             sheet.addAction(option1)
             self?.present(sheet, animated: true, completion: nil)
         }
-        recordCell.travelNameLabel.text = allTravel[indexPath.row].title
-        let formattedDate = FormatDisplay.travelDate(allTravel[indexPath.row].createTimestamp)
+        recordCell.travelNameLabel.text = allTravel?[indexPath.row].title
+        let formattedDate = FormatDisplay.travelDate(allTravel?[indexPath.row].createTimestamp)
         recordCell.travelTimeLabel.text = formattedDate
-        recordCell.travelContentLabel.text = allTravel[indexPath.row].content
-
+        recordCell.travelContentLabel.text = allTravel?[indexPath.row].content
+        guard let indexTravel = allTravel?[indexPath.row] else {
+            return cell
+        }
+        recordCell.travel = indexTravel
         return recordCell
     }
 
@@ -225,7 +231,10 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedTravel = allTravel[indexPath.row]
+        guard let indexTravel = allTravel?[indexPath.row] else {
+            return
+        }
+        self.selectedTravel = indexTravel
         showDetailVC(travel: selectedTravel)
 
     }

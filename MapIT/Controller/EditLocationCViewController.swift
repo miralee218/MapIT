@@ -184,7 +184,6 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
             return places.count
 
         } else {
-            
             return totalPhoto.count + 1
 
         }

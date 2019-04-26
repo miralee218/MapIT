@@ -63,7 +63,7 @@
                         </connections>
                     </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuT-vG-zZM">
-                        <rect key="frame" x="373" y="16" width="25" height="22"/>
+                        <rect key="frame" x="382" y="16" width="16" height="22"/>
                         <state key="normal" image="Icons_more"/>
                         <connections>
                             <action selector="moreOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iIH-52-uc9"/>
@@ -78,13 +78,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dtz-cR-7yG" secondAttribute="trailing" id="04c-bW-8dA"/>
-                    <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="9yb-NH-ydJ" secondAttribute="bottom" constant="2" id="303-94-4i1"/>
                     <constraint firstItem="dtz-cR-7yG" firstAttribute="top" secondItem="Qf3-vM-b7l" secondAttribute="bottom" constant="6" id="7Nz-Bt-wW5"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="centerX" secondItem="Jcx-j9-Iae" secondAttribute="centerX" id="BIX-EH-38I"/>
                     <constraint firstItem="OuT-vG-zZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CCn-D9-XhP"/>
                     <constraint firstAttribute="trailing" secondItem="9yb-NH-ydJ" secondAttribute="trailing" constant="50" id="CD1-EK-uGA"/>
+                    <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="68" id="Fzq-FS-e4v"/>
                     <constraint firstAttribute="trailing" secondItem="OuT-vG-zZM" secondAttribute="trailing" constant="16" id="GpS-iB-Q1u"/>
-                    <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="MHK-uC-uiK" secondAttribute="bottom" constant="6" id="LCa-KO-yFa"/>
+                    <constraint firstItem="9yb-NH-ydJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Hb8-pf-xkw"/>
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="leading" secondItem="MHK-uC-uiK" secondAttribute="leading" id="S4j-g5-Zrt"/>
                     <constraint firstAttribute="bottom" secondItem="Jcx-j9-Iae" secondAttribute="bottom" id="dtm-3q-XWp"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="centerY" secondItem="Mak-H2-VYK" secondAttribute="centerY" id="exQ-OE-Pou"/>
@@ -92,6 +92,7 @@
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="jpw-um-NaT"/>
                     <constraint firstItem="Jcx-j9-Iae" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="k4D-Px-JBD"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="leading" secondItem="Mak-H2-VYK" secondAttribute="trailing" constant="16" id="lWl-4D-Z0C"/>
+                    <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="rPq-b5-vM2"/>
                     <constraint firstItem="dtz-cR-7yG" firstAttribute="leading" secondItem="Qf3-vM-b7l" secondAttribute="leading" id="rwQ-JE-2p5"/>
                     <constraint firstItem="Jcx-j9-Iae" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="xg9-8U-OAe"/>
                 </constraints>

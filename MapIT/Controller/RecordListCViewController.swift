@@ -207,19 +207,33 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
 
         }
 
-        routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
-        routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
+        guard let locationPost = self.locationPost else {
+            return cell
+        }
+        let sortedLocationPost = sortResults(items: locationPost)
+        self.locationPost = sortedLocationPost
+        routeCell.pointTitleLabel.text = locationPost[indexPath.row].title
+        routeCell.pointDescriptionLabel.text = locationPost[indexPath.row].content
         guard let currentLocationPost = self.locationPost?[indexPath.row] else {
             return cell
         }
         routeCell.locationPost = currentLocationPost
-        let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
+        let formattedDate = FormatDisplay.postDate(locationPost[indexPath.row].timestamp)
         routeCell.pointRecordTimeLabel.text = formattedDate
         return routeCell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 195
+    }
+    func sortResults(items: [LocationPost]) -> [LocationPost] {
+        var sortResults: [LocationPost] = []
+        if let sortedArray = (items as NSArray).sortedArray(using: [
+            NSSortDescriptor(key: "timestamp", ascending: true)]) as? [LocationPost] {
+            sortResults = sortedArray
+        }
+        print(sortResults)
+        return sortResults
     }
 
 }
