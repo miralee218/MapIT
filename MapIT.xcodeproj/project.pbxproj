@@ -48,6 +48,7 @@
 		494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */; };
 		494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */; };
 		496111C6226EBADB00624802 /* EditTravelCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496111C5226EBADB00624802 /* EditTravelCViewController.swift */; };
+		496111CC2274153A00624802 /* NotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496111CB2274153A00624802 /* NotificationCenter+Extension.swift */; };
 		497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0579225D97640010D142 /* SharedOptionViewController.swift */; };
 		497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */; };
 		497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */; };
@@ -125,6 +126,7 @@
 		494EB386225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPictureMethodCollectionViewCell.xib; sourceTree = "<group>"; };
 		494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhoto.swift; sourceTree = "<group>"; };
 		496111C5226EBADB00624802 /* EditTravelCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravelCViewController.swift; sourceTree = "<group>"; };
+		496111CB2274153A00624802 /* NotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extension.swift"; sourceTree = "<group>"; };
 		497A0579225D97640010D142 /* SharedOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionViewController.swift; sourceTree = "<group>"; };
 		497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				494EB3692259BE2500ECCA72 /* UICollectionView+Extension.swift */,
 				491169482254893E00347310 /* CAGradientLayer+Extension.swift */,
 				4911694A225489EC00347310 /* Navigation+Extension.swift */,
+				496111CB2274153A00624802 /* NotificationCenter+Extension.swift */,
 			);
 			path = Exrension;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				494EB3592258D1AB00ECCA72 /* AddLocationCViewController.swift in Sources */,
 				494EB3612259023900ECCA72 /* RouteTableViewCell.swift in Sources */,
 				497AC91C22680129005E8856 /* LocationManager.swift in Sources */,
+				496111CC2274153A00624802 /* NotificationCenter+Extension.swift in Sources */,
 				491169132254563200347310 /* ViewController.swift in Sources */,
 				497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */,
 				496111C6226EBADB00624802 /* EditTravelCViewController.swift in Sources */,

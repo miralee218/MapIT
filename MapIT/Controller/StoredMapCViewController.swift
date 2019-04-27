@@ -55,6 +55,7 @@ class StoredMapCViewController: UIViewController {
     }
     @IBAction func store(_ sender: UIButton) {
         saveTravelContent()
+        NotificationCenter.default.post(name: .newTravel, object: nil)
         dismiss(animated: true, completion: nil)
 
     }

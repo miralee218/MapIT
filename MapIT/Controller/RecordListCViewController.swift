@@ -92,6 +92,7 @@ class RecordListCViewController: PullUpController {
                            options: .curveEaseInOut,
                            animations: animations,
                            completion: completion)
+            tableView.reloadData()
         default:
             UIView.animate(withDuration: 0.3,
                            animations: animations,

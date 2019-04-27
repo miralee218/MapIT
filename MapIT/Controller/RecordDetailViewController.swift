@@ -38,7 +38,6 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RecordDescriptionTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
-
     }
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -226,7 +225,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
                     editVC.seletedPost = self?.locationPost?[indexPath.row]
                     self?.present(editVC, animated: true, completion: nil)
-                    
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in

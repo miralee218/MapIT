@@ -53,6 +53,9 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         guard let allLocationCount = allLocationPost?.count else {
             return 0
         }
+        guard allLocationCount > 0 else {
+            return 0
+        }
         for localPost in 0...allLocationCount - 1 {
             guard let allLocationPhotoCount = allLocationPost?[localPost].photo?.count else {
                 return 0
@@ -72,7 +75,7 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         )
         guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
             photos.removeAll()
-             var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
+            var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
             for localPost in 0...allLocationPost!.count - 1 {
                 for index in 0...(allLocationPost?[localPost].photo!.count)! - 1 {
                     photos.append((allLocationPost?[localPost].photo?[index])!)

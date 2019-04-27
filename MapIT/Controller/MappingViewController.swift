@@ -62,7 +62,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         print(isEditting)
 
         if isEditting == true {
-            
+
             MRProgressHUD.coutinueRecord(view: self.view)
 
             recordButton.alpha = 0
@@ -71,7 +71,18 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             recordButton.alpha = 1
             moreButton.alpha = 0
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(newTravel),
+                                               name: Notification.Name("newTravel"),
+                                               object: nil)
 
+    }
+    @objc func newTravel() {
+        reloadView()
+        let pullUpController = makeSearchViewControllerIfNeeded()
+        removePullUpController(pullUpController, animated: true)
+        isViewList = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -144,15 +155,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 self.mapView.setCenter(coor, animated: true)
             }
         }
-//        mapView.delegate = self
-//        mapView.mapType = .standard
-//        mapView.userTrackingMode = MKUserTrackingMode.follow
-//        mapView.isZoomEnabled = true
-//        mapView.isScrollEnabled = true
-//        mapView.showsUserLocation = true
-//        if let coor = mapView.userLocation.location?.coordinate {
-//            mapView.setCenter(coor, animated: true)
-//        }
         locationManager.startUpdatingHeading()
         locationManager.stopUpdatingLocation()
     }

@@ -308,6 +308,3 @@ extension AddLocationCViewController: UICollectionViewDelegateFlowLayout {
             return 5
     }
 }
-extension Notification.Name {
-    static let reloadRecordList = Notification.Name("reloadRecordList")
-}
