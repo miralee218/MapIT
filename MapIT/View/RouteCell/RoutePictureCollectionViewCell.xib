@@ -12,36 +12,49 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RoutePictureCollectionViewCell" id="gTV-IL-0wX" customClass="RoutePictureCollectionViewCell" customModule="MapIT" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-TC-x36">
-                        <rect key="frame" x="0.0" y="0.0" width="88" height="66"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-JI-QfI">
-                        <rect key="frame" x="68" y="0.0" width="20" height="20"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhK-WJ-O5l">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GtI-TC-x36">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm1-JI-QfI">
+                                <rect key="frame" x="89" y="1" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0Fm-eF-GpN"/>
+                                    <constraint firstAttribute="width" constant="20" id="p8U-Rf-xm3"/>
+                                </constraints>
+                                <state key="normal" image="Icons_Mapping_Selected"/>
+                                <connections>
+                                    <action selector="cancelImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="dAj-k3-Fwa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="0Fm-eF-GpN"/>
-                            <constraint firstAttribute="width" constant="20" id="p8U-Rf-xm3"/>
+                            <constraint firstItem="GtI-TC-x36" firstAttribute="leading" secondItem="BhK-WJ-O5l" secondAttribute="leading" id="7NR-98-Nfz"/>
+                            <constraint firstAttribute="trailing" secondItem="Hm1-JI-QfI" secondAttribute="trailing" constant="1" id="Lqm-3t-VKy"/>
+                            <constraint firstItem="Hm1-JI-QfI" firstAttribute="top" secondItem="BhK-WJ-O5l" secondAttribute="top" constant="1" id="Q6m-30-NJJ"/>
+                            <constraint firstAttribute="bottom" secondItem="GtI-TC-x36" secondAttribute="bottom" id="bAU-qR-tyg"/>
+                            <constraint firstItem="GtI-TC-x36" firstAttribute="top" secondItem="BhK-WJ-O5l" secondAttribute="top" id="md6-Sy-u5Y"/>
+                            <constraint firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="s86-UI-O3R"/>
                         </constraints>
-                        <state key="normal" image="Icons_Mapping_Selected"/>
-                        <connections>
-                            <action selector="cancelImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="dAj-k3-Fwa"/>
-                        </connections>
-                    </button>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Hm1-JI-QfI" firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="6zB-2s-Vnr"/>
-                <constraint firstItem="GtI-TC-x36" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9PZ-kl-Hih"/>
-                <constraint firstItem="GtI-TC-x36" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JuM-mB-LVC"/>
-                <constraint firstAttribute="trailing" secondItem="GtI-TC-x36" secondAttribute="trailing" id="Q6K-Ul-Bl8"/>
-                <constraint firstAttribute="bottom" secondItem="GtI-TC-x36" secondAttribute="bottom" id="mDj-w6-sNT"/>
-                <constraint firstItem="Hm1-JI-QfI" firstAttribute="top" secondItem="GtI-TC-x36" secondAttribute="top" id="ube-qr-wDe"/>
+                <constraint firstItem="BhK-WJ-O5l" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2f7-lU-ynz"/>
+                <constraint firstAttribute="trailing" secondItem="BhK-WJ-O5l" secondAttribute="trailing" id="53S-0C-NrK"/>
+                <constraint firstAttribute="bottom" secondItem="BhK-WJ-O5l" secondAttribute="bottom" id="9Bb-Tb-fvP"/>
+                <constraint firstItem="BhK-WJ-O5l" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="lEh-91-pXR"/>
+                <constraint firstItem="BhK-WJ-O5l" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="n9f-ZS-8Xi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>

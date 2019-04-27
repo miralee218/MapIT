@@ -202,12 +202,13 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 withIdentifier: String(describing: RouteTableViewCell.self),
                 for: indexPath
             )
-            var sortDate = NSSortDescriptor.init(key: "timestamp", ascending: true)
-            guard let sortedLocationPost = travel?.locationPosts?.sortedArray(using: [sortDate]) as? [LocationPost] else {
+            //sort LocationPost by timestamp
+            let sortDate = NSSortDescriptor.init(key: "timestamp", ascending: true)
+            guard let sortedLocationPost = travel?.locationPosts?.sortedArray(
+                using: [sortDate]) as? [LocationPost] else {
                 return cell
             }
             self.sortedLocationPost = sortedLocationPost
-            print(self.sortedLocationPost)
 
             guard let routeCell = cell as? RouteTableViewCell else { return cell }
 

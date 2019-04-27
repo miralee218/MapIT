@@ -276,7 +276,7 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let image = info[.originalImage] as? UIImage
+        guard let image = info[.editedImage] as? UIImage
             else {
                 print("selected image is nil")
                 return

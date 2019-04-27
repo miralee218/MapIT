@@ -150,6 +150,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             self.mapView.isZoomEnabled = true
             self.mapView.isScrollEnabled = true
             self.mapView.showsUserLocation = true
+            self.mapView.showsCompass = false
             if let coor = self.mapView.userLocation.location?.coordinate {
                 self.mapView.setCenter(coor, animated: true)
             }

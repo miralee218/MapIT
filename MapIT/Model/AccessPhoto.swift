@@ -14,7 +14,7 @@ class AccessPhoto {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = viewController as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         //button size
         let scaleView = imagePicker.view
         scaleView?.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -29,6 +29,7 @@ class AccessPhoto {
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
         imagePicker.navigationBar.barTintColor = UIColor.EndYellow
+//        imagePicker.navigationBar.setGradientBackground(colors: UIColor.mainColor)
         imagePicker.navigationBar.tintColor = .white
         imagePicker.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white

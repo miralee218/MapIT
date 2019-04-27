@@ -27,6 +27,7 @@ class RecordViewController: UIViewController {
 
     var allTravel: [Travel]?
     var selectedTravel: Travel?
+    var seletedDate: Date?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,6 @@ class RecordViewController: UIViewController {
             colors: UIColor.mainColor
         )
         navigationController?.navigationBar.isTranslucent = false
-
         tableView.separatorStyle = .none
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
@@ -53,6 +53,38 @@ class RecordViewController: UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
         let isEditting = "0"
         fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
+        do {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+
+                noDataView.isHidden = false
+                print("no present")
+            } else {
+                // at least one matching object exists
+                guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
+                self.allTravel = edittingTravel
+                noDataView.isHidden = true
+                print("have\(count) travel")
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        tableView.reloadData()
+    }
+
+    func getSpecificTravel() {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
+
+        let isEditting = "0"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        guard let selected = self.seletedDate as? NSData else {
+            return
+        }
+        fetchRequest.predicate = NSPredicate(format: "timestamp <= %@", selected)
         fetchRequest.fetchLimit = 0
         do {
             let context = CoreDataStack.context
@@ -150,9 +182,8 @@ class RecordViewController: UIViewController {
 }
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
-        let date = date.toLocalTime()
-        print(date)
+        self.seletedDate = date.toLocalTime()
+        print(seletedDate)
     }
 }
 extension Date {
@@ -227,7 +258,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 380
+        return 470
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
