@@ -24,6 +24,7 @@ class RecordDetailViewController: UIViewController {
     var lat = [Double]()
     var startCoordinates: [CLLocationCoordinate2D] = []
     var endCoordinates: [CLLocationCoordinate2D] = []
+    var sortedLocationPost: [LocationPost]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RecordDescriptionTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
+
     }
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -200,6 +202,12 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 withIdentifier: String(describing: RouteTableViewCell.self),
                 for: indexPath
             )
+            var sortDate = NSSortDescriptor.init(key: "timestamp", ascending: true)
+            guard let sortedLocationPost = travel?.locationPosts?.sortedArray(using: [sortDate]) as? [LocationPost] else {
+                return cell
+            }
+            self.sortedLocationPost = sortedLocationPost
+            print(self.sortedLocationPost)
 
             guard let routeCell = cell as? RouteTableViewCell else { return cell }
 
@@ -223,15 +231,15 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                         self?.tableView.reloadData()
                     }
 
-                    editVC.seletedPost = self?.locationPost?[indexPath.row]
+                    editVC.seletedPost = self?.sortedLocationPost?[indexPath.row]
                     self?.present(editVC, animated: true, completion: nil)
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
-                    guard let removeOrder = self?.locationPost?[indexPath.row] else { return }
+                    guard let removeOrder = self?.sortedLocationPost?[indexPath.row] else { return }
                     CoreDataStack.delete(removeOrder)
 
-                    self?.locationPost?.remove(at: indexPath.row)
+                    self?.sortedLocationPost?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     print("YOU HAVE DELETED YOUR RECORD")
                 }
@@ -246,13 +254,13 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 self?.present(sheet, animated: true, completion: nil)
 
             }
-            routeCell.pointTitleLabel.text = locationPost?[indexPath.row].title
-            routeCell.pointDescriptionLabel.text = locationPost?[indexPath.row].content
-            guard let currentLocationPost = self.locationPost?[indexPath.row] else {
+            routeCell.pointTitleLabel.text = sortedLocationPost[indexPath.row].title
+            routeCell.pointDescriptionLabel.text = sortedLocationPost[indexPath.row].content
+            guard let currentLocationPost = self.sortedLocationPost?[indexPath.row] else {
                 return cell
             }
             routeCell.locationPost = currentLocationPost
-            let formattedDate = FormatDisplay.postDate(locationPost?[indexPath.row].timestamp)
+            let formattedDate = FormatDisplay.postDate(sortedLocationPost[indexPath.row].timestamp)
             routeCell.pointRecordTimeLabel.text = formattedDate
 
             return routeCell

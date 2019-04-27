@@ -142,7 +142,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             withIdentifier: String(describing: RouteTableViewCell.self),
             for: indexPath
         )
-
         guard let routeCell = cell as? RouteTableViewCell else { return cell }
 
         routeCell.actionBlock = { [weak self] in
