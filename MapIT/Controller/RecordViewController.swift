@@ -26,7 +26,7 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var noDataView: UIView!
 
     var allTravel: [Travel]?
-    lazy var selectedTravel = Travel()
+    var selectedTravel: Travel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +64,8 @@ class RecordViewController: UIViewController {
                 print("no present")
             } else {
                 // at least one matching object exists
-                let edittingTravel = try? context.fetch(fetchRequest)
-                self.allTravel = edittingTravel!
+                guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
+                self.allTravel = edittingTravel
                 noDataView.isHidden = true
                 print("have\(count) travel")
             }
@@ -235,7 +235,11 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         self.selectedTravel = indexTravel
-        showDetailVC(travel: selectedTravel)
+
+        guard let travel = selectedTravel else {
+            return
+        }
+        showDetailVC(travel: travel)
 
     }
 

@@ -71,7 +71,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             recordButton.alpha = 1
             moreButton.alpha = 0
         }
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(newTravel),
                                                name: Notification.Name("newTravel"),
@@ -335,7 +334,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         guard locations[0].horizontalAccuracy < 20 else {
-            locationManager.stopUpdatingLocation()
             return
         }
 
