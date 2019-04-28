@@ -43,12 +43,19 @@ class StoredMapCViewController: UIViewController {
         getEdittingTravel()
     }
 
-    @IBAction func cancelStore(_ sender: UIButton) {
-        guard let removeOrder = travel else {
+    @IBAction func deleteStore(_ sender: UIButton) {
+        guard let removeOrder = self.travel else {
             return
         }
+        self.travel?.endTimestamp = nil
+        self.travel?.content = nil
+        self.travel?.title = nil
         CoreDataStack.delete(removeOrder)
-        NotificationCenter.default.post(name: .newTravel, object: nil)
+       
+NotificationCenter.default.post(name: .newTravel, object: nil)
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func cancelStore(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {

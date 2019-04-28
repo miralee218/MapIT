@@ -13,7 +13,7 @@ private enum Tab {
     case record
     case mapping
     case notification
-    case profile
+//    case profile
 
     func controller() -> UIViewController {
 
@@ -30,7 +30,7 @@ private enum Tab {
 
         case .notification: controller = UIStoryboard.notification.instantiateInitialViewController()!
 
-        case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
+//        case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
 
         }
 
@@ -73,19 +73,19 @@ private enum Tab {
                 image: UIImage.asset(.Icons_Album_Unselected),
                 selectedImage: UIImage.asset(.Icons_Album_Selected)
             )
-        case .profile:
-            return UITabBarItem(
-                title: nil,
-                image: UIImage.asset(.Icons_User_Unselected),
-                selectedImage: UIImage.asset(.Icons_User_Selected)
-            )
+//        case .profile:
+//            return UITabBarItem(
+//                title: nil,
+//                image: UIImage.asset(.Icons_User_Unselected),
+//                selectedImage: UIImage.asset(.Icons_User_Selected)
+//            )
         }
     }
 }
 
 class MRTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.record, .mapping, .notification, .profile]
+    private let tabs: [Tab] = [.record, .mapping, .notification]
 
     override func viewDidLoad() {
         super.viewDidLoad()

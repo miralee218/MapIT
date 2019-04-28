@@ -258,11 +258,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2t-hU-Td0">
-                                        <rect key="frame" x="300" y="14" width="56" height="32"/>
+                                        <rect key="frame" x="296" y="14" width="56" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="放棄紀錄">
                                             <color key="titleColor" name="MiraBlue"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteStore:" destination="y5h-pU-4JE" eventType="touchUpInside" id="tGv-H8-VxC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -278,7 +281,7 @@
                                     <constraint firstItem="G2t-hU-Td0" firstAttribute="centerY" secondItem="neV-fI-XhW" secondAttribute="centerY" id="uCe-7c-JCz"/>
                                     <constraint firstItem="LQs-lG-jDf" firstAttribute="leading" secondItem="neV-fI-XhW" secondAttribute="leading" id="vIj-dY-2Gl"/>
                                     <constraint firstItem="WbI-QN-bAu" firstAttribute="centerY" secondItem="neV-fI-XhW" secondAttribute="centerY" id="wMv-kb-sma"/>
-                                    <constraint firstItem="WbI-QN-bAu" firstAttribute="leading" secondItem="G2t-hU-Td0" secondAttribute="trailing" constant="12" id="zWq-GE-aGr"/>
+                                    <constraint firstItem="WbI-QN-bAu" firstAttribute="leading" secondItem="G2t-hU-Td0" secondAttribute="trailing" constant="16" id="zWq-GE-aGr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-fN-S1q">
