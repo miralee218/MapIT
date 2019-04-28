@@ -40,17 +40,15 @@ class StoredMapCViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
 
-//        guard let titleName = travel?.title,
-//            let content = travel?.content else {
-//                return
-//        }
-//        travelNameTextField.text = titleName
-//        contentTextView.text = content
-
         getEdittingTravel()
     }
 
     @IBAction func cancelStore(_ sender: UIButton) {
+        guard let removeOrder = travel else {
+            return
+        }
+        CoreDataStack.delete(removeOrder)
+        NotificationCenter.default.post(name: .newTravel, object: nil)
         dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {

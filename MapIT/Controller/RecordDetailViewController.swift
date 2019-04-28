@@ -274,7 +274,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 420
+            return 350
         case 1:
             return UITableView.automaticDimension
         case 2:

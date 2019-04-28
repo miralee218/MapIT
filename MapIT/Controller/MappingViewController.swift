@@ -40,6 +40,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupLayout()
         let buttonItem = MKUserTrackingButton(mapView: mapView)
         buttonItem.tintColor = UIColor.StartPink
@@ -77,43 +78,27 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         reloadView()
         mapView.showsUserLocation = true
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkInButtonCenter = offset(byDistance: 100, inDirection: 270)
+        puaseButtonCenter = offset(byDistance: 100, inDirection: 240)
+        checkListButtonCenter = offset(byDistance: 100, inDirection: 210)
+        stopButtonCenter = offset(byDistance: 100, inDirection: 180)
+        checkInButton.center = recordButton.center
+        puaseButton.center = recordButton.center
+        checkListButton.center = recordButton.center
+        stopButton.center = recordButton.center
+    }
+    public func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
+        let radians = degrees * .pi / 180
+        let vertical = sin(radians) * distance
+        let horizontal = cos(radians) * distance
+        let position = CGPoint(x: recordButton.center.x + horizontal, y: recordButton.center.y + vertical)
+        return position
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         reloadView()
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        checkInButtonCenter = checkInButton.center
-        puaseButtonCenter = puaseButton.center
-        stopButtonCenter = stopButton.center
-        checkListButtonCenter = checkListButton.center
-
-        if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)! {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.checkInButton.alpha = 0
-                self.puaseButton.alpha = 0
-                self.stopButton.alpha = 0
-                self.checkListButton.alpha = 0
-
-                self.checkInButton.center = self.recordButton.center
-                self.puaseButton.center = self.recordButton.center
-                self.stopButton.center = self.recordButton.center
-                self.checkListButton.center = self.recordButton.center
-            })
-        } else {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.checkInButton.alpha = 1
-                self.puaseButton.alpha = 1
-                self.stopButton.alpha = 1
-                self.checkListButton.alpha = 1
-
-                self.checkInButton.center = self.checkInButtonCenter
-                self.puaseButton.center = self.puaseButtonCenter
-                self.stopButton.center = self.stopButtonCenter
-                self.checkListButton.center = self.checkListButtonCenter
-            })
-
-        }
     }
 
     func reloadView() {
@@ -245,30 +230,42 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     @IBAction func moreClicked(_ sender: UIButton) {
         if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)! {
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.15, animations: {
                 self.checkInButton.alpha = 1
-                self.puaseButton.alpha = 1
-                self.stopButton.alpha = 1
-                self.checkListButton.alpha = 1
-
                 self.checkInButton.center = self.checkInButtonCenter
+            })
+            UIView.animate(withDuration: 0.3, animations: {
+                self.puaseButton.alpha = 1
                 self.puaseButton.center = self.puaseButtonCenter
-                self.stopButton.center = self.stopButtonCenter
+            })
+            UIView.animate(withDuration: 0.45, animations: {
+                self.checkListButton.alpha = 1
                 self.checkListButton.center = self.checkListButtonCenter
             })
-        } else {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.checkInButton.alpha = 0
-                self.puaseButton.alpha = 0
-                self.stopButton.alpha = 0
-                self.checkListButton.alpha = 0
+            UIView.animate(withDuration: 0.6, animations: {
 
+                self.stopButton.alpha = 1
+                self.stopButton.center = self.stopButtonCenter
+
+            })
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.checkInButton.alpha = 0
                 self.checkInButton.center = self.recordButton.center
+            })
+            UIView.animate(withDuration: 0.4, animations: {
+                self.puaseButton.alpha = 0
                 self.puaseButton.center = self.recordButton.center
-                self.stopButton.center = self.recordButton.center
+            })
+            UIView.animate(withDuration: 0.6, animations: {
+                self.checkListButton.alpha = 0
                 self.checkListButton.center = self.recordButton.center
             })
-
+            UIView.animate(withDuration: 0.8, animations: {
+                self.stopButton.alpha = 0
+                self.stopButton.center = self.recordButton.center
+            })
+            
         }
         toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Mapping_Selected.rawValue
             )!, offImage: UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!)
