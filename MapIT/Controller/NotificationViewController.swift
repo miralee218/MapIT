@@ -104,10 +104,7 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
             }
             label.text = allTravel?[indexPath.section].title
         }
-            //分区尾
-        else {
-            return reusableview
-        }
+
         return reusableview
     }
     func collectionView(
