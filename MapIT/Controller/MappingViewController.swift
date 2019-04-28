@@ -40,19 +40,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        checkInButtonCenter = checkInButton.center
-        puaseButtonCenter = puaseButton.center
-        stopButtonCenter = stopButton.center
-        checkListButtonCenter = checkListButton.center
-
-        checkInButton.center = moreButton.center
-        puaseButton.center = moreButton.center
-        stopButton.center = moreButton.center
-        checkListButton.center = moreButton.center
-
         setupLayout()
-
         let buttonItem = MKUserTrackingButton(mapView: mapView)
         buttonItem.tintColor = UIColor.StartPink
         buttonItem.backgroundColor = UIColor.white
@@ -91,8 +79,41 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        mapView.showsUserLocation = false
         reloadView()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        checkInButtonCenter = checkInButton.center
+        puaseButtonCenter = puaseButton.center
+        stopButtonCenter = stopButton.center
+        checkListButtonCenter = checkListButton.center
+
+        if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)! {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.checkInButton.alpha = 0
+                self.puaseButton.alpha = 0
+                self.stopButton.alpha = 0
+                self.checkListButton.alpha = 0
+
+                self.checkInButton.center = self.recordButton.center
+                self.puaseButton.center = self.recordButton.center
+                self.stopButton.center = self.recordButton.center
+                self.checkListButton.center = self.recordButton.center
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.checkInButton.alpha = 1
+                self.puaseButton.alpha = 1
+                self.stopButton.alpha = 1
+                self.checkListButton.alpha = 1
+
+                self.checkInButton.center = self.checkInButtonCenter
+                self.puaseButton.center = self.puaseButtonCenter
+                self.stopButton.center = self.stopButtonCenter
+                self.checkListButton.center = self.checkListButtonCenter
+            })
+
+        }
     }
 
     func reloadView() {
@@ -102,10 +123,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.stopButton.alpha = 0
         self.checkListButton.alpha = 0
 
-        self.checkInButton.center = self.moreButton.center
-        self.puaseButton.center = self.moreButton.center
-        self.stopButton.center = self.moreButton.center
-        self.checkListButton.center = self.moreButton.center
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
 
         if self.travel?.isEditting == true {
@@ -246,10 +263,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 self.stopButton.alpha = 0
                 self.checkListButton.alpha = 0
 
-                self.checkInButton.center = self.moreButton.center
-                self.puaseButton.center = self.moreButton.center
-                self.stopButton.center = self.moreButton.center
-                self.checkListButton.center = self.moreButton.center
+                self.checkInButton.center = self.recordButton.center
+                self.puaseButton.center = self.recordButton.center
+                self.stopButton.center = self.recordButton.center
+                self.checkListButton.center = self.recordButton.center
             })
 
         }

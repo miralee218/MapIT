@@ -133,8 +133,10 @@ class RecordListCViewController: PullUpController {
 extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return locationPost!.count
+        guard let locationPostCount = locationPost?.count else {
+            return 0
+        }
+        return locationPostCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
