@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,25 +23,63 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h2Y-Th-zox">
                                     <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PhotoHeaderView" id="skS-39-dwo">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COx-Ua-uM0">
+                                            <rect key="frame" x="24" y="12.5" width="358" height="25.5"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                            <color key="textColor" name="B1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="COx-Ua-uM0" firstAttribute="leading" secondItem="skS-39-dwo" secondAttribute="leading" constant="24" id="CRX-N6-qos"/>
+                                        <constraint firstItem="COx-Ua-uM0" firstAttribute="centerY" secondItem="skS-39-dwo" secondAttribute="centerY" id="Hhi-4y-oPI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="COx-Ua-uM0" secondAttribute="trailing" constant="24" id="IQS-RU-OC4"/>
+                                    </constraints>
+                                </collectionReusableView>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i86-fL-UjI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未紀錄照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-f5-bMY">
+                                        <rect key="frame" x="135" y="370" width="144" height="34"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="24"/>
+                                        <color key="textColor" name="B3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerY" secondItem="i86-fL-UjI" secondAttribute="centerY" id="QvB-o1-Tld"/>
+                                    <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="TMQ-3x-Nxs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7nc-Me-cFD" firstAttribute="top" secondItem="lOK-aM-pmy" secondAttribute="top" id="21y-WI-2Tp"/>
                             <constraint firstItem="7nc-Me-cFD" firstAttribute="leading" secondItem="lOK-aM-pmy" secondAttribute="leading" id="GSh-YG-E3k"/>
                             <constraint firstItem="lOK-aM-pmy" firstAttribute="trailing" secondItem="7nc-Me-cFD" secondAttribute="trailing" id="IHW-zm-q72"/>
+                            <constraint firstItem="i86-fL-UjI" firstAttribute="top" secondItem="tPJ-ma-Jmr" secondAttribute="topMargin" id="MSl-AI-rOA"/>
+                            <constraint firstItem="i86-fL-UjI" firstAttribute="trailing" secondItem="lOK-aM-pmy" secondAttribute="trailing" id="V59-b6-ptf"/>
+                            <constraint firstItem="i86-fL-UjI" firstAttribute="leading" secondItem="lOK-aM-pmy" secondAttribute="leading" id="bqW-Rl-k3w"/>
                             <constraint firstItem="lOK-aM-pmy" firstAttribute="bottom" secondItem="7nc-Me-cFD" secondAttribute="bottom" id="gDo-pb-9iB"/>
+                            <constraint firstItem="lOK-aM-pmy" firstAttribute="bottom" secondItem="i86-fL-UjI" secondAttribute="bottom" id="lvV-zT-MhZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lOK-aM-pmy"/>
                     </view>
                     <navigationItem key="navigationItem" title="相冊" id="nVV-BX-mSb"/>
                     <connections>
                         <outlet property="collectionView" destination="7nc-Me-cFD" id="JAY-YG-P40"/>
+                        <outlet property="noDataView" destination="i86-fL-UjI" id="jne-o6-9jQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baa-Zk-RgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,4 +108,12 @@
             <point key="canvasLocation" x="76.811594202898561" y="-165.40178571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="B1">
+            <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B3">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
