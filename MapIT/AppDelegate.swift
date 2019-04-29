@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import Firebase
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
         -> Bool {
+            FirebaseApp.configure()
+            Fabric.with([Crashlytics.self])
+            
             let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             print(urls[urls.count - 1] as URL)
             IQKeyboardManager.shared.enable = true

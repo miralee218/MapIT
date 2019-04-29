@@ -19,4 +19,10 @@ target 'MapIT' do
 
   pod 'IQKeyboardManagerSwift'
 
+  pod 'Fabric'
+  pod 'Crashlytics'
+  pod 'Firebase/Core'
+
+
+
 end
