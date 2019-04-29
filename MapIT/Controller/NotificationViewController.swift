@@ -18,6 +18,12 @@ class NotificationViewController: UIViewController {
             collectionView.dataSource = self
         }
     }
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
     @IBOutlet weak var noDataView: UIView!
     var allTravel: [Travel]?
     var travel: Travel?
@@ -60,6 +66,17 @@ class NotificationViewController: UIViewController {
         collectionView.reloadData()
     }
 
+}
+extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
 }
 
 extension NotificationViewController: UICollectionViewDelegate, UICollectionViewDataSource {

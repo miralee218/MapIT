@@ -18,35 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7nc-Me-cFD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="h2Y-Th-zox">
-                                    <size key="itemSize" width="90" height="90"/>
-                                    <size key="headerReferenceSize" width="50" height="30"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="10"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PhotoHeaderView" id="skS-39-dwo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COx-Ua-uM0">
-                                            <rect key="frame" x="24" y="2.5" width="358" height="25.5"/>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
-                                            <color key="textColor" name="B1"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" name="B5"/>
-                                    <constraints>
-                                        <constraint firstItem="COx-Ua-uM0" firstAttribute="leading" secondItem="skS-39-dwo" secondAttribute="leading" constant="24" id="CRX-N6-qos"/>
-                                        <constraint firstItem="COx-Ua-uM0" firstAttribute="centerY" secondItem="skS-39-dwo" secondAttribute="centerY" id="Hhi-4y-oPI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="COx-Ua-uM0" secondAttribute="trailing" constant="24" id="IQS-RU-OC4"/>
-                                    </constraints>
-                                </collectionReusableView>
-                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i86-fL-UjI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
@@ -63,10 +34,39 @@
                                     <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="TMQ-3x-Nxs"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7nc-Me-cFD">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="h2Y-Th-zox">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="50" height="30"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="3" minY="0.0" maxX="3" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PhotoHeaderView" id="skS-39-dwo">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COx-Ua-uM0">
+                                            <rect key="frame" x="24" y="2.5" width="358" height="25.5"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                            <color key="textColor" name="B2"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="COx-Ua-uM0" firstAttribute="leading" secondItem="skS-39-dwo" secondAttribute="leading" constant="24" id="CRX-N6-qos"/>
+                                        <constraint firstItem="COx-Ua-uM0" firstAttribute="centerY" secondItem="skS-39-dwo" secondAttribute="centerY" id="Hhi-4y-oPI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="COx-Ua-uM0" secondAttribute="trailing" constant="24" id="IQS-RU-OC4"/>
+                                    </constraints>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="7nc-Me-cFD" firstAttribute="top" secondItem="lOK-aM-pmy" secondAttribute="top" id="21y-WI-2Tp"/>
+                            <constraint firstItem="7nc-Me-cFD" firstAttribute="top" secondItem="lOK-aM-pmy" secondAttribute="top" id="1sq-RV-F0u"/>
                             <constraint firstItem="7nc-Me-cFD" firstAttribute="leading" secondItem="lOK-aM-pmy" secondAttribute="leading" id="GSh-YG-E3k"/>
                             <constraint firstItem="lOK-aM-pmy" firstAttribute="trailing" secondItem="7nc-Me-cFD" secondAttribute="trailing" id="IHW-zm-q72"/>
                             <constraint firstItem="i86-fL-UjI" firstAttribute="top" secondItem="tPJ-ma-Jmr" secondAttribute="topMargin" id="MSl-AI-rOA"/>
@@ -110,14 +110,11 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="B1">
-            <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="B2">
+            <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="B3">
             <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="B5">
-            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

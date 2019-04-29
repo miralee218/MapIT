@@ -124,6 +124,7 @@ class RecordViewController: UIViewController {
 
     var searchBySearchBar = false
     @IBAction func searchRecord(_ sender: UIBarButtonItem) {
+        print("search")
         tableView.reloadData()
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search..."
