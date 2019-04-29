@@ -265,7 +265,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 self.stopButton.alpha = 0
                 self.stopButton.center = self.recordButton.center
             })
-            
         }
         toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Mapping_Selected.rawValue
             )!, offImage: UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!)

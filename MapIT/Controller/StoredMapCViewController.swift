@@ -51,7 +51,6 @@ class StoredMapCViewController: UIViewController {
         self.travel?.content = nil
         self.travel?.title = nil
         CoreDataStack.delete(removeOrder)
-       
 NotificationCenter.default.post(name: .newTravel, object: nil)
         dismiss(animated: true, completion: nil)
     }
