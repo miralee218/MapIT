@@ -33,6 +33,8 @@ class RecordListCViewController: PullUpController {
             swipeView.layer.cornerRadius = 15.0
         }
     }
+    @IBOutlet weak var noDataView: UIView!
+    
     @IBOutlet weak var searchSeparatorView: UIView! {
         didSet {
             searchSeparatorView.layer.cornerRadius = searchSeparatorView.frame.height/2
@@ -60,10 +62,20 @@ class RecordListCViewController: PullUpController {
                                                selector: #selector(reloadRecordList),
                                                name: Notification.Name("reloadRecordList"),
                                                object: nil)
+        if self.locationPost?.count == 0 {
+            noDataView.isHidden = false
+        } else {
+            noDataView.isHidden = true
+        }
     }
     @objc func reloadRecordList() {
         getEdittingTravel()
         self.locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
+        if self.locationPost?.count == 0 {
+            noDataView.isHidden = false
+        } else {
+            noDataView.isHidden = true
+        }
         self.tableView.reloadData()
     }
     // MARK: - PullUpController
@@ -180,6 +192,11 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                     CoreDataStack.delete(removeOrder)
                     self?.locationPost?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
+                    if self?.locationPost?.count == 0 {
+                        self?.noDataView.isHidden = false
+                    } else {
+                        self?.noDataView.isHidden = true
+                    }
                     tableView.reloadData()
                     return
                 }

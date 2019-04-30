@@ -167,17 +167,37 @@
                                                 <outlet property="delegate" destination="GgJ-KC-tdQ" id="0u7-Ib-33i"/>
                                             </connections>
                                         </tableView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fo7-9R-vV9">
+                                            <rect key="frame" x="0.0" y="60" width="414" height="435"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未新增地點" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kin-ul-jRk">
+                                                    <rect key="frame" x="12" y="12" width="390" height="28"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                                    <color key="textColor" name="B4"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="kin-ul-jRk" firstAttribute="leading" secondItem="Fo7-9R-vV9" secondAttribute="leading" constant="12" id="KHG-Ff-KaZ"/>
+                                                <constraint firstItem="kin-ul-jRk" firstAttribute="top" secondItem="Fo7-9R-vV9" secondAttribute="top" constant="12" id="MV2-3W-8tV"/>
+                                                <constraint firstAttribute="trailing" secondItem="kin-ul-jRk" secondAttribute="trailing" constant="12" id="grv-lz-bqk"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="rhp-bx-oRg" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" constant="12" id="1UN-Sr-nm7"/>
+                                        <constraint firstItem="Fo7-9R-vV9" firstAttribute="bottom" secondItem="BCM-vw-zli" secondAttribute="bottom" id="4tr-ZD-ZUp"/>
                                         <constraint firstItem="Dfn-Yf-jzE" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="8es-rF-qc3"/>
                                         <constraint firstAttribute="trailing" secondItem="0Lr-MG-U1C" secondAttribute="trailing" id="DSZ-aX-pYD"/>
                                         <constraint firstItem="0Lr-MG-U1C" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="GD8-6y-zmF"/>
                                         <constraint firstAttribute="trailing" secondItem="BCM-vw-zli" secondAttribute="trailing" id="JNW-vy-j2c"/>
+                                        <constraint firstItem="Fo7-9R-vV9" firstAttribute="top" secondItem="0Lr-MG-U1C" secondAttribute="bottom" id="QHc-dM-6WH"/>
                                         <constraint firstAttribute="trailing" secondItem="x8X-51-YGp" secondAttribute="trailing" id="QlY-CH-gzF"/>
                                         <constraint firstItem="BCM-vw-zli" firstAttribute="top" secondItem="0Lr-MG-U1C" secondAttribute="bottom" id="bLf-xY-ie4"/>
                                         <constraint firstItem="x8X-51-YGp" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="bNw-I3-MEs"/>
+                                        <constraint firstItem="Fo7-9R-vV9" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="beq-LV-gs7"/>
                                         <constraint firstItem="rhp-bx-oRg" firstAttribute="bottom" secondItem="0Lr-MG-U1C" secondAttribute="bottom" constant="-11" id="coW-wS-fph"/>
                                         <constraint firstItem="BCM-vw-zli" firstAttribute="leading" secondItem="4ji-4R-qNZ" secondAttribute="leading" id="dZq-YQ-OUX"/>
                                         <constraint firstItem="x8X-51-YGp" firstAttribute="top" secondItem="0Lr-MG-U1C" secondAttribute="bottom" constant="-15" id="eJh-mp-0KK"/>
@@ -186,6 +206,7 @@
                                         <constraint firstItem="0Lr-MG-U1C" firstAttribute="top" secondItem="4ji-4R-qNZ" secondAttribute="top" id="naj-k4-Kyt"/>
                                         <constraint firstItem="Dfn-Yf-jzE" firstAttribute="top" secondItem="x8X-51-YGp" secondAttribute="bottom" id="pUY-BL-Tgs"/>
                                         <constraint firstItem="BCM-vw-zli" firstAttribute="bottom" secondItem="Dfn-Yf-jzE" secondAttribute="bottom" id="wpb-Om-7wZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Fo7-9R-vV9" secondAttribute="trailing" id="yg6-0b-hqx"/>
                                     </constraints>
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -203,6 +224,7 @@
                     </view>
                     <connections>
                         <outlet property="firstPreviewView" destination="x8X-51-YGp" id="SYJ-N1-pk2"/>
+                        <outlet property="noDataView" destination="Fo7-9R-vV9" id="THU-Iu-dLk"/>
                         <outlet property="searchSeparatorView" destination="ckN-NS-Jc2" id="SCc-Vf-YSI"/>
                         <outlet property="secondPreviewView" destination="Dfn-Yf-jzE" id="1cr-mt-GDL"/>
                         <outlet property="swipeView" destination="0Lr-MG-U1C" id="ZZu-ep-mHQ"/>

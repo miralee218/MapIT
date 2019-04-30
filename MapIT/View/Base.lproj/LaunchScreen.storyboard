@@ -48,7 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon_slogon" width="266" height="55"/>
+        <image name="Icon_slogon" width="301" height="55"/>
         <image name="Icons" width="167" height="167"/>
     </resources>
 </document>

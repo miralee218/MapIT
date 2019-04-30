@@ -55,10 +55,10 @@ class RecordViewController: UIViewController {
         let launchView = vc.view
         let delegate = UIApplication.shared.delegate
         delegate?.window??.addSubview(launchView!)
-        UIView.animate(withDuration: 1, delay: 1.0, options: .beginFromCurrentState,
+        UIView.animate(withDuration: 1, delay: 0.5, options: .beginFromCurrentState,
                        animations: {
                         launchView?.alpha = 0.0
-                        let transform = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
+                        let transform = CATransform3DScale(CATransform3DIdentity, 1.5, 1.5, 1.5)
                         launchView?.layer.transform = transform
         }) { finished in
             launchView?.removeFromSuperview()
