@@ -65,7 +65,6 @@ class NotificationViewController: UIViewController {
         }
         collectionView.reloadData()
     }
-
 }
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,8 +85,6 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         count = 0
-
-//        var allLocationPost = travel?.locationPosts?.allObjects as? [LocationPost]
         var allLocationPost = allTravel?[section].locationPosts?.allObjects as? [LocationPost]
         guard let allLocationCount = allLocationPost?.count else {
             return 0
@@ -145,8 +142,27 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
                 let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photo)
                 let image    = UIImage(contentsOfFile: imageURL.path)
                 photoCell.photoImageView.image = image
+                photoCell.photoImageView.layer.cornerRadius = 3
+                photoCell.photoImageView.clipsToBounds = true
                 // Do whatever you want with the image
             }
         return photoCell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(
+            withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController {
+            photos.removeAll()
+            var allLocationPost = allTravel?[indexPath.section].locationPosts?.allObjects as? [LocationPost]
+            for localPost in 0...allLocationPost!.count - 1 {
+                for index in 0...(allLocationPost?[localPost].photo!.count)! - 1 {
+                    photos.append((allLocationPost?[localPost].photo?[index])!)
+                }
+            }
+            vc.photos = photos
+            vc.selectedIndex = indexPath.row
+            print(indexPath)
+            present(vc, animated: true, completion: nil)
+        }
     }
 }

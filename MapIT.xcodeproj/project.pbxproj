@@ -78,6 +78,8 @@
 		49853766225D7964008CB391 /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853764225D7964008CB391 /* MapTableViewCell.xib */; };
 		49853769225D7E95008CB391 /* SharedOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853767225D7E94008CB391 /* SharedOptionTableViewCell.swift */; };
 		4985376A225D7E95008CB391 /* SharedOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853768225D7E95008CB391 /* SharedOptionTableViewCell.xib */; };
+		49CCC8F32277A26000478B6A /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */; };
+		49CCC8F52278237800478B6A /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */; };
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
@@ -158,6 +160,8 @@
 		49853764225D7964008CB391 /* MapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
 		49853767225D7E94008CB391 /* SharedOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionTableViewCell.swift; sourceTree = "<group>"; };
 		49853768225D7E95008CB391 /* SharedOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharedOptionTableViewCell.xib; sourceTree = "<group>"; };
+		49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +255,7 @@
 		4911692722545B5A00347310 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */,
 				4911692A22545D0800347310 /* MRTabBarViewController.swift */,
 				491169392254644500347310 /* LobbyViewController.swift */,
 				4911693B2254645400347310 /* RecordViewController.swift */,
@@ -263,6 +268,7 @@
 				49853725225B2380008CB391 /* EditLocationCViewController.swift */,
 				496111C5226EBADB00624802 /* EditTravelCViewController.swift */,
 				491169402254648200347310 /* NotificationViewController.swift */,
+				49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */,
 				491169422254648F00347310 /* ProfileViewController.swift */,
 				497A0581225DF2990010D142 /* SignInViewController.swift */,
 				497A0585225DF7E50010D142 /* LoginContainerViewController.swift */,
@@ -619,11 +625,13 @@
 				497A0586225DF7E50010D142 /* LoginContainerViewController.swift in Sources */,
 				497A0588225DF7FE0010D142 /* SignUpContainerViewController.swift in Sources */,
 				497AC91A22680110005E8856 /* FormatDisplay.swift in Sources */,
+				49CCC8F32277A26000478B6A /* FullScreenImageViewController.swift in Sources */,
 				497A05DD2266C2420010D142 /* PlaceAnnotation.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
 				494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */,
 				491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */,
+				49CCC8F52278237800478B6A /* LaunchScreenViewController.swift in Sources */,
 				49853761225D773A008CB391 /* EditArticleTableViewCell.swift in Sources */,
 				4911694F22583E2400347310 /* NavigationView.swift in Sources */,
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,

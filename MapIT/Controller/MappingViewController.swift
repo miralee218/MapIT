@@ -56,6 +56,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
             recordButton.alpha = 0
             moreButton.alpha = 1
+            locationManager.startUpdatingLocation()
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
