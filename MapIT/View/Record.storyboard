@@ -90,25 +90,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="個人日誌" id="Coc-hB-exz">
                         <barButtonItem key="backBarButtonItem" title=" " id="L24-1I-9bk"/>
-                        <rightBarButtonItems>
-                            <barButtonItem image="Icons_Search_Unselected" id="OVp-c3-dyT">
-                                <connections>
-                                    <action selector="searchRecord:" destination="StW-ru-Z8Z" id="u6Y-HD-TwW"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="Icons_Calendar_Unselected" id="4jV-Q0-jkb">
-                                <connections>
-                                    <action selector="searchByCalendar:" destination="StW-ru-Z8Z" id="zkr-yd-gw7"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="calendarButton" destination="4jV-Q0-jkb" id="TvK-BP-emB"/>
                         <outlet property="calendarTopConstraints" destination="Fke-Yb-K2u" id="XD2-5B-Vpv"/>
                         <outlet property="calendarView" destination="uNS-nW-ALl" id="YCi-Cj-YQA"/>
                         <outlet property="noDataView" destination="cTw-NQ-AFa" id="4B4-gA-vI4"/>
-                        <outlet property="searchBarButton" destination="OVp-c3-dyT" id="Trd-Vw-RyM"/>
                         <outlet property="tableView" destination="2Pv-25-z7p" id="QqU-W5-RZH"/>
                         <segue destination="fpi-gz-U30" kind="show" identifier="SegueToRecordDetail" id="bOZ-sI-vWG"/>
                     </connections>
@@ -276,8 +262,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icons_Calendar_Unselected" width="24" height="22"/>
-        <image name="Icons_Search_Unselected" width="24" height="24"/>
         <image name="Icons_more" width="25" height="8"/>
         <namedColor name="B1">
             <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

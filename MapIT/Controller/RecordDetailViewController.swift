@@ -69,7 +69,7 @@ class RecordDetailViewController: UIViewController {
 
         let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-        sheet.addAction(option4)
+//        sheet.addAction(option4)
         sheet.addAction(option3)
         sheet.addAction(option2)
         sheet.addAction(option1)
@@ -247,7 +247,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
                 let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-                sheet.addAction(option4)
+//                sheet.addAction(option4)
                 sheet.addAction(option3)
                 sheet.addAction(option2)
                 sheet.addAction(option1)
