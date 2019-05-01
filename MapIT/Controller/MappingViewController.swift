@@ -61,34 +61,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         removePullUpController(pullUpController, animated: true)
         isViewList = false
     }
-//    func accessLoacation() {
-//        if CLLocationManager.locationServicesEnabled() {
-//            switch CLLocationManager.authorizationStatus() {
-//            case .notDetermined:
-//                authorizationView.isHidden = false
-//            case .restricted, .denied:
-//                authorizationView.isHidden = false
-//                print("No access")
-//            case .authorizedAlways, .authorizedWhenInUse:
-//                authorizationView.isHidden = true
-//                print("Access")
-//                locationService()
-//                if self.travel?.isEditting == true {
-//                    MRProgressHUD.coutinueRecord(view: self.view)
-//                    recordButton.alpha = 0
-//                    moreButton.alpha = 1
-//                    locationManager.startUpdatingLocation()
-//                } else {
-//                    recordButton.alpha = 1
-//                    moreButton.alpha = 0
-//                }
-//            }
-//        } else {
-//            authorizationView.isHidden = false
-//            print("Location services are not enabled")
-//        }
-//
-//    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         locationManager.requestWhenInUseAuthorization()
@@ -124,6 +96,16 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.puaseButton.alpha = 0
         self.stopButton.alpha = 0
         self.checkListButton.alpha = 0
+        if self.travel?.isEditting == true {
+            MRProgressHUD.coutinueRecord(view: self.view)
+            recordButton.alpha = 0
+            moreButton.alpha = 1
+            locationManager.startUpdatingLocation()
+        } else {
+            recordButton.alpha = 1
+            moreButton.alpha = 0
+        }
+        mapView.removeOverlays(self.mapView.overlays)
 
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
     }
@@ -141,6 +123,15 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
 
+        if self.travel?.isEditting == true {
+            MRProgressHUD.coutinueRecord(view: self.view)
+            recordButton.alpha = 0
+            moreButton.alpha = 1
+            locationManager.startUpdatingLocation()
+        } else {
+            recordButton.alpha = 1
+            moreButton.alpha = 0
+        }
         DispatchQueue.main.async {
             self.mapView.delegate = self
             self.mapView.mapType = .standard
@@ -322,9 +313,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         if CLLocationManager.authorizationStatus() != .denied {
         } else {
             let alertController = UIAlertController (title: "定位請求", message: "定位服務尚未啟用，請允許取用位置，以便紀錄您的旅行蹤跡。", preferredStyle: .alert)
-            let tempAction = UIAlertAction(title: "暫不啟用", style: .cancel){ action in
+            let tempAction = UIAlertAction(title: "暫不啟用", style: .cancel) { action in
             }
-            let callAction = UIAlertAction(title: "立即設定", style: .default){ action in
+            let callAction = UIAlertAction(title: "立即設定", style: .default) { action in
                 guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                     return
                 }
