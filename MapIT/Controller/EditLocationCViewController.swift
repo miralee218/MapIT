@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import AVFoundation
 
 class EditLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -218,7 +219,33 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
 
                 optionCell.openCamera = {
                     if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        AccessPhoto.accessCamera(viewController: self)
+                        switch AVCaptureDevice.authorizationStatus(for: .video) {
+                        case .notDetermined:
+                            AVCaptureDevice.requestAccess(for: .video) { success in
+                                guard success == true else { return }
+                                AccessPhoto.accessCamera(viewController: self)
+                            }
+                        case .denied, .restricted:
+                            let alertController = UIAlertController (title: "相機啟用失敗", message: "相機服務未啟用，請開啟權限以便新增地點的照片紀錄", preferredStyle: .alert)
+                            let settingsAction = UIAlertAction(title: "設定權限", style: .default) { (_) -> Void in
+                                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                                    return
+                                }
+                                if UIApplication.shared.canOpenURL(settingsUrl) {
+                                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                        print("Settings opened: \(success)") // Prints true
+                                    })
+                                }
+                            }
+                            alertController.addAction(settingsAction)
+                            let cancelAction = UIAlertAction(title: "暫不啟用", style: .default, handler: nil)
+                            alertController.addAction(cancelAction)
+                            self.present(alertController, animated: true, completion: nil)
+                            return
+                        case .authorized:
+                            print("Authorized, proceed")
+                            AccessPhoto.accessCamera(viewController: self)
+                        }
                     }
                 }
 

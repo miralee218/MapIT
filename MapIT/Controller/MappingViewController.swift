@@ -26,6 +26,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     @IBOutlet weak var puaseShadowView: UIView!
 
+    @IBOutlet weak var authorizationView: UIView!
     let locationManager = CLLocationManager()
     var checkInButtonCenter: CGPoint!
     var puaseButtonCenter: CGPoint!
@@ -40,7 +41,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupLayout()
         let buttonItem = MKUserTrackingButton(mapView: mapView)
         buttonItem.tintColor = UIColor.StartPink
@@ -49,18 +49,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
         mapView.addSubview(buttonItem)
         print(isEditting)
-
-        if isEditting == true {
-
-            MRProgressHUD.coutinueRecord(view: self.view)
-
-            recordButton.alpha = 0
-            moreButton.alpha = 1
-            locationManager.startUpdatingLocation()
-        } else {
-            recordButton.alpha = 1
-            moreButton.alpha = 0
-        }
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(newTravel),
                                                name: Notification.Name("newTravel"),
@@ -73,11 +61,37 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         removePullUpController(pullUpController, animated: true)
         isViewList = false
     }
+//    func accessLoacation() {
+//        if CLLocationManager.locationServicesEnabled() {
+//            switch CLLocationManager.authorizationStatus() {
+//            case .notDetermined:
+//                authorizationView.isHidden = false
+//            case .restricted, .denied:
+//                authorizationView.isHidden = false
+//                print("No access")
+//            case .authorizedAlways, .authorizedWhenInUse:
+//                authorizationView.isHidden = true
+//                print("Access")
+//                locationService()
+//                if self.travel?.isEditting == true {
+//                    MRProgressHUD.coutinueRecord(view: self.view)
+//                    recordButton.alpha = 0
+//                    moreButton.alpha = 1
+//                    locationManager.startUpdatingLocation()
+//                } else {
+//                    recordButton.alpha = 1
+//                    moreButton.alpha = 0
+//                }
+//            }
+//        } else {
+//            authorizationView.isHidden = false
+//            print("Location services are not enabled")
+//        }
+//
+//    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        locationService()
-        reloadView()
-        mapView.showsUserLocation = true
+        locationManager.requestWhenInUseAuthorization()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -89,6 +103,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         puaseButton.center = recordButton.center
         checkListButton.center = recordButton.center
         stopButton.center = recordButton.center
+        mapView.showsUserLocation = true
+        locationService()
+        reloadView()
     }
     public func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
         let radians = degrees * .pi / 180
@@ -103,23 +120,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func reloadView() {
-
         self.checkInButton.alpha = 0
         self.puaseButton.alpha = 0
         self.stopButton.alpha = 0
         self.checkListButton.alpha = 0
 
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
-
-        if self.travel?.isEditting == true {
-
-            MRProgressHUD.coutinueRecord(view: self.view)
-            recordButton.alpha = 0
-            moreButton.alpha = 1
-        } else {
-            recordButton.alpha = 1
-            moreButton.alpha = 0
-        }
     }
     private func addPullUpController() {
         let pullUpController = makeSearchViewControllerIfNeeded()
@@ -131,21 +137,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func locationService() {
-
-        if CLLocationManager.locationServicesEnabled() == true {
-
-            let status = CLLocationManager.authorizationStatus()
-            if status == .notDetermined || status == .denied || status == .authorizedWhenInUse {
-                locationManager.requestAlwaysAuthorization()
-                locationManager.requestWhenInUseAuthorization()
-            }
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
 
-        } else {
-            print("PLease turn on location services or GPS")
-        }
         DispatchQueue.main.async {
             self.mapView.delegate = self
             self.mapView.mapType = .standard
@@ -158,6 +153,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 self.mapView.setCenter(coor, animated: true)
             }
         }
+
         locationManager.startUpdatingHeading()
         locationManager.stopUpdatingLocation()
     }
@@ -322,7 +318,28 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
 
     }
-
+    @IBAction func setAuthorizaiton(_ sender: UIButton) {
+        if CLLocationManager.authorizationStatus() != .denied {
+        } else {
+            let alertController = UIAlertController (title: "定位請求", message: "定位服務尚未啟用，請允許取用位置，以便紀錄您的旅行蹤跡。", preferredStyle: .alert)
+            let tempAction = UIAlertAction(title: "暫不啟用", style: .cancel){ action in
+            }
+            let callAction = UIAlertAction(title: "立即設定", style: .default){ action in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                        self.authorizationView.isHidden = true
+                    })
+                }
+            }
+            alertController.addAction(tempAction)
+            alertController.addAction(callAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
     private func saveRun() {
 
         self.travel?.endTimestamp = Date()
@@ -347,6 +364,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     // MARK: - CLLocationManager Delegates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        authorizationView.isHidden = true
 
         guard locations[0].horizontalAccuracy < 20 else {
             return
@@ -402,10 +420,36 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        authorizationView.isHidden = false
         print("Unable to access your current location")
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted, .denied:
+            authorizationView.isHidden = false
+        case .authorizedWhenInUse:
+            authorizationView.isHidden = true
+            print("Access")
+            locationService()
+            if self.travel?.isEditting == true {
+                MRProgressHUD.coutinueRecord(view: self.view)
+                recordButton.alpha = 0
+                moreButton.alpha = 1
+                locationManager.startUpdatingLocation()
+            } else {
+                recordButton.alpha = 1
+                moreButton.alpha = 0
+            }
+            break
+        case .notDetermined, .authorizedAlways:
+            break
+        @unknown default:
+            fatalError()
+        }
     }
 
 }
+
 
 extension MappingViewController {
 
