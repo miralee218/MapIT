@@ -60,6 +60,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let pullUpController = makeSearchViewControllerIfNeeded()
         removePullUpController(pullUpController, animated: true)
         isViewList = false
+        mapView.removeOverlays(self.mapView.overlays)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -105,7 +106,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             recordButton.alpha = 1
             moreButton.alpha = 0
         }
-        mapView.removeOverlays(self.mapView.overlays)
 
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
     }
