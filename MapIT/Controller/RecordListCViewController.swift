@@ -242,7 +242,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 195
+        return UITableView.automaticDimension
     }
     func sortResults(items: [LocationPost]) -> [LocationPost] {
         var sortResults: [LocationPost] = []

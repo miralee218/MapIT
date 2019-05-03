@@ -13,4 +13,5 @@ extension Notification.Name {
     static let newTravel = Notification.Name("newTravel")
     static let addMark = Notification.Name("addMark")
     static let removeMark = Notification.Name("removeMark")
+    static let reloadRouteTableView = Notification.Name("reloadRouteTableView")
 }

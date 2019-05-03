@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -78,21 +79,22 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dtz-cR-7yG" secondAttribute="trailing" id="04c-bW-8dA"/>
+                    <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="MHK-uC-uiK" secondAttribute="bottom" constant="6" id="2DO-7n-2ts"/>
+                    <constraint firstAttribute="bottom" secondItem="dtz-cR-7yG" secondAttribute="bottom" constant="1" id="4pW-eE-gIo"/>
                     <constraint firstItem="dtz-cR-7yG" firstAttribute="top" secondItem="Qf3-vM-b7l" secondAttribute="bottom" constant="6" id="7Nz-Bt-wW5"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="centerX" secondItem="Jcx-j9-Iae" secondAttribute="centerX" id="BIX-EH-38I"/>
                     <constraint firstItem="OuT-vG-zZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CCn-D9-XhP"/>
                     <constraint firstAttribute="trailing" secondItem="9yb-NH-ydJ" secondAttribute="trailing" constant="50" id="CD1-EK-uGA"/>
-                    <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="68" id="Fzq-FS-e4v"/>
                     <constraint firstAttribute="trailing" secondItem="OuT-vG-zZM" secondAttribute="trailing" constant="16" id="GpS-iB-Q1u"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Hb8-pf-xkw"/>
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="leading" secondItem="MHK-uC-uiK" secondAttribute="leading" id="S4j-g5-Zrt"/>
+                    <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="9yb-NH-ydJ" secondAttribute="bottom" constant="2" id="YSO-9u-oMZ"/>
                     <constraint firstAttribute="bottom" secondItem="Jcx-j9-Iae" secondAttribute="bottom" id="dtm-3q-XWp"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="centerY" secondItem="Mak-H2-VYK" secondAttribute="centerY" id="exQ-OE-Pou"/>
                     <constraint firstItem="MHK-uC-uiK" firstAttribute="leading" secondItem="9yb-NH-ydJ" secondAttribute="leading" id="hrg-ZG-m3Q"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="jpw-um-NaT"/>
                     <constraint firstItem="Jcx-j9-Iae" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="k4D-Px-JBD"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="leading" secondItem="Mak-H2-VYK" secondAttribute="trailing" constant="16" id="lWl-4D-Z0C"/>
-                    <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="rPq-b5-vM2"/>
                     <constraint firstItem="dtz-cR-7yG" firstAttribute="leading" secondItem="Qf3-vM-b7l" secondAttribute="leading" id="rwQ-JE-2p5"/>
                     <constraint firstItem="Jcx-j9-Iae" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="xg9-8U-OAe"/>
                 </constraints>
@@ -100,6 +102,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="dtz-cR-7yG" id="8yP-9R-Ahd"/>
+                <outlet property="collectionViewHeight" destination="cTF-C0-In7" id="uRm-ZR-lwH"/>
                 <outlet property="moreButton" destination="OuT-vG-zZM" id="N04-Qw-Djt"/>
                 <outlet property="pointDescriptionLabel" destination="Qf3-vM-b7l" id="PWe-bo-F8h"/>
                 <outlet property="pointRecordTimeLabel" destination="MHK-uC-uiK" id="BgZ-UG-oaM"/>

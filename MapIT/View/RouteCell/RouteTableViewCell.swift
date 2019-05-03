@@ -16,7 +16,8 @@ class RouteTableViewCell: UITableViewCell {
     @IBOutlet weak var pointDescriptionLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     var actionBlock: (() -> Void)?
-
+    var count = Int()
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     var locationPost = LocationPost() {
         didSet {
             collectionView.reloadData()
@@ -38,12 +39,10 @@ class RouteTableViewCell: UITableViewCell {
 
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
 
     @IBAction func moreOption(_ sender: UIButton) {
@@ -59,6 +58,7 @@ extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         guard let count = locationPost.photo?.count else {
             return 0
         }
+
         return count
     }
 
@@ -70,7 +70,6 @@ extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
             withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
             for: indexPath
         )
-
             guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
 
             guard let photo = locationPost.photo?[indexPath.item]  else {
@@ -89,9 +88,9 @@ extension RouteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
                 let image    = UIImage(contentsOfFile: imageURL.path)
                 photoCell.photoImageView.image = image
                 // Do whatever you want with the image
+
             }
 
             return photoCell
-
     }
 }

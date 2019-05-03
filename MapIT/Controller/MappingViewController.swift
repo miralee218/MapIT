@@ -184,6 +184,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
+            mapView.removeAnnotations(mapView.annotations)
             locationManager.stopUpdatingLocation()
         }
 
@@ -209,6 +210,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
+            mapView.removeAnnotations(mapView.annotations)
             locationManager.stopUpdatingLocation()
         }
         DispatchQueue.main.async {

@@ -41,16 +41,13 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RecordDescriptionTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapNavBar))
         self.navigationController?.navigationBar.addGestureRecognizer(tap)
 
     }
-    @objc
-    func didTapNavBar() {
+    @objc func didTapNavBar() {
         originalPositionHandler?()
     }
-    
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
@@ -322,7 +319,11 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             return UITableView.automaticDimension
         case 2:
-            return 200
+            guard (sortedLocationPost?[indexPath.row].photo?.count) != nil else {
+                return 100
+            }
+
+            return 195
         default:
             return 0
         }
