@@ -13,7 +13,6 @@ import MBProgressHUD
 import PullUpController
 import CoreData
 
-// swiftlint:disable identifier_name
 // swiftlint:disable type_body_length
 // swiftlint:disable file_length
 
@@ -98,7 +97,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         for coordinate in coordinates {
             let point = MKPointAnnotation()
             point.coordinate = coordinate
-            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
+//            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
             pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)
@@ -558,5 +557,4 @@ extension MappingViewController {
 }
 
 // swiftlint:enable type_body_length
-// swiftlint:enable identifier_name
 // swiftlint:enable file_length

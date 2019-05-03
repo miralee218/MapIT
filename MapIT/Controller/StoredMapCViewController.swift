@@ -164,7 +164,6 @@ class StoredMapCViewController: UIViewController {
 
         mapView.setRegion(region, animated: true)
     }
-    
     func addAnnotation(mapView: MKMapView) {
         guard
             let locationPost = self.travel?.locationPosts,
@@ -183,7 +182,7 @@ class StoredMapCViewController: UIViewController {
         for coordinate in coordinates {
             let point = MKPointAnnotation()
             point.coordinate = coordinate
-            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
+//            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
             pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)

@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The day started well with tutors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf3-vM-b7l">
-                        <rect key="frame" x="64" y="68" width="228.5" height="19.5"/>
+                        <rect key="frame" x="64" y="68" width="318" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" name="B3"/>
                         <nil key="highlightedColor"/>
@@ -81,7 +81,6 @@
                     <constraint firstAttribute="trailing" secondItem="dtz-cR-7yG" secondAttribute="trailing" id="04c-bW-8dA"/>
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="MHK-uC-uiK" secondAttribute="bottom" constant="6" id="2DO-7n-2ts"/>
                     <constraint firstAttribute="bottom" secondItem="dtz-cR-7yG" secondAttribute="bottom" constant="1" id="4pW-eE-gIo"/>
-                    <constraint firstItem="dtz-cR-7yG" firstAttribute="top" secondItem="Qf3-vM-b7l" secondAttribute="bottom" constant="6" id="7Nz-Bt-wW5"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="centerX" secondItem="Jcx-j9-Iae" secondAttribute="centerX" id="BIX-EH-38I"/>
                     <constraint firstItem="OuT-vG-zZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CCn-D9-XhP"/>
                     <constraint firstAttribute="trailing" secondItem="9yb-NH-ydJ" secondAttribute="trailing" constant="50" id="CD1-EK-uGA"/>
@@ -91,6 +90,7 @@
                     <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="9yb-NH-ydJ" secondAttribute="bottom" constant="2" id="YSO-9u-oMZ"/>
                     <constraint firstAttribute="bottom" secondItem="Jcx-j9-Iae" secondAttribute="bottom" id="dtm-3q-XWp"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="centerY" secondItem="Mak-H2-VYK" secondAttribute="centerY" id="exQ-OE-Pou"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Qf3-vM-b7l" secondAttribute="trailing" constant="12" id="eyy-SZ-kat"/>
                     <constraint firstItem="MHK-uC-uiK" firstAttribute="leading" secondItem="9yb-NH-ydJ" secondAttribute="leading" id="hrg-ZG-m3Q"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="jpw-um-NaT"/>
                     <constraint firstItem="Jcx-j9-Iae" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="k4D-Px-JBD"/>

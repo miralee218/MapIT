@@ -51,10 +51,6 @@ class RecordDetailViewController: UIViewController {
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let option4 = UIAlertAction(title: "地圖導航", style: .default) { (_) in
-            print("To Apple Map")
-        }
-
         let option3 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
 
             let vc = UIStoryboard.mapping.instantiateViewController(
@@ -76,7 +72,6 @@ class RecordDetailViewController: UIViewController {
 
         let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-//        sheet.addAction(option4)
         sheet.addAction(option3)
         sheet.addAction(option2)
         sheet.addAction(option1)
@@ -168,7 +163,7 @@ class RecordDetailViewController: UIViewController {
         for coordinate in coordinates {
             let point = MKPointAnnotation()
             point.coordinate = coordinate
-            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
+//            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
             pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)
@@ -221,7 +216,9 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
             changePositionHandler = { [weak self] coordinate in
-                let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+                let region = MKCoordinateRegion(
+                    center: coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
                 mapCell.mapView.setRegion(region, animated: true)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
@@ -258,6 +255,17 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
                 let option4 = UIAlertAction(title: "地圖導航", style: .default) { (_) in
                     print("To Apple Map")
+                    let lat = sortedLocationPost[indexPath.row].latitude
+                    let long = sortedLocationPost[indexPath.row].longitude
+                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    let targetPlacemark = MKPlacemark(coordinate: coordinate)
+                    let targetItem = MKMapItem(placemark: targetPlacemark)
+                    let userMapItem = MKMapItem.forCurrentLocation()
+                    let routes = [userMapItem, targetItem]
+
+                    MKMapItem.openMaps(
+                        with: routes,
+                        launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
                 }
 
                 let option3 = UIAlertAction(title: "編輯", style: .default) { [weak self] (_) in
@@ -288,7 +296,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
                 let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-//                sheet.addAction(option4)
+                sheet.addAction(option4)
                 sheet.addAction(option3)
                 sheet.addAction(option2)
                 sheet.addAction(option1)
@@ -298,8 +306,14 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             routeCell.pointTitleLabel.text = sortedLocationPost[indexPath.row].title
             routeCell.pointDescriptionLabel.text = sortedLocationPost[indexPath.row].content
+
             guard let currentLocationPost = self.sortedLocationPost?[indexPath.row] else {
                 return cell
+            }
+            print(currentLocationPost.photo?.count)
+
+            if currentLocationPost.photo?.count == nil {
+                routeCell.collectionView.isHidden = true
             }
             routeCell.locationPost = currentLocationPost
             let formattedDate = FormatDisplay.postDate(sortedLocationPost[indexPath.row].timestamp)
