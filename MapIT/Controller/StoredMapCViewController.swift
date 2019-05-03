@@ -26,8 +26,6 @@ class StoredMapCViewController: UIViewController {
     var long = [Double]()
     var lat = [Double]()
 
-    var startCoordinates: [CLLocationCoordinate2D] = []
-    var endCoordinates: [CLLocationCoordinate2D] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +37,6 @@ class StoredMapCViewController: UIViewController {
             = 10.0
         tableView.separatorStyle = .none
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
-
         getEdittingTravel()
     }
 
@@ -47,11 +44,8 @@ class StoredMapCViewController: UIViewController {
         guard let removeOrder = self.travel else {
             return
         }
-        self.travel?.endTimestamp = nil
-        self.travel?.content = nil
-        self.travel?.title = nil
         CoreDataStack.delete(removeOrder)
-NotificationCenter.default.post(name: .newTravel, object: nil)
+        NotificationCenter.default.post(name: .newTravel, object: nil)
         dismiss(animated: true, completion: nil)
     }
     @IBAction func cancelStore(_ sender: UIButton) {
@@ -68,7 +62,7 @@ NotificationCenter.default.post(name: .newTravel, object: nil)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: true)]
         let isEditting = "1"
         fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
+        fetchRequest.fetchLimit = 1
         do {
             let context = CoreDataStack.context
             let count = try context.count(for: fetchRequest)
@@ -150,7 +144,6 @@ NotificationCenter.default.post(name: .newTravel, object: nil)
             let coordinate = CLLocationCoordinate2D(
                 latitude: location.start!.latitude,
                 longitude: location.start!.longitude)
-            self.startCoordinates.append(coordinate)
             return coordinate
         }
 
@@ -158,8 +151,7 @@ NotificationCenter.default.post(name: .newTravel, object: nil)
             guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
             let coordinate = CLLocationCoordinate2D(
                 latitude: location.end!.latitude,
-                longitude: location.start!.longitude)
-            self.endCoordinates.append(coordinate)
+                longitude: location.end!.longitude)
             return coordinate
         }
         for coordinate in 0...startCoordinates.count - 1 {

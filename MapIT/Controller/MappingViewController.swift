@@ -13,6 +13,10 @@ import MBProgressHUD
 import PullUpController
 import CoreData
 
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
+
 class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -37,6 +41,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     var initLoaction: CLLocation?
     private var locationManagerShared = LocationManager.shared
     var travel: Travel?
+    var allCoordinates: [[CLLocationCoordinate2D]] = [[]]
+    lazy var locationPost = (travel?.locationPosts?.allObjects as? [LocationPost])
 
     lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
@@ -48,11 +54,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonItem.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
 
         mapView.addSubview(buttonItem)
-        print(isEditting)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(newTravel),
-                                               name: Notification.Name("newTravel"),
+                                               name: Notification.Name.newTravel,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addMark), name: Notification.Name.addMark, object: nil)
+        print(isEditting)
 
     }
     @objc func newTravel() {
@@ -61,10 +68,79 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         removePullUpController(pullUpController, animated: true)
         isViewList = false
         mapView.removeOverlays(self.mapView.overlays)
+        locationManager.stopUpdatingLocation()
+        locationList.removeAll()
+        mapView.removeAnnotations(self.mapView.annotations)
     }
+    @objc func addMark(_ notification: NSNotification) {
+
+        guard let coordinate = notification.userInfo?["coordinate"] as? CLLocationCoordinate2D else {
+            return
+        }
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+
+        addAnnotation()
+    }
+    func addAnnotation() {
+        guard
+            let locationPost = self.travel?.locationPosts,
+            locationPost.count > 0 else {
+                return
+        }
+        let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
+            guard let locaitonPost = coordinate as? LocationPost else {
+                return CLLocationCoordinate2D()
+            }
+            let coordinate = CLLocationCoordinate2D(
+                latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
+            return coordinate
+        }
+        var pointAnnotations = [MKPointAnnotation]()
+        for coordinate in coordinates {
+            let point = MKPointAnnotation()
+            point.coordinate = coordinate
+            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
+            pointAnnotations.append(point)
+        }
+        mapView.addAnnotations(pointAnnotations)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        authorizationView.isHidden = true
         locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        mapView.removeAnnotations(mapView.annotations)
+        addAnnotation()
+    }
+    private func loadMap(mapView: MKMapView) {
+        guard
+            let locations = self.travel?.locations,
+            locations.count > 0 else {
+                return
+        }
+        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
+            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.start!.latitude,
+                longitude: location.start!.longitude)
+            return coordinate
+        }
+        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
+            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.end!.latitude,
+                longitude: location.end!.longitude)
+            return coordinate
+        }
+        for coordinate in 0...startCoordinates.count - 1 {
+            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
+            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -87,10 +163,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let position = CGPoint(x: recordButton.center.x + horizontal, y: recordButton.center.y + vertical)
         return position
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        reloadView()
-    }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        self.viewDidDisappear(true)
+//        if self.travel?.isEditting == true {
+//            self.travel?.locations = NSOrderedSet(array: locationList)
+//
+//        } else {
+//            locationManager.stopUpdatingLocation()
+//        }
+        
+//    }
 
     func reloadView() {
         self.checkInButton.alpha = 0
@@ -101,10 +184,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             MRProgressHUD.coutinueRecord(view: self.view)
             recordButton.alpha = 0
             moreButton.alpha = 1
+            loadMap(mapView: mapView)
             locationManager.startUpdatingLocation()
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
+            locationManager.stopUpdatingLocation()
         }
 
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
@@ -121,8 +206,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     func locationService() {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.delegate = self
-            locationManager.startUpdatingLocation()
-
         if self.travel?.isEditting == true {
             MRProgressHUD.coutinueRecord(view: self.view)
             recordButton.alpha = 0
@@ -172,7 +255,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
         let isEditting = "1"
         fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
+        fetchRequest.fetchLimit = 1
         do {
             let context = CoreDataStack.context
             let count = try context.count(for: fetchRequest)
@@ -300,7 +383,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBAction func stopClicked(_ sender: UIButton) {
 
         self.saveRun()
-        locationManager.stopUpdatingLocation()
         self.initLoaction = nil
 
         if let vc = storyboard?.instantiateViewController(
@@ -312,10 +394,12 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     @IBAction func setAuthorizaiton(_ sender: UIButton) {
         if CLLocationManager.authorizationStatus() != .denied {
         } else {
-            let alertController = UIAlertController (title: "定位請求", message: "定位服務尚未啟用，請允許取用位置，以便紀錄您的旅行蹤跡。", preferredStyle: .alert)
-            let tempAction = UIAlertAction(title: "暫不啟用", style: .cancel) { action in
+            let alertController = UIAlertController(title: "定位請求",
+                                                    message: "定位服務尚未啟用，請允許取用位置，以便紀錄您的旅行蹤跡。",
+                                                    preferredStyle: .alert)
+            let tempAction = UIAlertAction(title: "暫不啟用", style: .cancel) { _ in
             }
-            let callAction = UIAlertAction(title: "立即設定", style: .default) { action in
+            let callAction = UIAlertAction(title: "立即設定", style: .default) { _ in
                 guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                     return
                 }
@@ -375,11 +459,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
             let coordinates = [start.coordinate, end.coordinate]
 
+            allCoordinates.append(coordinates)
+
             mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
 
-            let region = MKCoordinateRegion(center: end.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-
-            mapView.setRegion(region, animated: true)
+            let region = MKCoordinateRegion(center: end.coordinate,
+                                            latitudinalMeters: 500,
+                                            longitudinalMeters: 500)
 
             let date = Date()
 
@@ -408,11 +494,16 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             locationList.append(mira)
 
             initLoaction = end
+
+            mapView.setRegion(region, animated: true)
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         authorizationView.isHidden = false
         print("Unable to access your current location")
+    }
+    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+        authorizationView.isHidden = true
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -431,7 +522,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 recordButton.alpha = 1
                 moreButton.alpha = 0
             }
-            break
         case .notDetermined, .authorizedAlways:
             break
         @unknown default:
@@ -440,7 +530,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
 }
-
 
 extension MappingViewController {
 
@@ -469,3 +558,7 @@ extension MappingViewController {
 //        return renderer
     }
 }
+
+// swiftlint:enable type_body_length
+// swiftlint:enable identifier_name
+// swiftlint:enable file_length

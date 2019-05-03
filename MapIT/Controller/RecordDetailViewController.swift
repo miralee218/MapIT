@@ -129,7 +129,7 @@ class RecordDetailViewController: UIViewController {
             guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
             let coordinate = CLLocationCoordinate2D(
                 latitude: location.end!.latitude,
-                longitude: location.start!.longitude)
+                longitude: location.end!.longitude)
             self.endCoordinates.append(coordinate)
             return coordinate
         }

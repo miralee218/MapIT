@@ -48,6 +48,9 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     var photoSelected = [UIImage]()
     lazy var isEditting = isEdittingTravel()
     var imageFilePath = [String]()
+    var lat = CLLocationDegrees()
+    var long = CLLocationDegrees()
+    var coordinate = CLLocationCoordinate2D()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -133,17 +136,18 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
         saveLocation()
         NotificationCenter.default.post(name: .reloadRecordList, object: nil)
+        NotificationCenter.default.post(name: .addMark, object: nil, userInfo: ["coordinate": coordinate])
         dismiss(animated: true, completion: nil)
     }
     private func saveLocation() {
         guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
+        self.coordinate = locValue
 
         let newLocation = LocationPost(context: CoreDataStack.context)
 

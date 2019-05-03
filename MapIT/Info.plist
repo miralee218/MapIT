@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>MapIT 想要存取您的位置，以便開始紀錄旅行蹤跡。</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MapIT 想要存取您的位置，以便開始紀錄旅行蹤跡。</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_TW</string>
 	<key>CFBundleExecutable</key>
@@ -30,11 +34,15 @@
 	<key>NSCameraUsageDescription</key>
 	<string>使用相機紀錄</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>MapIT 想要存取您的地位，以便開始紀錄旅行蹤跡。</string>
+	<string>MapIT 想要存取您的位置，以便開始紀錄旅行蹤跡。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>可以將照片加入至您的相簿嗎？</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>讓您可以發佈相機膠卷內的圖像。</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
