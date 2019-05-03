@@ -163,7 +163,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let position = CGPoint(x: recordButton.center.x + horizontal, y: recordButton.center.y + vertical)
         return position
     }
-    
 //    override func viewDidDisappear(_ animated: Bool) {
 //        self.viewDidDisappear(true)
 //        if self.travel?.isEditting == true {
@@ -172,7 +171,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 //        } else {
 //            locationManager.stopUpdatingLocation()
 //        }
-        
 //    }
 
     func reloadView() {
@@ -214,6 +212,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
+            locationManager.stopUpdatingLocation()
         }
         DispatchQueue.main.async {
             self.mapView.delegate = self
@@ -229,7 +228,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         }
 
         locationManager.startUpdatingHeading()
-        locationManager.stopUpdatingLocation()
     }
 
     private func setupLayout() {
