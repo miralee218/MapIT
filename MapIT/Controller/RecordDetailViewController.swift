@@ -25,6 +25,8 @@ class RecordDetailViewController: UIViewController {
     var startCoordinates: [CLLocationCoordinate2D] = []
     var endCoordinates: [CLLocationCoordinate2D] = []
     var sortedLocationPost: [LocationPost]?
+    var changePositionHandler: ((CLLocationCoordinate2D) -> Void)?
+    var originalPositionHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,16 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RecordDescriptionTableViewCell.self), bundle: nil)
         tableView.mr_registerCellWithNib(
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapNavBar))
+        self.navigationController?.navigationBar.addGestureRecognizer(tap)
 
     }
+    @objc
+    func didTapNavBar() {
+        originalPositionHandler?()
+    }
+    
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
@@ -209,6 +219,13 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             loadMap(mapView: mapCell.mapView)
             mapCell.mapView.removeAnnotations(mapCell.mapView.annotations)
             addAnnotation(mapView: mapCell.mapView)
+            originalPositionHandler = {[weak self] in
+                self?.loadMap(mapView: mapCell.mapView)
+            }
+            changePositionHandler = { coordinate in
+                let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+                mapCell.mapView.setRegion(region, animated: true)
+            }
             return cell
 
         case 1:
@@ -306,6 +323,24 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             return 200
         default:
             return 0
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        switch indexPath.section {
+        case 0:
+            return
+        case 1:
+            originalPositionHandler?()
+            return
+        case 2:
+            guard let lat = sortedLocationPost?[indexPath.row].latitude, let long = sortedLocationPost?[indexPath.row].longitude else {
+                return
+            }
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            changePositionHandler?(coordinate)
+        default:
+            return
         }
     }
 
