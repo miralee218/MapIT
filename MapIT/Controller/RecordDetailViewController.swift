@@ -221,10 +221,12 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             addAnnotation(mapView: mapCell.mapView)
             originalPositionHandler = {[weak self] in
                 self?.loadMap(mapView: mapCell.mapView)
+                self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
-            changePositionHandler = { coordinate in
-                let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+            changePositionHandler = { [weak self] coordinate in
+                let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
                 mapCell.mapView.setRegion(region, animated: true)
+                self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
             return cell
 
