@@ -12,4 +12,5 @@ extension Notification.Name {
     static let reloadRecordList = Notification.Name("reloadRecordList")
     static let newTravel = Notification.Name("newTravel")
     static let addMark = Notification.Name("addMark")
+    static let removeMark = Notification.Name("removeMark")
 }

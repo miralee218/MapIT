@@ -59,6 +59,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                                                name: Notification.Name.newTravel,
                                                object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addMark), name: Notification.Name.addMark, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(removeMark), name: Notification.Name.removeMark, object: nil)
         print(isEditting)
 
     }
@@ -73,14 +74,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.removeAnnotations(self.mapView.annotations)
     }
     @objc func addMark(_ notification: NSNotification) {
-
-        guard let coordinate = notification.userInfo?["coordinate"] as? CLLocationCoordinate2D else {
-            return
-        }
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        mapView.addAnnotation(annotation)
-
+        addAnnotation()
+    }
+    @objc func removeMark(_ notification: NSNotification) {
+        mapView.removeAnnotations(mapView.annotations)
         addAnnotation()
     }
     func addAnnotation() {
@@ -494,6 +491,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             initLoaction = end
 
             mapView.setRegion(region, animated: true)
+
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

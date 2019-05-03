@@ -34,7 +34,6 @@ class RecordListCViewController: PullUpController {
         }
     }
     @IBOutlet weak var noDataView: UIView!
-    
     @IBOutlet weak var searchSeparatorView: UIView! {
         didSet {
             searchSeparatorView.layer.cornerRadius = searchSeparatorView.frame.height/2
@@ -46,6 +45,7 @@ class RecordListCViewController: PullUpController {
 
     var travel: Travel?
     lazy var locationPost = (travel?.locationPosts?.allObjects as? [LocationPost])
+    var coordinate = CLLocationCoordinate2D()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,6 +197,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                     } else {
                         self?.noDataView.isHidden = true
                     }
+                    NotificationCenter.default.post(name: .removeMark, object: nil)
                     tableView.reloadData()
                     return
                 }
@@ -209,10 +210,8 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                 }
 
                 CoreDataStack.delete(removeOrder)
-
                 self?.locationPost?.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
-
                 tableView.reloadData()
 
             }

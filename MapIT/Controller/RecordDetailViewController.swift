@@ -102,8 +102,8 @@ class RecordDetailViewController: UIViewController {
         let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
                                             longitude: (minLong + maxLong) / 2)
 
-        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 4,
-                                    longitudeDelta: (maxLong - minLong) * 4)
+        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 2,
+                                    longitudeDelta: (maxLong - minLong) * 2)
         return MKCoordinateRegion(center: center, span: span)
 
     }
@@ -142,6 +142,29 @@ class RecordDetailViewController: UIViewController {
         }
 
         mapView.setRegion(region, animated: true)
+    }
+    func addAnnotation(mapView: MKMapView) {
+        guard
+            let locationPost = self.travel?.locationPosts,
+            locationPost.count > 0 else {
+                return
+        }
+        let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
+            guard let locaitonPost = coordinate as? LocationPost else {
+                return CLLocationCoordinate2D()
+            }
+            let coordinate = CLLocationCoordinate2D(
+                latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
+            return coordinate
+        }
+        var pointAnnotations = [MKPointAnnotation]()
+        for coordinate in coordinates {
+            let point = MKPointAnnotation()
+            point.coordinate = coordinate
+            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
+            pointAnnotations.append(point)
+        }
+        mapView.addAnnotations(pointAnnotations)
     }
 
 }
@@ -184,7 +207,8 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             mapCell.mapView.isZoomEnabled = true
             mapCell.mapView.isScrollEnabled = true
             loadMap(mapView: mapCell.mapView)
-
+            mapCell.mapView.removeAnnotations(mapCell.mapView.annotations)
+            addAnnotation(mapView: mapCell.mapView)
             return cell
 
         case 1:
@@ -242,6 +266,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
                     self?.sortedLocationPost?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadData()
                     print("YOU HAVE DELETED YOUR RECORD")
                 }
 

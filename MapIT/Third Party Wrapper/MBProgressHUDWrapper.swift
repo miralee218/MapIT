@@ -29,6 +29,7 @@ class MRProgressHUD {
         popView.bezelView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         popView.bezelView.alpha = 0.5
         popView.hide(animated: true, afterDelay: 1.5)
+    
     }
     static func coutinueRecord(view: UIView) {
         let popView = MRUIProgressHUD.showAdded(to: view, animated: true)
