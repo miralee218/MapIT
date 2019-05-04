@@ -23,6 +23,7 @@ target 'MapIT' do
   pod 'Crashlytics'
   pod 'Firebase/Core'
   pod 'lottie-ios'
+  pod 'Gemini'
 
 
 

@@ -9,6 +9,7 @@
 import UIKit
 import FSCalendar
 import CoreData
+import Gemini
 
 class RecordViewController: UIViewController {
 
@@ -23,10 +24,18 @@ class RecordViewController: UIViewController {
 
         }
     }
-    @IBOutlet weak var collectionView: UICollectionView! {
+    @IBOutlet weak var collectionView: GeminiCollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
+
+//            collectionView.gemini
+//                .rollRotationAnimation()
+//                .degree(45)
+//                .rollEffect(.rollUp)
+            collectionView.gemini
+                .cubeAnimation()
+                .cubeDegree(40)
         }
     }
     @IBOutlet weak var noDataView: UIView!
@@ -349,6 +358,8 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         }
         recordCell.travel = indexTravel
+        //Animated
+        self.collectionView.animateCell(recordCell)
         return recordCell
     }
 
@@ -361,5 +372,16 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
             return
         }
         showDetailVC(travel: travel)
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.collectionView.animateVisibleCells()
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
+            for: indexPath
+        )
+        guard let recordCell = cell as? RecordCollectionViewCell else { return }
+        self.collectionView.animateCell(recordCell)
     }
 }

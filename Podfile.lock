@@ -24,6 +24,7 @@ PODS:
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
   - FSCalendar (2.8.0)
+  - Gemini (1.3.1)
   - GoogleAppMeasurement (5.8.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - Fabric
   - Firebase/Core
   - FSCalendar
+  - Gemini
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift
@@ -90,6 +92,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseInstanceID
     - FSCalendar
+    - Gemini
     - GoogleAppMeasurement
     - GoogleMaps
     - GooglePlaces
@@ -110,6 +113,7 @@ SPEC CHECKSUMS:
   FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
   FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
+  Gemini: 25fd4ae5dcde4cbd136dac899faf38a1dddea1a8
   GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
@@ -122,6 +126,6 @@ SPEC CHECKSUMS:
   PullUpController: 5c8710cb686dca43d5850ae994debb7fdb824b75
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 8baf72b4554ec08ecbe55463b0b6cba1f5a837c5
+PODFILE CHECKSUM: bac3612a704b901f286395e37ac70e42d0d545a3
 
 COCOAPODS: 1.6.1

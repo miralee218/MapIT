@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import Gemini
 
-class RecordCollectionViewCell: UICollectionViewCell {
+class RecordCollectionViewCell: GeminiCell {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
@@ -32,7 +33,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
-        collectionView.layer.cornerRadius = 5
+        collectionView.layer.cornerRadius = 10
         backView.layer.shadowColor = (UIColor.B2)?.cgColor
         backView.layer.shadowOpacity = 0.4
         backView.layer.shadowRadius = 4
