@@ -74,8 +74,8 @@
                                             <constraint firstAttribute="width" secondItem="OXl-Kq-Xzd" secondAttribute="height" multiplier="1:1" id="lTj-LP-Qi2"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快加入相片豐富你的回憶吧！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdr-4n-oLX">
-                                        <rect key="frame" x="103" y="462" width="208" height="22.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快在旅程中加入相片豐富你的回憶吧！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdr-4n-oLX">
+                                        <rect key="frame" x="71" y="462" width="272" height="22.5"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <color key="textColor" name="B2"/>
                                         <nil key="highlightedColor"/>
