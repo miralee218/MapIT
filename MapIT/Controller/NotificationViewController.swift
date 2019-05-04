@@ -109,12 +109,12 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
             return 0
         }
         for localPost in 0...allLocationCount - 1 {
-            guard let allLocationPhotoCount = allLocationPost?[localPost].photo?.count else {
-                return 0
+            if let allLocationPhotoCount = allLocationPost?[localPost].photo?.count {
+                count += allLocationPhotoCount
             }
-            count += allLocationPhotoCount
         }
         return count
+
     }
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
@@ -146,7 +146,10 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
             photos.removeAll()
             var allLocationPost = allTravel?[indexPath.section].locationPosts?.allObjects as? [LocationPost]
             for localPost in 0...allLocationPost!.count - 1 {
-                for index in 0...(allLocationPost?[localPost].photo!.count)! - 1 {
+                guard let count = allLocationPost?[localPost].photo?.count else {
+                    return photoCell
+                }
+                for index in 0...count - 1 {
                     photos.append((allLocationPost?[localPost].photo?[index])!)
                 }
             }

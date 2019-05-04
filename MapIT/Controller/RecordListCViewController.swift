@@ -230,6 +230,9 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
         }
         let sortedLocationPost = sortResults(items: locationPost)
         self.locationPost = sortedLocationPost
+        if locationPost[indexPath.row].photo?.count == nil {
+            routeCell.collectionView.isHidden = true
+        }
         routeCell.pointTitleLabel.text = locationPost[indexPath.row].title
         routeCell.pointDescriptionLabel.text = locationPost[indexPath.row].content
         guard let currentLocationPost = self.locationPost?[indexPath.row] else {
@@ -242,7 +245,12 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+
+        guard locationPost?[indexPath.row].photo?.count != nil else {
+            return 100
+        }
+        
+        return 195
     }
     func sortResults(items: [LocationPost]) -> [LocationPost] {
         var sortResults: [LocationPost] = []
