@@ -78,12 +78,13 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
             var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
             for localPost in 0...allLocationPost!.count - 1 {
 
-                guard let count = allLocationPost?[localPost].photo?.count else {
-                    return photoCell
+                if let count = allLocationPost?[localPost].photo?.count {
+                    for index in 0...count - 1 {
+                        photos.append((allLocationPost?[localPost].photo?[index])!)
+                    }
+                    continue
                 }
-                for index in 0...count - 1 {
-                    photos.append((allLocationPost?[localPost].photo?[index])!)
-                }
+
             }
             let photo = photos[indexPath.row]
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
