@@ -66,19 +66,39 @@
                                         <color key="textColor" name="B4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXl-Kq-Xzd">
-                                        <rect key="frame" x="82" y="262" width="250" height="250"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXl-Kq-Xzd" customClass="AnimationView">
+                                        <rect key="frame" x="132" y="312" width="150" height="150"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="cg7-4m-cdc"/>
+                                            <constraint firstAttribute="width" constant="150" id="cg7-4m-cdc"/>
                                             <constraint firstAttribute="width" secondItem="OXl-Kq-Xzd" secondAttribute="height" multiplier="1:1" id="lTj-LP-Qi2"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快加入相片豐富你的回憶吧！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdr-4n-oLX">
+                                        <rect key="frame" x="103" y="462" width="208" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <color key="textColor" name="B2"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fs-5S-w7N">
+                                        <rect key="frame" x="57" y="237" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="HP6-I7-zj9"/>
+                                            <constraint firstAttribute="width" constant="300" id="JaF-I2-Si8"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="goToMap:" destination="S5Y-qH-c6x" eventType="touchUpInside" id="GXl-i3-HqX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="4Fs-5S-w7N" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="0rz-oi-NZV"/>
+                                    <constraint firstItem="xdr-4n-oLX" firstAttribute="top" secondItem="OXl-Kq-Xzd" secondAttribute="bottom" id="9Df-sq-nGu"/>
                                     <constraint firstItem="OXl-Kq-Xzd" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="F9e-b1-6P5"/>
                                     <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="TMQ-3x-Nxs"/>
+                                    <constraint firstItem="4Fs-5S-w7N" firstAttribute="centerY" secondItem="i86-fL-UjI" secondAttribute="centerY" id="U3V-ek-wvs"/>
+                                    <constraint firstItem="xdr-4n-oLX" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="Zsn-Pr-xrL"/>
                                     <constraint firstItem="OXl-Kq-Xzd" firstAttribute="centerY" secondItem="i86-fL-UjI" secondAttribute="centerY" id="pOw-0v-AQk"/>
                                     <constraint firstItem="Pr9-f5-bMY" firstAttribute="top" secondItem="i86-fL-UjI" secondAttribute="top" constant="16" id="wao-MX-miV"/>
                                 </constraints>
@@ -99,7 +119,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="相冊" id="nVV-BX-mSb"/>
                     <connections>
-                        <outlet property="cameraView" destination="OXl-Kq-Xzd" id="uYM-hA-gE7"/>
+                        <outlet property="cameraView" destination="OXl-Kq-Xzd" id="Rd5-bp-y1Y"/>
                         <outlet property="collectionView" destination="7nc-Me-cFD" id="JAY-YG-P40"/>
                         <outlet property="noDataView" destination="i86-fL-UjI" id="jne-o6-9jQ"/>
                     </connections>

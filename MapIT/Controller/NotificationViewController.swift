@@ -26,7 +26,7 @@ class NotificationViewController: UIViewController {
         }
     }
     @IBOutlet weak var noDataView: UIView!
-    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var cameraView: AnimationView!
     var allTravel: [Travel]?
     var travel: Travel?
     var count = 0
@@ -39,17 +39,19 @@ class NotificationViewController: UIViewController {
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
-        let cameraView = AnimationView(name: "CameraLottieFiles")
-        cameraView.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
-        cameraView.center = cameraView.center
-        cameraView.contentMode = .scaleAspectFill
-        self.cameraView.addSubview(cameraView)
-        cameraView.play()
-        cameraView.loopMode = .loop
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getTravel()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let cameraView = AnimationView(name: "CameraLottieFiles")
+        cameraView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        cameraView.contentMode = .scaleAspectFill
+        self.cameraView.addSubview(cameraView)
+        cameraView.loopMode = .loop
+        cameraView.play()
     }
     func getTravel() {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
@@ -75,6 +77,10 @@ class NotificationViewController: UIViewController {
         }
         collectionView.reloadData()
     }
+    @IBAction func goToMap(_ sender: UIButton) {
+                tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
+    }
+
 }
 extension NotificationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
