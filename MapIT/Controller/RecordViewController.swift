@@ -23,6 +23,12 @@ class RecordViewController: UIViewController {
 
         }
     }
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.delegate = self
+            collectionView.dataSource = self
+        }
+    }
     @IBOutlet weak var noDataView: UIView!
 
     @IBOutlet weak var myGifView: UIImageView!
@@ -39,7 +45,8 @@ class RecordViewController: UIViewController {
         tableView.separatorStyle = .none
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
-
+        collectionView.mr_registerCellWithNib(
+            identifier: String(describing: RecordCollectionViewCell.self), bundle: nil)
         getTravel()
         launchAnimation()
         myGifView.loadGif(name: "MapMark")
@@ -49,6 +56,7 @@ class RecordViewController: UIViewController {
         super.viewWillAppear(animated)
         getTravel()
         tableView.reloadData()
+        collectionView.reloadData()
     }
     func launchAnimation() {
         let vc = (UIStoryboard(name: "LaunchScreen",
@@ -92,6 +100,7 @@ class RecordViewController: UIViewController {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         tableView.reloadData()
+        collectionView.reloadData()
     }
 
     func getSpecificTravel() {
@@ -124,6 +133,7 @@ class RecordViewController: UIViewController {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         tableView.reloadData()
+        collectionView.reloadData()
     }
 
     var searchByCalendar = false
@@ -201,7 +211,6 @@ class RecordViewController: UIViewController {
     @IBAction func goToMap(_ sender: UIButton) {
         tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
     }
-    
 }
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -297,4 +306,60 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
 
+}
+extension RecordViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let count = allTravel?.count else {
+            return 0
+        }
+        return count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
+            for: indexPath
+        )
+        guard let recordCell = cell as? RecordCollectionViewCell else { return cell }
+        recordCell.actionBlock = { [weak self] in
+            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let option3 = UIAlertAction(title: "分享", style: .default) { [weak self] (_) in
+                let vc = UIStoryboard.record.instantiateViewController(
+                    withIdentifier: String(describing: SharedOptionViewController.self))
+                self?.present(vc, animated: true, completion: nil)
+            }
+            let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
+                guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
+                CoreDataStack.delete(removeOrder)
+                self?.getTravel()
+                collectionView.reloadData()
+                print("YOU HAVE DELETED YOUR RECORD")
+            }
+            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(option3)
+            sheet.addAction(option2)
+            sheet.addAction(option1)
+            self?.present(sheet, animated: true, completion: nil)
+        }
+        recordCell.travelNameLabel.text = allTravel?[indexPath.row].title
+        let formattedDate = FormatDisplay.travelDate(allTravel?[indexPath.row].createTimestamp)
+        recordCell.travelTimeLabel.text = formattedDate
+        recordCell.travelContentLabel.text = allTravel?[indexPath.row].content
+        guard let indexTravel = allTravel?[indexPath.row] else {
+            return cell
+        }
+        recordCell.travel = indexTravel
+        return recordCell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let indexTravel = allTravel?[indexPath.row] else {
+            return
+        }
+        self.selectedTravel = indexTravel
+        guard let travel = selectedTravel else {
+            return
+        }
+        showDetailVC(travel: travel)
+    }
 }

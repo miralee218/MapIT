@@ -67,6 +67,8 @@
 		497F3C87227D5CF2001D12C3 /* MapMark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C86227D5CF2001D12C3 /* MapMark.gif */; };
 		497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */; };
 		497F3C8B227D6BB6001D12C3 /* CameraLottieFiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */; };
+		4981D1B1227DBC8E00D24ED6 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4981D1AF227DBC8E00D24ED6 /* RecordCollectionViewCell.swift */; };
+		4981D1B2227DBC8E00D24ED6 /* RecordCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4981D1B0227DBC8E00D24ED6 /* RecordCollectionViewCell.xib */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -153,6 +155,8 @@
 		497F3C86227D5CF2001D12C3 /* MapMark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MapMark.gif; sourceTree = "<group>"; };
 		497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CameraLottieFiles.json; sourceTree = "<group>"; };
+		4981D1AF227DBC8E00D24ED6 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		4981D1B0227DBC8E00D24ED6 /* RecordCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCollectionViewCell.xib; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 				49853764225D7964008CB391 /* MapTableViewCell.xib */,
 				49853767225D7E94008CB391 /* SharedOptionTableViewCell.swift */,
 				49853768225D7E95008CB391 /* SharedOptionTableViewCell.xib */,
+				4981D1AF227DBC8E00D24ED6 /* RecordCollectionViewCell.swift */,
+				4981D1B0227DBC8E00D24ED6 /* RecordCollectionViewCell.xib */,
 			);
 			path = RecordCell;
 			sourceTree = "<group>";
@@ -480,6 +486,7 @@
 				494EB36F2259C28000ECCA72 /* RoutePictureCollectionViewCell.xib in Resources */,
 				49853755225C78FA008CB391 /* RecordImageTableViewCell.xib in Resources */,
 				491169302254629700347310 /* Lobby.storyboard in Resources */,
+				4981D1B2227DBC8E00D24ED6 /* RecordCollectionViewCell.xib in Resources */,
 				497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */,
 				491169342254633400347310 /* Mapping.storyboard in Resources */,
 				49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */,
@@ -653,6 +660,7 @@
 				497AC91A22680110005E8856 /* FormatDisplay.swift in Sources */,
 				49CCC8F32277A26000478B6A /* FullScreenImageViewController.swift in Sources */,
 				497A05DD2266C2420010D142 /* PlaceAnnotation.swift in Sources */,
+				4981D1B1227DBC8E00D24ED6 /* RecordCollectionViewCell.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
 				494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */,
