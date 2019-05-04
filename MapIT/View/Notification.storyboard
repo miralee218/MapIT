@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,22 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i86-fL-UjI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未紀錄照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-f5-bMY">
-                                        <rect key="frame" x="135" y="370" width="144" height="34"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="24"/>
-                                        <color key="textColor" name="B3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerY" secondItem="i86-fL-UjI" secondAttribute="centerY" id="QvB-o1-Tld"/>
-                                    <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="TMQ-3x-Nxs"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7nc-Me-cFD">
                                 <rect key="frame" x="3" y="88" width="408" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,7 +34,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COx-Ua-uM0">
-                                            <rect key="frame" x="11" y="2.5" width="371" height="25.5"/>
+                                            <rect key="frame" x="11" y="2.5" width="365" height="25.5"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                             <color key="textColor" name="B2"/>
                                             <nil key="highlightedColor"/>
@@ -72,6 +57,32 @@
                                     </constraints>
                                 </collectionReusableView>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i86-fL-UjI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未紀錄照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr9-f5-bMY">
+                                        <rect key="frame" x="153" y="16" width="108.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <color key="textColor" name="B4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXl-Kq-Xzd">
+                                        <rect key="frame" x="82" y="262" width="250" height="250"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="cg7-4m-cdc"/>
+                                            <constraint firstAttribute="width" secondItem="OXl-Kq-Xzd" secondAttribute="height" multiplier="1:1" id="lTj-LP-Qi2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="OXl-Kq-Xzd" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="F9e-b1-6P5"/>
+                                    <constraint firstItem="Pr9-f5-bMY" firstAttribute="centerX" secondItem="i86-fL-UjI" secondAttribute="centerX" id="TMQ-3x-Nxs"/>
+                                    <constraint firstItem="OXl-Kq-Xzd" firstAttribute="centerY" secondItem="i86-fL-UjI" secondAttribute="centerY" id="pOw-0v-AQk"/>
+                                    <constraint firstItem="Pr9-f5-bMY" firstAttribute="top" secondItem="i86-fL-UjI" secondAttribute="top" constant="16" id="wao-MX-miV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -88,6 +99,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="相冊" id="nVV-BX-mSb"/>
                     <connections>
+                        <outlet property="cameraView" destination="OXl-Kq-Xzd" id="uYM-hA-gE7"/>
                         <outlet property="collectionView" destination="7nc-Me-cFD" id="JAY-YG-P40"/>
                         <outlet property="noDataView" destination="i86-fL-UjI" id="jne-o6-9jQ"/>
                     </connections>
@@ -186,8 +198,8 @@
         <namedColor name="B2">
             <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="B3">
-            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="B4">
+            <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

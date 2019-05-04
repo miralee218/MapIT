@@ -64,6 +64,9 @@
 		497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */; };
 		497AC92D22698A74005E8856 /* NormalPictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */; };
 		497F3C85227BC7DA001D12C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497F3C84227BC7D9001D12C3 /* MapKit.framework */; };
+		497F3C87227D5CF2001D12C3 /* MapMark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C86227D5CF2001D12C3 /* MapMark.gif */; };
+		497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */; };
+		497F3C8B227D6BB6001D12C3 /* CameraLottieFiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */; };
 		49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853725225B2380008CB391 /* EditLocationCViewController.swift */; };
 		4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49853728225B3E3D008CB391 /* RecordTableViewCell.swift */; };
 		4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853729225B3E3D008CB391 /* RecordTableViewCell.xib */; };
@@ -147,6 +150,9 @@
 		497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalPictureCollectionViewCell.xib; sourceTree = "<group>"; };
 		497F3C84227BC7D9001D12C3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		497F3C86227D5CF2001D12C3 /* MapMark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MapMark.gif; sourceTree = "<group>"; };
+		497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
+		497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CameraLottieFiles.json; sourceTree = "<group>"; };
 		49853725225B2380008CB391 /* EditLocationCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationCViewController.swift; sourceTree = "<group>"; };
 		49853728225B3E3D008CB391 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		49853729225B3E3D008CB391 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -244,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				497A05C5226045370010D142 /* Taiwan.gpx */,
+				497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */,
+				497F3C86227D5CF2001D12C3 /* MapMark.gif */,
 				497AC92522687D90005E8856 /* Coordinate.swift */,
 				494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */,
 				497A05DC2266C2420010D142 /* PlaceAnnotation.swift */,
@@ -284,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				4911692D2254614600347310 /* UIImage+Extension.swift */,
+				497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */,
 				491169442254653100347310 /* UIStoryboard+Extension.swift */,
 				491169462254879B00347310 /* UIColor+Extension.swift */,
 				494EB36322599D1700ECCA72 /* UITableView+Extension.swift */,
@@ -474,12 +483,14 @@
 				497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */,
 				491169342254633400347310 /* Mapping.storyboard in Resources */,
 				49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */,
+				497F3C8B227D6BB6001D12C3 /* CameraLottieFiles.json in Resources */,
 				4985372B225B3E3D008CB391 /* RecordTableViewCell.xib in Resources */,
 				494EB37C225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.xib in Resources */,
 				49853762225D773A008CB391 /* EditArticleTableViewCell.xib in Resources */,
 				494EB388225A221900ECCA72 /* AddPictureMethodCollectionViewCell.xib in Resources */,
 				491169362254634800347310 /* Notification.storyboard in Resources */,
 				49853766225D7964008CB391 /* MapTableViewCell.xib in Resources */,
+				497F3C87227D5CF2001D12C3 /* MapMark.gif in Resources */,
 				491169382254639300347310 /* Record.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +595,7 @@
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PullUpController/PullUpController.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -596,6 +608,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullUpController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,6 +633,7 @@
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,
+				497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */,
 				497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
 				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,

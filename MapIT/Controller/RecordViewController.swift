@@ -25,6 +25,7 @@ class RecordViewController: UIViewController {
     }
     @IBOutlet weak var noDataView: UIView!
 
+    @IBOutlet weak var myGifView: UIImageView!
     var allTravel: [Travel]?
     var selectedTravel: Travel?
     var seletedDate: Date?
@@ -41,6 +42,7 @@ class RecordViewController: UIViewController {
 
         getTravel()
         launchAnimation()
+        myGifView.loadGif(name: "MapMark")
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -196,7 +198,10 @@ class RecordViewController: UIViewController {
 
         show(detailVC, sender: nil)
     }
-
+    @IBAction func goToMap(_ sender: UIButton) {
+        tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
+    }
+    
 }
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

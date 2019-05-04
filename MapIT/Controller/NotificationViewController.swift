@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import CoreData
+import Lottie
 
 class NotificationViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class NotificationViewController: UIViewController {
         }
     }
     @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var cameraView: UIView!
     var allTravel: [Travel]?
     var travel: Travel?
     var count = 0
@@ -36,6 +38,14 @@ class NotificationViewController: UIViewController {
         )
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
+
+        let cameraView = AnimationView(name: "CameraLottieFiles")
+        cameraView.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
+        cameraView.center = cameraView.center
+        cameraView.contentMode = .scaleAspectFill
+        self.cameraView.addSubview(cameraView)
+        cameraView.play()
+        cameraView.loopMode = .loop
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
