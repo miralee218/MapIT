@@ -13,9 +13,7 @@ import Gemini
 
 class RecordViewController: UIViewController {
     private enum LayoutType {
-        
         case list
-        
         case grid
     }
     @IBOutlet weak var calendarView: FSCalendar!
@@ -30,12 +28,10 @@ class RecordViewController: UIViewController {
         }
     }
     @IBOutlet weak var layoutBtn: UIBarButtonItem!
-    
     @IBOutlet weak var collectionView: GeminiCollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
-
             collectionView.gemini
                 .cubeAnimation()
                 .cubeDegree(25)
@@ -79,6 +75,10 @@ class RecordViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+//        if let navigationController = self.navigationController as? ScrollingNavigationController {
+//            navigationController
+//        }
         getTravel()
         tableView.reloadData()
         collectionView.reloadData()
