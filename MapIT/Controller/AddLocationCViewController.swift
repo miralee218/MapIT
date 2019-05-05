@@ -11,12 +11,13 @@ import MapKit
 import CoreData
 import AVFoundation
 import RSKPlaceholderTextView
+import TextFieldEffects
 
 class AddLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var storeButton: UIButton!
-    @IBOutlet weak var locationName: UITextField!
+    @IBOutlet weak var locationName: HoshiTextField!
     @IBOutlet weak var contentTextView: RSKPlaceholderTextView!
     @IBOutlet weak var locationNameCollectionView: UICollectionView! {
         didSet {
@@ -54,7 +55,6 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     var coordinate = CLLocationCoordinate2D()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         contentTextView.placeholder = "地點說明..."
         toolBarView.layer.cornerRadius
         = 10.0

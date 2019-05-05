@@ -359,21 +359,28 @@
                                             <outlet property="delegate" destination="y5h-pU-4JE" id="Lef-eO-Df8"/>
                                         </connections>
                                     </tableView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="旅程名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="uy8-fp-5qd">
-                                        <rect key="frame" x="16" y="315" width="382" height="28"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="旅程名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="uy8-fp-5qd" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="16" y="315" width="382" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="9iX-RQ-fFe"/>
+                                        </constraints>
                                         <color key="textColor" name="B3"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" name="B5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                <color key="value" name="MiraBlue2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" name="B4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RcT-6g-mEB">
-                                        <rect key="frame" x="16" y="342" width="382" height="1"/>
-                                        <color key="backgroundColor" name="B5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="brz-xm-gOV"/>
-                                        </constraints>
-                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-5B-4ds" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
-                                        <rect key="frame" x="20" y="359" width="374" height="377"/>
+                                        <rect key="frame" x="20" y="386" width="374" height="350"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="B4"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
@@ -386,15 +393,12 @@
                                     <constraint firstItem="L5n-5B-4ds" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" constant="20" id="5zO-au-Wuh"/>
                                     <constraint firstItem="L5n-5B-4ds" firstAttribute="top" secondItem="uy8-fp-5qd" secondAttribute="bottom" constant="16" id="F0I-OY-3JD"/>
                                     <constraint firstAttribute="trailing" secondItem="hTY-ki-Bxm" secondAttribute="trailing" id="Kjj-81-xrd"/>
-                                    <constraint firstItem="RcT-6g-mEB" firstAttribute="bottom" secondItem="uy8-fp-5qd" secondAttribute="bottom" id="Ow0-2Q-45C"/>
                                     <constraint firstAttribute="trailing" secondItem="uy8-fp-5qd" secondAttribute="trailing" constant="16" id="PBn-JT-W0g"/>
                                     <constraint firstItem="hTY-ki-Bxm" firstAttribute="top" secondItem="Aqy-fN-S1q" secondAttribute="top" id="QQE-i3-FCh"/>
                                     <constraint firstItem="hTY-ki-Bxm" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" id="Vy6-BG-dvt"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="L5n-5B-4ds" secondAttribute="bottom" id="Xzi-8B-fXf"/>
-                                    <constraint firstItem="RcT-6g-mEB" firstAttribute="leading" secondItem="uy8-fp-5qd" secondAttribute="leading" id="YDA-Rg-knG"/>
                                     <constraint firstItem="uy8-fp-5qd" firstAttribute="top" secondItem="hTY-ki-Bxm" secondAttribute="bottom" constant="15" id="jKO-jf-u5y"/>
                                     <constraint firstItem="uy8-fp-5qd" firstAttribute="leading" secondItem="Aqy-fN-S1q" secondAttribute="leading" constant="16" id="t0V-Gf-jHC"/>
-                                    <constraint firstItem="RcT-6g-mEB" firstAttribute="trailing" secondItem="uy8-fp-5qd" secondAttribute="trailing" id="uIW-Na-eqm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -432,21 +436,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tex-nj-pkm">
                                 <rect key="frame" x="0.0" y="264" width="414" height="632"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-af-w1I">
-                                        <rect key="frame" x="16" y="16" width="382" height="28"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lSf-af-w1I" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="16" y="16" width="382" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="TK0-dL-d1z"/>
+                                        </constraints>
                                         <color key="textColor" name="B3"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" name="B5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                <color key="value" name="MiraBlue2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" name="B4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-z6-FMx">
-                                        <rect key="frame" x="16" y="43" width="382" height="1"/>
-                                        <color key="backgroundColor" name="B5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="ct1-Io-a2o"/>
-                                        </constraints>
-                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="54I-rh-Zcy">
-                                        <rect key="frame" x="16" y="48" width="398" height="36"/>
+                                        <rect key="frame" x="16" y="75" width="398" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="yJV-Hr-DLL"/>
@@ -464,7 +475,7 @@
                                         </connections>
                                     </collectionView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-q8-wKV" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
-                                        <rect key="frame" x="16" y="92" width="382" height="90"/>
+                                        <rect key="frame" x="16" y="119" width="382" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="FuW-Wx-30e"/>
@@ -474,7 +485,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="361-ZO-sMU">
-                                        <rect key="frame" x="20" y="198" width="374" height="392"/>
+                                        <rect key="frame" x="20" y="225" width="374" height="365"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="5Yj-Sl-Uzp">
                                             <size key="itemSize" width="110" height="110"/>
@@ -496,14 +507,11 @@
                                     <constraint firstItem="361-ZO-sMU" firstAttribute="leading" secondItem="tex-nj-pkm" secondAttribute="leading" constant="20" id="Dv5-Fp-mLw"/>
                                     <constraint firstAttribute="trailing" secondItem="lSf-af-w1I" secondAttribute="trailing" constant="16" id="GAB-HP-FXu"/>
                                     <constraint firstItem="54I-rh-Zcy" firstAttribute="leading" secondItem="tex-nj-pkm" secondAttribute="leading" constant="16" id="QIa-pE-a1J"/>
-                                    <constraint firstItem="45Z-z6-FMx" firstAttribute="trailing" secondItem="lSf-af-w1I" secondAttribute="trailing" id="TKd-mg-Owi"/>
                                     <constraint firstAttribute="trailing" secondItem="54I-rh-Zcy" secondAttribute="trailing" id="Txe-yo-wOc"/>
                                     <constraint firstItem="KAr-q8-wKV" firstAttribute="leading" secondItem="tex-nj-pkm" secondAttribute="leading" constant="16" id="WeA-KJ-0J1"/>
+                                    <constraint firstItem="lSf-af-w1I" firstAttribute="top" secondItem="tex-nj-pkm" secondAttribute="top" constant="16" id="Xtw-Gv-mXd"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="361-ZO-sMU" secondAttribute="bottom" id="eYE-U2-66n"/>
-                                    <constraint firstItem="45Z-z6-FMx" firstAttribute="bottom" secondItem="lSf-af-w1I" secondAttribute="bottom" id="i5Z-AS-VQ5"/>
-                                    <constraint firstItem="lSf-af-w1I" firstAttribute="top" secondItem="tex-nj-pkm" secondAttribute="top" constant="16" id="i5f-HQ-mrH"/>
                                     <constraint firstItem="KAr-q8-wKV" firstAttribute="top" secondItem="54I-rh-Zcy" secondAttribute="bottom" constant="8" id="tNL-6P-0zf"/>
-                                    <constraint firstItem="45Z-z6-FMx" firstAttribute="leading" secondItem="lSf-af-w1I" secondAttribute="leading" id="tnr-Vo-9Su"/>
                                     <constraint firstItem="54I-rh-Zcy" firstAttribute="top" secondItem="lSf-af-w1I" secondAttribute="bottom" constant="4" id="v2K-9b-GoO"/>
                                     <constraint firstAttribute="trailing" secondItem="KAr-q8-wKV" secondAttribute="trailing" constant="16" id="wzE-qi-VPQ"/>
                                     <constraint firstItem="lSf-af-w1I" firstAttribute="leading" secondItem="tex-nj-pkm" secondAttribute="leading" constant="16" id="zG5-Nk-tGT"/>
@@ -660,21 +668,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUd-Xn-xJD">
                                 <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-ht-lEy">
-                                        <rect key="frame" x="16" y="16" width="382" height="28"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="輸入地點名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xPO-ht-lEy" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                        <rect key="frame" x="16" y="16" width="382" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="Aqm-CB-Ll4"/>
+                                        </constraints>
                                         <color key="textColor" name="B3"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                                <color key="value" name="B5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                <color key="value" name="B4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                                <color key="value" name="MiraBlue2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzU-7o-WFr">
-                                        <rect key="frame" x="16" y="43" width="382" height="1"/>
-                                        <color key="backgroundColor" name="B5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="QrI-Dy-hN6"/>
-                                        </constraints>
-                                    </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HzH-K0-NfM">
-                                        <rect key="frame" x="16" y="48" width="398" height="36"/>
+                                        <rect key="frame" x="16" y="75" width="398" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="Dpz-6E-skd"/>
@@ -691,7 +706,7 @@
                                         </connections>
                                     </collectionView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
-                                        <rect key="frame" x="16" y="92" width="382" height="90"/>
+                                        <rect key="frame" x="16" y="119" width="382" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="3tN-86-HXX"/>
@@ -701,7 +716,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bof-E0-Y5d">
-                                        <rect key="frame" x="20" y="198" width="374" height="580"/>
+                                        <rect key="frame" x="20" y="225" width="374" height="553"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="vcn-Om-3hf">
                                             <size key="itemSize" width="110" height="110"/>
@@ -721,8 +736,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Bof-E0-Y5d" secondAttribute="trailing" constant="20" id="7Jx-UX-cgp"/>
                                     <constraint firstItem="Bof-E0-Y5d" firstAttribute="top" secondItem="L7B-AV-Pbc" secondAttribute="bottom" constant="16" id="8Un-ks-auA"/>
                                     <constraint firstItem="HzH-K0-NfM" firstAttribute="leading" secondItem="SUd-Xn-xJD" secondAttribute="leading" constant="16" id="8dy-4I-4ay"/>
-                                    <constraint firstItem="hzU-7o-WFr" firstAttribute="trailing" secondItem="xPO-ht-lEy" secondAttribute="trailing" id="9XU-tk-oeS"/>
-                                    <constraint firstItem="hzU-7o-WFr" firstAttribute="bottom" secondItem="xPO-ht-lEy" secondAttribute="bottom" id="HCA-da-KvT"/>
                                     <constraint firstAttribute="trailing" secondItem="L7B-AV-Pbc" secondAttribute="trailing" constant="16" id="Jff-kN-ZuW"/>
                                     <constraint firstAttribute="trailing" secondItem="HzH-K0-NfM" secondAttribute="trailing" id="Mxb-7B-Raz"/>
                                     <constraint firstItem="L7B-AV-Pbc" firstAttribute="top" secondItem="HzH-K0-NfM" secondAttribute="bottom" constant="8" id="PFc-3l-EJI"/>
@@ -732,7 +745,6 @@
                                     <constraint firstItem="L7B-AV-Pbc" firstAttribute="leading" secondItem="SUd-Xn-xJD" secondAttribute="leading" constant="16" id="i4S-ts-j4j"/>
                                     <constraint firstItem="Bof-E0-Y5d" firstAttribute="leading" secondItem="SUd-Xn-xJD" secondAttribute="leading" constant="20" id="pE8-qB-OST"/>
                                     <constraint firstItem="xPO-ht-lEy" firstAttribute="leading" secondItem="SUd-Xn-xJD" secondAttribute="leading" constant="16" id="qlk-zM-dZ0"/>
-                                    <constraint firstItem="hzU-7o-WFr" firstAttribute="leading" secondItem="xPO-ht-lEy" secondAttribute="leading" id="rHz-bi-Fkv"/>
                                     <constraint firstItem="HzH-K0-NfM" firstAttribute="top" secondItem="xPO-ht-lEy" secondAttribute="bottom" constant="4" id="sTB-C1-KrH"/>
                                 </constraints>
                             </view>
@@ -826,7 +838,7 @@
                                 <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bYU-IW-BUJ" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
-                                        <rect key="frame" x="20" y="70" width="374" height="666"/>
+                                        <rect key="frame" x="20" y="97" width="374" height="639"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="B4"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
@@ -840,35 +852,39 @@
                                     <constraint firstAttribute="bottomMargin" secondItem="bYU-IW-BUJ" secondAttribute="bottom" id="vAK-rO-L5v"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="旅程名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="eTK-wU-Ubd">
-                                <rect key="frame" x="16" y="144" width="382" height="28"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="旅程名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="eTK-wU-Ubd" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="16" y="144" width="382" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="lNu-0y-XGo"/>
+                                </constraints>
                                 <color key="textColor" name="B3"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" name="B5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" name="MiraBlue2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" name="B4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztv-z0-RkH">
-                                <rect key="frame" x="16" y="171" width="382" height="1"/>
-                                <color key="backgroundColor" name="B5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="b6f-AP-K7D"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SxP-eG-fWH" firstAttribute="trailing" secondItem="vN7-ar-vK7" secondAttribute="trailing" id="7k0-LR-zDD"/>
                             <constraint firstAttribute="bottom" secondItem="CFQ-5L-vrL" secondAttribute="bottom" id="8SU-AW-4ih"/>
-                            <constraint firstItem="ztv-z0-RkH" firstAttribute="leading" secondItem="eTK-wU-Ubd" secondAttribute="leading" id="9tE-0h-1Pt"/>
+                            <constraint firstItem="bYU-IW-BUJ" firstAttribute="top" secondItem="eTK-wU-Ubd" secondAttribute="bottom" constant="16" id="KXm-5T-2JI"/>
                             <constraint firstItem="vN7-ar-vK7" firstAttribute="trailing" secondItem="eTK-wU-Ubd" secondAttribute="trailing" constant="16" id="Ojx-Zl-gox"/>
                             <constraint firstItem="vN7-ar-vK7" firstAttribute="trailing" secondItem="CFQ-5L-vrL" secondAttribute="trailing" id="Ri1-lA-kIU"/>
                             <constraint firstItem="SxP-eG-fWH" firstAttribute="leading" secondItem="vN7-ar-vK7" secondAttribute="leading" id="TR1-VF-jqR"/>
                             <constraint firstItem="eTK-wU-Ubd" firstAttribute="leading" secondItem="vN7-ar-vK7" secondAttribute="leading" constant="16" id="UJG-Gj-Y6y"/>
                             <constraint firstItem="CFQ-5L-vrL" firstAttribute="leading" secondItem="vN7-ar-vK7" secondAttribute="leading" id="Y6e-hQ-13v"/>
-                            <constraint firstItem="ztv-z0-RkH" firstAttribute="trailing" secondItem="eTK-wU-Ubd" secondAttribute="trailing" id="gCA-Po-OXG"/>
                             <constraint firstItem="SxP-eG-fWH" firstAttribute="centerX" secondItem="BWi-TF-EbN" secondAttribute="centerX" id="owO-6C-oyM"/>
                             <constraint firstItem="CFQ-5L-vrL" firstAttribute="top" secondItem="SxP-eG-fWH" secondAttribute="bottom" constant="-10" id="p9A-hS-Qa9"/>
-                            <constraint firstItem="bYU-IW-BUJ" firstAttribute="top" secondItem="ztv-z0-RkH" secondAttribute="bottom" constant="16" id="phm-Gd-tn6"/>
-                            <constraint firstItem="ztv-z0-RkH" firstAttribute="bottom" secondItem="eTK-wU-Ubd" secondAttribute="bottom" id="qTt-QL-m9L"/>
                             <constraint firstItem="SxP-eG-fWH" firstAttribute="top" secondItem="vN7-ar-vK7" secondAttribute="top" constant="24" id="xB8-PV-ctL"/>
                             <constraint firstItem="eTK-wU-Ubd" firstAttribute="top" secondItem="SxP-eG-fWH" secondAttribute="bottom" constant="16" id="zvT-ge-Av2"/>
                         </constraints>

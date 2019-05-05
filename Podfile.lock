@@ -68,6 +68,7 @@ PODS:
   - PullUpController (0.7.0)
   - RSKPlaceholderTextView (5.0.0)
   - SwiftLint (0.32.0)
+  - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
   - Crashlytics
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - PullUpController
   - RSKPlaceholderTextView
   - SwiftLint
+  - TextFieldEffects
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -107,6 +109,7 @@ SPEC REPOS:
     - PullUpController
     - RSKPlaceholderTextView
     - SwiftLint
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
@@ -129,7 +132,8 @@ SPEC CHECKSUMS:
   PullUpController: 5c8710cb686dca43d5850ae994debb7fdb824b75
   RSKPlaceholderTextView: e4ec5a3f371b8e3e186d5cbba09d664bde34588f
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 607f3563ea0af6a8bcc2f676ae17666198d4df62
+PODFILE CHECKSUM: fa1841f3026974c3b81972c5c5b28de584fe3a9a
 
 COCOAPODS: 1.6.1

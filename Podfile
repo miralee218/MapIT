@@ -25,6 +25,7 @@ target 'MapIT' do
   pod 'lottie-ios'
   pod 'Gemini'
   pod 'RSKPlaceholderTextView'
+  pod 'TextFieldEffects'
 
 
 
