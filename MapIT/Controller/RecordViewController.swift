@@ -12,7 +12,12 @@ import CoreData
 import Gemini
 
 class RecordViewController: UIViewController {
-
+    private enum LayoutType {
+        
+        case list
+        
+        case grid
+    }
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var calendarButton: UIBarButtonItem!
@@ -24,15 +29,13 @@ class RecordViewController: UIViewController {
 
         }
     }
+    @IBOutlet weak var layoutBtn: UIBarButtonItem!
+    
     @IBOutlet weak var collectionView: GeminiCollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
 
-//            collectionView.gemini
-//                .rollRotationAnimation()
-//                .degree(45)
-//                .rollEffect(.rollUp)
             collectionView.gemini
                 .cubeAnimation()
                 .cubeDegree(25)
@@ -44,6 +47,19 @@ class RecordViewController: UIViewController {
     var allTravel: [Travel]?
     var selectedTravel: Travel?
     var seletedDate: Date?
+    var isListLayout: Bool = true {
+
+        didSet {
+
+            switch isListLayout {
+
+            case true: showListLayout()
+
+            case false: showGridLayout()
+
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +100,19 @@ class RecordViewController: UIViewController {
         }
     }
 
+    @IBAction func switchView(_ sender: UIBarButtonItem) {
+        isListLayout = !isListLayout
+    }
+    private func showListLayout() {
+        layoutBtn.image = UIImage.asset(.Icons_verticalCell)
+        tableView.isHidden = true
+        collectionView.isHidden = false
+    }
+    private func showGridLayout() {
+        layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
+        tableView.isHidden = false
+        collectionView.isHidden = true
+    }
     func getTravel() {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
@@ -299,7 +328,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 470
+        return UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -313,6 +342,15 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
         }
         showDetailVC(travel: travel)
 
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
+        cell.layer.transform = rotationTransform
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.75) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        }
     }
 
 }
@@ -384,6 +422,4 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let recordCell = cell as? RecordCollectionViewCell else { return }
         self.collectionView.animateCell(recordCell)
     }
-    
-    
 }

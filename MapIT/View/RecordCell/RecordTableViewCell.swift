@@ -28,12 +28,18 @@ class RecordTableViewCell: UITableViewCell {
     }
     var count = 0
     var photos = [String]()
-
+    @IBOutlet weak var backView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
-
+        collectionView.layer.cornerRadius = 10
+        backView.layer.shadowColor = (UIColor.B2)?.cgColor
+        backView.layer.shadowOpacity = 0.4
+        backView.layer.shadowRadius = 8
+        backView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        backView.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
