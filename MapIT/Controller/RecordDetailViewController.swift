@@ -318,7 +318,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             routeCell.locationPost = currentLocationPost
             let formattedDate = FormatDisplay.postDate(sortedLocationPost[indexPath.row].timestamp)
             routeCell.pointRecordTimeLabel.text = formattedDate
-            routeCell.selectionStyle = .none
+//            routeCell.selectionStyle = .none
             return routeCell
 
         default:
@@ -351,11 +351,13 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             originalPositionHandler?()
             return
         case 2:
-            guard let lat = sortedLocationPost?[indexPath.row].latitude, let long = sortedLocationPost?[indexPath.row].longitude else {
+            guard let lat = sortedLocationPost?[indexPath.row].latitude,
+                let long = sortedLocationPost?[indexPath.row].longitude else {
                 return
             }
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             changePositionHandler?(coordinate)
+            tableView.deselectRow(at: indexPath, animated: true)
         default:
             return
         }

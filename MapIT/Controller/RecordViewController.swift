@@ -305,6 +305,8 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
                 CoreDataStack.delete(removeOrder)
                 self?.getTravel()
+                self?.allTravel?.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.reloadData()
                 print("YOU HAVE DELETED YOUR RECORD")
             }

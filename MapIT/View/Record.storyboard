@@ -222,6 +222,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lp-VR-kdb">
                                 <rect key="frame" x="0.0" y="622" width="414" height="60"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KmL-RS-kng">
+                                        <rect key="frame" x="0.0" y="46" width="414" height="1"/>
+                                        <color key="backgroundColor" name="B5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="42S-jT-qXJ"/>
+                                            <constraint firstAttribute="height" constant="1" id="lMX-KN-CQK"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-g4-FJJ">
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
@@ -259,12 +267,15 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="zLy-ft-dwW" secondAttribute="bottom" constant="1" id="2La-e6-9cB"/>
+                                    <constraint firstAttribute="trailing" secondItem="KmL-RS-kng" secondAttribute="trailing" id="4Uy-Fx-VHi"/>
                                     <constraint firstAttribute="height" constant="60" id="6DM-BM-uLW"/>
+                                    <constraint firstItem="zLy-ft-dwW" firstAttribute="top" secondItem="KmL-RS-kng" secondAttribute="bottom" constant="11" id="CRE-yq-nDz"/>
                                     <constraint firstItem="x1N-QF-JRv" firstAttribute="leading" secondItem="5Lp-VR-kdb" secondAttribute="leading" constant="16" id="NpR-vD-wM3"/>
                                     <constraint firstItem="0bw-db-V0e" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="UF1-66-qRC"/>
                                     <constraint firstItem="zbR-g4-FJJ" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="XIl-37-DI5"/>
                                     <constraint firstItem="zLy-ft-dwW" firstAttribute="leading" secondItem="5Lp-VR-kdb" secondAttribute="leading" id="Xaw-aP-AJr"/>
                                     <constraint firstItem="0bw-db-V0e" firstAttribute="centerX" secondItem="5Lp-VR-kdb" secondAttribute="centerX" id="bGi-4V-SIC"/>
+                                    <constraint firstItem="KmL-RS-kng" firstAttribute="leading" secondItem="5Lp-VR-kdb" secondAttribute="leading" id="hyV-AJ-g57"/>
                                     <constraint firstAttribute="trailing" secondItem="zbR-g4-FJJ" secondAttribute="trailing" constant="16" id="iTr-qz-aVJ"/>
                                     <constraint firstAttribute="trailing" secondItem="zLy-ft-dwW" secondAttribute="trailing" id="lOD-dw-LDd"/>
                                     <constraint firstItem="x1N-QF-JRv" firstAttribute="centerY" secondItem="5Lp-VR-kdb" secondAttribute="centerY" id="q9x-k2-gWp"/>
