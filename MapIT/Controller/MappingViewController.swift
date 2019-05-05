@@ -112,6 +112,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         locationManager.pausesLocationUpdatesAutomatically = false
         mapView.removeAnnotations(mapView.annotations)
         addAnnotation()
+        reloadView()
     }
     private func loadMap(mapView: MKMapView) {
         guard
@@ -150,7 +151,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         stopButton.center = recordButton.center
         mapView.showsUserLocation = true
         locationService()
-        reloadView()
+
     }
     public func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
         let radians = degrees * .pi / 180

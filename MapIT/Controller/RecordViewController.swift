@@ -124,12 +124,14 @@ class RecordViewController: UIViewController {
                 // no matching object
 
                 noDataView.isHidden = false
+                layoutBtn.isEnabled = false
                 print("no present")
             } else {
                 // at least one matching object exists
                 guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
                 self.allTravel = edittingTravel
                 noDataView.isHidden = true
+                layoutBtn.isEnabled = true
                 print("have\(count) travel")
             }
         } catch let error as NSError {
@@ -157,12 +159,14 @@ class RecordViewController: UIViewController {
                 // no matching object
 
                 noDataView.isHidden = false
+                layoutBtn.isEnabled = false
                 print("no present")
             } else {
                 // at least one matching object exists
                 guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
                 self.allTravel = edittingTravel
                 noDataView.isHidden = true
+                layoutBtn.isEnabled = true
                 print("have\(count) travel")
             }
         } catch let error as NSError {

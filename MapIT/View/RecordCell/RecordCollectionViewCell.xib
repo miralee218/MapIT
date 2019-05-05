@@ -41,30 +41,29 @@
                                 <rect key="frame" x="140" y="0.0" width="250" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" fixedFrame="YES" text="旅程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gl5-oe-B1W">
-                                <rect key="frame" x="158" y="6" width="309" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="旅程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gl5-oe-B1W">
+                                <rect key="frame" x="158" y="6" width="190" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="Xyl-Kz-Dgn"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="16"/>
                                 <color key="textColor" name="B2"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-xo-XeR">
-                                <rect key="frame" x="158" y="61" width="234" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-xo-XeR">
+                                <rect key="frame" x="158" y="56" width="234" height="85"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <color key="textColor" name="B3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" fixedFrame="YES" text="2019/05/01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPz-Z9-px5">
-                                <rect key="frame" x="158" y="39" width="227" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="2019/05/01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPz-Z9-px5">
+                                <rect key="frame" x="158" y="33" width="54.5" height="14"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                                 <color key="textColor" name="B4"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wz-3o-euB">
-                                <rect key="frame" x="360" y="7" width="25" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wz-3o-euB">
+                                <rect key="frame" x="356" y="1.5" width="32" height="32"/>
                                 <state key="normal" image="Icons_more"/>
                                 <connections>
                                     <action selector="moreOption:" destination="gTV-IL-0wX" eventType="touchUpInside" id="AI8-Vy-Q6r"/>
@@ -74,14 +73,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8W2-0P-p0Z" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" id="1oa-Ej-UYt"/>
+                            <constraint firstAttribute="bottom" secondItem="gP9-xo-XeR" secondAttribute="bottom" constant="9" id="28M-i2-f6N"/>
                             <constraint firstAttribute="height" constant="150" id="2eS-ri-f7g"/>
+                            <constraint firstAttribute="trailing" secondItem="gP9-xo-XeR" secondAttribute="trailing" constant="8" id="9Md-Ju-3bz"/>
+                            <constraint firstItem="gP9-xo-XeR" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="8" id="DWv-D3-zpE"/>
+                            <constraint firstItem="ZPz-Z9-px5" firstAttribute="top" secondItem="Gl5-oe-B1W" secondAttribute="bottom" constant="4" id="GJv-so-oXB"/>
                             <constraint firstAttribute="width" constant="400" id="Gg8-aX-qta"/>
+                            <constraint firstItem="2Wz-3o-euB" firstAttribute="leading" secondItem="Gl5-oe-B1W" secondAttribute="trailing" constant="8" id="Mqe-ga-dHu"/>
+                            <constraint firstItem="Gl5-oe-B1W" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" constant="6" id="NYL-lh-CEW"/>
+                            <constraint firstAttribute="trailing" secondItem="2Wz-3o-euB" secondAttribute="trailing" constant="12" id="P4A-bk-oxi"/>
                             <constraint firstAttribute="trailing" secondItem="qrD-I8-2x0" secondAttribute="trailing" constant="10" id="Tbw-gk-bKj"/>
                             <constraint firstItem="qrD-I8-2x0" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="-10" id="Tka-5A-hDf"/>
+                            <constraint firstItem="ZPz-Z9-px5" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="8" id="XU0-jP-wZN"/>
+                            <constraint firstItem="2Wz-3o-euB" firstAttribute="centerY" secondItem="Gl5-oe-B1W" secondAttribute="centerY" id="axz-B8-0dq"/>
                             <constraint firstItem="qrD-I8-2x0" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" id="cMC-6Y-xjS"/>
                             <constraint firstItem="8W2-0P-p0Z" firstAttribute="leading" secondItem="B7p-rA-GdZ" secondAttribute="leading" id="duC-fw-mpF"/>
+                            <constraint firstItem="gP9-xo-XeR" firstAttribute="top" secondItem="ZPz-Z9-px5" secondAttribute="bottom" constant="9" id="fZS-Jv-2rc"/>
                             <constraint firstAttribute="bottom" secondItem="8W2-0P-p0Z" secondAttribute="bottom" id="n1C-HW-Nwp"/>
                             <constraint firstAttribute="bottom" secondItem="qrD-I8-2x0" secondAttribute="bottom" id="tLB-PP-ACk"/>
+                            <constraint firstItem="Gl5-oe-B1W" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="8" id="y3E-WP-NFP"/>
                         </constraints>
                     </view>
                 </subviews>

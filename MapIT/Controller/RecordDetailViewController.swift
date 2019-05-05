@@ -49,43 +49,6 @@ class RecordDetailViewController: UIViewController {
     }
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let option4 = UIAlertAction(title: "地圖導航", style: .default) { (_) in
-            print("To Apple Map")
-            guard
-                let locationPost = self.travel?.locationPosts,
-                locationPost.count > 0 else {
-                    return
-            }
-            let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
-                guard let locaitonPost = coordinate as? LocationPost else {
-                    return CLLocationCoordinate2D()
-                }
-                let coordinate = CLLocationCoordinate2D(
-                    latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
-                return coordinate
-            }
-            var routes = [CLLocationCoordinate2D]()
-            for coordinate in coordinates {
-                let point = MKPointAnnotation()
-                point.coordinate = coordinate
-                //            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
-                routes.append(coordinate)
-            }
-            let userMapItem = MKMapItem.forCurrentLocation()
-            var totalRoutes = [userMapItem]
-            for index in 0...routes.count - 1 {
-                let targetPlacemark = MKPlacemark(coordinate: routes[index])
-                let targetItem = MKMapItem(placemark: targetPlacemark)
-                totalRoutes.append(targetItem)
-            }
-            print(totalRoutes)
-
-            MKMapItem.openMaps(
-                with: totalRoutes,
-                launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey: true])
-        }
-
         let option3 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
 
             let vc = UIStoryboard.mapping.instantiateViewController(
@@ -100,16 +63,9 @@ class RecordDetailViewController: UIViewController {
             self?.present(editTravelVC, animated: true, completion: nil)
 
         }
-
-        let option2 = UIAlertAction(title: "刪除", style: .destructive) { (_) in
-            print("YOU HAVE DELETED YOUR RECORD")
-        }
-
         let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-        sheet.addAction(option4)
         sheet.addAction(option3)
-        sheet.addAction(option2)
         sheet.addAction(option1)
 
         self.present(sheet, animated: true, completion: nil)
