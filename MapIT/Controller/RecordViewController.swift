@@ -35,7 +35,7 @@ class RecordViewController: UIViewController {
 //                .rollEffect(.rollUp)
             collectionView.gemini
                 .cubeAnimation()
-                .cubeDegree(40)
+                .cubeDegree(10)
         }
     }
     @IBOutlet weak var noDataView: UIView!
@@ -384,4 +384,6 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let recordCell = cell as? RecordCollectionViewCell else { return }
         self.collectionView.animateCell(recordCell)
     }
+    
+    
 }

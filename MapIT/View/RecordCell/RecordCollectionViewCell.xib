@@ -14,48 +14,52 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RecordCollectionViewCell" customModule="MapIT" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="479"/>
+            <rect key="frame" x="0.0" y="0.0" width="363" height="484"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="359" height="479"/>
+                <rect key="frame" x="0.0" y="0.0" width="363" height="484"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7p-rA-GdZ">
-                        <rect key="frame" x="16" y="44" width="327" height="401"/>
+                        <rect key="frame" x="16" y="44" width="331" height="406"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8W2-0P-p0Z">
-                                <rect key="frame" x="0.0" y="0.0" width="327" height="327"/>
+                                <rect key="frame" x="0.0" y="-10" width="331" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8W2-0P-p0Z" secondAttribute="height" multiplier="1:1" id="vAq-Wg-En3"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qA5-vZ-ati">
-                                    <size key="itemSize" width="327" height="268"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qA5-vZ-ati">
+                                    <size key="itemSize" width="327" height="327"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrD-I8-2x0">
+                                <rect key="frame" x="0.0" y="311" width="331" height="85"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="旅程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gl5-oe-B1W">
-                                <rect key="frame" x="20" y="329" width="262" height="22.5"/>
+                                <rect key="frame" x="20" y="323" width="266" height="22.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <color key="textColor" name="B1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-xo-XeR">
-                                <rect key="frame" x="20" y="371.5" width="287" height="21.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程旅程" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gP9-xo-XeR">
+                                <rect key="frame" x="20" y="365.5" width="291" height="32.5"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <color key="textColor" name="B2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="2019/05/01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPz-Z9-px5">
-                                <rect key="frame" x="20" y="353.5" width="287" height="14"/>
+                                <rect key="frame" x="20" y="347.5" width="291" height="14"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
                                 <color key="textColor" name="B4"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wz-3o-euB">
-                                <rect key="frame" x="282" y="329" width="25" height="22"/>
+                                <rect key="frame" x="286" y="323" width="25" height="22"/>
                                 <state key="normal" image="Icons_more"/>
                                 <connections>
                                     <action selector="moreOption:" destination="gTV-IL-0wX" eventType="touchUpInside" id="AI8-Vy-Q6r"/>
@@ -64,6 +68,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qrD-I8-2x0" secondAttribute="trailing" id="9X9-3k-LtA"/>
                             <constraint firstAttribute="trailing" secondItem="Gl5-oe-B1W" secondAttribute="trailing" constant="45" id="EuC-xi-VEA"/>
                             <constraint firstItem="ZPz-Z9-px5" firstAttribute="leading" secondItem="B7p-rA-GdZ" secondAttribute="leading" constant="20" id="Jsa-Ye-ZLs"/>
                             <constraint firstItem="Gl5-oe-B1W" firstAttribute="leading" secondItem="B7p-rA-GdZ" secondAttribute="leading" constant="20" id="KCk-Lh-LB8"/>
@@ -74,8 +79,11 @@
                             <constraint firstAttribute="trailing" secondItem="ZPz-Z9-px5" secondAttribute="trailing" constant="20" id="eI5-su-YYT"/>
                             <constraint firstAttribute="trailing" secondItem="gP9-xo-XeR" secondAttribute="trailing" constant="20" id="gtb-Lf-avb"/>
                             <constraint firstItem="gP9-xo-XeR" firstAttribute="top" secondItem="ZPz-Z9-px5" secondAttribute="bottom" constant="4" id="iKs-2W-vHK"/>
+                            <constraint firstItem="qrD-I8-2x0" firstAttribute="leading" secondItem="B7p-rA-GdZ" secondAttribute="leading" id="jCq-lb-Avz"/>
+                            <constraint firstAttribute="bottom" secondItem="qrD-I8-2x0" secondAttribute="bottom" constant="10" id="lWR-zR-EC5"/>
                             <constraint firstItem="ZPz-Z9-px5" firstAttribute="top" secondItem="Gl5-oe-B1W" secondAttribute="bottom" constant="2" id="oXh-sP-D2j"/>
-                            <constraint firstItem="8W2-0P-p0Z" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" id="pyN-5C-5ED"/>
+                            <constraint firstItem="qrD-I8-2x0" firstAttribute="top" secondItem="8W2-0P-p0Z" secondAttribute="bottom" constant="-10" id="pQu-qs-ba3"/>
+                            <constraint firstItem="8W2-0P-p0Z" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" constant="-10" id="pyN-5C-5ED"/>
                             <constraint firstItem="Gl5-oe-B1W" firstAttribute="top" secondItem="8W2-0P-p0Z" secondAttribute="bottom" constant="2" id="sb9-xv-LL9"/>
                             <constraint firstItem="8W2-0P-p0Z" firstAttribute="leading" secondItem="B7p-rA-GdZ" secondAttribute="leading" id="suN-Bu-rM3"/>
                             <constraint firstAttribute="bottom" secondItem="gP9-xo-XeR" secondAttribute="bottom" constant="8" id="z6q-Vl-wUD"/>
@@ -90,7 +98,7 @@
                 <constraint firstItem="B7p-rA-GdZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="ufS-IT-wRe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="359" height="479"/>
+            <size key="customSize" width="363" height="484"/>
             <connections>
                 <outlet property="backView" destination="B7p-rA-GdZ" id="ud1-oT-cJE"/>
                 <outlet property="collectionView" destination="8W2-0P-p0Z" id="eo1-GC-kCO"/>
@@ -98,7 +106,7 @@
                 <outlet property="travelNameLabel" destination="Gl5-oe-B1W" id="qa7-qY-CEA"/>
                 <outlet property="travelTimeLabel" destination="ZPz-Z9-px5" id="Dff-Fe-TjI"/>
             </connections>
-            <point key="canvasLocation" x="368.84057971014494" y="240.06696428571428"/>
+            <point key="canvasLocation" x="371.73913043478262" y="241.74107142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
