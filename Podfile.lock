@@ -1,4 +1,5 @@
 PODS:
+  - AMScrollingNavbar (5.2.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
@@ -69,6 +70,7 @@ PODS:
   - SwiftLint (0.32.0)
 
 DEPENDENCIES:
+  - AMScrollingNavbar
   - Crashlytics
   - Fabric
   - Firebase/Core
@@ -85,6 +87,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AMScrollingNavbar
     - Crashlytics
     - Fabric
     - Firebase
@@ -106,6 +109,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  AMScrollingNavbar: 9df3652d6757f1a24646d8e90cb458591d8b1a6a
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
@@ -126,6 +130,6 @@ SPEC CHECKSUMS:
   PullUpController: 5c8710cb686dca43d5850ae994debb7fdb824b75
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: bac3612a704b901f286395e37ac70e42d0d545a3
+PODFILE CHECKSUM: 9a766ad27f3c04bea3fe8570faff2c2b71740d36
 
 COCOAPODS: 1.6.1

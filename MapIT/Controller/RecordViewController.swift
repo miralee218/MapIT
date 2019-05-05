@@ -34,7 +34,7 @@ class RecordViewController: UIViewController {
             collectionView.dataSource = self
             collectionView.gemini
                 .cubeAnimation()
-                .cubeDegree(25)
+                .cubeDegree(30)
         }
     }
     @IBOutlet weak var noDataView: UIView!
@@ -75,10 +75,12 @@ class RecordViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard let statusbar = UIApplication.shared.value(forKey: "statusBar") as? UIView else {
+            return
+        }
+        statusbar.backgroundColor = .red
+        statusbar.isHidden = true
         navigationController?.hidesBarsOnSwipe = true
-//        if let navigationController = self.navigationController as? ScrollingNavigationController {
-//            navigationController
-//        }
         getTravel()
         tableView.reloadData()
         collectionView.reloadData()

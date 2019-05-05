@@ -24,6 +24,7 @@ target 'MapIT' do
   pod 'Firebase/Core'
   pod 'lottie-ios'
   pod 'Gemini'
+  pod 'AMScrollingNavbar'
 
 
 
