@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" secondItem="8W2-0P-p0Z" secondAttribute="height" multiplier="1:1" id="LrB-Rj-aI4"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="qA5-vZ-ati">
-                                    <size key="itemSize" width="327" height="327"/>
+                                    <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
