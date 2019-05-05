@@ -62,7 +62,6 @@ class RecordViewController: UIViewController {
         navigationController?.navigationBar.setGradientBackground(
             colors: UIColor.mainColor
         )
-        navigationController?.navigationBar.isTranslucent = false
         tableView.separatorStyle = .none
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
@@ -75,11 +74,6 @@ class RecordViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let statusbar = UIApplication.shared.value(forKey: "statusBar") as? UIView else {
-            return
-        }
-        statusbar.backgroundColor = .red
-        statusbar.isHidden = true
         navigationController?.hidesBarsOnSwipe = true
         getTravel()
         tableView.reloadData()
@@ -107,13 +101,16 @@ class RecordViewController: UIViewController {
     }
     private func showListLayout() {
         layoutBtn.image = UIImage.asset(.Icons_verticalCell)
-        tableView.isHidden = true
-        collectionView.isHidden = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.collectionView.alpha = 0
+            })
+
     }
     private func showGridLayout() {
         layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
-        tableView.isHidden = false
-        collectionView.isHidden = true
+        UIView.animate(withDuration: 0.3, animations: {
+            self.collectionView.alpha = 1
+        })
     }
     func getTravel() {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
