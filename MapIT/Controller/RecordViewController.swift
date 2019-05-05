@@ -35,7 +35,7 @@ class RecordViewController: UIViewController {
 //                .rollEffect(.rollUp)
             collectionView.gemini
                 .cubeAnimation()
-                .cubeDegree(10)
+                .cubeDegree(25)
         }
     }
     @IBOutlet weak var noDataView: UIView!

@@ -36,8 +36,8 @@ class RecordCollectionViewCell: GeminiCell {
         collectionView.layer.cornerRadius = 10
         backView.layer.shadowColor = (UIColor.B2)?.cgColor
         backView.layer.shadowOpacity = 0.4
-        backView.layer.shadowRadius = 4
-        backView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        backView.layer.shadowRadius = 2
+        backView.layer.shadowOffset = CGSize(width: 2, height: 2)
         backView.layer.cornerRadius = 10
     }
     @IBAction func moreOption(_ sender: UIButton) {
