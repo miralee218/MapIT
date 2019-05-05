@@ -29,7 +29,6 @@ class RecordTableViewCell: UITableViewCell {
     var count = 0
     var photos = [String]()
     @IBOutlet weak var backView: UIView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.mr_registerCellWithNib(

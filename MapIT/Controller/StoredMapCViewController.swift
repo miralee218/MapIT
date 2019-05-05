@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreData
+import RSKPlaceholderTextView
 
 class StoredMapCViewController: UIViewController {
 
@@ -21,14 +22,14 @@ class StoredMapCViewController: UIViewController {
         }
     }
     @IBOutlet weak var travelNameTextField: UITextField!
-    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var contentTextView: RSKPlaceholderTextView!
     var travel: Travel?
     var long = [Double]()
     var lat = [Double]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        contentTextView.placeholder = "旅程描述..."
         contentTextView.layer.borderWidth = 1
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor

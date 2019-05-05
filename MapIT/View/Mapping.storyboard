@@ -372,7 +372,7 @@
                                             <constraint firstAttribute="height" constant="1" id="brz-xm-gOV"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-5B-4ds">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L5n-5B-4ds" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
                                         <rect key="frame" x="20" y="359" width="374" height="377"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="B4"/>
@@ -463,7 +463,7 @@
                                             <outlet property="delegate" destination="HoJ-8B-AEu" id="YzU-U3-z0f"/>
                                         </connections>
                                     </collectionView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-q8-wKV">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-q8-wKV" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
                                         <rect key="frame" x="16" y="92" width="382" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -690,7 +690,7 @@
                                             <outlet property="delegate" destination="tQI-TP-ELy" id="c69-0F-Vjp"/>
                                         </connections>
                                     </collectionView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7B-AV-Pbc" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
                                         <rect key="frame" x="16" y="92" width="382" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -825,7 +825,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFQ-5L-vrL">
                                 <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bYU-IW-BUJ">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bYU-IW-BUJ" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
                                         <rect key="frame" x="20" y="70" width="374" height="666"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" name="B4"/>

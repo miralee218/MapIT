@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import RSKPlaceholderTextView
 
 class EditTravelCViewController: UIViewController {
     var travel: Travel?
     @IBOutlet weak var travelNameTextField: UITextField!
-    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var contentTextView: RSKPlaceholderTextView!
 
     @IBOutlet weak var toolBarView: UIView!
     var saveHandler: (() -> Void)?
@@ -19,6 +20,7 @@ class EditTravelCViewController: UIViewController {
         super.viewDidLoad()
         toolBarView.layer.cornerRadius
             = 10.0
+        contentTextView.placeholder = "旅程描述..."
         contentTextView.layer.borderWidth = 1
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor
