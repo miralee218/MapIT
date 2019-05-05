@@ -63,18 +63,17 @@ class RecordViewController: UIViewController {
             colors: UIColor.mainColor
         )
         tableView.separatorStyle = .none
-
+//        navigationController?.navigationBar.isTranslucent = false
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: RecordCollectionViewCell.self), bundle: nil)
         getTravel()
         launchAnimation()
         myGifView.loadGif(name: "MapMark")
-
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnSwipe = true
         getTravel()
         tableView.reloadData()
         collectionView.reloadData()
@@ -102,14 +101,14 @@ class RecordViewController: UIViewController {
     private func showListLayout() {
         layoutBtn.image = UIImage.asset(.Icons_verticalCell)
         UIView.animate(withDuration: 0.3, animations: {
-            self.collectionView.alpha = 0
+            self.collectionView.alpha = 1
             })
 
     }
     private func showGridLayout() {
         layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
         UIView.animate(withDuration: 0.3, animations: {
-            self.collectionView.alpha = 1
+            self.collectionView.alpha = 0
         })
     }
     func getTravel() {
@@ -323,6 +322,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         recordCell.travel = indexTravel
+        recordCell.selectionStyle = .none
         return recordCell
     }
 

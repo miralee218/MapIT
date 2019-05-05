@@ -43,7 +43,6 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapNavBar))
         self.navigationController?.navigationBar.addGestureRecognizer(tap)
-
     }
     @objc func didTapNavBar() {
         originalPositionHandler?()
@@ -218,10 +217,11 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             changePositionHandler = { [weak self] coordinate in
                 let region = MKCoordinateRegion(
                     center: coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002))
+                    span: MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025))
                 mapCell.mapView.setRegion(region, animated: true)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
+            
             return cell
 
         case 1:
@@ -232,7 +232,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard let recordCell = cell as? RecordDescriptionTableViewCell else { return cell }
 
             recordCell.travelContentLabel.text = self.travel?.content
-
+            recordCell.selectionStyle = .none
             return recordCell
         case 2:
             let cell = tableView.dequeueReusableCell(
@@ -318,7 +318,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             routeCell.locationPost = currentLocationPost
             let formattedDate = FormatDisplay.postDate(sortedLocationPost[indexPath.row].timestamp)
             routeCell.pointRecordTimeLabel.text = formattedDate
-
+            routeCell.selectionStyle = .none
             return routeCell
 
         default:

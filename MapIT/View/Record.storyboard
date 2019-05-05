@@ -137,13 +137,13 @@
                             <constraint firstItem="uNS-nW-ALl" firstAttribute="trailing" secondItem="cjt-r6-J37" secondAttribute="trailing" id="Fgh-vs-1FF"/>
                             <constraint firstItem="uNS-nW-ALl" firstAttribute="top" secondItem="cjt-r6-J37" secondAttribute="top" constant="-300" id="Fke-Yb-K2u"/>
                             <constraint firstItem="cTw-NQ-AFa" firstAttribute="leading" secondItem="cjt-r6-J37" secondAttribute="leading" id="ZHn-YO-y0f"/>
-                            <constraint firstItem="db7-J0-gFJ" firstAttribute="top" secondItem="2Pv-25-z7p" secondAttribute="top" id="ZdU-U7-1ow"/>
+                            <constraint firstItem="db7-J0-gFJ" firstAttribute="top" secondItem="cjt-r6-J37" secondAttribute="top" constant="-88" id="ZdU-U7-1ow"/>
                             <constraint firstItem="2Pv-25-z7p" firstAttribute="trailing" secondItem="cjt-r6-J37" secondAttribute="trailing" id="gzC-zZ-shR"/>
                             <constraint firstItem="cTw-NQ-AFa" firstAttribute="top" secondItem="uNS-nW-ALl" secondAttribute="bottom" id="kw2-9M-XgS"/>
                             <constraint firstItem="cjt-r6-J37" firstAttribute="bottom" secondItem="cTw-NQ-AFa" secondAttribute="bottom" id="nbO-kI-wxx"/>
                             <constraint firstItem="2Pv-25-z7p" firstAttribute="leading" secondItem="cjt-r6-J37" secondAttribute="leading" id="qpt-iz-Zkp"/>
                             <constraint firstItem="cjt-r6-J37" firstAttribute="trailing" secondItem="db7-J0-gFJ" secondAttribute="trailing" id="rdT-EK-UJm"/>
-                            <constraint firstItem="2Pv-25-z7p" firstAttribute="top" secondItem="Nq8-hw-MoW" secondAttribute="top" id="we3-QK-8Fe"/>
+                            <constraint firstItem="2Pv-25-z7p" firstAttribute="top" secondItem="cjt-r6-J37" secondAttribute="top" constant="-88" id="we3-QK-8Fe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cjt-r6-J37"/>
                     </view>

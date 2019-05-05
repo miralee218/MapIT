@@ -130,8 +130,8 @@ class StoredMapCViewController: UIViewController {
             locations.count > 0,
             let region = mapRegion(mapView: mapView)
             else {
-                let alert = UIAlertController(title: "Error",
-                                              message: "Sorry, this run has no locations saved",
+                let alert = UIAlertController(title: "提醒",
+                                              message: "這趟旅程未錄製任何路程喔！",
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                 present(alert, animated: true)

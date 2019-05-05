@@ -64,7 +64,7 @@
                         </connections>
                     </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuT-vG-zZM">
-                        <rect key="frame" x="373" y="16" width="25" height="22"/>
+                        <rect key="frame" x="366" y="16" width="32" height="32"/>
                         <state key="normal" image="Icons_more"/>
                         <connections>
                             <action selector="moreOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iIH-52-uc9"/>
@@ -76,6 +76,13 @@
                         <color key="textColor" name="B2"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npO-rs-s7h">
+                        <rect key="frame" x="64" y="193.5" width="350" height="1"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="xzh-6Y-4q7"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dtz-cR-7yG" secondAttribute="trailing" id="04c-bW-8dA"/>
@@ -85,9 +92,12 @@
                     <constraint firstItem="OuT-vG-zZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CCn-D9-XhP"/>
                     <constraint firstAttribute="trailing" secondItem="9yb-NH-ydJ" secondAttribute="trailing" constant="50" id="CD1-EK-uGA"/>
                     <constraint firstAttribute="trailing" secondItem="OuT-vG-zZM" secondAttribute="trailing" constant="16" id="GpS-iB-Q1u"/>
+                    <constraint firstAttribute="bottom" secondItem="npO-rs-s7h" secondAttribute="bottom" id="GvS-Yn-hx8"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Hb8-pf-xkw"/>
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="leading" secondItem="MHK-uC-uiK" secondAttribute="leading" id="S4j-g5-Zrt"/>
                     <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="9yb-NH-ydJ" secondAttribute="bottom" constant="2" id="YSO-9u-oMZ"/>
+                    <constraint firstItem="npO-rs-s7h" firstAttribute="trailing" secondItem="dtz-cR-7yG" secondAttribute="trailing" id="a5h-en-lXp"/>
+                    <constraint firstItem="npO-rs-s7h" firstAttribute="leading" secondItem="dtz-cR-7yG" secondAttribute="leading" id="azg-bP-cZg"/>
                     <constraint firstAttribute="bottom" secondItem="Jcx-j9-Iae" secondAttribute="bottom" id="dtm-3q-XWp"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="centerY" secondItem="Mak-H2-VYK" secondAttribute="centerY" id="exQ-OE-Pou"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Qf3-vM-b7l" secondAttribute="trailing" constant="12" id="eyy-SZ-kat"/>
@@ -113,7 +123,7 @@
     </objects>
     <resources>
         <image name="Icons_RoutePoint" width="30" height="30"/>
-        <image name="Icons_more" width="25" height="8"/>
+        <image name="Icons_more" width="32" height="32"/>
         <namedColor name="B2">
             <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
