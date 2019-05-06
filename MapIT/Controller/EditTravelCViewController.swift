@@ -8,6 +8,7 @@
 
 import UIKit
 import RSKPlaceholderTextView
+import SwiftMessages
 
 class EditTravelCViewController: UIViewController {
     var travel: Travel?
@@ -35,6 +36,7 @@ class EditTravelCViewController: UIViewController {
 
     @IBAction func storedEdit(_ sender: UIButton) {
         saveTravelContent()
+        MiraMessage.updateSuccessfully()
         dismiss(animated: true, completion: nil)
     }
 

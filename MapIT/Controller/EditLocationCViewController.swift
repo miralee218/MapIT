@@ -11,6 +11,7 @@ import MapKit
 import AVFoundation
 import RSKPlaceholderTextView
 import PopupDialog
+import SwiftMessages
 
 class EditLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -101,8 +102,7 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     }
 
     @IBAction func cancel(_ sender: UIButton) {
-        showStandardDialog()
-//        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {
         self.seletedPost?.title = self.postNameTextFeild.text
@@ -147,37 +147,10 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
 
         CoreDataStack.saveContext()
         saveHandler?()
+        MiraMessage.updateSuccessfully()
         dismiss(animated: true, completion: nil)
     }
     @IBAction func deleteLocation(_ sender: UIButton) {
-    }
-    func showStandardDialog(animated: Bool = true) {
-        // Prepare the popup
-        let title = "THIS IS A DIALOG WITHOUT IMAGE"
-        let message = "If you don't pass an image to the default dialog, it will display just as a regular dialog. Moreover, this features the zoom transition"
-        // Create the dialog
-        let popup = PopupDialog(title: title,
-                                message: message,
-                                buttonAlignment: .horizontal,
-                                transitionStyle: .bounceUp,
-                                tapGestureDismissal: true,
-                                panGestureDismissal: true,
-                                hideStatusBar: true) {
-                                    print("Completed")
-        }
-        // Create first button
-        let buttonOne = CancelButton(title: "CANCEL") {
-            print("You canceled the default dialog")
-           self.dismiss(animated: true, completion: nil)
-        }
-        // Create second button
-        let buttonTwo = DefaultButton(title: "OK") {
-            print("You ok'd the default dialog")
-        }
-        // Add buttons to dialog
-        popup.addButtons([buttonOne, buttonTwo])
-        // Present dialog
-        self.present(popup, animated: animated, completion: nil)
     }
 
     func nearByLocation() {

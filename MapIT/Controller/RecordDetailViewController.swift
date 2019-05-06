@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 import PopupDialog
+import SwiftMessages
 
 class RecordDetailViewController: UIViewController {
 
@@ -312,7 +313,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                         self?.sortedLocationPost?.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
                         tableView.reloadData()
-                        print("YOU HAVE DELETED YOUR RECORD")
+                        MiraMessage.deleteSuccessfully()
                     }
                 }
 

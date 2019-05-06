@@ -86,6 +86,7 @@
 		4985376A225D7E95008CB391 /* SharedOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49853768225D7E95008CB391 /* SharedOptionTableViewCell.xib */; };
 		49CCC8F32277A26000478B6A /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */; };
 		49CCC8F52278237800478B6A /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */; };
+		49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA063C227FE3D5006BFC09 /* MiraMessage.swift */; };
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
@@ -174,6 +175,7 @@
 		49853768225D7E95008CB391 /* SharedOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharedOptionTableViewCell.xib; sourceTree = "<group>"; };
 		49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		49DA063C227FE3D5006BFC09 /* MiraMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraMessage.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				497AC91B22680129005E8856 /* LocationManager.swift */,
 				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
 				497AC91F2268015A005E8856 /* CoreDataStack.swift */,
+				49DA063C227FE3D5006BFC09 /* MiraMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				4911694D22583E0200347310 /* AlertController.swift in Sources */,
 				494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
+				49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,

@@ -11,6 +11,7 @@ import MapKit
 import PullUpController
 import CoreData
 import PopupDialog
+import SwiftMessages
 
 class RecordListCViewController: PullUpController {
 
@@ -212,6 +213,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                 self?.showDeleteDialog()
                 self?.deleteHandler = { [weak self] in
                     print("Delete Button tapped. Row item value =\(String(describing: self?.locationPost?[indexPath.row]))")
+                    MiraMessage.deleteSuccessfully()
                     guard let removeOrder = self?.locationPost?[indexPath.row]
                         else { return }
                     let fileManager = FileManager.default
@@ -236,7 +238,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                         } catch {
                         }
                     }
-                    
                     CoreDataStack.delete(removeOrder)
                     self?.locationPost?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)

@@ -12,6 +12,7 @@ import CoreData
 import AVFoundation
 import RSKPlaceholderTextView
 import TextFieldEffects
+import SwiftMessages
 
 class AddLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -144,6 +145,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         saveLocation()
         NotificationCenter.default.post(name: .reloadRecordList, object: nil)
         NotificationCenter.default.post(name: .addMark, object: nil, userInfo: ["coordinate": coordinate])
+        MiraMessage.saveLocation()
         dismiss(animated: true, completion: nil)
     }
     private func saveLocation() {

@@ -11,6 +11,7 @@ import MapKit
 import CoreData
 import RSKPlaceholderTextView
 import PopupDialog
+import SwiftMessages
 
 class StoredMapCViewController: UIViewController {
 
@@ -95,6 +96,7 @@ class StoredMapCViewController: UIViewController {
                 return
             }
             CoreDataStack.delete(removeOrder)
+            MiraMessage.giveUpTravel()
             NotificationCenter.default.post(name: .newTravel, object: nil)
             self?.dismiss(animated: true, completion: nil)
         }
@@ -105,6 +107,7 @@ class StoredMapCViewController: UIViewController {
     @IBAction func store(_ sender: UIButton) {
         saveTravelContent()
         NotificationCenter.default.post(name: .newTravel, object: nil)
+        MiraMessage.saveTravel()
         dismiss(animated: true, completion: nil)
 
     }
