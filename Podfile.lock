@@ -71,6 +71,9 @@ PODS:
   - PullUpController (0.7.0)
   - RSKPlaceholderTextView (5.0.0)
   - SwiftLint (0.32.0)
+  - SwiftMessages (6.0.2):
+    - SwiftMessages/App (= 6.0.2)
+  - SwiftMessages/App (6.0.2)
   - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
@@ -89,6 +92,7 @@ DEPENDENCIES:
   - PullUpController
   - RSKPlaceholderTextView
   - SwiftLint
+  - SwiftMessages
   - TextFieldEffects
 
 SPEC REPOS:
@@ -115,6 +119,7 @@ SPEC REPOS:
     - PullUpController
     - RSKPlaceholderTextView
     - SwiftLint
+    - SwiftMessages
     - TextFieldEffects
 
 SPEC CHECKSUMS:
@@ -140,8 +145,9 @@ SPEC CHECKSUMS:
   PullUpController: 5c8710cb686dca43d5850ae994debb7fdb824b75
   RSKPlaceholderTextView: e4ec5a3f371b8e3e186d5cbba09d664bde34588f
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 443fb680d4b72d24c458d4d41ae7112b1fc57f63
+PODFILE CHECKSUM: 6887b0e809731e4d849212a5e51dbb50fae691de
 
 COCOAPODS: 1.6.1

@@ -27,6 +27,7 @@ target 'MapIT' do
   pod 'RSKPlaceholderTextView'
   pod 'TextFieldEffects'
   pod 'PopupDialog', '~> 1.1'
+  pod 'SwiftMessages'
 
 
 

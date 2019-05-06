@@ -44,8 +44,8 @@ class StoredMapCViewController: UIViewController {
     }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
-        let title = "確定刪除?"
-        let message = "若刪除紀錄，將無法再次回復唷QAQ"
+        let title = "確定捨棄紀錄?"
+        let message = "若捨棄，你的心血都白費了喔QAQ"
         // Create the dialog
         let popup = PopupDialog(title: title,
                                 message: message,
@@ -59,13 +59,33 @@ class StoredMapCViewController: UIViewController {
         let buttonOne = CancelButton(title: "取消") {
         }
         // Create second button
-        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
+        let buttonTwo = DestructiveButton(title: "捨棄") { [weak self] in
             self?.deleteHandler?()
         }
         // Add buttons to dialog
         popup.addButtons([buttonOne, buttonTwo])
         // Present dialog
-        self.present(popup, animated: animated, completion: nil)
+        DispatchQueue.main.async {
+            self.present(popup, animated: animated, completion: nil)
+        }
+    }
+    func showNoRouteDialog(animated: Bool = true) {
+        let title = "提醒你"
+        let message = "這趟旅程未錄製到任何路程喔！你想存還還是可以存啦.."
+        let popup = PopupDialog(title: title,
+                                message: message,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .zoomIn,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true,
+                                hideStatusBar: true) {
+        }
+        let buttonOne = DefaultButton(title: "瞭解") {
+        }
+        popup.addButtons([buttonOne])
+        DispatchQueue.main.async {
+            self.present(popup, animated: animated, completion: nil)
+        }
     }
 
     @IBAction func deleteStore(_ sender: UIButton) {
@@ -161,12 +181,9 @@ class StoredMapCViewController: UIViewController {
             locations.count > 0,
             let region = mapRegion(mapView: mapView)
             else {
-                let alert = UIAlertController(title: "提醒",
-                                              message: "這趟旅程未錄製任何路程喔！",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                present(alert, animated: true)
-                self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.showNoRouteDialog()
+                }
                 return
         }
 

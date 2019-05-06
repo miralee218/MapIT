@@ -185,7 +185,9 @@ class RecordDetailViewController: UIViewController {
         // Add buttons to dialog
         popup.addButtons([buttonOne, buttonTwo])
         // Present dialog
-        self.present(popup, animated: animated, completion: nil)
+        DispatchQueue.main.async {
+            self.present(popup, animated: animated, completion: nil)
+        }
     }
 }
 
