@@ -149,7 +149,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="個人日誌" id="Coc-hB-exz">
                         <barButtonItem key="backBarButtonItem" title=" " id="L24-1I-9bk"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="Icons_verticalCell" id="Thc-d8-U3O">
+                        <barButtonItem key="rightBarButtonItem" image="Icons_verticalCell" id="Thc-d8-U3O">
+                            <color key="tintColor" white="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="switchView:" destination="StW-ru-Z8Z" id="1s6-9s-pVc"/>
                             </connections>

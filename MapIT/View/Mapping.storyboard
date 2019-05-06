@@ -289,7 +289,7 @@
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="儲存">
-                                            <color key="titleColor" name="B4"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="store:" destination="y5h-pU-4JE" eventType="touchUpInside" id="Lao-iM-eiI"/>
@@ -319,10 +319,10 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2t-hU-Td0">
-                                        <rect key="frame" x="296" y="14" width="56" height="32"/>
+                                        <rect key="frame" x="288" y="14" width="56" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                                        <state key="normal" title="放棄紀錄">
-                                            <color key="titleColor" name="MiraBlue"/>
+                                        <state key="normal" title="捨棄紀錄">
+                                            <color key="titleColor" name="StartPink"/>
                                         </state>
                                         <connections>
                                             <action selector="deleteStore:" destination="y5h-pU-4JE" eventType="touchUpInside" id="tGv-H8-VxC"/>
@@ -342,7 +342,7 @@
                                     <constraint firstItem="G2t-hU-Td0" firstAttribute="centerY" secondItem="neV-fI-XhW" secondAttribute="centerY" id="uCe-7c-JCz"/>
                                     <constraint firstItem="LQs-lG-jDf" firstAttribute="leading" secondItem="neV-fI-XhW" secondAttribute="leading" id="vIj-dY-2Gl"/>
                                     <constraint firstItem="WbI-QN-bAu" firstAttribute="centerY" secondItem="neV-fI-XhW" secondAttribute="centerY" id="wMv-kb-sma"/>
-                                    <constraint firstItem="WbI-QN-bAu" firstAttribute="leading" secondItem="G2t-hU-Td0" secondAttribute="trailing" constant="16" id="zWq-GE-aGr"/>
+                                    <constraint firstItem="WbI-QN-bAu" firstAttribute="leading" secondItem="G2t-hU-Td0" secondAttribute="trailing" constant="24" id="zWq-GE-aGr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aqy-fN-S1q">
@@ -524,7 +524,7 @@
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="儲存">
-                                            <color key="titleColor" name="B4"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="storeLocation:" destination="HoJ-8B-AEu" eventType="touchUpInside" id="ai5-T3-rJA"/>
@@ -609,7 +609,7 @@
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="儲存">
-                                            <color key="titleColor" name="B4"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="store:" destination="tQI-TP-ELy" eventType="touchUpInside" id="wg2-5R-KHV"/>
@@ -638,26 +638,14 @@
                                             <constraint firstAttribute="height" constant="1" id="bxd-aK-Gwd"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1os-Ap-Lrc">
-                                        <rect key="frame" x="300" y="14" width="56" height="32"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
-                                        <state key="normal" title="刪除紀錄">
-                                            <color key="titleColor" name="MiraBlue"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteLocation:" destination="tQI-TP-ELy" eventType="touchUpInside" id="Euk-Le-mZp"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="VUG-nj-PA6" firstAttribute="leading" secondItem="1os-Ap-Lrc" secondAttribute="trailing" constant="12" id="12o-F5-h0K"/>
                                     <constraint firstItem="wSz-uw-3Md" firstAttribute="leading" secondItem="cFN-vg-CXT" secondAttribute="leading" constant="16" id="1A9-Lq-tKc"/>
                                     <constraint firstItem="9oV-hQ-z7W" firstAttribute="centerX" secondItem="cFN-vg-CXT" secondAttribute="centerX" id="G4P-ka-jsz"/>
                                     <constraint firstAttribute="trailing" secondItem="VUG-nj-PA6" secondAttribute="trailing" constant="16" id="NjJ-al-KxD"/>
                                     <constraint firstItem="wSz-uw-3Md" firstAttribute="centerY" secondItem="cFN-vg-CXT" secondAttribute="centerY" id="Pmq-Ml-nMB"/>
                                     <constraint firstItem="R1K-Il-eHh" firstAttribute="leading" secondItem="cFN-vg-CXT" secondAttribute="leading" id="W25-hz-6rp"/>
-                                    <constraint firstItem="1os-Ap-Lrc" firstAttribute="centerY" secondItem="cFN-vg-CXT" secondAttribute="centerY" id="c1G-Zf-mSW"/>
                                     <constraint firstAttribute="trailing" secondItem="R1K-Il-eHh" secondAttribute="trailing" id="gnA-th-waG"/>
                                     <constraint firstItem="9oV-hQ-z7W" firstAttribute="centerY" secondItem="cFN-vg-CXT" secondAttribute="centerY" id="kp5-gn-7Cr"/>
                                     <constraint firstAttribute="height" constant="60" id="ncF-Sj-Ioi"/>
@@ -788,7 +776,7 @@
                                         <rect key="frame" x="368" y="14" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <state key="normal" title="儲存">
-                                            <color key="titleColor" name="B4"/>
+                                            <color key="titleColor" name="MiraBlue"/>
                                         </state>
                                         <connections>
                                             <action selector="store:" destination="y5h-pU-4JE" eventType="touchUpInside" id="yIp-l5-afm"/>
@@ -946,6 +934,9 @@
         </namedColor>
         <namedColor name="MiraBlue2">
             <color red="0.50980392156862742" green="0.62745098039215685" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="StartPink">
+            <color red="0.98000001907348633" green="0.31400001049041748" blue="0.54900002479553223" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
