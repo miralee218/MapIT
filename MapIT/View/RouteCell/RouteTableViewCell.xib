@@ -64,7 +64,7 @@
                         </connections>
                     </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuT-vG-zZM">
-                        <rect key="frame" x="366" y="16" width="32" height="32"/>
+                        <rect key="frame" x="366" y="11" width="32" height="32"/>
                         <state key="normal" image="Icons_more"/>
                         <connections>
                             <action selector="moreOption:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iIH-52-uc9"/>
@@ -89,7 +89,6 @@
                     <constraint firstItem="Qf3-vM-b7l" firstAttribute="top" secondItem="MHK-uC-uiK" secondAttribute="bottom" constant="6" id="2DO-7n-2ts"/>
                     <constraint firstAttribute="bottom" secondItem="dtz-cR-7yG" secondAttribute="bottom" constant="1" id="4pW-eE-gIo"/>
                     <constraint firstItem="Mak-H2-VYK" firstAttribute="centerX" secondItem="Jcx-j9-Iae" secondAttribute="centerX" id="BIX-EH-38I"/>
-                    <constraint firstItem="OuT-vG-zZM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="CCn-D9-XhP"/>
                     <constraint firstAttribute="trailing" secondItem="9yb-NH-ydJ" secondAttribute="trailing" constant="50" id="CD1-EK-uGA"/>
                     <constraint firstAttribute="trailing" secondItem="OuT-vG-zZM" secondAttribute="trailing" constant="16" id="GpS-iB-Q1u"/>
                     <constraint firstAttribute="bottom" secondItem="npO-rs-s7h" secondAttribute="bottom" id="GvS-Yn-hx8"/>
@@ -98,6 +97,7 @@
                     <constraint firstItem="MHK-uC-uiK" firstAttribute="top" secondItem="9yb-NH-ydJ" secondAttribute="bottom" constant="2" id="YSO-9u-oMZ"/>
                     <constraint firstItem="npO-rs-s7h" firstAttribute="trailing" secondItem="dtz-cR-7yG" secondAttribute="trailing" id="a5h-en-lXp"/>
                     <constraint firstItem="npO-rs-s7h" firstAttribute="leading" secondItem="dtz-cR-7yG" secondAttribute="leading" id="azg-bP-cZg"/>
+                    <constraint firstItem="OuT-vG-zZM" firstAttribute="centerY" secondItem="9yb-NH-ydJ" secondAttribute="centerY" id="dmn-EK-QEK"/>
                     <constraint firstAttribute="bottom" secondItem="Jcx-j9-Iae" secondAttribute="bottom" id="dtm-3q-XWp"/>
                     <constraint firstItem="9yb-NH-ydJ" firstAttribute="centerY" secondItem="Mak-H2-VYK" secondAttribute="centerY" id="exQ-OE-Pou"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Qf3-vM-b7l" secondAttribute="trailing" constant="12" id="eyy-SZ-kat"/>

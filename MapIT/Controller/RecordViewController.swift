@@ -332,11 +332,18 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
         guard let recordCell = cell as? RecordTableViewCell else { return cell }
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//            let option3 = UIAlertAction(title: "分享", style: .default) { [weak self] (_) in
+            let option3 = UIAlertAction(title: "分享", style: .default) { [weak self] (_) in
+                let bounds = UIScreen.main.bounds
+                UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+                self?.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
+                let img = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+                self?.present(activityViewController, animated: true, completion: nil)
 //                let vc = UIStoryboard.record.instantiateViewController(
 //                    withIdentifier: String(describing: SharedOptionViewController.self))
 //                self?.present(vc, animated: true, completion: nil)
-//            }
+            }
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
                 self?.showDeleteDialog()
                 self?.deleteHandler = { [weak self] in
@@ -350,7 +357,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-//            sheet.addAction(option3)
+            sheet.addAction(option3)
             sheet.addAction(option2)
             sheet.addAction(option1)
             self?.present(sheet, animated: true, completion: nil)
