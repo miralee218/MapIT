@@ -270,14 +270,18 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                             return
                         case .authorized:
                             print("Authorized, proceed")
-                            AccessPhoto.accessCamera(viewController: self)
+                            DispatchQueue.main.async {
+                                AccessPhoto.accessCamera(viewController: self)
+                            }
                         }
                     }
                 }
 
                 optionCell.openLibrary = {
                     if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                        AccessPhoto.accessLibrary(viewController: self)
+                        DispatchQueue.main.async {
+                            AccessPhoto.accessLibrary(viewController: self)
+                        }
 
                     }
                 }
