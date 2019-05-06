@@ -507,7 +507,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         switch status {
         case .restricted, .denied:
             authorizationView.isHidden = false
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse, .authorizedAlways:
             authorizationView.isHidden = true
             print("Access")
             locationService()
@@ -520,7 +520,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 recordButton.alpha = 1
                 moreButton.alpha = 0
             }
-        case .notDetermined, .authorizedAlways:
+        case .notDetermined :
             break
         @unknown default:
             fatalError()
