@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 import RSKPlaceholderTextView
+import PopupDialog
 
 class StoredMapCViewController: UIViewController {
 
@@ -26,6 +27,7 @@ class StoredMapCViewController: UIViewController {
     var travel: Travel?
     var long = [Double]()
     var lat = [Double]()
+    var deleteHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +42,42 @@ class StoredMapCViewController: UIViewController {
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
         getEdittingTravel()
     }
+    func showDeleteDialog(animated: Bool = true) {
+        // Prepare the popup
+        let title = "確定刪除?"
+        let message = "若刪除紀錄，將無法再次回復唷QAQ"
+        // Create the dialog
+        let popup = PopupDialog(title: title,
+                                message: message,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceUp,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true,
+                                hideStatusBar: true) {
+        }
+        // Create first button
+        let buttonOne = CancelButton(title: "取消") {
+        }
+        // Create second button
+        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
+            self?.deleteHandler?()
+        }
+        // Add buttons to dialog
+        popup.addButtons([buttonOne, buttonTwo])
+        // Present dialog
+        self.present(popup, animated: animated, completion: nil)
+    }
 
     @IBAction func deleteStore(_ sender: UIButton) {
-        guard let removeOrder = self.travel else {
-            return
+        self.showDeleteDialog()
+        self.deleteHandler = { [weak self] in
+            guard let removeOrder = self?.travel else {
+                return
+            }
+            CoreDataStack.delete(removeOrder)
+            NotificationCenter.default.post(name: .newTravel, object: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
-        CoreDataStack.delete(removeOrder)
-        NotificationCenter.default.post(name: .newTravel, object: nil)
-        dismiss(animated: true, completion: nil)
     }
     @IBAction func cancelStore(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

@@ -10,6 +10,7 @@ import UIKit
 import FSCalendar
 import CoreData
 import Gemini
+import PopupDialog
 
 class RecordViewController: UIViewController {
     private enum LayoutType {
@@ -56,6 +57,7 @@ class RecordViewController: UIViewController {
             }
         }
     }
+    var deleteHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -251,6 +253,31 @@ class RecordViewController: UIViewController {
     @IBAction func goToMap(_ sender: UIButton) {
         tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
     }
+    func showDeleteDialog(animated: Bool = true) {
+        // Prepare the popup
+        let title = "確定刪除?"
+        let message = "若刪除紀錄，將無法再次回復唷QAQ"
+        // Create the dialog
+        let popup = PopupDialog(title: title,
+                                message: message,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceUp,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true,
+                                hideStatusBar: true) {
+        }
+        // Create first button
+        let buttonOne = CancelButton(title: "取消") {
+        }
+        // Create second button
+        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
+            self?.deleteHandler?()
+        }
+        // Add buttons to dialog
+        popup.addButtons([buttonOne, buttonTwo])
+        // Present dialog
+        self.present(popup, animated: animated, completion: nil)
+    }
 }
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -306,13 +333,16 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 self?.present(vc, animated: true, completion: nil)
             }
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                CoreDataStack.delete(removeOrder)
-                self?.getTravel()
-                self?.allTravel?.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                tableView.reloadData()
-                print("YOU HAVE DELETED YOUR RECORD")
+                self?.showDeleteDialog()
+                self?.deleteHandler = { [weak self] in
+                    guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
+                    CoreDataStack.delete(removeOrder)
+                    self?.getTravel()
+                    self?.allTravel?.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadData()
+                    print("YOU HAVE DELETED YOUR RECORD")
+                }
             }
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             sheet.addAction(option3)
@@ -381,11 +411,14 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
                 self?.present(vc, animated: true, completion: nil)
             }
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                CoreDataStack.delete(removeOrder)
-                self?.getTravel()
-                collectionView.reloadData()
-                print("YOU HAVE DELETED YOUR RECORD")
+                self?.showDeleteDialog()
+                self?.deleteHandler = { [weak self] in
+                    guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
+                    CoreDataStack.delete(removeOrder)
+                    self?.getTravel()
+                    collectionView.reloadData()
+                    print("YOU HAVE DELETED YOUR RECORD")
+                }
             }
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             sheet.addAction(option3)

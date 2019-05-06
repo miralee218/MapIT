@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import PullUpController
 import CoreData
+import PopupDialog
 
 class RecordListCViewController: PullUpController {
 
@@ -46,6 +47,7 @@ class RecordListCViewController: PullUpController {
     var travel: Travel?
     lazy var locationPost = (travel?.locationPosts?.allObjects as? [LocationPost])
     var coordinate = CLLocationCoordinate2D()
+    var deleteHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +141,31 @@ class RecordListCViewController: PullUpController {
         tableView.reloadData()
 
     }
+    func showDeleteDialog(animated: Bool = true) {
+        // Prepare the popup
+        let title = "確定刪除?"
+        let message = "若刪除紀錄，將無法再次回復唷QAQ"
+        // Create the dialog
+        let popup = PopupDialog(title: title,
+                                message: message,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceUp,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true,
+                                hideStatusBar: true) {
+        }
+        // Create first button
+        let buttonOne = CancelButton(title: "取消") {
+        }
+        // Create second button
+        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
+            self?.deleteHandler?()
+        }
+        // Add buttons to dialog
+        popup.addButtons([buttonOne, buttonTwo])
+        // Present dialog
+        self.present(popup, animated: animated, completion: nil)
+    }
 
 }
 
@@ -180,39 +207,39 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             }
 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
+                self?.showDeleteDialog()
+                self?.deleteHandler = { [weak self] in
+                    print("Delete Button tapped. Row item value =\(String(describing: self?.locationPost?[indexPath.row]))")
+                    guard let removeOrder = self?.locationPost?[indexPath.row]
+                        else { return }
+                    let fileManager = FileManager.default
+                    let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+                    guard let totalPhoto = self?.locationPost?[indexPath.row].photo, totalPhoto.count <= 0 else {
+                        CoreDataStack.delete(removeOrder)
+                        self?.locationPost?.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                        if self?.locationPost?.count == 0 {
+                            self?.noDataView.isHidden = false
+                        } else {
+                            self?.noDataView.isHidden = true
+                        }
+                        NotificationCenter.default.post(name: .removeMark, object: nil)
+                        tableView.reloadData()
+                        return
+                    }
 
-                print("Delete Button tapped. Row item value =\(String(describing: self?.locationPost?[indexPath.row]))")
-
-                guard let removeOrder = self?.locationPost?[indexPath.row]
-                    else { return }
-                let fileManager = FileManager.default
-                let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-
-                guard let totalPhoto = self?.locationPost?[indexPath.row].photo, totalPhoto.count <= 0 else {
+                    for photo in 0...totalPhoto.count - 1 {
+                        do {
+                            try fileManager.removeItem(at: (documentsURL?.appendingPathComponent(totalPhoto[photo]))!)
+                        } catch {
+                        }
+                    }
+                    
                     CoreDataStack.delete(removeOrder)
                     self?.locationPost?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
-                    if self?.locationPost?.count == 0 {
-                        self?.noDataView.isHidden = false
-                    } else {
-                        self?.noDataView.isHidden = true
-                    }
-                    NotificationCenter.default.post(name: .removeMark, object: nil)
                     tableView.reloadData()
-                    return
                 }
-
-                for photo in 0...totalPhoto.count - 1 {
-                    do {
-                        try fileManager.removeItem(at: (documentsURL?.appendingPathComponent(totalPhoto[photo]))!)
-                    } catch {
-                    }
-                }
-
-                CoreDataStack.delete(removeOrder)
-                self?.locationPost?.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                tableView.reloadData()
 
             }
 

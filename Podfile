@@ -26,6 +26,7 @@ target 'MapIT' do
   pod 'Gemini'
   pod 'RSKPlaceholderTextView'
   pod 'TextFieldEffects'
+  pod 'PopupDialog', '~> 1.1'
 
 
 
