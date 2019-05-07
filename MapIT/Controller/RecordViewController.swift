@@ -90,7 +90,7 @@ class RecordViewController: UIViewController {
                         launchView?.alpha = 0.0
                         let transform = CATransform3DScale(CATransform3DIdentity, 1.5, 1.5, 1.5)
                         launchView?.layer.transform = transform
-        }) { finished in
+    }) { finished in
             launchView?.removeFromSuperview()
         }
     }

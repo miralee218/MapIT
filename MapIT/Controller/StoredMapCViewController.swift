@@ -233,7 +233,6 @@ class StoredMapCViewController: UIViewController {
         for coordinate in coordinates {
             let point = MKPointAnnotation()
             point.coordinate = coordinate
-//            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
             pointAnnotations.append(point)
         }
         mapView.addAnnotations(pointAnnotations)

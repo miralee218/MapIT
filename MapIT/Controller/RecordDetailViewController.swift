@@ -30,11 +30,12 @@ class RecordDetailViewController: UIViewController {
     var changePositionHandler: ((CLLocationCoordinate2D) -> Void)?
     var originalPositionHandler: (() -> Void)?
     var deleteHandler: (() -> Void)?
+    var coordinates: [CLLocationCoordinate2D] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       navigationItem.title = travel?.title
+        navigationItem.title = travel?.title
 
         tableView.separatorStyle = .none
 
@@ -46,6 +47,8 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapNavBar))
         self.navigationController?.navigationBar.addGestureRecognizer(tap)
+        self.coordinates = MarkAnnotation.getAllLocationPost(locationPost: self.travel!.locationPosts!)
+
     }
     @objc func didTapNavBar() {
         originalPositionHandler?()
@@ -140,29 +143,15 @@ class RecordDetailViewController: UIViewController {
 
         mapView.setRegion(region, animated: true)
     }
-    func addAnnotation(mapView: MKMapView) {
-        guard
-            let locationPost = self.travel?.locationPosts,
-            locationPost.count > 0 else {
-                return
-        }
-        let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
-            guard let locaitonPost = coordinate as? LocationPost else {
-                return CLLocationCoordinate2D()
-            }
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
-            return coordinate
-        }
-        var pointAnnotations = [MKPointAnnotation]()
-        for coordinate in coordinates {
-            let point = MKPointAnnotation()
-            point.coordinate = coordinate
-//            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
-            pointAnnotations.append(point)
-        }
-        mapView.addAnnotations(pointAnnotations)
-    }
+//    func addAnnotation(mapView: MKMapView) {
+//        var pointAnnotations = [MKPointAnnotation]()
+//        for coordinate in coordinates {
+//            let point = MKPointAnnotation()
+//            point.coordinate = coordinate
+//            pointAnnotations.append(point)
+//        }
+//        mapView.addAnnotations(pointAnnotations)
+//    }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
         let title = "確定刪除?"
@@ -231,7 +220,8 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             mapCell.mapView.isScrollEnabled = true
             loadMap(mapView: mapCell.mapView)
             mapCell.mapView.removeAnnotations(mapCell.mapView.annotations)
-            addAnnotation(mapView: mapCell.mapView)
+//            addAnnotation(mapView: mapCell.mapView)
+            MarkAnnotation.addAnnotation(mapView: mapCell.mapView, coordinates: coordinates)
             originalPositionHandler = {[weak self] in
                 self?.loadMap(mapView: mapCell.mapView)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
