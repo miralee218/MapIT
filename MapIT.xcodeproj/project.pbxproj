@@ -174,7 +174,7 @@
 		49853767225D7E94008CB391 /* SharedOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionTableViewCell.swift; sourceTree = "<group>"; };
 		49853768225D7E95008CB391 /* SharedOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharedOptionTableViewCell.xib; sourceTree = "<group>"; };
 		49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
-		49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = ../Controller/LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		49DA063C227FE3D5006BFC09 /* MiraMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraMessage.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
@@ -273,7 +273,6 @@
 		4911692722545B5A00347310 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */,
 				4911692A22545D0800347310 /* MRTabBarViewController.swift */,
 				491169392254644500347310 /* LobbyViewController.swift */,
 				4911693B2254645400347310 /* RecordViewController.swift */,
@@ -307,6 +306,7 @@
 				491169482254893E00347310 /* CAGradientLayer+Extension.swift */,
 				4911694A225489EC00347310 /* Navigation+Extension.swift */,
 				496111CB2274153A00624802 /* NotificationCenter+Extension.swift */,
+				49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */,
 			);
 			path = Exrension;
 			sourceTree = "<group>";

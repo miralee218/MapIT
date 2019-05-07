@@ -57,8 +57,14 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                                                selector: #selector(newTravel),
                                                name: Notification.Name.newTravel,
                                                object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(addMark), name: Notification.Name.addMark, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(removeMark), name: Notification.Name.removeMark, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(addMark),
+                                               name: Notification.Name.addMark,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(removeMark),
+                                               name: Notification.Name.removeMark,
+                                               object: nil)
         print(isEditting)
 
     }

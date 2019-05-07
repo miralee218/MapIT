@@ -27,9 +27,9 @@ private enum MIColor: String {
     case B6
 
     case MiraBlue
-    
+
     case SuccessSave
-    
+
     case SuccessDelete
 
 }
@@ -51,7 +51,7 @@ extension UIColor {
     static let B5 = MIColor(.B6)
 
     static let MiraBlue = MIColor(.MiraBlue)
-    
+
     static let SuccessSave = MIColor(.SuccessSave)
 
     static let SuccessDelete = MIColor(.SuccessDelete)

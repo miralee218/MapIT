@@ -58,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVB-24-OaC">
-                                <rect key="frame" x="324" y="374" width="32" height="32"/>
+                                <rect key="frame" x="324" y="371" width="32" height="32"/>
                                 <state key="normal" image="Icons_more">
                                     <color key="titleColor" name="MiraBlue"/>
                                 </state>
@@ -86,11 +86,11 @@
                             <constraint firstItem="mgc-Jd-RY1" firstAttribute="centerX" secondItem="fy0-R0-eTe" secondAttribute="centerX" id="USp-dk-LTx"/>
                             <constraint firstItem="RvL-7x-sOV" firstAttribute="leading" secondItem="fy0-R0-eTe" secondAttribute="leading" constant="18" id="Vl7-QZ-uua"/>
                             <constraint firstAttribute="trailing" secondItem="mgc-Jd-RY1" secondAttribute="trailing" id="XLt-cA-94L"/>
+                            <constraint firstItem="uVB-24-OaC" firstAttribute="centerY" secondItem="3Ap-5l-cfE" secondAttribute="centerY" id="aFJ-mX-IRe"/>
                             <constraint firstItem="NIf-3o-ozA" firstAttribute="leading" secondItem="fy0-R0-eTe" secondAttribute="leading" constant="20" id="dVb-Qc-99v"/>
                             <constraint firstItem="3Ap-5l-cfE" firstAttribute="top" secondItem="mgc-Jd-RY1" secondAttribute="bottom" id="dVj-Ix-Yl1"/>
                             <constraint firstAttribute="trailing" secondItem="NIf-3o-ozA" secondAttribute="trailing" constant="20" id="eOp-7A-SyK"/>
                             <constraint firstItem="mgc-Jd-RY1" firstAttribute="top" secondItem="fy0-R0-eTe" secondAttribute="top" id="hsm-1I-e6m"/>
-                            <constraint firstItem="uVB-24-OaC" firstAttribute="top" secondItem="3Ap-5l-cfE" secondAttribute="top" id="jeG-00-yLp"/>
                             <constraint firstAttribute="bottom" secondItem="4Cs-Pc-CM1" secondAttribute="bottom" constant="10" id="kmU-VM-EL4"/>
                             <constraint firstAttribute="bottom" secondItem="NIf-3o-ozA" secondAttribute="bottom" constant="11" id="pb5-lm-VtT"/>
                             <constraint firstAttribute="trailing" secondItem="uVB-24-OaC" secondAttribute="trailing" constant="18" id="yQt-MT-Nel"/>

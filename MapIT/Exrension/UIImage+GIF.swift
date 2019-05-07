@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import ImageIO
-// swiftlint:disable type_body_length
-// swiftlint:disable file_length
 
 extension UIImageView {
 
@@ -222,5 +220,3 @@ extension UIImage {
         return animation
     }
 }
-// swiftlint:enable type_body_length
-// swiftlint:enable file_length

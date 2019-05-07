@@ -14,10 +14,7 @@ import PopupDialog
 import SwiftMessages
 
 class RecordViewController: UIViewController {
-    private enum LayoutType {
-        case list
-        case grid
-    }
+
     @IBOutlet weak var calendarView: FSCalendar!
     @IBOutlet weak var calendarTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var calendarButton: UIBarButtonItem!
@@ -145,42 +142,6 @@ class RecordViewController: UIViewController {
         tableView.reloadData()
         collectionView.reloadData()
     }
-
-    func getSpecificTravel() {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
-
-        let isEditting = "0"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        guard let selected = self.seletedDate as? NSData else {
-            return
-        }
-        fetchRequest.predicate = NSPredicate(format: "timestamp <= %@", selected)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-
-                noDataView.isHidden = false
-                layoutBtn.isEnabled = false
-                print("no present")
-            } else {
-                // at least one matching object exists
-                guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
-                self.allTravel = edittingTravel
-                noDataView.isHidden = true
-                layoutBtn.isEnabled = true
-                print("have\(count) travel")
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        tableView.reloadData()
-        collectionView.reloadData()
-    }
-
     var searchByCalendar = false
     @IBAction func searchByCalendar(_ sender: UIBarButtonItem) {
         if searchByCalendar == false {
@@ -287,7 +248,7 @@ class RecordViewController: UIViewController {
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.seletedDate = date.toLocalTime()
-        print(seletedDate)
+//        print(seletedDate)
     }
 }
 extension Date {
@@ -409,7 +370,9 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         return count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
             for: indexPath
@@ -464,7 +427,9 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.collectionView.animateVisibleCells()
     }
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: RecordCollectionViewCell.self),
             for: indexPath

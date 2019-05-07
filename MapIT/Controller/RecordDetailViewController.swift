@@ -286,7 +286,9 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
                     MKMapItem.openMaps(
                         with: routes,
-                        launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving, MKLaunchOptionsShowsTrafficKey: true])
+                        launchOptions:
+                        [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,
+                         MKLaunchOptionsShowsTrafficKey: true])
                 }
 
                 let option3 = UIAlertAction(title: "編輯", style: .default) { [weak self] (_) in
@@ -333,7 +335,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard let currentLocationPost = self.sortedLocationPost?[indexPath.row] else {
                 return cell
             }
-            print(currentLocationPost.photo?.count)
+//            print(currentLocationPost.photo?.count)
 
             if currentLocationPost.photo?.count == nil {
                 routeCell.collectionView.isHidden = true

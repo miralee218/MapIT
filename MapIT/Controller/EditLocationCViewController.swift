@@ -230,7 +230,9 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
                                 AccessPhoto.accessCamera(viewController: self)
                             }
                         case .denied, .restricted:
-                            let alertController = UIAlertController (title: "相機啟用失敗", message: "相機服務未啟用，請開啟權限以便新增地點的照片紀錄", preferredStyle: .alert)
+                            let alertController = UIAlertController (title: "相機啟用失敗",
+                                                                     message: "相機服務未啟用，請開啟權限以便新增地點的照片紀錄",
+                                                                     preferredStyle: .alert)
                             let settingsAction = UIAlertAction(title: "設定權限", style: .default) { (_) -> Void in
                                 guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                                     return
@@ -249,6 +251,8 @@ extension EditLocationCViewController: UICollectionViewDelegate, UICollectionVie
                         case .authorized:
                             print("Authorized, proceed")
                             AccessPhoto.accessCamera(viewController: self)
+                        @unknown default:
+                            fatalError()
                         }
                     }
                 }

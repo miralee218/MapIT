@@ -212,7 +212,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] (_) in
                 self?.showDeleteDialog()
                 self?.deleteHandler = { [weak self] in
-                    print("Delete Button tapped. Row item value =\(String(describing: self?.locationPost?[indexPath.row]))")
                     MiraMessage.deleteSuccessfully()
                     guard let removeOrder = self?.locationPost?[indexPath.row]
                         else { return }
@@ -279,7 +278,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
         guard locationPost?[indexPath.row].photo?.count != nil else {
             return 100
         }
-        
         return 195
     }
     func sortResults(items: [LocationPost]) -> [LocationPost] {

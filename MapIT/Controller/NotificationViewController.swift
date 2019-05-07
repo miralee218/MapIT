@@ -43,6 +43,7 @@ class NotificationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getTravel()
+        collectionView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -144,11 +145,13 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
         )
             guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
             photos.removeAll()
-            var allLocationPost = allTravel?[indexPath.section].locationPosts?.allObjects as? [LocationPost]
-            for localPost in 0...allLocationPost!.count - 1 {
-                if let count = allLocationPost?[localPost].photo?.count {
+            guard let allLocationPost = allTravel?[indexPath.section].locationPosts?.allObjects as? [LocationPost] else {
+                return photoCell
+            }
+            for localPost in 0...allLocationPost.count - 1 {
+                if let count = allLocationPost[localPost].photo?.count {
                     for index in 0...count - 1 {
-                        photos.append((allLocationPost?[localPost].photo?[index])!)
+                        photos.append((allLocationPost[localPost].photo?[index])!)
                     }
                     continue
                 }
@@ -172,10 +175,15 @@ extension NotificationViewController: UICollectionViewDelegate, UICollectionView
         if let vc = storyboard?.instantiateViewController(
             withIdentifier: "FullScreenImageViewController") as? FullScreenImageViewController {
             photos.removeAll()
-            var allLocationPost = allTravel?[indexPath.section].locationPosts?.allObjects as? [LocationPost]
-            for localPost in 0...allLocationPost!.count - 1 {
-                for index in 0...(allLocationPost?[localPost].photo!.count)! - 1 {
-                    photos.append((allLocationPost?[localPost].photo?[index])!)
+            guard let allLocationPost = allTravel?[indexPath.section].locationPosts?.allObjects as? [LocationPost] else {
+                return
+            }
+            for localPost in 0...allLocationPost.count - 1 {
+                if let count = allLocationPost[localPost].photo?.count {
+                    for index in 0...count - 1 {
+                        photos.append((allLocationPost[localPost].photo?[index])!)
+                    }
+                    continue
                 }
             }
             vc.photos = photos
