@@ -43,6 +43,9 @@ Temporary Items
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+## Google Service
+GoogleService-Info.plist
+
 ## User settings
 xcuserdata/
 
