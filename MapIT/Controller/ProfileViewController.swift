@@ -23,6 +23,10 @@ class ProfileViewController: UIViewController {
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: ProfileCollectionViewCell.self),
             bundle: nil)
+        navigationController?.navigationBar.setGradientBackground(
+            colors: UIColor.mainColor
+        )
+        navigationController?.navigationBar.alpha = 0
 
     }
 
@@ -43,5 +47,22 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         profileCell.iconTitleLabel.text = iconTitle[indexPath.row]
             profileCell.iconImageView.image = UIImage(named: iconImage[indexPath.row].rawValue)
         return profileCell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.item {
+        case 0:
+            return
+        case 1:
+            return
+        case 2:
+            let vc = UIStoryboard.notification.instantiateViewController(withIdentifier:
+                String(describing: NotificationViewController.self)
+            )
+            guard let albumVC = vc as? NotificationViewController else { return }
+//            present(albumVC, animated: true, completion: nil)
+            show(albumVC, sender: nil)
+        default:
+            return
+        }
     }
 }

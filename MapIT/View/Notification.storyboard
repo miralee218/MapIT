@@ -14,7 +14,7 @@
         <!--相冊-->
         <scene sceneID="QSg-zD-PTE">
             <objects>
-                <viewController id="S5Y-qH-c6x" customClass="NotificationViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationViewController" id="S5Y-qH-c6x" customClass="NotificationViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tPJ-ma-Jmr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
