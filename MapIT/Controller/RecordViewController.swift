@@ -109,7 +109,7 @@ class RecordViewController: UIViewController {
     }
     private func showGridLayout() {
         layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.8, animations: {
             self.collectionView.alpha = 0
         })
     }

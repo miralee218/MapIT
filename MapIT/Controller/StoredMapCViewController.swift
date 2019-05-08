@@ -26,8 +26,6 @@ class StoredMapCViewController: UIViewController {
     @IBOutlet weak var travelNameTextField: UITextField!
     @IBOutlet weak var contentTextView: RSKPlaceholderTextView!
     var travel: Travel?
-    var long = [Double]()
-    var lat = [Double]()
     var deleteHandler: (() -> Void)?
 
     override func viewDidLoad() {
@@ -148,73 +146,6 @@ class StoredMapCViewController: UIViewController {
         CoreDataStack.saveContext()
 
     }
-    private func mapRegion(mapView: MKMapView) -> MKCoordinateRegion? {
-        guard
-            let locations = travel?.locations,
-            locations.count > 0
-            else {
-                return nil
-        }
-        let startLatitudes = locations.map { location -> Double in
-            guard let location = location as? ShortRoute else { return 0.0 }
-            lat.append(location.start!.latitude)
-            return location.start!.latitude
-        }
-        let startLongitudes = locations.map { location -> Double in
-            guard let location = location as? ShortRoute else { return 0.0 }
-            long.append(location.self.start!.longitude)
-            return location.start!.longitude
-        }
-        let maxLat = startLatitudes.max()!
-        let minLat = startLatitudes.min()!
-        let maxLong = startLongitudes.max()!
-        let minLong = startLongitudes.min()!
-
-        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
-                                            longitude: (minLong + maxLong) / 2)
-
-        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 4,
-                                    longitudeDelta: (maxLong - minLong) * 4)
-        return MKCoordinateRegion(center: center, span: span)
-
-    }
-    private func loadMap(mapView: MKMapView) {
-        guard
-            let locations = travel?.locations,
-            locations.count > 0,
-            let region = mapRegion(mapView: mapView)
-            else {
-                DispatchQueue.main.async {
-                    self.showNoRouteDialog()
-                }
-                return
-        }
-
-        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.start!.latitude,
-                longitude: location.start!.longitude)
-            return coordinate
-        }
-
-        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.end!.latitude,
-                longitude: location.end!.longitude)
-            return coordinate
-        }
-        for coordinate in 0...startCoordinates.count - 1 {
-
-            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
-
-            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-
-        }
-
-        mapView.setRegion(region, animated: true)
-    }
 }
 
 extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
@@ -232,7 +163,7 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
         mapCell.mapView.delegate = self
         mapCell.mapView.isZoomEnabled = true
         mapCell.mapView.isScrollEnabled = true
-        loadMap(mapView: mapCell.mapView)
+        InitMap.addOverlays(mapView: mapCell.mapView, travel: travel)
         InitMap.addAnnotations(on: mapCell.mapView, travel: travel)
         return mapCell
 

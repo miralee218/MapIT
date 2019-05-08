@@ -62,9 +62,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                                                name: Notification.Name.addAnnotations,
                                                object: nil)
         print(isEditting)
-//        guard var locationPost = self.travel?.locationPosts else {
-//            return
-//        }
     }
     @objc func newTravel() {
         reloadView()
@@ -89,31 +86,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         InitMap.addAnnotations(on: mapView, travel: self.travel)
         reloadView()
     }
-    private func loadMap(mapView: MKMapView) {
-        guard
-            let locations = self.travel?.locations,
-            locations.count > 0 else {
-                return
-        }
-        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.start!.latitude,
-                longitude: location.start!.longitude)
-            return coordinate
-        }
-        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.end!.latitude,
-                longitude: location.end!.longitude)
-            return coordinate
-        }
-        for coordinate in 0...startCoordinates.count - 1 {
-            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
-            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-        }
-    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkInButtonCenter = offset(byDistance: 100, inDirection: 270)
@@ -126,7 +98,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         stopButton.center = recordButton.center
         mapView.showsUserLocation = true
         locationService()
-
     }
     public func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
         let radians = degrees * .pi / 180
@@ -154,7 +125,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             MRProgressHUD.coutinueRecord(view: self.view)
             recordButton.alpha = 0
             moreButton.alpha = 1
-            loadMap(mapView: mapView)
             locationManager.startUpdatingLocation()
         } else {
             recordButton.alpha = 1

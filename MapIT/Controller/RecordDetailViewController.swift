@@ -22,10 +22,6 @@ class RecordDetailViewController: UIViewController {
     }
     var travel: Travel?
     lazy var locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
-    var long = [Double]()
-    var lat = [Double]()
-    var startCoordinates: [CLLocationCoordinate2D] = []
-    var endCoordinates: [CLLocationCoordinate2D] = []
     var sortedLocationPost: [LocationPost]?
     var changePositionHandler: ((CLLocationCoordinate2D) -> Void)?
     var originalPositionHandler: (() -> Void)?
@@ -72,73 +68,6 @@ class RecordDetailViewController: UIViewController {
         sheet.addAction(option1)
 
         self.present(sheet, animated: true, completion: nil)
-    }
-
-    private func mapRegion(mapView: MKMapView) -> MKCoordinateRegion? {
-        guard
-            let locations = travel?.locations,
-            locations.count > 0
-            else {
-                return nil
-        }
-        let startLatitudes = locations.map { location -> Double in
-            guard let location = location as? ShortRoute else { return 0.0 }
-            lat.append(location.start!.latitude)
-            return location.start!.latitude
-        }
-        let startLongitudes = locations.map { location -> Double in
-            guard let location = location as? ShortRoute else { return 0.0 }
-            long.append(location.self.start!.longitude)
-            return location.start!.longitude
-        }
-        let maxLat = startLatitudes.max()!
-        let minLat = startLatitudes.min()!
-        let maxLong = startLongitudes.max()!
-        let minLong = startLongitudes.min()!
-
-        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
-                                            longitude: (minLong + maxLong) / 2)
-
-        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 2,
-                                    longitudeDelta: (maxLong - minLong) * 2)
-        return MKCoordinateRegion(center: center, span: span)
-
-    }
-    private func loadMap(mapView: MKMapView) {
-        guard
-            let locations = travel?.locations,
-            locations.count > 0,
-            let region = mapRegion(mapView: mapView)
-            else {
-                return
-        }
-
-        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.start!.latitude,
-                longitude: location.start!.longitude)
-            self.startCoordinates.append(coordinate)
-            return coordinate
-        }
-
-        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.end!.latitude,
-                longitude: location.end!.longitude)
-            self.endCoordinates.append(coordinate)
-            return coordinate
-        }
-        for coordinate in 0...startCoordinates.count - 1 {
-
-            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
-
-            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-
-        }
-
-        mapView.setRegion(region, animated: true)
     }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
@@ -206,10 +135,10 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             mapCell.mapView.delegate = self
             mapCell.mapView.isZoomEnabled = true
             mapCell.mapView.isScrollEnabled = true
-            loadMap(mapView: mapCell.mapView)
+            InitMap.addOverlays(mapView: mapCell.mapView, travel: self.travel)
             InitMap.addAnnotations(on: mapCell.mapView, travel: self.travel)
             originalPositionHandler = {[weak self] in
-                self?.loadMap(mapView: mapCell.mapView)
+                InitMap.addOverlays(mapView: mapCell.mapView, travel: self?.travel)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
             changePositionHandler = { [weak self] coordinate in
