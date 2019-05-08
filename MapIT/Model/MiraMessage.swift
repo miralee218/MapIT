@@ -27,8 +27,26 @@ class MiraMessage {
         view.button?.isHidden = true
         SwiftMessages.show(view: view)
     }
+    static func shareSuccess() {
+        let view = MessageView.viewFromNib(layout: .centeredView)
+        view.configureTheme(.success)
+        view.backgroundView.backgroundColor = UIColor.SuccessSave
+        view.configureContent(title: "分享成功", body: "")
+        view.bodyLabel?.isHidden = true
+        view.button?.isHidden = true
+        SwiftMessages.show(view: view)
+    }
+    static func shareFail() {
+        let view = MessageView.viewFromNib(layout: .centeredView)
+        view.configureTheme(.warning)
+        view.backgroundView.backgroundColor = UIColor.SuccessDelete
+        view.configureContent(title: "分享失敗", body: "")
+        view.bodyLabel?.isHidden = true
+        view.button?.isHidden = true
+        SwiftMessages.show(view: view)
+    }
     static func deleteSuccessfully() {
-        let view = MessageView.viewFromNib(layout: .cardView)
+        let view = MessageView.viewFromNib(layout: .centeredView)
         view.configureTheme(.success)
         view.backgroundView.backgroundColor = UIColor.SuccessDelete
         view.configureContent(title: "已刪除", body: "")
@@ -37,7 +55,7 @@ class MiraMessage {
         SwiftMessages.show(view: view)
     }
     static func giveUpTravel() {
-        let view = MessageView.viewFromNib(layout: .cardView)
+        let view = MessageView.viewFromNib(layout: .centeredView)
         view.configureTheme(.success)
         view.backgroundView.backgroundColor = UIColor.SuccessDelete
         view.configureContent(title: "已捨棄此趟旅程全部紀錄", body: "")
@@ -47,7 +65,7 @@ class MiraMessage {
     }
 
     static func updateSuccessfully() {
-        let view = MessageView.viewFromNib(layout: .cardView)
+        let view = MessageView.viewFromNib(layout: .centeredView)
         view.configureTheme(.success)
         view.backgroundView.backgroundColor = UIColor.SuccessSave
         view.configureContent(title: "更新成功", body: "")

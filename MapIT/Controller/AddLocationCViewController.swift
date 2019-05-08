@@ -67,7 +67,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         pictureCollectionView.mr_registerCellWithNib(
             identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
 
-//        nearByLocation()
+        nearByLocation()
         if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             //            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
             layout.itemSize = UICollectionViewFlowLayout.automaticSize
@@ -84,26 +84,26 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
 
     }
 
-//    func nearByLocation() {
-//        let request = MKLocalSearch.Request()
-//        request.region = mapView.region
-//        for param in params {
-//            request.naturalLanguageQuery = param
-//            let search = MKLocalSearch(request: request)
-//            search.start { [weak self] response, _ in
-//
-//                guard let strongSelf = self else { return }
-//
-//                guard let response = response else { return }
-//                strongSelf.mapItemList = response.mapItems
-//                for item in strongSelf.mapItemList {
-//                    strongSelf.places.append(item)
-//                }
-//                strongSelf.places.shuffle()
-//                strongSelf.locationNameCollectionView.reloadData()
-//            }
-//        }
-//    }
+    func nearByLocation() {
+        let request = MKLocalSearch.Request()
+        request.region = mapView.region
+        for param in params {
+            request.naturalLanguageQuery = param
+            let search = MKLocalSearch(request: request)
+            search.start { [weak self] response, _ in
+
+                guard let strongSelf = self else { return }
+
+                guard let response = response else { return }
+                strongSelf.mapItemList = response.mapItems
+                for item in strongSelf.mapItemList {
+                    strongSelf.places.append(item)
+                }
+                strongSelf.places.shuffle()
+                strongSelf.locationNameCollectionView.reloadData()
+            }
+        }
+    }
     func isEdittingTravel() -> Bool {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
         let isEditting = "1"

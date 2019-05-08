@@ -12,10 +12,6 @@ import CoreData
 import PopupDialog
 import SwiftMessages
 
-
-
-// swiftlint:disable type_body_length
-// swiftlint:disable file_length
 class RecordDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView! {
@@ -307,6 +303,3 @@ extension RecordDetailViewController {
         return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }
-
-// swiftlint:enable type_body_length
-// swiftlint:enable file_length

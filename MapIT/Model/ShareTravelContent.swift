@@ -27,6 +27,16 @@ class ShareTravelContent {
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if error != nil {
+                MiraMessage.shareFail()
+                return
+            }
+            if completed {
+                MiraMessage.shareSuccess()
+            }
+            
+        }
         vc?.present(activityViewController, animated: true, completion: nil)
     }
 }
