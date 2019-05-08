@@ -12,6 +12,10 @@ import CoreData
 import PopupDialog
 import SwiftMessages
 
+
+
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
 class RecordDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView! {
@@ -48,7 +52,10 @@ class RecordDetailViewController: UIViewController {
     }
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let option3 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
+        let option3 = UIAlertAction(title: "分享旅程", style: .default) { [weak self] (_) in
+            ShareTravelContent.allContent(tableView: self?.tableView, vc: self)
+        }
+        let option2 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
 
             let vc = UIStoryboard.mapping.instantiateViewController(
                 withIdentifier: String(describing: EditTravelCViewController.self))
@@ -65,6 +72,7 @@ class RecordDetailViewController: UIViewController {
         let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
         sheet.addAction(option3)
+        sheet.addAction(option2)
         sheet.addAction(option1)
 
         self.present(sheet, animated: true, completion: nil)
@@ -195,7 +203,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                         [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,
                          MKLaunchOptionsShowsTrafficKey: true])
                 }
-
                 let option3 = UIAlertAction(title: "編輯", style: .default) { [weak self] (_) in
 
                     let vc = UIStoryboard.mapping.instantiateViewController(
@@ -300,3 +307,6 @@ extension RecordDetailViewController {
         return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }
+
+// swiftlint:enable type_body_length
+// swiftlint:enable file_length

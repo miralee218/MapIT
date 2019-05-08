@@ -88,6 +88,9 @@
 		49CCC8F52278237800478B6A /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */; };
 		49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA063C227FE3D5006BFC09 /* MiraMessage.swift */; };
 		49DA064122816EFF006BFC09 /* InitMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA064022816EFF006BFC09 /* InitMap.swift */; };
+		49DA06432282A50D006BFC09 /* MiraDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06422282A50D006BFC09 /* MiraDialog.swift */; };
+		49DA06452282A725006BFC09 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06442282A725006BFC09 /* LaunchScreen.swift */; };
+		49DA06472282B367006BFC09 /* ShareTravelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06462282B367006BFC09 /* ShareTravelContent.swift */; };
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
@@ -178,6 +181,9 @@
 		49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = ../Controller/LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		49DA063C227FE3D5006BFC09 /* MiraMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraMessage.swift; sourceTree = "<group>"; };
 		49DA064022816EFF006BFC09 /* InitMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMap.swift; sourceTree = "<group>"; };
+		49DA06422282A50D006BFC09 /* MiraDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraDialog.swift; sourceTree = "<group>"; };
+		49DA06442282A725006BFC09 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		49DA06462282B367006BFC09 /* ShareTravelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTravelContent.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +275,9 @@
 				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
 				497AC91F2268015A005E8856 /* CoreDataStack.swift */,
 				49DA063C227FE3D5006BFC09 /* MiraMessage.swift */,
+				49DA06422282A50D006BFC09 /* MiraDialog.swift */,
+				49DA06442282A725006BFC09 /* LaunchScreen.swift */,
+				49DA06462282B367006BFC09 /* ShareTravelContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -659,6 +668,7 @@
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,
+				49DA06472282B367006BFC09 /* ShareTravelContent.swift in Sources */,
 				49DA064122816EFF006BFC09 /* InitMap.swift in Sources */,
 				497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */,
 				497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */,
@@ -682,6 +692,7 @@
 				497A05DD2266C2420010D142 /* PlaceAnnotation.swift in Sources */,
 				4981D1B1227DBC8E00D24ED6 /* RecordCollectionViewCell.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
+				49DA06452282A725006BFC09 /* LaunchScreen.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
 				494EB36A2259BE2500ECCA72 /* UICollectionView+Extension.swift in Sources */,
 				491169492254893E00347310 /* CAGradientLayer+Extension.swift in Sources */,
@@ -690,6 +701,7 @@
 				4911694F22583E2400347310 /* NavigationView.swift in Sources */,
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				4985372D225B533E008CB391 /* PullUpController.swift in Sources */,
+				49DA06432282A50D006BFC09 /* MiraDialog.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
 				497AC92622687D90005E8856 /* Coordinate.swift in Sources */,
 				497A0582225DF2990010D142 /* SignInViewController.swift in Sources */,

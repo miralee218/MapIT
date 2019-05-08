@@ -68,7 +68,7 @@ class RecordViewController: UIViewController {
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: RecordCollectionViewCell.self), bundle: nil)
         getTravel()
-        launchAnimation()
+        LaunchScreen.launchAnimation()
         myGifView.loadGif(name: "MapMark")
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -78,23 +78,6 @@ class RecordViewController: UIViewController {
         tableView.reloadData()
         collectionView.reloadData()
     }
-    func launchAnimation() {
-        let vc = (UIStoryboard(name: "LaunchScreen",
-                               bundle: nil).instantiateViewController(withIdentifier: "LaunchScreen")
-        )
-        let launchView = vc.view
-        let delegate = UIApplication.shared.delegate
-        delegate?.window??.addSubview(launchView!)
-        UIView.animate(withDuration: 1, delay: 0.5, options: .beginFromCurrentState,
-                       animations: {
-                        launchView?.alpha = 0.0
-                        let transform = CATransform3DScale(CATransform3DIdentity, 1.5, 1.5, 1.5)
-                        launchView?.layer.transform = transform
-    }) { finished in
-            launchView?.removeFromSuperview()
-        }
-    }
-
     @IBAction func switchView(_ sender: UIBarButtonItem) {
         isListLayout = !isListLayout
         collectionView.reloadData()
@@ -248,7 +231,6 @@ class RecordViewController: UIViewController {
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.seletedDate = date.toLocalTime()
-//        print(seletedDate)
     }
 }
 extension Date {
@@ -301,9 +283,6 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 UIGraphicsEndImageContext()
                 let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
                 self?.present(activityViewController, animated: true, completion: nil)
-//                let vc = UIStoryboard.record.instantiateViewController(
-//                    withIdentifier: String(describing: SharedOptionViewController.self))
-//                self?.present(vc, animated: true, completion: nil)
             }
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
                 self?.showDeleteDialog()
