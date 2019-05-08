@@ -74,7 +74,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.removeOverlays(self.mapView.overlays)
         locationManager.stopUpdatingLocation()
         locationList.removeAll()
-        mapView.removeAnnotations(self.mapView.annotations)
+        InitMap.removeAnnotations(on: mapView)
     }
     @objc func addAnnotations(_ notification: NSNotification) {
         InitMap.addAnnotations(on: mapView, travel: self.travel)
@@ -159,7 +159,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
-            mapView.removeAnnotations(mapView.annotations)
+            InitMap.removeAnnotations(on: mapView)
             locationManager.stopUpdatingLocation()
         }
 
@@ -185,7 +185,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
-            mapView.removeAnnotations(mapView.annotations)
+            InitMap.removeAnnotations(on: mapView)
             locationManager.stopUpdatingLocation()
         }
         DispatchQueue.main.async {

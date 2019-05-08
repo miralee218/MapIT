@@ -27,6 +27,9 @@ class InitMap {
         }
         mapView.addAnnotations(pointAnnotations)
     }
+    static func removeAnnotations(on mapView: MKMapView) {
+        mapView.removeAnnotations(mapView.annotations)
+    }
     class func getAllLocationPostCoordinates(from locationPost: NSSet) -> [CLLocationCoordinate2D] {
         guard locationPost.count > 0 else {
             return [CLLocationCoordinate2D]()
