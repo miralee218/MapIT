@@ -246,12 +246,6 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
 
 extension StoredMapCViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
-        let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = UIColor.red
-        renderer.lineWidth = 10
-        return renderer
+        return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }

@@ -518,17 +518,7 @@ extension MappingViewController {
 
 extension MappingViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
-                let renderer = MKPolylineRenderer(polyline: polyline)
-                renderer.strokeColor = .red
-                renderer.lineWidth = 10
-                return renderer
-//        let gradientColors = [UIColor.green, UIColor.blue, UIColor.yellow, UIColor.red]
-//        let renderer = GradientPathRenderer(polyline: polyline, colors: gradientColors)
-//        renderer.lineWidth = 10
-//        return renderer
+        return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }
 

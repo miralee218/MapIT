@@ -44,4 +44,19 @@ class InitMap {
         }
         return coordinates
     }
+
+    static func setPolylineStyle(mapView: MKMapView, overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let polyline = overlay as? MKPolyline else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
+        let overlayRenderer = MKPolylineRenderer(polyline: polyline)
+        overlayRenderer.strokeColor = UIColor.StartPink
+        overlayRenderer.alpha = 0.5
+        overlayRenderer.lineWidth = 10
+        return overlayRenderer
+//        let gradientColors = [UIColor.green, UIColor.blue, UIColor.yellow, UIColor.red]
+//        let renderer = GradientPathRenderer(polyline: polyline, colors: gradientColors)
+//        renderer.lineWidth = 10
+//        return renderer
+    }
 }
