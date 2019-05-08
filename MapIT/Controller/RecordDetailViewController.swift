@@ -30,7 +30,6 @@ class RecordDetailViewController: UIViewController {
     var changePositionHandler: ((CLLocationCoordinate2D) -> Void)?
     var originalPositionHandler: (() -> Void)?
     var deleteHandler: (() -> Void)?
-    var coordinates: [CLLocationCoordinate2D] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +46,6 @@ class RecordDetailViewController: UIViewController {
             identifier: String(describing: RouteTableViewCell.self), bundle: nil)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapNavBar))
         self.navigationController?.navigationBar.addGestureRecognizer(tap)
-        self.coordinates = MarkAnnotation.getAllLocationPost(locationPost: self.travel!.locationPosts!)
-
     }
     @objc func didTapNavBar() {
         originalPositionHandler?()
@@ -143,15 +140,6 @@ class RecordDetailViewController: UIViewController {
 
         mapView.setRegion(region, animated: true)
     }
-//    func addAnnotation(mapView: MKMapView) {
-//        var pointAnnotations = [MKPointAnnotation]()
-//        for coordinate in coordinates {
-//            let point = MKPointAnnotation()
-//            point.coordinate = coordinate
-//            pointAnnotations.append(point)
-//        }
-//        mapView.addAnnotations(pointAnnotations)
-//    }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
         let title = "確定刪除?"
@@ -219,9 +207,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             mapCell.mapView.isZoomEnabled = true
             mapCell.mapView.isScrollEnabled = true
             loadMap(mapView: mapCell.mapView)
-            mapCell.mapView.removeAnnotations(mapCell.mapView.annotations)
-//            addAnnotation(mapView: mapCell.mapView)
-            MarkAnnotation.addAnnotation(mapView: mapCell.mapView, coordinates: coordinates)
+            InitMap.addAnnotations(on: mapCell.mapView, travel: self.travel)
             originalPositionHandler = {[weak self] in
                 self?.loadMap(mapView: mapCell.mapView)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -325,7 +311,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard let currentLocationPost = self.sortedLocationPost?[indexPath.row] else {
                 return cell
             }
-//            print(currentLocationPost.photo?.count)
 
             if currentLocationPost.photo?.count == nil {
                 routeCell.collectionView.isHidden = true

@@ -144,7 +144,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func storeLocation(_ sender: UIButton) {
         saveLocation()
         NotificationCenter.default.post(name: .reloadRecordList, object: nil)
-        NotificationCenter.default.post(name: .addMark, object: nil, userInfo: ["coordinate": coordinate])
+        NotificationCenter.default.post(name: .addAnnotations, object: nil, userInfo: ["coordinate": coordinate])
         MiraMessage.saveLocation()
         dismiss(animated: true, completion: nil)
     }

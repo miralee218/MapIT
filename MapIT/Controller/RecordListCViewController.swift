@@ -226,7 +226,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                         } else {
                             self?.noDataView.isHidden = true
                         }
-                        NotificationCenter.default.post(name: .removeMark, object: nil)
+                        NotificationCenter.default.post(name: .addAnnotations, object: nil)
                         tableView.reloadData()
                         return
                     }

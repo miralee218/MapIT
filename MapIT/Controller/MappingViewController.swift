@@ -58,15 +58,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                                                name: Notification.Name.newTravel,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addMark),
-                                               name: Notification.Name.addMark,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(removeMark),
-                                               name: Notification.Name.removeMark,
+                                               selector: #selector(addAnnotations),
+                                               name: Notification.Name.addAnnotations,
                                                object: nil)
         print(isEditting)
-
+//        guard var locationPost = self.travel?.locationPosts else {
+//            return
+//        }
     }
     @objc func newTravel() {
         reloadView()
@@ -78,36 +76,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         locationList.removeAll()
         mapView.removeAnnotations(self.mapView.annotations)
     }
-    @objc func addMark(_ notification: NSNotification) {
-        addAnnotation()
+    @objc func addAnnotations(_ notification: NSNotification) {
+        InitMap.addAnnotations(on: mapView, travel: self.travel)
     }
-    @objc func removeMark(_ notification: NSNotification) {
-        mapView.removeAnnotations(mapView.annotations)
-        addAnnotation()
-    }
-    func addAnnotation() {
-        guard
-            let locationPost = self.travel?.locationPosts,
-            locationPost.count > 0 else {
-                return
-        }
-        let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
-            guard let locaitonPost = coordinate as? LocationPost else {
-                return CLLocationCoordinate2D()
-            }
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
-            return coordinate
-        }
-        var pointAnnotations = [MKPointAnnotation]()
-        for coordinate in coordinates {
-            let point = MKPointAnnotation()
-            point.coordinate = coordinate
-            pointAnnotations.append(point)
-        }
-        mapView.addAnnotations(pointAnnotations)
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         authorizationView.isHidden = true
@@ -115,8 +86,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         locationManager.requestAlwaysAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
-        mapView.removeAnnotations(mapView.annotations)
-        addAnnotation()
+        InitMap.addAnnotations(on: mapView, travel: self.travel)
         reloadView()
     }
     private func loadMap(mapView: MKMapView) {

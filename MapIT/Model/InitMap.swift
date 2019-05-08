@@ -1,5 +1,5 @@
 //
-//  MarkAnnotation.swift
+//  InitMap.swift
 //  MapIT
 //
 //  Created by Mira on 2019/5/7.
@@ -9,22 +9,17 @@
 import Foundation
 import MapKit
 
-class MarkAnnotation {
-    static func addAnnotation(mapView: MKMapView, coordinates: [CLLocationCoordinate2D]) {
-        //    guard
-        //        let locationPost = self.travel?.locationPosts,
-        //        locationPost.count > 0 else {
-        //            return
-        //    }
-        //    let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
-        //        guard let locaitonPost = coordinate as? LocationPost else {
-        //            return CLLocationCoordinate2D()
-        //        }
-        //        let coordinate = CLLocationCoordinate2D(
-        //            latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
-        //        return coordinate
-        //    }
+class InitMap {
+    static func addAnnotations(on mapView: MKMapView, travel: Travel?) {
+        guard let travel = travel else {
+            return
+        }
+        guard let locationPost = travel.locationPosts else {
+            return
+        }
+        mapView.removeAnnotations(mapView.annotations)
         var pointAnnotations = [MKPointAnnotation]()
+        let coordinates = getAllLocationPostCoordinates(from: locationPost)
         for coordinate in coordinates {
             let point = MKPointAnnotation()
             point.coordinate = coordinate
@@ -32,7 +27,7 @@ class MarkAnnotation {
         }
         mapView.addAnnotations(pointAnnotations)
     }
-    static func getAllLocationPost(locationPost: NSSet) -> [CLLocationCoordinate2D] {
+    class func getAllLocationPostCoordinates(from locationPost: NSSet) -> [CLLocationCoordinate2D] {
         guard locationPost.count > 0 else {
             return [CLLocationCoordinate2D]()
         }

@@ -215,28 +215,6 @@ class StoredMapCViewController: UIViewController {
 
         mapView.setRegion(region, animated: true)
     }
-    func addAnnotation(mapView: MKMapView) {
-        guard
-            let locationPost = self.travel?.locationPosts,
-            locationPost.count > 0 else {
-                return
-        }
-        let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
-            guard let locaitonPost = coordinate as? LocationPost else {
-                return CLLocationCoordinate2D()
-            }
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
-            return coordinate
-        }
-        var pointAnnotations = [MKPointAnnotation]()
-        for coordinate in coordinates {
-            let point = MKPointAnnotation()
-            point.coordinate = coordinate
-            pointAnnotations.append(point)
-        }
-        mapView.addAnnotations(pointAnnotations)
-    }
 }
 
 extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
@@ -255,7 +233,7 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
         mapCell.mapView.isZoomEnabled = true
         mapCell.mapView.isScrollEnabled = true
         loadMap(mapView: mapCell.mapView)
-        addAnnotation(mapView: mapCell.mapView)
+        InitMap.addAnnotations(on: mapCell.mapView, travel: travel)
         return mapCell
 
     }
