@@ -16,6 +16,10 @@ class ProfileViewController: UIViewController {
             collectionView.dataSource = self
         }
     }
+    var headerView: UIView!
+    var newHeaderLayer: CAShapeLayer!
+    private let headerHeight: CGFloat = 420
+    private let headercut: CGFloat = 50
     let iconTitle = ["設定", "收藏", "照片"]
     let iconImage = [ImageAsset.Icons_Setting, ImageAsset.Icons_Archive, ImageAsset.Icons_Photos]
     override func viewDidLoad() {
@@ -26,10 +30,11 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.setGradientBackground(
             colors: UIColor.mainColor
         )
-        navigationController?.navigationBar.alpha = 0
-
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            navigationController?.navigationBar.isHidden = true
+    }
 }
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -36,6 +36,7 @@ class NotificationViewController: UIViewController {
     navigationController?.navigationBar.setGradientBackground(
             colors: UIColor.mainColor
         )
+        navigationController?.navigationBar.isHidden = false
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
