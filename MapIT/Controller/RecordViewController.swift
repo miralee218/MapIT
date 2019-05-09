@@ -67,14 +67,23 @@ class RecordViewController: UIViewController {
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: RecordCollectionViewCell.self), bundle: nil)
-        getTravel()
         LaunchScreen.launchAnimation()
         myGifView.loadGif(name: "MapMark")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.hidesBarsOnSwipe = true
-        getTravel()
+        getAllTravel()
+        tableView.reloadData()
+        collectionView.reloadData()
+    }
+    private func getAllTravel() {
+        allTravel = MapManager.getAllTravel(noDataAction: { [weak self] in
+            self?.noDataView.isHidden = false
+            self?.layoutBtn.isEnabled = false
+            }, hadDataAction: { [weak self] in
+                self?.noDataView.isHidden = true
+                self?.layoutBtn.isEnabled = true
+        })
         tableView.reloadData()
         collectionView.reloadData()
     }
@@ -95,35 +104,6 @@ class RecordViewController: UIViewController {
         UIView.animate(withDuration: 0.8, animations: {
             self.collectionView.alpha = 0
         })
-    }
-    func getTravel() {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
-        let isEditting = "0"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-
-                noDataView.isHidden = false
-                layoutBtn.isEnabled = false
-                print("no present")
-            } else {
-                // at least one matching object exists
-                guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
-                self.allTravel = edittingTravel
-                noDataView.isHidden = true
-                layoutBtn.isEnabled = true
-                print("have\(count) travel")
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        tableView.reloadData()
-        collectionView.reloadData()
     }
     var searchByCalendar = false
     @IBAction func searchByCalendar(_ sender: UIBarButtonItem) {
@@ -280,9 +260,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 self?.deleteHandler = { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
                     CoreDataStack.delete(removeOrder)
-                    self?.getTravel()
-                    self?.allTravel?.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    self?.getAllTravel()
                     tableView.reloadData()
                     MiraMessage.deleteSuccessfully()
                 }
@@ -354,7 +332,7 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
                 self?.deleteHandler = { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
                     CoreDataStack.delete(removeOrder)
-                    self?.getTravel()
+                    self?.getAllTravel()
                     collectionView.reloadData()
                     MiraMessage.deleteSuccessfully()
                 }

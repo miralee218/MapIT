@@ -26,6 +26,7 @@ class StoredMapCViewController: UIViewController {
     @IBOutlet weak var travelNameTextField: UITextField!
     @IBOutlet weak var contentTextView: RSKPlaceholderTextView!
     var travel: Travel?
+    var isEditting: Bool?
     var deleteHandler: (() -> Void)?
 
     override func viewDidLoad() {
@@ -39,7 +40,7 @@ class StoredMapCViewController: UIViewController {
             = 10.0
         tableView.separatorStyle = .none
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
-        getEdittingTravel()
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
     }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
@@ -109,36 +110,8 @@ class StoredMapCViewController: UIViewController {
         dismiss(animated: true, completion: nil)
 
     }
-    func getEdittingTravel() {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: true)]
-        let isEditting = "1"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 1
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-                print("no present")
-
-            } else if count == 1 {
-                // at least one matching object exists
-                let edittingTravel = try? context.fetch(fetchRequest).first
-                self.travel = edittingTravel
-                print("only:\(count) continue editing...")
-
-            } else {
-                print("matching items found:\(count)")
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-
-    }
 
     func saveTravelContent() {
-
         self.travel?.isEditting = false
         self.travel?.endTimestamp = Date()
         self.travel?.content = self.contentTextView.text

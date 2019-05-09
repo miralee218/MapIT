@@ -42,11 +42,10 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         }
 
     }
-    var travel: Travel?
-    let recordListVC = RecordListCViewController()
     private var locationManager = LocationManager.shared
     var photoSelected = [UIImage]()
-    lazy var isEditting = isEdittingTravel()
+    var travel: Travel?
+    var isEditting: Bool?
     var imageFilePath = [String]()
     var lat = CLLocationDegrees()
     var long = CLLocationDegrees()
@@ -76,37 +75,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor
 
-        if isEditting == true {
-            print("123")
-        }
-
-    }
-    func isEdittingTravel() -> Bool {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        let isEditting = "1"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-                print("no present")
-                return false
-            } else if count == 1 {
-                // at least one matching object exists
-                let edittingTravel = try? context.fetch(fetchRequest).first
-                self.travel = edittingTravel
-                print("only:\(count) continue editing...")
-                return true
-            } else {
-                print("matching items found:\(count)")
-                return false
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return false
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -30,7 +30,6 @@ class AccessPhoto {
         imagePicker.sourceType = .photoLibrary
 
         imagePicker.allowsEditing = true
-//        imagePicker.navigationBar.barTintColor = UIColor.EndYellow
 
         let navigationVC = viewController.presentingViewController?.children.first as? UINavigationController
 

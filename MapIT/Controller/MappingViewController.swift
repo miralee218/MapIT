@@ -39,14 +39,14 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     private var locationList: [ShortRoute] = []
     var initLoaction: CLLocation?
     var travel: Travel?
+    var isEditting: Bool?
 
-    lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarColor(self.navigationController)
         setUserTrackingButton()
         addNotificationCenter()
-        print(isEditting)
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
     }
     func setUserTrackingButton() {
         let button = MKUserTrackingButton(mapView: mapView)
@@ -108,15 +108,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         let position = CGPoint(x: recordButton.center.x + horizontal, y: recordButton.center.y + vertical)
         return position
     }
-//    override func viewDidDisappear(_ animated: Bool) {
-//        self.viewDidDisappear(true)
-//        if self.travel?.isEditting == true {
-//            self.travel?.locations = NSOrderedSet(array: locationList)
-//
-//        } else {
-//            locationManager.stopUpdatingLocation()
-//        }
-//    }
 
     func reloadView() {
         self.checkInButton.alpha = 0
@@ -184,34 +175,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         startNewRun()
         locationManager.startUpdatingLocation()
 
-    }
-
-    func isEdittingTravel() -> Bool {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        let isEditting = "1"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 1
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-                print("no present")
-                return false
-            } else if count == 1 {
-                // at least one matching object exists
-                let edittingTravel = try? context.fetch(fetchRequest).first
-                self.travel = edittingTravel
-                print("only:\(count) continue editing...")
-                return true
-            } else {
-                print("matching items found:\(count)")
-                return false
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return false
     }
     private func startNewRun() {
         startLocationUpdates()

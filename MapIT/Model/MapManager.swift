@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import CoreData
 
 class MapManager {
     static func addAnnotations(on mapView: MKMapView, travel: Travel?) {
@@ -44,7 +45,6 @@ class MapManager {
         }
         return coordinates
     }
-    
     static func setPolylineStyle(mapView: MKMapView, overlay: MKOverlay) -> MKOverlayRenderer {
         guard let polyline = overlay as? MKPolyline else {
             return MKOverlayRenderer(overlay: overlay)
@@ -105,32 +105,59 @@ class MapManager {
             mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
         }
         mapView.setRegion(region, animated: true)
-        
-    }
-    static func viewNearByLocationName(mapView: MKMapView,
-                                       collectionView: UICollectionView) -> [MKMapItem] {
-        let keywords: [String] = ["bar", "shop", "restaurant", "cinema"]
-        var mapItemList: [MKMapItem] = []
-        var places: [MKMapItem] = []
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.region = mapView.region
-        for place in keywords {
-            searchRequest.naturalLanguageQuery = place
-            let search = MKLocalSearch(request: searchRequest)
-            search.start { response, _ in
-                guard let response = response else {
-                    return
-                }
-                mapItemList = response.mapItems.shuffled()
-                for item in mapItemList {
-                    places.append(item)
-                }
-            }
-        }
-        collectionView.reloadData()
-        return places
     }
 
-}
-class NearByLocation {
+    static func checkEditStatusAndGetCurrentTravel() -> (Bool?, Travel?) {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        let isEditting = "1"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 1
+        do {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+                print("no present")
+                return (false, nil)
+            } else if count == 1 {
+                // at least one matching object exists
+                let edittingTravel = try? context.fetch(fetchRequest).first
+                print("only:\(count) continue editing...")
+                return (true, edittingTravel)
+            } else {
+                print("matching items found:\(count)")
+                return (false, nil)
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return (false, nil)
+    }
+    static func getAllTravel(noDataAction: @escaping () -> Void, hadDataAction: @escaping () -> Void) -> ([Travel]?) {
+        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: true)]
+        let isEditting = "0"
+        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
+        fetchRequest.fetchLimit = 0
+        do {
+            let context = CoreDataStack.context
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                // no matching object
+//                ifNoDataHide.isHidden = false
+                noDataAction()
+                print("no present")
+                return []
+            } else {
+                // at least one matching object exists
+                guard let allTravel = try? context.fetch(fetchRequest) else { return []}
+//                ifNoDataHide.isHidden = true
+                hadDataAction()
+                return allTravel
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        return []
+    }
 }

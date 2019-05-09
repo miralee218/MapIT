@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapSearchViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -18,11 +19,9 @@ class MapSearchViewController: UIViewController, CLLocationManagerDelegate {
     var center = CLLocationCoordinate2D()
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    func nearByLocation(region: MKCoordinateRegion,collectionView: UICollectionView) {
+    func nearByLocation(region: MKCoordinateRegion, collectionView: UICollectionView) {
         let request = MKLocalSearch.Request()
-//        request.region = MKCoordinateRegion(center: center, latitudinalMeters: 10, longitudinalMeters: 10)
         request.region = region
         for param in params {
             request.naturalLanguageQuery = param

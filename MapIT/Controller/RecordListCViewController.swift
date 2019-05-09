@@ -46,6 +46,7 @@ class RecordListCViewController: PullUpController {
     public var landscapeFrame: CGRect = .zero
 
     var travel: Travel?
+    var isEditting: Bool?
     lazy var locationPost = (travel?.locationPosts?.allObjects as? [LocationPost])
     var coordinate = CLLocationCoordinate2D()
     var deleteHandler: (() -> Void)?
@@ -60,11 +61,11 @@ class RecordListCViewController: PullUpController {
 
         tableView.mr_registerCellWithNib(identifier: String(describing: RouteTableViewCell.self), bundle: nil)
 
-        getEdittingTravel()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadRecordList),
                                                name: Notification.Name("reloadRecordList"),
                                                object: nil)
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         if self.locationPost?.count == 0 {
             noDataView.isHidden = false
         } else {
@@ -72,7 +73,7 @@ class RecordListCViewController: PullUpController {
         }
     }
     @objc func reloadRecordList() {
-        getEdittingTravel()
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         self.locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
         if self.locationPost?.count == 0 {
             noDataView.isHidden = false
@@ -113,34 +114,6 @@ class RecordListCViewController: PullUpController {
                            animations: animations,
                            completion: completion)
         }
-    }
-    func getEdittingTravel() {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
-        let isEditting = "1"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-                print("no present")
-
-            } else if count == 1 {
-                // at least one matching object exists
-                let edittingTravel = try? context.fetch(fetchRequest).first
-                self.travel = edittingTravel
-                print("only:\(count) continue editing...")
-
-            } else {
-                print("matching items found:\(count)")
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        tableView.reloadData()
-
     }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
