@@ -139,10 +139,10 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             mapCell.mapView.delegate = self
             mapCell.mapView.isZoomEnabled = true
             mapCell.mapView.isScrollEnabled = true
-            InitMap.addOverlays(mapView: mapCell.mapView, travel: self.travel)
-            InitMap.addAnnotations(on: mapCell.mapView, travel: self.travel)
+            MapManager.addOverlays(mapView: mapCell.mapView, travel: self.travel)
+            MapManager.addAnnotations(on: mapCell.mapView, travel: self.travel)
             originalPositionHandler = {[weak self] in
-                InitMap.addOverlays(mapView: mapCell.mapView, travel: self?.travel)
+                MapManager.addOverlays(mapView: mapCell.mapView, travel: self?.travel)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
             changePositionHandler = { [weak self] coordinate in
@@ -300,6 +300,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
 extension RecordDetailViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
+        return MapManager.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }

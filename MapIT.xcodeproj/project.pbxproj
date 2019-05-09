@@ -87,10 +87,11 @@
 		49CCC8F32277A26000478B6A /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */; };
 		49CCC8F52278237800478B6A /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */; };
 		49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA063C227FE3D5006BFC09 /* MiraMessage.swift */; };
-		49DA064122816EFF006BFC09 /* InitMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA064022816EFF006BFC09 /* InitMap.swift */; };
 		49DA06432282A50D006BFC09 /* MiraDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06422282A50D006BFC09 /* MiraDialog.swift */; };
 		49DA06452282A725006BFC09 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06442282A725006BFC09 /* LaunchScreen.swift */; };
 		49DA06472282B367006BFC09 /* ShareTravelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06462282B367006BFC09 /* ShareTravelContent.swift */; };
+		49DA06492283C510006BFC09 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06482283C510006BFC09 /* MapManager.swift */; };
+		49DA064D2283EC18006BFC09 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */; };
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
@@ -180,10 +181,11 @@
 		49CCC8F22277A26000478B6A /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		49CCC8F42278237800478B6A /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchScreenViewController.swift; path = ../Controller/LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		49DA063C227FE3D5006BFC09 /* MiraMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraMessage.swift; sourceTree = "<group>"; };
-		49DA064022816EFF006BFC09 /* InitMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMap.swift; sourceTree = "<group>"; };
 		49DA06422282A50D006BFC09 /* MiraDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraDialog.swift; sourceTree = "<group>"; };
 		49DA06442282A725006BFC09 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		49DA06462282B367006BFC09 /* ShareTravelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTravelContent.swift; sourceTree = "<group>"; };
+		49DA06482283C510006BFC09 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
+		49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,7 +271,7 @@
 				497AC92522687D90005E8856 /* Coordinate.swift */,
 				494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */,
 				497A05DC2266C2420010D142 /* PlaceAnnotation.swift */,
-				49DA064022816EFF006BFC09 /* InitMap.swift */,
+				49DA06482283C510006BFC09 /* MapManager.swift */,
 				497AC91922680110005E8856 /* FormatDisplay.swift */,
 				497AC91B22680129005E8856 /* LocationManager.swift */,
 				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
@@ -302,6 +304,7 @@
 				497A0581225DF2990010D142 /* SignInViewController.swift */,
 				497A0585225DF7E50010D142 /* LoginContainerViewController.swift */,
 				497A0587225DF7FE0010D142 /* SignUpContainerViewController.swift */,
+				49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 			files = (
 				494EB37B225A1D7E00ECCA72 /* AddLocationNameCollectionViewCell.swift in Sources */,
 				4911692B22545D0800347310 /* MRTabBarViewController.swift in Sources */,
+				49DA06492283C510006BFC09 /* MapManager.swift in Sources */,
 				4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */,
 				4911695422583FFD00347310 /* JGProgressHUDWrapper.swift in Sources */,
 				4911694D22583E0200347310 /* AlertController.swift in Sources */,
@@ -669,7 +673,6 @@
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,
 				49DA06472282B367006BFC09 /* ShareTravelContent.swift in Sources */,
-				49DA064122816EFF006BFC09 /* InitMap.swift in Sources */,
 				497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */,
 				497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
@@ -711,6 +714,7 @@
 				49853726225B2380008CB391 /* EditLocationCViewController.swift in Sources */,
 				491169112254563200347310 /* AppDelegate.swift in Sources */,
 				494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */,
+				49DA064D2283EC18006BFC09 /* MapSearchViewController.swift in Sources */,
 				497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */,
 				49853769225D7E95008CB391 /* SharedOptionTableViewCell.swift in Sources */,
 				497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */,

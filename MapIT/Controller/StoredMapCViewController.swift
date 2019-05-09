@@ -163,8 +163,8 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
         mapCell.mapView.delegate = self
         mapCell.mapView.isZoomEnabled = true
         mapCell.mapView.isScrollEnabled = true
-        InitMap.addOverlays(mapView: mapCell.mapView, travel: travel)
-        InitMap.addAnnotations(on: mapCell.mapView, travel: travel)
+        MapManager.addOverlays(mapView: mapCell.mapView, travel: travel)
+        MapManager.addAnnotations(on: mapCell.mapView, travel: travel)
         return mapCell
 
     }
@@ -177,6 +177,6 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
 
 extension StoredMapCViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
+        return MapManager.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }

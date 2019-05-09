@@ -183,13 +183,13 @@ to love and be loved.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_SignBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Nji-dQ-Xq5">
-                                <rect key="frame" x="0.0" y="-2" width="414" height="250.00000000000011"/>
+                                <rect key="frame" x="0.0" y="-2" width="414" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="jTa-nK-QnN"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="W02-Wi-Xui">
-                                <rect key="frame" x="121.5" y="111" width="171" height="67"/>
+                                <rect key="frame" x="186.5" y="162" width="41" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="W02-Wi-Xui" secondAttribute="height" multiplier="171:67" id="e9l-pZ-cuc"/>
                                 </constraints>
@@ -243,7 +243,7 @@ to love and be loved.</string>
                                 <rect key="frame" x="40" y="792" width="334" height="48"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_SignButton" translatesAutoresizingMaskIntoConstraints="NO" id="nac-nM-wVr">
-                                        <rect key="frame" x="-5" y="0.0" width="344" height="48"/>
+                                        <rect key="frame" x="159" y="16" width="16" height="16"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vay-NW-LtW">
                                         <rect key="frame" x="50" y="6" width="234" height="36"/>

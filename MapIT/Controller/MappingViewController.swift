@@ -38,21 +38,24 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     //route
     private var locationList: [ShortRoute] = []
     var initLoaction: CLLocation?
-    private var locationManagerShared = LocationManager.shared
     var travel: Travel?
-    var allCoordinates: [[CLLocationCoordinate2D]] = [[]]
-    lazy var locationPost = (travel?.locationPosts?.allObjects as? [LocationPost])
 
     lazy var isEditting = isEdittingTravel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
-        let buttonItem = MKUserTrackingButton(mapView: mapView)
-        buttonItem.tintColor = UIColor.StartPink
-        buttonItem.backgroundColor = UIColor.white
-        buttonItem.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
-
-        mapView.addSubview(buttonItem)
+        navigationController?.setNavigationBarColor(self.navigationController)
+        setUserTrackingButton()
+        addNotificationCenter()
+        print(isEditting)
+    }
+    func setUserTrackingButton() {
+        let button = MKUserTrackingButton(mapView: mapView)
+        button.tintColor = UIColor.StartPink
+        button.backgroundColor = UIColor.white
+        button.frame = CGRect(origin: CGPoint(x: 16, y: 25), size: CGSize(width: 40, height: 40))
+        self.mapView.addSubview(button)
+    }
+    func addNotificationCenter() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(newTravel),
                                                name: Notification.Name.newTravel,
@@ -61,7 +64,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                                                selector: #selector(addAnnotations),
                                                name: Notification.Name.addAnnotations,
                                                object: nil)
-        print(isEditting)
     }
     @objc func newTravel() {
         reloadView()
@@ -71,10 +73,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.removeOverlays(self.mapView.overlays)
         locationManager.stopUpdatingLocation()
         locationList.removeAll()
-        InitMap.removeAnnotations(on: mapView)
+        MapManager.removeAnnotations(on: mapView)
     }
     @objc func addAnnotations(_ notification: NSNotification) {
-        InitMap.addAnnotations(on: mapView, travel: self.travel)
+        MapManager.addAnnotations(on: mapView, travel: self.travel)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -83,7 +85,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         locationManager.requestAlwaysAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
-        InitMap.addAnnotations(on: mapView, travel: self.travel)
+        MapManager.addAnnotations(on: mapView, travel: self.travel)
         reloadView()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -129,7 +131,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
-            InitMap.removeAnnotations(on: mapView)
+            MapManager.removeAnnotations(on: mapView)
             locationManager.stopUpdatingLocation()
         }
 
@@ -155,7 +157,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
-            InitMap.removeAnnotations(on: mapView)
+            MapManager.removeAnnotations(on: mapView)
             locationManager.stopUpdatingLocation()
         }
         DispatchQueue.main.async {
@@ -173,15 +175,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
         locationManager.startUpdatingHeading()
     }
-
-    private func setupLayout() {
-
-        navigationController?.navigationBar.setGradientBackground(
-            colors: UIColor.mainColor
-        )
-
-    }
-
     @IBAction func addRecordClick(_ sender: UIButton) {
 
         MRProgressHUD.startRecord(view: self.view)
@@ -243,44 +236,36 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     @IBAction func moreClicked(_ sender: UIButton) {
         if moreButton.currentImage == UIImage(named: ImageAsset.Icons_StartRecord.rawValue)! {
-            UIView.animate(withDuration: 0.15, animations: {
-                self.checkInButton.alpha = 1
-                self.checkInButton.center = self.checkInButtonCenter
-            })
-            UIView.animate(withDuration: 0.3, animations: {
-                self.puaseButton.alpha = 1
-                self.puaseButton.center = self.puaseButtonCenter
-            })
-            UIView.animate(withDuration: 0.45, animations: {
-                self.checkListButton.alpha = 1
-                self.checkListButton.center = self.checkListButtonCenter
-            })
-            UIView.animate(withDuration: 0.6, animations: {
-
-                self.stopButton.alpha = 1
-                self.stopButton.center = self.stopButtonCenter
-
-            })
+            buttonAppearAnimation(optionalButton: checkInButton, center: checkInButtonCenter, withDuration: 0.15)
+            buttonAppearAnimation(optionalButton: puaseButton, center: puaseButtonCenter, withDuration: 0.3)
+            buttonAppearAnimation(optionalButton: checkListButton, center: checkListButtonCenter, withDuration: 0.45)
+            buttonAppearAnimation(optionalButton: stopButton, center: stopButtonCenter, withDuration: 0.6)
         } else {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.checkInButton.alpha = 0
-                self.checkInButton.center = self.recordButton.center
-            })
-            UIView.animate(withDuration: 0.4, animations: {
-                self.puaseButton.alpha = 0
-                self.puaseButton.center = self.recordButton.center
-            })
-            UIView.animate(withDuration: 0.6, animations: {
-                self.checkListButton.alpha = 0
-                self.checkListButton.center = self.recordButton.center
-            })
-            UIView.animate(withDuration: 0.8, animations: {
-                self.stopButton.alpha = 0
-                self.stopButton.center = self.recordButton.center
-            })
+            buttonDisappearAnimation(optionalButton: checkInButton, centerButton: recordButton, withDuration: 0.2)
+            buttonDisappearAnimation(optionalButton: puaseButton, centerButton: recordButton, withDuration: 0.4)
+            buttonDisappearAnimation(optionalButton: checkListButton, centerButton: recordButton, withDuration: 0.6)
+            buttonDisappearAnimation(optionalButton: stopButton, centerButton: recordButton, withDuration: 0.8)
         }
         toggleButton(button: sender, onImage: UIImage(named: ImageAsset.Icons_Mapping_Selected.rawValue
             )!, offImage: UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!)
+    }
+    private func animation(withDuration: Double, action: @escaping () -> Void) {
+        UIView.animate(withDuration: withDuration, animations: {
+            action()
+            self.view.layoutIfNeeded()
+        })
+    }
+    private func buttonAppearAnimation(optionalButton: UIButton, center: CGPoint, withDuration: Double) {
+        animation(withDuration: withDuration) {
+            optionalButton.alpha = 1
+            optionalButton.center = center
+        }
+    }
+    private func buttonDisappearAnimation(optionalButton: UIButton, centerButton: UIButton, withDuration: Double) {
+        animation(withDuration: withDuration) {
+            optionalButton.alpha = 0
+            optionalButton.center = centerButton.center
+        }
     }
 
     @IBAction func checkInClicked(_ sender: UIButton) {
@@ -308,9 +293,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     var isViewList = false
     @IBAction func listClicked(_ sender: UIButton) {
-        //        guard
-        //            children.filter({ $0 is RecordListCViewController }).count == 1
-        //            else { return }
         if isViewList == false {
             addPullUpController()
             isViewList = true
@@ -319,7 +301,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             removePullUpController(pullUpController, animated: true)
             isViewList = false
         }
-
     }
 
     @IBAction func stopClicked(_ sender: UIButton) {
@@ -400,8 +381,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         if end.distance(from: start) > 10 {
 
             let coordinates = [start.coordinate, end.coordinate]
-
-            allCoordinates.append(coordinates)
 
             mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
 
@@ -488,7 +467,7 @@ extension MappingViewController {
 
 extension MappingViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        return InitMap.setPolylineStyle(mapView: mapView, overlay: overlay)
+        return MapManager.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }
 

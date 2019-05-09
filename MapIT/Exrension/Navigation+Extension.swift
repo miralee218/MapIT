@@ -23,4 +23,10 @@ extension UINavigationBar {
             endPoint: endPoint)
         setBackgroundImage(gradientLayer.createGradientImage(), for: UIBarMetrics.default)
     }
+    
+}
+extension UINavigationController{
+    func setNavigationBarColor(_ navigationController: UINavigationController?){
+        navigationController?.navigationBar.setGradientBackground(colors: UIColor.mainColor)
+    }
 }
