@@ -59,29 +59,6 @@ class InitMap {
 //        renderer.lineWidth = 10
 //        return renderer
     }
-    static func viewNearByLocationName(mapView: MKMapView,
-                                       collectionView: UICollectionView) -> [MKMapItem] {
-        let keywords: [String] = ["bar", "shop", "restaurant", "cinema"]
-        var mapItemList: [MKMapItem] = []
-        var places: [MKMapItem] = []
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.region = mapView.region
-        for place in keywords {
-            searchRequest.naturalLanguageQuery = place
-            let search = MKLocalSearch(request: searchRequest)
-            search.start { response, _ in
-                guard let response = response else {
-                    return
-                }
-                mapItemList = response.mapItems.shuffled()
-                for item in mapItemList {
-                    places.append(item)
-                }
-            }
-        }
-        collectionView.reloadData()
-        return places
-    }
     static func setMapRegion(mapView: MKMapView, travel: Travel?) -> MKCoordinateRegion? {
         guard let locations = travel?.locations, locations.count > 0 else {
             return nil
@@ -129,6 +106,29 @@ class InitMap {
         }
         mapView.setRegion(region, animated: true)
 
+    }
+    static func viewNearByLocationName(mapView: MKMapView,
+                                       collectionView: UICollectionView) -> [MKMapItem] {
+        let keywords: [String] = ["bar", "shop", "restaurant", "cinema"]
+        var mapItemList: [MKMapItem] = []
+        var places: [MKMapItem] = []
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.region = mapView.region
+        for place in keywords {
+            searchRequest.naturalLanguageQuery = place
+            let search = MKLocalSearch(request: searchRequest)
+            search.start { response, _ in
+                guard let response = response else {
+                    return
+                }
+                mapItemList = response.mapItems.shuffled()
+                for item in mapItemList {
+                    places.append(item)
+                }
+            }
+        }
+        collectionView.reloadData()
+        return places
     }
 
 }
