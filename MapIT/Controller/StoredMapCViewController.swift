@@ -69,25 +69,6 @@ class StoredMapCViewController: UIViewController {
             self.present(popup, animated: animated, completion: nil)
         }
     }
-    func showNoRouteDialog(animated: Bool = true) {
-        let title = "提醒你"
-        let message = "這趟旅程未錄製到任何路程喔！你想存還還是可以存啦.."
-        let popup = PopupDialog(title: title,
-                                message: message,
-                                buttonAlignment: .horizontal,
-                                transitionStyle: .zoomIn,
-                                tapGestureDismissal: true,
-                                panGestureDismissal: true,
-                                hideStatusBar: true) {
-        }
-        let buttonOne = DefaultButton(title: "瞭解") {
-        }
-        popup.addButtons([buttonOne])
-        DispatchQueue.main.async {
-            self.present(popup, animated: animated, completion: nil)
-        }
-    }
-
     @IBAction func deleteStore(_ sender: UIButton) {
         self.showDeleteDialog()
         self.deleteHandler = { [weak self] in
@@ -136,7 +117,7 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
         mapCell.mapView.delegate = self
         mapCell.mapView.isZoomEnabled = true
         mapCell.mapView.isScrollEnabled = true
-        MapManager.addOverlays(mapView: mapCell.mapView, travel: travel)
+        MapManager.addOverlaysAll(mapView: mapCell.mapView, travel: travel)
         MapManager.addAnnotations(on: mapCell.mapView, travel: travel)
         return mapCell
 

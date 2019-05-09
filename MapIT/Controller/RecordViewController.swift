@@ -180,33 +180,6 @@ class RecordViewController: UIViewController {
     @IBAction func goToMap(_ sender: UIButton) {
         tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
     }
-    func showDeleteDialog(animated: Bool = true) {
-        // Prepare the popup
-        let title = "確定刪除?"
-        let message = "若刪除紀錄，將無法再次回復唷QAQ"
-        // Create the dialog
-        let popup = PopupDialog(title: title,
-                                message: message,
-                                buttonAlignment: .horizontal,
-                                transitionStyle: .bounceUp,
-                                tapGestureDismissal: true,
-                                panGestureDismissal: true,
-                                hideStatusBar: true) {
-        }
-        // Create first button
-        let buttonOne = CancelButton(title: "取消") {
-        }
-        // Create second button
-        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
-            self?.deleteHandler?()
-        }
-        // Add buttons to dialog
-        popup.addButtons([buttonOne, buttonTwo])
-        // Present dialog
-        DispatchQueue.main.async {
-            self.present(popup, animated: animated, completion: nil)
-        }
-    }
 }
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -256,14 +229,14 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                self?.showDeleteDialog()
-                self?.deleteHandler = { [weak self] in
+                guard let strongSelf = self else { return }
+                MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
                     CoreDataStack.delete(removeOrder)
                     self?.getAllTravel()
-                    tableView.reloadData()
+                    self?.tableView.reloadData()
                     MiraMessage.deleteSuccessfully()
-                }
+                }, vc: strongSelf)
             }
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             sheet.addAction(option2)
@@ -328,14 +301,14 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                self?.showDeleteDialog()
-                self?.deleteHandler = { [weak self] in
+                guard let strongSelf = self else { return }
+                MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
                     CoreDataStack.delete(removeOrder)
                     self?.getAllTravel()
-                    collectionView.reloadData()
+                    self?.collectionView.reloadData()
                     MiraMessage.deleteSuccessfully()
-                }
+                }, vc: strongSelf)
             }
             let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             sheet.addAction(option2)

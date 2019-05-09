@@ -106,6 +106,37 @@ class MapManager {
         }
         mapView.setRegion(region, animated: true)
     }
+    static func addOverlaysAll(mapView: MKMapView, travel: Travel?) {
+        guard
+            let locations = travel?.locations,
+            locations.count > 0,
+            let region = setMapRegion(mapView: mapView, travel: travel)
+            else {
+                DispatchQueue.main.async {
+                    MiraMessage.noRouteRecord()
+                }
+                return
+        }
+        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
+            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.start!.latitude,
+                longitude: location.start!.longitude)
+            return coordinate
+        }
+        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
+            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
+            let coordinate = CLLocationCoordinate2D(
+                latitude: location.end!.latitude,
+                longitude: location.end!.longitude)
+            return coordinate
+        }
+        for coordinate in 0...startCoordinates.count - 1 {
+            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
+            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+        }
+        mapView.setRegion(region, animated: true)
+    }
 
     static func checkEditStatusAndGetCurrentTravel() -> (Bool?, Travel?) {
         let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()

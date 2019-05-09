@@ -73,33 +73,6 @@ class RecordDetailViewController: UIViewController {
 
         self.present(sheet, animated: true, completion: nil)
     }
-    func showDeleteDialog(animated: Bool = true) {
-        // Prepare the popup
-        let title = "確定刪除?"
-        let message = "若刪除紀錄，將無法再次回復唷QAQ"
-        // Create the dialog
-        let popup = PopupDialog(title: title,
-                                message: message,
-                                buttonAlignment: .horizontal,
-                                transitionStyle: .bounceUp,
-                                tapGestureDismissal: true,
-                                panGestureDismissal: true,
-                                hideStatusBar: true) {
-        }
-        // Create first button
-        let buttonOne = CancelButton(title: "取消") {
-        }
-        // Create second button
-        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
-            self?.deleteHandler?()
-        }
-        // Add buttons to dialog
-        popup.addButtons([buttonOne, buttonTwo])
-        // Present dialog
-        DispatchQueue.main.async {
-            self.present(popup, animated: animated, completion: nil)
-        }
-    }
 }
 
 extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
@@ -216,15 +189,15 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] _ in
-                    self?.showDeleteDialog()
-                    self?.deleteHandler = { [weak self] in
+                    guard let strongSelf = self else { return }
+                    MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                         guard let removeOrder = self?.sortedLocationPost?[indexPath.row] else { return }
                         CoreDataStack.delete(removeOrder)
                         self?.sortedLocationPost?.remove(at: indexPath.row)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                        tableView.reloadData()
+                        self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                        self?.tableView.reloadData()
                         MiraMessage.deleteSuccessfully()
-                    }
+                        }, vc: strongSelf)
                 }
 
                 let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -267,7 +240,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard (sortedLocationPost?[indexPath.row].photo?.count) != nil else {
                 return 100
             }
-
             return 195
         default:
             return 0

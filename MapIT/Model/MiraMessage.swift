@@ -73,4 +73,12 @@ class MiraMessage {
         view.button?.isHidden = true
         SwiftMessages.show(view: view)
     }
+    static func noRouteRecord() {
+        let view = MessageView.viewFromNib(layout: .statusLine)
+        view.configureTheme(.success)
+        view.backgroundView.backgroundColor = UIColor.SuccessDelete
+        view.configureContent(title: "提醒你", body: "這趟旅程未錄製到任何路程喔！你想存還還是可以存啦..")
+        view.button?.isHidden = true
+        SwiftMessages.show(view: view)
+    }
 }
