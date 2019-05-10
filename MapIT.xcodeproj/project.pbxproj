@@ -50,6 +50,7 @@
 		496111C6226EBADB00624802 /* EditTravelCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496111C5226EBADB00624802 /* EditTravelCViewController.swift */; };
 		496111CC2274153A00624802 /* NotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496111CB2274153A00624802 /* NotificationCenter+Extension.swift */; };
 		4977969C228549660087C575 /* RecordDetailSeciton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4977969B228549660087C575 /* RecordDetailSeciton.swift */; };
+		497796A422856B190087C575 /* MapITTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497796A322856B190087C575 /* MapITTests.swift */; };
 		497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0579225D97640010D142 /* SharedOptionViewController.swift */; };
 		497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */; };
 		497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */; };
@@ -95,6 +96,16 @@
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		497796A622856B190087C575 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 491169052254563200347310 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4911690C2254563200347310;
+			remoteInfo = MapIT;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapIT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +154,9 @@
 		496111C5226EBADB00624802 /* EditTravelCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravelCViewController.swift; sourceTree = "<group>"; };
 		496111CB2274153A00624802 /* NotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extension.swift"; sourceTree = "<group>"; };
 		4977969B228549660087C575 /* RecordDetailSeciton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecordDetailSeciton.swift; path = ../Controller/RecordDetailSeciton.swift; sourceTree = "<group>"; };
+		497796A122856B190087C575 /* MapITTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapITTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		497796A322856B190087C575 /* MapITTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapITTests.swift; sourceTree = "<group>"; };
+		497796A522856B190087C575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497A0579225D97640010D142 /* SharedOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionViewController.swift; sourceTree = "<group>"; };
 		497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -201,6 +215,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4977969E22856B190087C575 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -208,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				4911690F2254563200347310 /* MapIT */,
+				497796A222856B190087C575 /* MapITTests */,
 				4911690E2254563200347310 /* Products */,
 				B70FDB2025C07199BB94CF74 /* Pods */,
 				635C7606C42D2FC920CFD63F /* Frameworks */,
@@ -218,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				4911690D2254563200347310 /* MapIT.app */,
+				497796A122856B190087C575 /* MapITTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,6 +383,15 @@
 			path = AddLocation;
 			sourceTree = "<group>";
 		};
+		497796A222856B190087C575 /* MapITTests */ = {
+			isa = PBXGroup;
+			children = (
+				497796A322856B190087C575 /* MapITTests.swift */,
+				497796A522856B190087C575 /* Info.plist */,
+			);
+			path = MapITTests;
+			sourceTree = "<group>";
+		};
 		497A057B225DD8140010D142 /* ProfileCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +479,24 @@
 			productReference = 4911690D2254563200347310 /* MapIT.app */;
 			productType = "com.apple.product-type.application";
 		};
+		497796A022856B190087C575 /* MapITTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 497796A822856B190087C575 /* Build configuration list for PBXNativeTarget "MapITTests" */;
+			buildPhases = (
+				4977969D22856B190087C575 /* Sources */,
+				4977969E22856B190087C575 /* Frameworks */,
+				4977969F22856B190087C575 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				497796A722856B190087C575 /* PBXTargetDependency */,
+			);
+			name = MapITTests;
+			productName = MapITTests;
+			productReference = 497796A122856B190087C575 /* MapITTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -468,6 +518,10 @@
 							};
 						};
 					};
+					497796A022856B190087C575 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 4911690C2254563200347310;
+					};
 				};
 			};
 			buildConfigurationList = 491169082254563200347310 /* Build configuration list for PBXProject "MapIT" */;
@@ -484,6 +538,7 @@
 			projectRoot = "";
 			targets = (
 				4911690C2254563200347310 /* MapIT */,
+				497796A022856B190087C575 /* MapITTests */,
 			);
 		};
 /* End PBXProject section */
@@ -517,6 +572,13 @@
 				49853766225D7964008CB391 /* MapTableViewCell.xib in Resources */,
 				497F3C87227D5CF2001D12C3 /* MapMark.gif in Resources */,
 				491169382254639300347310 /* Record.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4977969F22856B190087C575 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,7 +786,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4977969D22856B190087C575 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				497796A422856B190087C575 /* MapITTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		497796A722856B190087C575 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4911690C2254563200347310 /* MapIT */;
+			targetProxy = 497796A622856B190087C575 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		491169142254563200347310 /* Main.storyboard */ = {
@@ -904,6 +982,47 @@
 			};
 			name = Release;
 		};
+		497796A922856B190087C575 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RADQ3WCUY5;
+				INFOPLIST_FILE = MapITTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Mira.Test.MapITTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MapIT.app/MapIT";
+			};
+			name = Debug;
+		};
+		497796AA22856B190087C575 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RADQ3WCUY5;
+				INFOPLIST_FILE = MapITTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Mira.Test.MapITTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MapIT.app/MapIT";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -921,6 +1040,15 @@
 			buildConfigurations = (
 				491169232254563800347310 /* Debug */,
 				491169242254563800347310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		497796A822856B190087C575 /* Build configuration list for PBXNativeTarget "MapITTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				497796A922856B190087C575 /* Debug */,
+				497796AA22856B190087C575 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
