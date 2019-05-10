@@ -63,7 +63,6 @@ class RecordViewController: UIViewController {
             colors: UIColor.mainColor
         )
         tableView.separatorStyle = .none
-//        navigationController?.navigationBar.isTranslucent = false
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: RecordCollectionViewCell.self), bundle: nil)
@@ -228,7 +227,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
         guard let recordCell = cell as? RecordTableViewCell else { return cell }
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
+            let deleteOption = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
                 guard let strongSelf = self else { return }
                 MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
@@ -238,9 +237,9 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                     MiraMessage.deleteSuccessfully()
                 }, vc: strongSelf)
             }
-            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            sheet.addAction(option2)
-            sheet.addAction(option1)
+            let cancelOption = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(deleteOption)
+            sheet.addAction(cancelOption)
             self?.present(sheet, animated: true, completion: nil)
         }
         recordCell.travelNameLabel.text = allTravel?[indexPath.row].title
@@ -300,7 +299,7 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let recordCell = cell as? RecordCollectionViewCell else { return cell }
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
+            let deleteOption = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
                 guard let strongSelf = self else { return }
                 MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
@@ -310,9 +309,9 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
                     MiraMessage.deleteSuccessfully()
                 }, vc: strongSelf)
             }
-            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            sheet.addAction(option2)
-            sheet.addAction(option1)
+            let cancelOption = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(deleteOption)
+            sheet.addAction(cancelOption)
             self?.present(sheet, animated: true, completion: nil)
         }
         recordCell.travelNameLabel.text = allTravel?[indexPath.row].title

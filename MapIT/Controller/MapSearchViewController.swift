@@ -45,4 +45,36 @@ class MapSearchViewController: UIViewController, CLLocationManagerDelegate {
         }
         self.center = currentLocation
     }
+    func shareContentOfWholeTravel(with tableView: UITableView?) {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: (tableView?.contentSize.width)!,
+                                                      height: (tableView?.contentSize.height)!),
+                                               false,
+                                               0.0)
+        let context = UIGraphicsGetCurrentContext()
+        context?.interpolationQuality = .high
+        let previousFrame = tableView?.frame
+        tableView?.frame = CGRect(x: (tableView?.frame.origin.x)!,
+                                  y: (tableView?.frame.origin.y)!,
+                                  width: (tableView?.contentSize.width)!,
+                                  height: (tableView?.contentSize.height)!)
+        tableView?.layer.render(in: context!)
+        tableView?.frame = previousFrame!
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = {
+            (activityType: UIActivity.ActivityType?,
+            completed: Bool,
+            returnedItems: [Any]?,
+            error: Error?) in
+            if error != nil {
+                MiraMessage.shareFail()
+                return
+            }
+            if completed {
+                MiraMessage.shareSuccess()
+            }
+        }
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }

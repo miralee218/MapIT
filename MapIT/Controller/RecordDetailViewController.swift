@@ -12,7 +12,7 @@ import CoreData
 import PopupDialog
 import SwiftMessages
 
-class RecordDetailViewController: UIViewController {
+class RecordDetailViewController: MapSearchViewController {
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -48,10 +48,10 @@ class RecordDetailViewController: UIViewController {
     }
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let option3 = UIAlertAction(title: "分享旅程", style: .default) { [weak self] (_) in
-            ShareTravelContent.allContent(tableView: self?.tableView, vc: self)
+        let shareOption = UIAlertAction(title: "分享旅程", style: .default) { [weak self] (_) in
+            self?.shareContentOfWholeTravel(with: self?.tableView)
         }
-        let option2 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
+        let editOption = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
 
             let vc = UIStoryboard.mapping.instantiateViewController(
                 withIdentifier: String(describing: EditTravelCViewController.self))
@@ -65,11 +65,11 @@ class RecordDetailViewController: UIViewController {
             self?.present(editTravelVC, animated: true, completion: nil)
 
         }
-        let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let cancelOption = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-        sheet.addAction(option3)
-        sheet.addAction(option2)
-        sheet.addAction(option1)
+        sheet.addAction(shareOption)
+        sheet.addAction(editOption)
+        sheet.addAction(cancelOption)
 
         self.present(sheet, animated: true, completion: nil)
     }
@@ -77,23 +77,21 @@ class RecordDetailViewController: UIViewController {
 
 extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return RecordDetailSeciton.allCases.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        switch section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue: section) else { return 0 }
+        switch recordDetailSeciton {
+        case .map:
             return 1
-        case 1:
+        case .description:
             return 1
-        case 2:
+        case .route:
             guard let locations = travel?.locationPosts,
             locations.count > 0 else {
                 return 0
             }
             return locations.count
-        default:
-            return 0
         }
 
     }
@@ -102,8 +100,11 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue:
+            indexPath.section) else {
+                return UITableViewCell() }
+        switch recordDetailSeciton {
+        case .map:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: MapTableViewCell.self),
                 for: indexPath
@@ -127,7 +128,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             return cell
 
-        case 1:
+        case .description:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: RecordDescriptionTableViewCell.self),
                 for: indexPath
@@ -137,7 +138,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             recordCell.travelContentLabel.text = self.travel?.content
             recordCell.selectionStyle = .none
             return recordCell
-        case 2:
+        case .route:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: RouteTableViewCell.self),
                 for: indexPath
@@ -224,36 +225,32 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             let formattedDate = FormatDisplay.postDate(sortedLocationPost[indexPath.row].timestamp)
             routeCell.pointRecordTimeLabel.text = formattedDate
             return routeCell
-
-        default:
-            return UITableViewCell()
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue: indexPath.section) else { return CGFloat.zero}
+        switch recordDetailSeciton {
+        case .map:
             return 350
-        case 1:
+        case .description:
             return UITableView.automaticDimension
-        case 2:
+        case .route:
             guard (sortedLocationPost?[indexPath.row].photo?.count) != nil else {
                 return 100
             }
             return 195
-        default:
-            return 0
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        switch indexPath.section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue: indexPath.section) else { return }
+        switch recordDetailSeciton {
+        case .map:
             return
-        case 1:
+        case .description:
             originalPositionHandler?()
             return
-        case 2:
+        case .route:
             guard let lat = sortedLocationPost?[indexPath.row].latitude,
                 let long = sortedLocationPost?[indexPath.row].longitude else {
                 return
@@ -261,8 +258,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             changePositionHandler?(coordinate)
             tableView.deselectRow(at: indexPath, animated: true)
-        default:
-            return
         }
     }
 

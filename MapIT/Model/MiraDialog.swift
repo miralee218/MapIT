@@ -37,7 +37,9 @@ class MiraDialog {
             vc.present(popup, animated: animated, completion: nil)
         }
     }
-    static func showDeleteTravelDialog(animated: Bool = true,  deleteHandler: @escaping (() -> Void), vc: UIViewController) {
+    static func showDeleteTravelDialog(animated: Bool = true,
+                                       deleteHandler: @escaping (() -> Void),
+                                       vc: UIViewController) {
         // Prepare the popup
         let title = "確定捨棄紀錄?"
         let message = "若捨棄，你的心血都白費了喔QAQ"
@@ -54,7 +56,7 @@ class MiraDialog {
         let buttonOne = CancelButton(title: "取消") {
         }
         // Create second button
-        let buttonTwo = DestructiveButton(title: "捨棄") { 
+        let buttonTwo = DestructiveButton(title: "捨棄") {
             deleteHandler()
         }
         // Add buttons to dialog

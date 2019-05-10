@@ -49,6 +49,7 @@
 		494EB3AB225AF10B00ECCA72 /* AccessPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */; };
 		496111C6226EBADB00624802 /* EditTravelCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496111C5226EBADB00624802 /* EditTravelCViewController.swift */; };
 		496111CC2274153A00624802 /* NotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496111CB2274153A00624802 /* NotificationCenter+Extension.swift */; };
+		4977969C228549660087C575 /* RecordDetailSeciton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4977969B228549660087C575 /* RecordDetailSeciton.swift */; };
 		497A057A225D97640010D142 /* SharedOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A0579225D97640010D142 /* SharedOptionViewController.swift */; };
 		497A057F225DD8C30010D142 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */; };
 		497A0580225DD8C30010D142 /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */; };
@@ -89,7 +90,6 @@
 		49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA063C227FE3D5006BFC09 /* MiraMessage.swift */; };
 		49DA06432282A50D006BFC09 /* MiraDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06422282A50D006BFC09 /* MiraDialog.swift */; };
 		49DA06452282A725006BFC09 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06442282A725006BFC09 /* LaunchScreen.swift */; };
-		49DA06472282B367006BFC09 /* ShareTravelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06462282B367006BFC09 /* ShareTravelContent.swift */; };
 		49DA06492283C510006BFC09 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06482283C510006BFC09 /* MapManager.swift */; };
 		49DA064D2283EC18006BFC09 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */; };
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
@@ -142,6 +142,7 @@
 		494EB3AA225AF10B00ECCA72 /* AccessPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessPhoto.swift; sourceTree = "<group>"; };
 		496111C5226EBADB00624802 /* EditTravelCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravelCViewController.swift; sourceTree = "<group>"; };
 		496111CB2274153A00624802 /* NotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extension.swift"; sourceTree = "<group>"; };
+		4977969B228549660087C575 /* RecordDetailSeciton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecordDetailSeciton.swift; path = ../Controller/RecordDetailSeciton.swift; sourceTree = "<group>"; };
 		497A0579225D97640010D142 /* SharedOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedOptionViewController.swift; sourceTree = "<group>"; };
 		497A057D225DD8C30010D142 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		497A057E225DD8C30010D142 /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -183,7 +184,6 @@
 		49DA063C227FE3D5006BFC09 /* MiraMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraMessage.swift; sourceTree = "<group>"; };
 		49DA06422282A50D006BFC09 /* MiraDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiraDialog.swift; sourceTree = "<group>"; };
 		49DA06442282A725006BFC09 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
-		49DA06462282B367006BFC09 /* ShareTravelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTravelContent.swift; sourceTree = "<group>"; };
 		49DA06482283C510006BFC09 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 				49DA063C227FE3D5006BFC09 /* MiraMessage.swift */,
 				49DA06422282A50D006BFC09 /* MiraDialog.swift */,
 				49DA06442282A725006BFC09 /* LaunchScreen.swift */,
-				49DA06462282B367006BFC09 /* ShareTravelContent.swift */,
+				4977969B228549660087C575 /* RecordDetailSeciton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -672,7 +672,6 @@
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,
-				49DA06472282B367006BFC09 /* ShareTravelContent.swift in Sources */,
 				497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */,
 				497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
@@ -704,6 +703,7 @@
 				4911694F22583E2400347310 /* NavigationView.swift in Sources */,
 				4911694B225489EC00347310 /* Navigation+Extension.swift in Sources */,
 				4985372D225B533E008CB391 /* PullUpController.swift in Sources */,
+				4977969C228549660087C575 /* RecordDetailSeciton.swift in Sources */,
 				49DA06432282A50D006BFC09 /* MiraDialog.swift in Sources */,
 				491169412254648200347310 /* NotificationViewController.swift in Sources */,
 				497AC92622687D90005E8856 /* Coordinate.swift in Sources */,
