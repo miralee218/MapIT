@@ -22,5 +22,4 @@ enum RecordDetailSeciton: Int, CaseIterable {
 
         }
     }
-    
 }

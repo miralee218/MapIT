@@ -283,9 +283,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             let alertController = UIAlertController(title: "定位請求",
                                                     message: "定位服務尚未啟用，請允許取用位置，以便紀錄您的旅行蹤跡。",
                                                     preferredStyle: .alert)
-            let tempAction = UIAlertAction(title: "暫不啟用", style: .cancel) { _ in
+            let denyAction = UIAlertAction(title: "暫不啟用", style: .cancel) { _ in
             }
-            let callAction = UIAlertAction(title: "立即設定", style: .default) { _ in
+            let setAction = UIAlertAction(title: "立即設定", style: .default) { _ in
                 guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                     return
                 }
@@ -296,8 +296,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                     })
                 }
             }
-            alertController.addAction(tempAction)
-            alertController.addAction(callAction)
+            alertController.addAction(denyAction)
+            alertController.addAction(setAction)
             self.present(alertController, animated: true, completion: nil)
         }
     }
