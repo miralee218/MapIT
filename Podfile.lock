@@ -3,6 +3,8 @@ PODS:
     - Fabric (~> 1.9.0)
   - DynamicBlurView (3.0.1)
   - Fabric (1.9.0)
+  - Firebase (5.20.2):
+    - Firebase/Core (= 5.20.2)
   - Firebase/Core (5.20.2):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.1)
@@ -79,6 +81,7 @@ PODS:
 DEPENDENCIES:
   - Crashlytics
   - Fabric
+  - Firebase
   - Firebase/Core
   - FSCalendar
   - Gemini
@@ -148,6 +151,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 6887b0e809731e4d849212a5e51dbb50fae691de
+PODFILE CHECKSUM: bab3e61c7b3347b4d00bc58149ac7f2600386f00
 
 COCOAPODS: 1.6.1

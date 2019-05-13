@@ -29,6 +29,9 @@ target 'MapIT' do
   pod 'PopupDialog', '~> 1.1'
   pod 'SwiftMessages'
 
-
+  target 'MapITTests' do
+    inherit! :search_paths
+    pod 'Firebase'
+  end
 
 end
