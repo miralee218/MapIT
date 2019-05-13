@@ -114,6 +114,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         self.puaseButton.alpha = 0
         self.stopButton.alpha = 0
         self.checkListButton.alpha = 0
+        changeWithEditStatus()
+        self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
+    }
+    func changeWithEditStatus() {
         if self.travel?.isEditting == true {
             MRProgressHUD.coutinueRecord(view: self.view)
             recordButton.alpha = 0
@@ -125,8 +129,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             MapManager.removeAnnotations(on: mapView)
             locationManager.stopUpdatingLocation()
         }
-
-        self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
     }
     private func addPullUpController() {
         let pullUpController = makeSearchViewControllerIfNeeded()
@@ -140,17 +142,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     func locationService() {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.delegate = self
-        if self.travel?.isEditting == true {
-            MRProgressHUD.coutinueRecord(view: self.view)
-            recordButton.alpha = 0
-            moreButton.alpha = 1
-            locationManager.startUpdatingLocation()
-        } else {
-            recordButton.alpha = 1
-            moreButton.alpha = 0
-            MapManager.removeAnnotations(on: mapView)
-            locationManager.stopUpdatingLocation()
-        }
+        changeWithEditStatus()
         DispatchQueue.main.async {
             self.mapView.delegate = self
             self.mapView.mapType = .standard

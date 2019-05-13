@@ -175,14 +175,12 @@ class MapManager {
             let count = try context.count(for: fetchRequest)
             if count == 0 {
                 // no matching object
-//                ifNoDataHide.isHidden = false
                 noDataAction()
                 print("no present")
                 return []
             } else {
                 // at least one matching object exists
                 guard let allTravel = try? context.fetch(fetchRequest) else { return []}
-//                ifNoDataHide.isHidden = true
                 hadDataAction()
                 return allTravel
             }
