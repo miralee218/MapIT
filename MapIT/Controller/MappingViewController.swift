@@ -101,6 +101,11 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         mapView.showsUserLocation = true
         locationService()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.travel?.locations = NSOrderedSet(array: locationList)
+        CoreDataStack.saveContext()
+    }
     public func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
         let radians = degrees * .pi / 180
         let vertical = sin(radians) * distance
@@ -123,6 +128,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             recordButton.alpha = 0
             moreButton.alpha = 1
             locationManager.startUpdatingLocation()
+            MapManager.addOverlaysAll(mapView: mapView, travel: travel)
         } else {
             recordButton.alpha = 1
             moreButton.alpha = 0
@@ -373,6 +379,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
             mapView.setRegion(region, animated: true)
 
+            self.travel?.locations = NSOrderedSet(array: locationList)
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
