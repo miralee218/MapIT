@@ -40,11 +40,14 @@ class StoredMapCViewController: UIViewController {
             = 10.0
         tableView.separatorStyle = .none
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
-        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         guard let locations = travel?.locations, locations.count > 0 else {
             MiraMessage.noRouteRecord()
             return                                                     
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
     }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
@@ -90,7 +93,7 @@ class StoredMapCViewController: UIViewController {
     }
     @IBAction func store(_ sender: UIButton) {
         saveTravelContent()
-        NotificationCenter.default.post(name: .newTravel, object: nil)
+//        NotificationCenter.default.post(name: .newTravel, object: nil)
         MiraMessage.saveTravel()
         dismiss(animated: true, completion: nil)
 

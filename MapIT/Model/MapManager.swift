@@ -255,6 +255,7 @@ class MapManager {
                 // at least one matching object exists
                 guard let allTravel = try? context.fetch(fetchRequest) else { return []}
                 hadDataAction()
+                print("have 1")
                 return allTravel
             }
         } catch let error as NSError {

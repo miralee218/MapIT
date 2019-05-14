@@ -36,13 +36,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         navigationController?.setNavigationBarColor(self.navigationController)
         setUserTrackingButton()
         addNotificationCenter()
-        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         
         buttonView.addRecordButton.addTarget(nil, action: #selector(addNewRecord), for: .touchUpInside)
         buttonView.checkInButton.addTarget(nil, action: #selector(checkInLocation), for: .touchUpInside)
         buttonView.pauseButton.addTarget(nil, action: #selector(pauseRecord), for: .touchUpInside)
         buttonView.listRecordButton.addTarget(nil, action: #selector(listRecord), for: .touchUpInside)
         buttonView.stopButton.addTarget(nil, action: #selector(toSaveRecord), for: .touchUpInside)
+//        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         
     }
     func setUserTrackingButton() {
@@ -64,6 +64,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         authorizationView.isHidden = true
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
@@ -78,8 +79,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.travel?.locations = NSOrderedSet(array: locationList)
-        CoreDataStack.saveContext()
+//        self.travel?.locations = NSOrderedSet(array: locationList)
+//        CoreDataStack.saveContext()
         
     }
     @objc func newTravel() {
@@ -108,7 +109,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonView.moreOptionButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue), for: .normal)
     }
     func changeWithEditStatus() {
-        if self.travel?.isEditting == true {
+        if self.isEditting == true {
             MRProgressHUD.coutinueRecord(view: self.view)
             buttonView.addRecordButton.alpha = 0
             buttonView.moreOptionButton.alpha = 1
@@ -158,14 +159,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     private func startNewRun() {
+        locationList.removeAll()
+        initLoaction = nil
+        
         startLocationUpdates()
-
+        
         let newTravel = Travel(context: CoreDataStack.context)
         newTravel.createTimestamp = Date()
         newTravel.isEditting = true
 
         CoreDataStack.saveContext()
-        travel = newTravel
+        self.travel = newTravel
     }
     private func startLocationUpdates() {
         locationManager.delegate = self
@@ -177,15 +181,18 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         if let vc = storyboard?.instantiateViewController(
             withIdentifier: "AddLocationCViewController") as? AddLocationCViewController {
             vc.mapView = self.mapView
+            vc.travel = self.travel
             present(vc, animated: true, completion: nil)
         }
     }
     @objc func pauseRecord() {
 
         if buttonView.pauseButton.currentImage == UIImage(named: ImageAsset.Icons_Puase.rawValue)! {
+            self.initLoaction = nil
             self.puaseShadowView.isHidden = false
             MRProgressHUD.puase(view: self.puaseShadowView)
             buttonView.pauseButton.setImage(UIImage(named: ImageAsset.Icons_Play.rawValue)!, for: .normal)
+            locationManager.stopUpdatingLocation()
         } else {
             self.puaseShadowView.isHidden = true
             buttonView.pauseButton.setImage(UIImage(named: ImageAsset.Icons_Puase.rawValue)!, for: .normal)
@@ -206,10 +213,10 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     @objc func toSaveRecord() {
         self.saveRun()
-        self.initLoaction = nil
 
         if let vc = storyboard?.instantiateViewController(
             withIdentifier: "StoredMapCViewController") as? StoredMapCViewController {
+            vc.travel = self.travel
             present(vc, animated: true, completion: nil)
         }
     }
@@ -257,6 +264,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             else {
                 return RecordListCViewController()
         }
+        pullUpController.travel = self.travel
         return pullUpController
     }
     // MARK: - CLLocationManager Delegates

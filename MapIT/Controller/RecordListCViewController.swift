@@ -65,15 +65,18 @@ class RecordListCViewController: PullUpController {
                                                selector: #selector(reloadRecordList),
                                                name: Notification.Name("reloadRecordList"),
                                                object: nil)
-        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         if self.locationPost?.count == 0 {
             noDataView.isHidden = false
         } else {
             noDataView.isHidden = true
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
+    }
     @objc func reloadRecordList() {
-        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
+//        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         self.locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
         if self.locationPost?.count == 0 {
             noDataView.isHidden = false

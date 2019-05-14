@@ -75,11 +75,6 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor
 
-        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
