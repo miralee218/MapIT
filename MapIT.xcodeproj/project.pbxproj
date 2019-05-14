@@ -65,7 +65,6 @@
 		497AC92622687D90005E8856 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92522687D90005E8856 /* Coordinate.swift */; };
 		497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */; };
 		497AC92D22698A74005E8856 /* NormalPictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */; };
-		497F3C85227BC7DA001D12C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497F3C84227BC7D9001D12C3 /* MapKit.framework */; };
 		497F3C87227D5CF2001D12C3 /* MapMark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C86227D5CF2001D12C3 /* MapMark.gif */; };
 		497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */; };
 		497F3C8B227D6BB6001D12C3 /* CameraLottieFiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */; };
@@ -176,7 +175,6 @@
 		497AC92522687D90005E8856 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = ../Controller/Coordinate.swift; sourceTree = "<group>"; };
 		497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalPictureCollectionViewCell.xib; sourceTree = "<group>"; };
-		497F3C84227BC7D9001D12C3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		497F3C86227D5CF2001D12C3 /* MapMark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MapMark.gif; sourceTree = "<group>"; };
 		497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CameraLottieFiles.json; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				497F3C85227BC7DA001D12C3 /* MapKit.framework in Frameworks */,
 				CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +455,6 @@
 		635C7606C42D2FC920CFD63F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				497F3C84227BC7D9001D12C3 /* MapKit.framework */,
 				2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */,
 				1358F4EB33C668A4B061574E /* Pods_MapITTests.framework */,
 			);
@@ -535,10 +531,10 @@
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

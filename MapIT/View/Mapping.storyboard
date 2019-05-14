@@ -22,60 +22,17 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IIw-Oy-9eT">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bni-F2-ACB">
-                                <rect key="frame" x="357" y="670" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Checkin"/>
-                                <connections>
-                                    <action selector="checkInClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="tNj-Av-7dp"/>
-                                </connections>
-                            </button>
                             <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-XJ-pP3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EaU-hy-CxF">
-                                <rect key="frame" x="307" y="680" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Puase"/>
-                                <connections>
-                                    <action selector="puaseClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="xpl-Xd-HWD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1K-TP-8Gp">
-                                <rect key="frame" x="271" y="717" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_List"/>
-                                <connections>
-                                    <action selector="listClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="TRB-Dl-GHc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bN-oU-ij0">
-                                <rect key="frame" x="263" y="769" width="45" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Icons_Stop"/>
-                                <connections>
-                                    <action selector="stopClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="3qK-0R-Jd0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygd-qm-0w3">
-                                <rect key="frame" x="330" y="754" width="72" height="72"/>
-                                <state key="normal" image="Icons_StartRecord"/>
-                                <connections>
-                                    <action selector="moreClicked:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="TqD-AP-h15"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yR-M1-97T">
-                                <rect key="frame" x="330" y="754" width="72" height="72"/>
-                                <state key="normal" image="Icons_Mapping_Unselected"/>
-                                <connections>
-                                    <action selector="addRecordClick:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="cqs-Jl-9dS"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ry8-tz-SOT" customClass="MapOptionalButtonView" customModule="MapIT">
-                                <rect key="frame" x="0.0" y="600" width="238" height="202"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ry8-tz-SOT" customClass="MapOptionalButtonView" customModule="MapIT">
+                                <rect key="frame" x="239" y="687" width="175" height="175"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="ROw-ec-1NJ"/>
+                                    <constraint firstAttribute="width" secondItem="ry8-tz-SOT" secondAttribute="height" multiplier="1:1" id="w5K-Kg-rnn"/>
+                                </constraints>
                             </view>
                             <view hidden="YES" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFG-Qi-Pnr">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
@@ -113,7 +70,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6nP-IN-aZc" firstAttribute="bottom" secondItem="0yR-M1-97T" secondAttribute="bottom" constant="36" id="1mu-dJ-MY4"/>
                             <constraint firstItem="IIw-Oy-9eT" firstAttribute="trailing" secondItem="6nP-IN-aZc" secondAttribute="trailing" id="4rr-40-gMg"/>
                             <constraint firstItem="IIw-Oy-9eT" firstAttribute="leading" secondItem="6nP-IN-aZc" secondAttribute="leading" id="5Te-8k-CTF"/>
                             <constraint firstItem="gFG-Qi-Pnr" firstAttribute="top" secondItem="6nP-IN-aZc" secondAttribute="top" id="A40-SM-p0v"/>
@@ -122,11 +78,10 @@
                             <constraint firstItem="0gc-XJ-pP3" firstAttribute="trailing" secondItem="6nP-IN-aZc" secondAttribute="trailing" id="MdE-Tm-TFW"/>
                             <constraint firstItem="6nP-IN-aZc" firstAttribute="bottom" secondItem="IIw-Oy-9eT" secondAttribute="bottom" id="Z1k-wv-RrX"/>
                             <constraint firstItem="gFG-Qi-Pnr" firstAttribute="leading" secondItem="6nP-IN-aZc" secondAttribute="leading" id="dKO-6e-3tR"/>
-                            <constraint firstItem="6nP-IN-aZc" firstAttribute="trailing" secondItem="0yR-M1-97T" secondAttribute="trailing" constant="12" id="fcW-F0-UAy"/>
-                            <constraint firstItem="ygd-qm-0w3" firstAttribute="centerX" secondItem="0yR-M1-97T" secondAttribute="centerX" id="gxu-Mc-tAx"/>
+                            <constraint firstItem="6nP-IN-aZc" firstAttribute="trailing" secondItem="ry8-tz-SOT" secondAttribute="trailing" id="e14-Rf-oKp"/>
                             <constraint firstItem="6nP-IN-aZc" firstAttribute="bottom" secondItem="gFG-Qi-Pnr" secondAttribute="bottom" id="hZk-rn-e7b"/>
                             <constraint firstItem="0gc-XJ-pP3" firstAttribute="top" secondItem="NOG-MB-2PS" secondAttribute="top" id="mOU-pf-5D4"/>
-                            <constraint firstItem="ygd-qm-0w3" firstAttribute="centerY" secondItem="0yR-M1-97T" secondAttribute="centerY" id="oCA-ge-sa4"/>
+                            <constraint firstItem="6nP-IN-aZc" firstAttribute="bottom" secondItem="ry8-tz-SOT" secondAttribute="bottom" id="nIU-QS-Czs"/>
                             <constraint firstItem="0gc-XJ-pP3" firstAttribute="leading" secondItem="6nP-IN-aZc" secondAttribute="leading" id="vtW-cm-9Dh"/>
                             <constraint firstItem="0gc-XJ-pP3" firstAttribute="bottom" secondItem="6nP-IN-aZc" secondAttribute="bottom" id="zSC-Ff-O6z"/>
                         </constraints>
@@ -136,14 +91,8 @@
                     <connections>
                         <outlet property="authorizationView" destination="gFG-Qi-Pnr" id="E1e-1w-kwE"/>
                         <outlet property="buttonView" destination="ry8-tz-SOT" id="HYx-Vw-8Bc"/>
-                        <outlet property="checkInButton" destination="bni-F2-ACB" id="hV9-Ex-Mxr"/>
-                        <outlet property="checkListButton" destination="W1K-TP-8Gp" id="z7Y-n5-oRv"/>
                         <outlet property="mapView" destination="IIw-Oy-9eT" id="mCW-ux-IDt"/>
-                        <outlet property="moreButton" destination="ygd-qm-0w3" id="dLb-MV-JfE"/>
-                        <outlet property="puaseButton" destination="EaU-hy-CxF" id="hdf-Il-CzG"/>
                         <outlet property="puaseShadowView" destination="0gc-XJ-pP3" id="eFx-0M-4GD"/>
-                        <outlet property="recordButton" destination="0yR-M1-97T" id="rR8-aI-84t"/>
-                        <outlet property="stopButton" destination="0bN-oU-ij0" id="J08-e8-GUX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU9-nt-R3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -917,12 +866,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icons_Checkin" width="45" height="45"/>
-        <image name="Icons_List" width="45" height="45"/>
-        <image name="Icons_Mapping_Unselected" width="72" height="72"/>
-        <image name="Icons_Puase" width="45" height="45"/>
-        <image name="Icons_StartRecord" width="72" height="72"/>
-        <image name="Icons_Stop" width="45" height="45"/>
         <namedColor name="B1">
             <color red="0.24705882352941178" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
