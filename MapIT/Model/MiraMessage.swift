@@ -11,74 +11,77 @@ import UIKit
 import SwiftMessages
 
 class MiraMessage {
-    static func saveLocation() {
-        let view = MessageView.viewFromNib(layout: .cardView)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessSave
-        view.configureContent(title: "新增成功", body: "可至清單中查看紀錄")
+    class func contentOfMessage(title: String,
+                                body: String,
+                                color: UIColor?,
+                                layout: MessageView.Layout,
+                                theme: Theme) {
+        let view = MessageView.viewFromNib(layout: layout)
+        view.configureTheme(theme)
+        view.backgroundView.backgroundColor = color
+        view.configureContent(title: title, body: body)
+        if body == "" {
+            view.bodyLabel?.isHidden = true
+        } else {
+            view.bodyLabel?.isHidden = false
+        }
         view.button?.isHidden = true
         SwiftMessages.show(view: view)
+    }
+    static func saveLocation() {
+        contentOfMessage(title: "新增成功",
+                         body: "可至清單中查看紀錄",
+                         color: UIColor.SuccessSave,
+                         layout: .cardView,
+                         theme: .success)
     }
     static func saveTravel() {
-        let view = MessageView.viewFromNib(layout: .cardView)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessSave
-        view.configureContent(title: "新增成功", body: "恭喜你～可至個人日誌中閱覽唷")
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "新增成功",
+                         body: "恭喜你～可至個人日誌中閱覽唷",
+                         color: UIColor.SuccessSave,
+                         layout: .cardView,
+                         theme: .success)
     }
     static func shareSuccess() {
-        let view = MessageView.viewFromNib(layout: .centeredView)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessSave
-        view.configureContent(title: "分享成功", body: "")
-        view.bodyLabel?.isHidden = true
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "分享成功",
+                         body: "",
+                         color: UIColor.SuccessSave,
+                         layout: .centeredView,
+                         theme: .success)
     }
     static func shareFail() {
-        let view = MessageView.viewFromNib(layout: .centeredView)
-        view.configureTheme(.warning)
-        view.backgroundView.backgroundColor = UIColor.SuccessDelete
-        view.configureContent(title: "分享失敗", body: "")
-        view.bodyLabel?.isHidden = true
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "分享失敗",
+                         body: "",
+                         color: UIColor.SuccessDelete,
+                         layout: .centeredView,
+                         theme: .warning)
     }
     static func deleteSuccessfully() {
-        let view = MessageView.viewFromNib(layout: .centeredView)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessDelete
-        view.configureContent(title: "已刪除", body: "")
-        view.bodyLabel?.isHidden = true
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "已刪除",
+                         body: "",
+                         color: UIColor.SuccessDelete,
+                         layout: .centeredView,
+                         theme: .success)
     }
     static func giveUpTravel() {
-        let view = MessageView.viewFromNib(layout: .centeredView)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessDelete
-        view.configureContent(title: "已捨棄此趟旅程全部紀錄", body: "")
-        view.bodyLabel?.isHidden = true
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "已捨棄此趟旅程全部紀錄",
+                         body: "",
+                         color: UIColor.SuccessDelete,
+                         layout: .centeredView,
+                         theme: .success)
     }
 
     static func updateSuccessfully() {
-        let view = MessageView.viewFromNib(layout: .centeredView)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessSave
-        view.configureContent(title: "更新成功", body: "")
-        view.bodyLabel?.isHidden = true
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "更新成功",
+                         body: "",
+                         color: UIColor.SuccessSave,
+                         layout: .centeredView,
+                         theme: .success)
     }
     static func noRouteRecord() {
-        let view = MessageView.viewFromNib(layout: .statusLine)
-        view.configureTheme(.success)
-        view.backgroundView.backgroundColor = UIColor.SuccessDelete
-        view.configureContent(title: "提醒你", body: "這趟旅程未錄製到任何路程喔！你想存還還是可以存啦..")
-        view.button?.isHidden = true
-        SwiftMessages.show(view: view)
+        contentOfMessage(title: "提醒你",
+                         body: "這趟旅程未錄製到任何路程喔！你想存還還是可以存啦...",
+                         color: UIColor.SuccessDelete,
+                         layout: .statusLine, theme: .success)
     }
 }

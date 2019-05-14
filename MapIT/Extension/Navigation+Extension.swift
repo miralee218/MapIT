@@ -25,8 +25,8 @@ extension UINavigationBar {
     }
     
 }
-extension UINavigationController{
-    func setNavigationBarColor(_ navigationController: UINavigationController?){
+extension UINavigationController {
+    func setNavigationBarColor(_ navigationController: UINavigationController?) {
         navigationController?.navigationBar.setGradientBackground(colors: UIColor.mainColor)
     }
 }

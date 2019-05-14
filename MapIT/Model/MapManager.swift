@@ -171,11 +171,7 @@ class MapManager {
             locations.count > 0,
             let region = setMapRegion(mapView: mapView, travel: travel)
             else {
-                DispatchQueue.main.async {
-                    MiraMessage.noRouteRecord()
-                }
                 return
-                
         }
         var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
             
@@ -265,5 +261,8 @@ class MapManager {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         return []
+    }
+    static func addTest(xxx: Int, yyy: Int) -> Int {
+        return xxx + yyy
     }
 }

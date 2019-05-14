@@ -41,6 +41,10 @@ class StoredMapCViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.mr_registerCellWithNib(identifier: String(describing: MapTableViewCell.self), bundle: nil)
         (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
+        guard let locations = travel?.locations, locations.count > 0 else {
+            MiraMessage.noRouteRecord()
+            return                                                     
+        }
     }
     func showDeleteDialog(animated: Bool = true) {
         // Prepare the popup
@@ -120,7 +124,6 @@ extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, 
         MapManager.addOverlaysAll(mapView: mapCell.mapView, travel: travel)
         MapManager.addAnnotations(on: mapCell.mapView, travel: travel)
         return mapCell
-
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.bounds.height / 2

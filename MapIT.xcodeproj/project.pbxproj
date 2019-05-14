@@ -62,7 +62,6 @@
 		497AC91A22680110005E8856 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91922680110005E8856 /* FormatDisplay.swift */; };
 		497AC91C22680129005E8856 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91B22680129005E8856 /* LocationManager.swift */; };
 		497AC91E22680143005E8856 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91D22680143005E8856 /* GradientPathRenderer.swift */; };
-		497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataStack.swift */; };
 		497AC92622687D90005E8856 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92522687D90005E8856 /* Coordinate.swift */; };
 		497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */; };
 		497AC92D22698A74005E8856 /* NormalPictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */; };
@@ -95,6 +94,9 @@
 		49DA06492283C510006BFC09 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA06482283C510006BFC09 /* MapManager.swift */; };
 		49DA064D2283EC18006BFC09 /* MapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */; };
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
+		49EC6AA52289674900C1A127 /* MapOptionalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC6AA42289674900C1A127 /* MapOptionalButtonView.swift */; };
+		49EC6AA922896BE000C1A127 /* MapOptionalButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49EC6AA822896BE000C1A127 /* MapOptionalButtonView.xib */; };
+		49EC6AAE228A601200C1A127 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataStack.swift */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +205,8 @@
 		49DA06482283C510006BFC09 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		49DA064C2283EC17006BFC09 /* MapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewController.swift; sourceTree = "<group>"; };
 		49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49EC6AA42289674900C1A127 /* MapOptionalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOptionalButtonView.swift; sourceTree = "<group>"; };
+		49EC6AA822896BE000C1A127 /* MapOptionalButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapOptionalButtonView.xib; sourceTree = "<group>"; };
 		4F3B57006F1AFBF3A093EECF /* Pods-MapIT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.release.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.release.xcconfig"; sourceTree = "<group>"; };
 		9CE21C79CC1159011AA44483 /* Pods-MapIT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapIT.debug.xcconfig"; path = "Target Support Files/Pods-MapIT/Pods-MapIT.debug.xcconfig"; sourceTree = "<group>"; };
 		B51980CE6F0E1D9AE616A99C /* Pods-MapITTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapITTests.release.xcconfig"; path = "Target Support Files/Pods-MapITTests/Pods-MapITTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				49853727225B3E1A008CB391 /* RecordCell */,
 				494EB370225A1A8300ECCA72 /* AddLocation */,
 				494EB35E2259020A00ECCA72 /* RouteCell */,
+				49EC6AA32289672900C1A127 /* MapView */,
 				491169142254563200347310 /* Main.storyboard */,
 				4911692F2254629700347310 /* Lobby.storyboard */,
 				491169372254639300347310 /* Record.storyboard */,
@@ -441,6 +446,15 @@
 			path = RecordDetailCell;
 			sourceTree = "<group>";
 		};
+		49EC6AA32289672900C1A127 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				49EC6AA42289674900C1A127 /* MapOptionalButtonView.swift */,
+				49EC6AA822896BE000C1A127 /* MapOptionalButtonView.xib */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		635C7606C42D2FC920CFD63F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +572,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EC6AA922896BE000C1A127 /* MapOptionalButtonView.xib in Resources */,
 				49853759225C791B008CB391 /* RecordDescriptionTableViewCell.xib in Resources */,
 				4985376A225D7E95008CB391 /* SharedOptionTableViewCell.xib in Resources */,
 				4911691E2254563800347310 /* LaunchScreen.storyboard in Resources */,
@@ -783,15 +798,16 @@
 				49DA06492283C510006BFC09 /* MapManager.swift in Sources */,
 				4985372A225B3E3D008CB391 /* RecordTableViewCell.swift in Sources */,
 				4911695422583FFD00347310 /* JGProgressHUDWrapper.swift in Sources */,
+				49EC6AA52289674900C1A127 /* MapOptionalButtonView.swift in Sources */,
 				4911694D22583E0200347310 /* AlertController.swift in Sources */,
 				494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
+				49EC6AAE228A601200C1A127 /* CoreDataStack.swift in Sources */,
 				49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,
 				49853765225D7964008CB391 /* MapTableViewCell.swift in Sources */,
 				497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */,
-				497AC9202268015B005E8856 /* CoreDataStack.swift in Sources */,
 				4911695622584C9000347310 /* MBProgressHUDWrapper.swift in Sources */,
 				491169472254879B00347310 /* UIColor+Extension.swift in Sources */,
 				494EB35B2258D55D00ECCA72 /* StoredMapCViewController.swift in Sources */,
@@ -1004,6 +1020,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RADQ3WCUY5;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MapIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1025,6 +1042,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RADQ3WCUY5;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MapIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1046,6 +1064,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = RADQ3WCUY5;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MapITTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1067,6 +1086,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RADQ3WCUY5;
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MapITTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

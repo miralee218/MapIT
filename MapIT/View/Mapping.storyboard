@@ -72,6 +72,11 @@
                                     <action selector="addRecordClick:" destination="WO5-Vl-oBc" eventType="touchUpInside" id="cqs-Jl-9dS"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ry8-tz-SOT" customClass="MapOptionalButtonView" customModule="MapIT">
+                                <rect key="frame" x="0.0" y="600" width="238" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view hidden="YES" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFG-Qi-Pnr">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
@@ -130,6 +135,7 @@
                     <navigationItem key="navigationItem" title="紀錄日誌" id="DeD-iU-4bk"/>
                     <connections>
                         <outlet property="authorizationView" destination="gFG-Qi-Pnr" id="E1e-1w-kwE"/>
+                        <outlet property="buttonView" destination="ry8-tz-SOT" id="HYx-Vw-8Bc"/>
                         <outlet property="checkInButton" destination="bni-F2-ACB" id="hV9-Ex-Mxr"/>
                         <outlet property="checkListButton" destination="W1K-TP-8Gp" id="z7Y-n5-oRv"/>
                         <outlet property="mapView" destination="IIw-Oy-9eT" id="mCW-ux-IDt"/>

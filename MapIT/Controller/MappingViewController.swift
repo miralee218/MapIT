@@ -20,6 +20,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
     @IBOutlet weak var mapView: MKMapView!
 
+    @IBOutlet weak var buttonView: MapOptionalButtonView!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var checkInButton: UIButton!
     @IBOutlet weak var puaseButton: UIButton!
@@ -90,6 +91,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //
         checkInButtonCenter = offset(byDistance: 100, inDirection: 270)
         puaseButtonCenter = offset(byDistance: 100, inDirection: 240)
         checkListButtonCenter = offset(byDistance: 100, inDirection: 210)
@@ -98,6 +100,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         puaseButton.center = recordButton.center
         checkListButton.center = recordButton.center
         stopButton.center = recordButton.center
+        //
         mapView.showsUserLocation = true
         locationService()
     }
@@ -105,20 +108,30 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewWillDisappear(animated)
         self.travel?.locations = NSOrderedSet(array: locationList)
         CoreDataStack.saveContext()
+
     }
-    public func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
+    //
+    private func offset(byDistance distance: CGFloat, inDirection degrees: CGFloat) -> CGPoint {
         let radians = degrees * .pi / 180
         let vertical = sin(radians) * distance
         let horizontal = cos(radians) * distance
         let position = CGPoint(x: recordButton.center.x + horizontal, y: recordButton.center.y + vertical)
         return position
     }
+    //
 
     func reloadView() {
+        //
         self.checkInButton.alpha = 0
         self.puaseButton.alpha = 0
         self.stopButton.alpha = 0
         self.checkListButton.alpha = 0
+        //
+        buttonView.checkInButton.alpha = 0
+        buttonView.listRecordButton.alpha = 0
+        buttonView.pauseButton.alpha = 0
+        buttonView.stopButton.alpha = 0
+        
         changeWithEditStatus()
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
     }

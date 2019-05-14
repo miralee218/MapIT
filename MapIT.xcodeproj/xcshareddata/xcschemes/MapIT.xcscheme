@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "497796A022856B190087C575"
+               BlueprintIdentifier = "497796ED22894ADA0087C575"
                BuildableName = "MapITTests.xctest"
                BlueprintName = "MapITTests"
                ReferencedContainer = "container:MapIT.xcodeproj">
