@@ -48,6 +48,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         setUserTrackingButton()
         addNotificationCenter()
         (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
+        
+        buttonView.addRecordButton.addTarget(nil, action: #selector(addNewRecord), for: .touchUpInside)
+        buttonView.checkInButton.addTarget(nil, action: #selector(checkInLocation), for: .touchUpInside)
+        buttonView.pauseButton.addTarget(nil, action: #selector(pauseRecord), for: .touchUpInside)
+        buttonView.listRecordButton.addTarget(nil, action: #selector(listRecord), for: .touchUpInside)
+        buttonView.stopButton.addTarget(nil, action: #selector(toSaveRecord), for: .touchUpInside)
+        
     }
     func setUserTrackingButton() {
         let button = MKUserTrackingButton(mapView: mapView)
@@ -133,18 +140,29 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonView.stopButton.alpha = 0
         
         changeWithEditStatus()
+        //
         self.moreButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue)!, for: .normal)
+        //
+        buttonView.moreOptionButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue), for: .normal)
     }
     func changeWithEditStatus() {
         if self.travel?.isEditting == true {
             MRProgressHUD.coutinueRecord(view: self.view)
+            //
             recordButton.alpha = 0
             moreButton.alpha = 1
+            //
+            buttonView.addRecordButton.alpha = 0
+            buttonView.moreOptionButton.alpha = 1
             locationManager.startUpdatingLocation()
             MapManager.addOverlaysAll(mapView: mapView, travel: travel)
         } else {
+            //
             recordButton.alpha = 1
             moreButton.alpha = 0
+            //
+            buttonView.addRecordButton.alpha = 1
+            buttonView.moreOptionButton.alpha = 0
             MapManager.removeAnnotations(on: mapView)
             locationManager.stopUpdatingLocation()
         }
@@ -182,11 +200,17 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         MRProgressHUD.startRecord(view: self.view)
         recordButton.alpha = 0
         moreButton.alpha = 1
-
         startNewRun()
         locationManager.startUpdatingLocation()
-
     }
+    @objc func addNewRecord() {
+        MRProgressHUD.startRecord(view: self.view)
+        buttonView.addRecordButton.alpha = 0
+        buttonView.moreOptionButton.alpha = 1
+        startNewRun()
+        locationManager.startUpdatingLocation()
+    }
+
     private func startNewRun() {
         startLocationUpdates()
 
@@ -249,6 +273,13 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             present(vc, animated: true, completion: nil)
         }
     }
+    @objc func checkInLocation() {
+        if let vc = storyboard?.instantiateViewController(
+            withIdentifier: "AddLocationCViewController") as? AddLocationCViewController {
+            vc.mapView = self.mapView
+            present(vc, animated: true, completion: nil)
+        }
+    }
 
     @IBAction func puaseClicked(_ sender: UIButton) {
         if sender.currentImage == UIImage(named: ImageAsset.Icons_Puase.rawValue)! {
@@ -265,8 +296,31 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             }
 
     }
+    @objc func pauseRecord() {
+
+        if buttonView.pauseButton.currentImage == UIImage(named: ImageAsset.Icons_Puase.rawValue)! {
+            self.puaseShadowView.isHidden = false
+            MRProgressHUD.puase(view: self.puaseShadowView)
+            buttonView.pauseButton.setImage(UIImage(named: ImageAsset.Icons_Play.rawValue)!, for: .normal)
+        } else {
+            self.puaseShadowView.isHidden = true
+            buttonView.pauseButton.setImage(UIImage(named: ImageAsset.Icons_Puase.rawValue)!, for: .normal)
+            continueRun()
+            locationManager.startUpdatingLocation()
+        }
+    }
     var isViewList = false
     @IBAction func listClicked(_ sender: UIButton) {
+        if isViewList == false {
+            addPullUpController()
+            isViewList = true
+        } else {
+            let pullUpController = makeSearchViewControllerIfNeeded()
+            removePullUpController(pullUpController, animated: true)
+            isViewList = false
+        }
+    }
+    @objc func listRecord() {
         if isViewList == false {
             addPullUpController()
             isViewList = true
@@ -287,6 +341,15 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             present(vc, animated: true, completion: nil)
         }
 
+    }
+    @objc func toSaveRecord() {
+        self.saveRun()
+        self.initLoaction = nil
+
+        if let vc = storyboard?.instantiateViewController(
+            withIdentifier: "StoredMapCViewController") as? StoredMapCViewController {
+            present(vc, animated: true, completion: nil)
+        }
     }
     @IBAction func setAuthorizaiton(_ sender: UIButton) {
         if CLLocationManager.authorizationStatus() != .denied {
