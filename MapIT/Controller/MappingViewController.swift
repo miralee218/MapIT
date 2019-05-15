@@ -103,9 +103,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonView.listRecordButton.alpha = 0
         buttonView.pauseButton.alpha = 0
         buttonView.stopButton.alpha = 0
-        
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         changeWithEditStatus()
-
         buttonView.moreOptionButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue), for: .normal)
     }
     func changeWithEditStatus() {

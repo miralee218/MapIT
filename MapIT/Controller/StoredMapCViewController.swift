@@ -93,7 +93,7 @@ class StoredMapCViewController: UIViewController {
     }
     @IBAction func store(_ sender: UIButton) {
         saveTravelContent()
-//        NotificationCenter.default.post(name: .newTravel, object: nil)
+        NotificationCenter.default.post(name: .newTravel, object: nil)
         MiraMessage.saveTravel()
         dismiss(animated: true, completion: nil)
 
