@@ -216,7 +216,7 @@ class MapManager {
         fetchRequest.fetchLimit = 1
         
         do {
-            let context = CoreDataStack.context
+            let context = CoreDataManager.context
             let count = try context.count(for: fetchRequest)
             
             if count == 0 {
@@ -244,7 +244,7 @@ class MapManager {
         fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
         fetchRequest.fetchLimit = 0
         do {
-            let context = CoreDataStack.context
+            let context = CoreDataManager.context
             let count = try context.count(for: fetchRequest)
             if count == 0 {
                 // no matching object
@@ -255,7 +255,7 @@ class MapManager {
                 // at least one matching object exists
                 guard let allTravel = try? context.fetch(fetchRequest) else { return []}
                 hadDataAction()
-                print("have 1")
+                print("have \(allTravel.count)")
                 return allTravel
             }
         } catch let error as NSError {

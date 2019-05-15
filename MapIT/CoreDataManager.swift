@@ -1,5 +1,5 @@
 //
-//  CoreDataStack.swift
+//  CoreDataManager.swift
 //  MapIT
 //
 //  Created by Mira on 2019/4/18.
@@ -8,7 +8,7 @@
 
 import CoreData
 
-class CoreDataStack {
+class CoreDataManager {
 
     static let persistentContainer: NSPersistentContainer = {
         

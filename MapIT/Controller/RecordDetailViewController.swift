@@ -193,7 +193,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                     guard let strongSelf = self else { return }
                     MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                         guard let removeOrder = self?.sortedLocationPost?[indexPath.row] else { return }
-                        CoreDataStack.delete(removeOrder)
+                        CoreDataManager.delete(removeOrder)
                         self?.sortedLocationPost?.remove(at: indexPath.row)
                         self?.tableView.deleteRows(at: [indexPath], with: .automatic)
                         self?.tableView.reloadData()

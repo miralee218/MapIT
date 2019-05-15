@@ -165,7 +165,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                     let fileManager = FileManager.default
                     let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
                     guard let totalPhoto = self?.locationPost?[indexPath.row].photo, totalPhoto.count <= 0 else {
-                        CoreDataStack.delete(removeOrder)
+                        CoreDataManager.delete(removeOrder)
                         self?.locationPost?.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
                         if self?.locationPost?.count == 0 {
@@ -183,7 +183,7 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
                         } catch {
                         }
                     }
-                    CoreDataStack.delete(removeOrder)
+                    CoreDataManager.delete(removeOrder)
                     self?.locationPost?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     tableView.reloadData()

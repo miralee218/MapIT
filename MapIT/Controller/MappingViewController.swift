@@ -163,11 +163,11 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
         startLocationUpdates()
         
-        let newTravel = Travel(context: CoreDataStack.context)
+        let newTravel = Travel(context: CoreDataManager.context)
         newTravel.createTimestamp = Date()
         newTravel.isEditting = true
 
-        CoreDataStack.saveContext()
+        CoreDataManager.saveContext()
         self.travel = newTravel
     }
     private func startLocationUpdates() {
@@ -247,7 +247,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
         self.travel?.endTimestamp = Date()
         self.travel?.locations = NSOrderedSet(array: locationList)
-        CoreDataStack.saveContext()
+        CoreDataManager.saveContext()
 
         reloadView()
     }
@@ -296,9 +296,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
             let date = Date()
 
-            let mira = ShortRoute(context: CoreDataStack.context)
+            let mira = ShortRoute(context: CoreDataManager.context)
 
-            let startLocation = Location(context: CoreDataStack.context)
+            let startLocation = Location(context: CoreDataManager.context)
 
             startLocation.latitude = start.coordinate.latitude
 
@@ -306,7 +306,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
 
             startLocation.timestamp = date
 
-            let endLocation = Location(context: CoreDataStack.context)
+            let endLocation = Location(context: CoreDataManager.context)
 
             endLocation.latitude = end.coordinate.latitude
 

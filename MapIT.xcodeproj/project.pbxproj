@@ -95,7 +95,7 @@
 		49EBF3D82276C9A9008350ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EBF3D72276C9A9008350ED /* GoogleService-Info.plist */; };
 		49EC6AA52289674900C1A127 /* MapOptionalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC6AA42289674900C1A127 /* MapOptionalButtonView.swift */; };
 		49EC6AA922896BE000C1A127 /* MapOptionalButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49EC6AA822896BE000C1A127 /* MapOptionalButtonView.xib */; };
-		49EC6AAE228A601200C1A127 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataStack.swift */; };
+		49EC6AAE228A601200C1A127 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC91F2268015A005E8856 /* CoreDataManager.swift */; };
 		CFBF5C671C5E300A749F9444 /* Pods_MapIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9182D53B3C8E336590A1F5 /* Pods_MapIT.framework */; };
 /* End PBXBuildFile section */
 
@@ -171,7 +171,7 @@
 		497AC91922680110005E8856 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormatDisplay.swift; path = ../FormatDisplay.swift; sourceTree = "<group>"; };
 		497AC91B22680129005E8856 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = ../LocationManager.swift; sourceTree = "<group>"; };
 		497AC91D22680143005E8856 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GradientPathRenderer.swift; path = ../GradientPathRenderer.swift; sourceTree = "<group>"; };
-		497AC91F2268015A005E8856 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
+		497AC91F2268015A005E8856 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = ../CoreDataManager.swift; sourceTree = "<group>"; };
 		497AC92522687D90005E8856 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = ../Controller/Coordinate.swift; sourceTree = "<group>"; };
 		497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalPictureCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 				497AC91922680110005E8856 /* FormatDisplay.swift */,
 				497AC91B22680129005E8856 /* LocationManager.swift */,
 				497AC91D22680143005E8856 /* GradientPathRenderer.swift */,
-				497AC91F2268015A005E8856 /* CoreDataStack.swift */,
+				497AC91F2268015A005E8856 /* CoreDataManager.swift */,
 				49DA063C227FE3D5006BFC09 /* MiraMessage.swift */,
 				49DA06422282A50D006BFC09 /* MiraDialog.swift */,
 				49DA06442282A725006BFC09 /* LaunchScreen.swift */,
@@ -798,7 +798,7 @@
 				4911694D22583E0200347310 /* AlertController.swift in Sources */,
 				494EB387225A221900ECCA72 /* AddPictureMethodCollectionViewCell.swift in Sources */,
 				491169452254653100347310 /* UIStoryboard+Extension.swift in Sources */,
-				49EC6AAE228A601200C1A127 /* CoreDataStack.swift in Sources */,
+				49EC6AAE228A601200C1A127 /* CoreDataManager.swift in Sources */,
 				49DA063D227FE3D5006BFC09 /* MiraMessage.swift in Sources */,
 				4911693F2254647400347310 /* MappingViewController.swift in Sources */,
 				49853754225C78FA008CB391 /* RecordImageTableViewCell.swift in Sources */,

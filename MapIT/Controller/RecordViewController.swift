@@ -231,7 +231,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let strongSelf = self else { return }
                 MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                    CoreDataStack.delete(removeOrder)
+                    CoreDataManager.delete(removeOrder)
                     self?.getAllTravel()
                     self?.tableView.reloadData()
                     MiraMessage.deleteSuccessfully()
@@ -242,10 +242,11 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             sheet.addAction(cancelOption)
             self?.present(sheet, animated: true, completion: nil)
         }
-        recordCell.travelNameLabel.text = allTravel?[indexPath.row].title
+        //
         let formattedDate = FormatDisplay.travelDate(allTravel?[indexPath.row].createTimestamp)
-        recordCell.travelTimeLabel.text = formattedDate
-        recordCell.travelContentLabel.text = allTravel?[indexPath.row].content
+        recordCell.contentInit(name: allTravel?[indexPath.row].title,
+                               time: formattedDate,
+                               content: allTravel?[indexPath.row].content)
         guard let indexTravel = allTravel?[indexPath.row] else {
             return cell
         }
@@ -303,7 +304,7 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
                 guard let strongSelf = self else { return }
                 MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                    CoreDataStack.delete(removeOrder)
+                    CoreDataManager.delete(removeOrder)
                     self?.getAllTravel()
                     self?.collectionView.reloadData()
                     MiraMessage.deleteSuccessfully()
