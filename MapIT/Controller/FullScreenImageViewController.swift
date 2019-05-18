@@ -15,7 +15,8 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     var photos = [String]()
     var imageFrame = CGRect(x: 0, y: 0, width: 0, height: 0)
-    var selectedIndex: Int?
+    var selectedIndex = Int()
+    var currentPage = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,11 +24,12 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
         backgroundview.addGestureRecognizer(tap)
         setScrollView()
         scrollView.clipsToBounds = true
+        self.currentPage = selectedIndex
 
     }
     func setScrollView() {
         pageController.numberOfPages = photos.count
-        pageController.currentPage = 0
+        pageController.currentPage = selectedIndex
         pageController.currentPageIndicatorTintColor = UIColor.MiraBlue
         pageController.pageIndicatorTintColor = .lightGray
         for index in 0...photos.count - 1 {
@@ -53,6 +55,9 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 4.0
         scrollView.zoomScale = 1.0
+        let width = scrollView.frame.size.width
+        let offset = CGPoint(x: width * CGFloat(selectedIndex), y: 0)
+        scrollView.setContentOffset(offset, animated: true)
     }
     @objc func dismissFullscreenImage(_ sender: UIPanGestureRecognizer) {
         UIView.animate(withDuration: 0.8, animations: {
@@ -63,6 +68,39 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func back(_ sender: UIButton) {
          self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func sharedPhoto(_ sender: Any) {
+        var photoItem: UIImage?
+        let photo = photos[currentPage]
+        
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        
+        if let dirPath = paths.first {
+            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photo)
+            let image    = UIImage(contentsOfFile: imageURL.path)
+            photoItem = image
+            // Do whatever you want with the image
+            
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [photoItem], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = {
+            (activityType: UIActivity.ActivityType?,
+            completed: Bool,
+            returnedItems: [Any]?,
+            error: Error?) in
+            if error != nil {
+                MiraMessage.shareFail()
+                return
+            }
+            if completed {
+                MiraMessage.shareSuccess()
+            }
+        }
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     @IBAction func pageChanged(_ sender: UIPageControl) {
         let currentPageNumber = sender.currentPage
         let width = scrollView.frame.size.width
@@ -72,5 +110,6 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageController.currentPage = currentPage
+        self.currentPage = currentPage
     }
 }
