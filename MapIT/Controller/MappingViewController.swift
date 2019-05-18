@@ -42,7 +42,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         buttonView.pauseButton.addTarget(nil, action: #selector(pauseRecord), for: .touchUpInside)
         buttonView.listRecordButton.addTarget(nil, action: #selector(listRecord), for: .touchUpInside)
         buttonView.stopButton.addTarget(nil, action: #selector(toSaveRecord), for: .touchUpInside)
-//        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         
     }
     func setUserTrackingButton() {
@@ -63,7 +62,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                                                object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         authorizationView.isHidden = true
         locationManager.requestWhenInUseAuthorization()
@@ -72,6 +71,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         MapManager.addAnnotations(on: mapView, travel: self.travel)
         reloadView()
     }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         mapView.showsUserLocation = true
@@ -84,6 +84,7 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         
     }
     @objc func newTravel() {
+        
         reloadView()
         let pullUpController = makeSearchViewControllerIfNeeded()
         removePullUpController(pullUpController, animated: true)
@@ -98,12 +99,11 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
 
     func reloadView() {
-
+        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         buttonView.checkInButton.alpha = 0
         buttonView.listRecordButton.alpha = 0
         buttonView.pauseButton.alpha = 0
         buttonView.stopButton.alpha = 0
-        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         changeWithEditStatus()
         buttonView.moreOptionButton.setImage(UIImage(named: ImageAsset.Icons_StartRecord.rawValue), for: .normal)
     }
