@@ -45,6 +45,7 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
                 imageFrame.size = scrollView.frame.size
                 let imageView = UIImageView(frame: imageFrame)
                 imageView.image = image
+                imageView.contentMode = .scaleAspectFit
                 self.scrollView.addSubview(imageView)
             }
         }
@@ -53,7 +54,7 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
 
         scrollView.minimumZoomScale = 0.1
-        scrollView.maximumZoomScale = 4.0
+        scrollView.maximumZoomScale = 3
         scrollView.zoomScale = 1.0
         let width = scrollView.frame.size.width
         let offset = CGPoint(x: width * CGFloat(selectedIndex), y: 0)
@@ -112,4 +113,5 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
         pageController.currentPage = currentPage
         self.currentPage = currentPage
     }
+
 }

@@ -150,9 +150,8 @@
                                             <action selector="back:" destination="pgp-Ua-82Z" eventType="touchUpInside" id="yHj-Eg-QNa"/>
                                         </connections>
                                     </button>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiQ-qf-Vaa">
-                                        <rect key="frame" x="0.0" y="241" width="414" height="414"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiQ-qf-Vaa">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <gestureRecognizers/>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HgN-8T-dfM">
@@ -178,9 +177,15 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0OR-5G-R37" secondAttribute="trailing" constant="12" id="2fk-H9-Lbu"/>
+                                    <constraint firstAttribute="bottom" secondItem="fiQ-qf-Vaa" secondAttribute="bottom" id="2iF-uf-gaQ"/>
                                     <constraint firstItem="8yd-kc-OvG" firstAttribute="leading" secondItem="KmU-eG-eeq" secondAttribute="leading" constant="12" id="Bfa-Cg-GDy"/>
+                                    <constraint firstItem="fiQ-qf-Vaa" firstAttribute="leading" secondItem="KmU-eG-eeq" secondAttribute="leading" id="OI1-5n-mxk"/>
+                                    <constraint firstItem="fiQ-qf-Vaa" firstAttribute="centerX" secondItem="KmU-eG-eeq" secondAttribute="centerX" id="OM0-a1-xla"/>
+                                    <constraint firstItem="fiQ-qf-Vaa" firstAttribute="centerY" secondItem="KmU-eG-eeq" secondAttribute="centerY" id="XGG-cs-x9f"/>
                                     <constraint firstItem="8yd-kc-OvG" firstAttribute="top" secondItem="KmU-eG-eeq" secondAttribute="topMargin" constant="24" id="eT1-2i-4Wr"/>
+                                    <constraint firstAttribute="trailing" secondItem="fiQ-qf-Vaa" secondAttribute="trailing" id="prR-Wa-N6E"/>
                                     <constraint firstItem="0OR-5G-R37" firstAttribute="centerY" secondItem="8yd-kc-OvG" secondAttribute="centerY" id="s0P-qy-1Mj"/>
+                                    <constraint firstItem="fiQ-qf-Vaa" firstAttribute="top" secondItem="KmU-eG-eeq" secondAttribute="top" id="udA-dm-RxD"/>
                                 </constraints>
                             </view>
                         </subviews>
