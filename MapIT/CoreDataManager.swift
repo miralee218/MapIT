@@ -1,5 +1,5 @@
 //
-//  CoreDataStack.swift
+//  CoreDataManager.swift
 //  MapIT
 //
 //  Created by Mira on 2019/4/18.
@@ -8,21 +8,27 @@
 
 import CoreData
 
-class CoreDataStack {
+class CoreDataManager {
 
     static let persistentContainer: NSPersistentContainer = {
+        
         let container = NSPersistentContainer(name: "MapIT")
+        
         container.loadPersistentStores { (_, error) in
+            
             if let error = error as NSError? {
+                
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
+        
         return container
     }()
 
     static var context: NSManagedObjectContext { return persistentContainer.viewContext }
 
     class func saveContext () {
+        
         let context = persistentContainer.viewContext
 
         guard context.hasChanges else {

@@ -14,7 +14,8 @@ import RSKPlaceholderTextView
 import TextFieldEffects
 import SwiftMessages
 
-class AddLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddLocationCViewController: MapSearchViewController,
+UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var storeButton: UIButton!
@@ -41,15 +42,10 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         }
 
     }
-    var places: [MKMapItem] = []
-    var mapItemList: [MKMapItem] = []
-    let params: [String] = ["bar", "shop", "restaurant", "cinema"]
-    var mapView = MKMapView()
-    var travel: Travel?
-    let recordListVC = RecordListCViewController()
     private var locationManager = LocationManager.shared
     var photoSelected = [UIImage]()
-    lazy var isEditting = isEdittingTravel()
+    var travel: Travel?
+    var isEditting: Bool?
     var imageFilePath = [String]()
     var lat = CLLocationDegrees()
     var long = CLLocationDegrees()
@@ -67,7 +63,8 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         pictureCollectionView.mr_registerCellWithNib(
             identifier: String(describing: RoutePictureCollectionViewCell.self), bundle: nil)
 
-        nearByLocation()
+        nearByLocation(region: mapView.region, collectionView: locationNameCollectionView)
+
         if let layout = locationNameCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             //            layout.estimatedItemSize = CGSize(width: view.frame.width, height: 25)
             layout.itemSize = UICollectionViewFlowLayout.automaticSize
@@ -78,73 +75,12 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         contentTextView.layer.cornerRadius = 4
         contentTextView.layer.borderColor = UIColor.B5?.cgColor
 
-        if isEditting == true {
-            print("123")
-        }
-
-    }
-
-    func nearByLocation() {
-        let request = MKLocalSearch.Request()
-        request.region = mapView.region
-        for param in params {
-            request.naturalLanguageQuery = param
-            let search = MKLocalSearch(request: request)
-            search.start { [weak self] response, _ in
-
-                guard let strongSelf = self else { return }
-
-                guard let response = response else { return }
-                strongSelf.mapItemList = response.mapItems
-                for item in strongSelf.mapItemList {
-                    let annotation = PlaceAnnotation()
-                    annotation.coordinate = item.placemark.location!.coordinate
-                    annotation.title = item.name
-                    annotation.url = item.url
-                    annotation.detailAddress = item.placemark.title
-                    strongSelf.places.append(item)
-                }
-                strongSelf.places.shuffle()
-                strongSelf.locationNameCollectionView.reloadData()
-            }
-        }
-    }
-    func isEdittingTravel() -> Bool {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        let isEditting = "1"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-                print("no present")
-                return false
-            } else if count == 1 {
-                // at least one matching object exists
-                let edittingTravel = try? context.fetch(fetchRequest).first
-                self.travel = edittingTravel
-                print("only:\(count) continue editing...")
-                return true
-            } else {
-                print("matching items found:\(count)")
-                return false
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        return false
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
     }
 
     @IBAction func storeLocation(_ sender: UIButton) {
         saveLocation()
         NotificationCenter.default.post(name: .reloadRecordList, object: nil)
-        NotificationCenter.default.post(name: .addMark, object: nil, userInfo: ["coordinate": coordinate])
+        NotificationCenter.default.post(name: .addAnnotations, object: nil, userInfo: ["coordinate": coordinate])
         MiraMessage.saveLocation()
         dismiss(animated: true, completion: nil)
     }
@@ -153,7 +89,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         self.coordinate = locValue
 
-        let newLocation = LocationPost(context: CoreDataStack.context)
+        let newLocation = LocationPost(context: CoreDataManager.context)
 
         newLocation.timestamp = Date()
         newLocation.title = self.locationName.text
@@ -193,7 +129,7 @@ class AddLocationCViewController: UIViewController, UIImagePickerControllerDeleg
         newLocation.travel = travel
         self.travel?.locationPosts?.adding(newLocation)
 
-        CoreDataStack.saveContext()
+        CoreDataManager.saveContext()
 
     }
 

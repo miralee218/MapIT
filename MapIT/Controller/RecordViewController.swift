@@ -63,38 +63,29 @@ class RecordViewController: UIViewController {
             colors: UIColor.mainColor
         )
         tableView.separatorStyle = .none
-//        navigationController?.navigationBar.isTranslucent = false
         tableView.mr_registerCellWithNib(identifier: String(describing: RecordTableViewCell.self), bundle: nil)
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: RecordCollectionViewCell.self), bundle: nil)
-        getTravel()
-        launchAnimation()
+        LaunchScreen.launchAnimation()
         myGifView.loadGif(name: "MapMark")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.hidesBarsOnSwipe = true
-        getTravel()
+        getAllTravel()
         tableView.reloadData()
         collectionView.reloadData()
     }
-    func launchAnimation() {
-        let vc = (UIStoryboard(name: "LaunchScreen",
-                               bundle: nil).instantiateViewController(withIdentifier: "LaunchScreen")
-        )
-        let launchView = vc.view
-        let delegate = UIApplication.shared.delegate
-        delegate?.window??.addSubview(launchView!)
-        UIView.animate(withDuration: 1, delay: 0.5, options: .beginFromCurrentState,
-                       animations: {
-                        launchView?.alpha = 0.0
-                        let transform = CATransform3DScale(CATransform3DIdentity, 1.5, 1.5, 1.5)
-                        launchView?.layer.transform = transform
-        }) { finished in
-            launchView?.removeFromSuperview()
-        }
+    private func getAllTravel() {
+        allTravel = MapManager.getAllTravel(noDataAction: { [weak self] in
+            self?.noDataView.isHidden = false
+            self?.layoutBtn.isEnabled = false
+            }, hadDataAction: { [weak self] in
+                self?.noDataView.isHidden = true
+                self?.layoutBtn.isEnabled = true
+        })
+        tableView.reloadData()
+        collectionView.reloadData()
     }
-
     @IBAction func switchView(_ sender: UIBarButtonItem) {
         isListLayout = !isListLayout
         collectionView.reloadData()
@@ -109,38 +100,9 @@ class RecordViewController: UIViewController {
     }
     private func showGridLayout() {
         layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.8, animations: {
             self.collectionView.alpha = 0
         })
-    }
-    func getTravel() {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: false)]
-        let isEditting = "0"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-
-                noDataView.isHidden = false
-                layoutBtn.isEnabled = false
-                print("no present")
-            } else {
-                // at least one matching object exists
-                guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
-                self.allTravel = edittingTravel
-                noDataView.isHidden = true
-                layoutBtn.isEnabled = true
-                print("have\(count) travel")
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        tableView.reloadData()
-        collectionView.reloadData()
     }
     var searchByCalendar = false
     @IBAction func searchByCalendar(_ sender: UIBarButtonItem) {
@@ -217,38 +179,10 @@ class RecordViewController: UIViewController {
     @IBAction func goToMap(_ sender: UIButton) {
         tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
     }
-    func showDeleteDialog(animated: Bool = true) {
-        // Prepare the popup
-        let title = "確定刪除?"
-        let message = "若刪除紀錄，將無法再次回復唷QAQ"
-        // Create the dialog
-        let popup = PopupDialog(title: title,
-                                message: message,
-                                buttonAlignment: .horizontal,
-                                transitionStyle: .bounceUp,
-                                tapGestureDismissal: true,
-                                panGestureDismissal: true,
-                                hideStatusBar: true) {
-        }
-        // Create first button
-        let buttonOne = CancelButton(title: "取消") {
-        }
-        // Create second button
-        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
-            self?.deleteHandler?()
-        }
-        // Add buttons to dialog
-        popup.addButtons([buttonOne, buttonTwo])
-        // Present dialog
-        DispatchQueue.main.async {
-            self.present(popup, animated: animated, completion: nil)
-        }
-    }
 }
 extension RecordViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.seletedDate = date.toLocalTime()
-//        print(seletedDate)
     }
 }
 extension Date {
@@ -293,40 +227,26 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
         guard let recordCell = cell as? RecordTableViewCell else { return cell }
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let option3 = UIAlertAction(title: "分享", style: .default) { [weak self] (_) in
-                let bounds = UIScreen.main.bounds
-                UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-                self?.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
-                let img = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
-                self?.present(activityViewController, animated: true, completion: nil)
-//                let vc = UIStoryboard.record.instantiateViewController(
-//                    withIdentifier: String(describing: SharedOptionViewController.self))
-//                self?.present(vc, animated: true, completion: nil)
-            }
-            let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                self?.showDeleteDialog()
-                self?.deleteHandler = { [weak self] in
+            let deleteOption = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
+                guard let strongSelf = self else { return }
+                MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                    CoreDataStack.delete(removeOrder)
-                    self?.getTravel()
-                    self?.allTravel?.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.reloadData()
+                    CoreDataManager.delete(removeOrder)
+                    self?.getAllTravel()
+                    self?.tableView.reloadData()
                     MiraMessage.deleteSuccessfully()
-                }
+                }, vc: strongSelf)
             }
-            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            sheet.addAction(option3)
-            sheet.addAction(option2)
-            sheet.addAction(option1)
+            let cancelOption = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(deleteOption)
+            sheet.addAction(cancelOption)
             self?.present(sheet, animated: true, completion: nil)
         }
-        recordCell.travelNameLabel.text = allTravel?[indexPath.row].title
+        //
         let formattedDate = FormatDisplay.travelDate(allTravel?[indexPath.row].createTimestamp)
-        recordCell.travelTimeLabel.text = formattedDate
-        recordCell.travelContentLabel.text = allTravel?[indexPath.row].content
+        recordCell.contentInit(name: allTravel?[indexPath.row].title,
+                               time: formattedDate,
+                               content: allTravel?[indexPath.row].content)
         guard let indexTravel = allTravel?[indexPath.row] else {
             return cell
         }
@@ -380,25 +300,19 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let recordCell = cell as? RecordCollectionViewCell else { return cell }
         recordCell.actionBlock = { [weak self] in
             let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//            let option3 = UIAlertAction(title: "分享", style: .default) { [weak self] (_) in
-//                let vc = UIStoryboard.record.instantiateViewController(
-//                    withIdentifier: String(describing: SharedOptionViewController.self))
-//                self?.present(vc, animated: true, completion: nil)
-//            }
-            let option2 = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
-                self?.showDeleteDialog()
-                self?.deleteHandler = { [weak self] in
+            let deleteOption = UIAlertAction(title: "刪除", style: .destructive) { [weak self] (_) in
+                guard let strongSelf = self else { return }
+                MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                    CoreDataStack.delete(removeOrder)
-                    self?.getTravel()
-                    collectionView.reloadData()
+                    CoreDataManager.delete(removeOrder)
+                    self?.getAllTravel()
+                    self?.collectionView.reloadData()
                     MiraMessage.deleteSuccessfully()
-                }
+                }, vc: strongSelf)
             }
-            let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-//            sheet.addAction(option3)
-            sheet.addAction(option2)
-            sheet.addAction(option1)
+            let cancelOption = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            sheet.addAction(deleteOption)
+            sheet.addAction(cancelOption)
             self?.present(sheet, animated: true, completion: nil)
         }
         recordCell.travelNameLabel.text = allTravel?[indexPath.row].title

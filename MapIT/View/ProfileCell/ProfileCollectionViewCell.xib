@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -22,10 +23,6 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageProfileIconBackground" translatesAutoresizingMaskIntoConstraints="NO" id="rpc-uF-pui">
                         <rect key="frame" x="0.0" y="0.0" width="207" height="190"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6b-iW-e9Z">
-                        <rect key="frame" x="0.0" y="0.0" width="207" height="190"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_Setting" translatesAutoresizingMaskIntoConstraints="NO" id="tbi-or-XLU">
                         <rect key="frame" x="91.5" y="66" width="24" height="24"/>
                         <constraints>
@@ -50,7 +47,6 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="W6b-iW-e9Z" secondAttribute="bottom" id="0oL-14-0gr"/>
                 <constraint firstItem="tbi-or-XLU" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2xg-zb-vpw"/>
                 <constraint firstItem="rpc-uF-pui" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EK6-oV-kXN"/>
                 <constraint firstItem="Inl-fp-eGS" firstAttribute="top" secondItem="tbi-or-XLU" secondAttribute="bottom" id="EyZ-Bz-Ksa"/>
@@ -58,13 +54,9 @@
                 <constraint firstAttribute="bottom" secondItem="rpc-uF-pui" secondAttribute="bottom" id="NJr-xX-q9v"/>
                 <constraint firstItem="rpc-uF-pui" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="P4d-kQ-Agg"/>
                 <constraint firstItem="Inl-fp-eGS" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Pww-zn-JOQ"/>
-                <constraint firstAttribute="trailing" secondItem="W6b-iW-e9Z" secondAttribute="trailing" id="Reh-sk-VAR"/>
-                <constraint firstItem="W6b-iW-e9Z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aMt-Uf-hp9"/>
                 <constraint firstItem="Inl-fp-eGS" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ez0-MG-zkN"/>
-                <constraint firstItem="W6b-iW-e9Z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="l4X-b6-SYr"/>
                 <constraint firstAttribute="trailing" secondItem="rpc-uF-pui" secondAttribute="trailing" id="q4x-wD-v6I"/>
                 <constraint firstItem="znW-8c-MSe" firstAttribute="top" secondItem="Inl-fp-eGS" secondAttribute="bottom" id="u07-4W-5IA"/>
-                <constraint firstItem="W6b-iW-e9Z" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="yjl-ao-nFF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="207" height="190"/>

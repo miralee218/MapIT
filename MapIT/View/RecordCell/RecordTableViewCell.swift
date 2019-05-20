@@ -49,6 +49,11 @@ class RecordTableViewCell: UITableViewCell {
     @IBAction func moreOption(_ sender: UIButton) {
         actionBlock?()
     }
+    func contentInit(name: String?, time: String?, content: String?) {
+        self.travelNameLabel.text = name
+        self.travelTimeLabel.text = time
+        self.travelContentLabel.text = content
+    }
 }
 
 extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {

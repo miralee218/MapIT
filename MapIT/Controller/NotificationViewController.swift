@@ -36,13 +36,18 @@ class NotificationViewController: UIViewController {
     navigationController?.navigationBar.setGradientBackground(
             colors: UIColor.mainColor
         )
+        navigationController?.navigationBar.isHidden = false
         collectionView.mr_registerCellWithNib(
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getTravel()
+        allTravel = MapManager.getAllTravel(noDataAction: { [weak self] in
+            self?.noDataView.isHidden = false
+        }, hadDataAction: { [weak self] in
+            self?.noDataView.isHidden = true
+        })
         collectionView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -53,30 +58,6 @@ class NotificationViewController: UIViewController {
         self.cameraView.addSubview(cameraView)
         cameraView.loopMode = .loop
         cameraView.play()
-    }
-    func getTravel() {
-        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: true)]
-        let isEditting = "0"
-        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-        fetchRequest.fetchLimit = 0
-        do {
-            let context = CoreDataStack.context
-            let count = try context.count(for: fetchRequest)
-            if count == 0 {
-                // no matching object
-                noDataView.isHidden = false
-                print("no present")
-            } else {
-                // at least one matching object exists
-                guard let edittingTravel = try? context.fetch(fetchRequest) else { return }
-                self.allTravel = edittingTravel
-                noDataView.isHidden = true
-            }
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        collectionView.reloadData()
     }
     @IBAction func goToMap(_ sender: UIButton) {
                 tabBarController?.selectedViewController = tabBarController?.viewControllers![1]

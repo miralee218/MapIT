@@ -12,7 +12,7 @@ import CoreData
 import PopupDialog
 import SwiftMessages
 
-class RecordDetailViewController: UIViewController {
+class RecordDetailViewController: MapSearchViewController {
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -22,10 +22,6 @@ class RecordDetailViewController: UIViewController {
     }
     var travel: Travel?
     lazy var locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
-    var long = [Double]()
-    var lat = [Double]()
-    var startCoordinates: [CLLocationCoordinate2D] = []
-    var endCoordinates: [CLLocationCoordinate2D] = []
     var sortedLocationPost: [LocationPost]?
     var changePositionHandler: ((CLLocationCoordinate2D) -> Void)?
     var originalPositionHandler: (() -> Void)?
@@ -34,7 +30,7 @@ class RecordDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       navigationItem.title = travel?.title
+        navigationItem.title = travel?.title
 
         tableView.separatorStyle = .none
 
@@ -52,7 +48,10 @@ class RecordDetailViewController: UIViewController {
     }
     @IBAction func articleMoreButton(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let option3 = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
+        let shareOption = UIAlertAction(title: "分享旅程", style: .default) { [weak self] (_) in
+            self?.shareContentOfWholeTravel(with: self?.tableView)
+        }
+        let editOption = UIAlertAction(title: "編輯旅程內容", style: .default) { [weak self] (_) in
 
             let vc = UIStoryboard.mapping.instantiateViewController(
                 withIdentifier: String(describing: EditTravelCViewController.self))
@@ -66,151 +65,33 @@ class RecordDetailViewController: UIViewController {
             self?.present(editTravelVC, animated: true, completion: nil)
 
         }
-        let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let cancelOption = UIAlertAction(title: "取消", style: .cancel, handler: nil)
 
-        sheet.addAction(option3)
-        sheet.addAction(option1)
+        sheet.addAction(shareOption)
+        sheet.addAction(editOption)
+        sheet.addAction(cancelOption)
 
         self.present(sheet, animated: true, completion: nil)
-    }
-
-    private func mapRegion(mapView: MKMapView) -> MKCoordinateRegion? {
-        guard
-            let locations = travel?.locations,
-            locations.count > 0
-            else {
-                return nil
-        }
-        let startLatitudes = locations.map { location -> Double in
-            guard let location = location as? ShortRoute else { return 0.0 }
-            lat.append(location.start!.latitude)
-            return location.start!.latitude
-        }
-        let startLongitudes = locations.map { location -> Double in
-            guard let location = location as? ShortRoute else { return 0.0 }
-            long.append(location.self.start!.longitude)
-            return location.start!.longitude
-        }
-        let maxLat = startLatitudes.max()!
-        let minLat = startLatitudes.min()!
-        let maxLong = startLongitudes.max()!
-        let minLong = startLongitudes.min()!
-
-        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
-                                            longitude: (minLong + maxLong) / 2)
-
-        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 2,
-                                    longitudeDelta: (maxLong - minLong) * 2)
-        return MKCoordinateRegion(center: center, span: span)
-
-    }
-    private func loadMap(mapView: MKMapView) {
-        guard
-            let locations = travel?.locations,
-            locations.count > 0,
-            let region = mapRegion(mapView: mapView)
-            else {
-                return
-        }
-
-        var startCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.start!.latitude,
-                longitude: location.start!.longitude)
-            self.startCoordinates.append(coordinate)
-            return coordinate
-        }
-
-        var endCoordinates = locations.map { coordinate -> CLLocationCoordinate2D in
-            guard let location = coordinate as? ShortRoute else {return CLLocationCoordinate2D()}
-            let coordinate = CLLocationCoordinate2D(
-                latitude: location.end!.latitude,
-                longitude: location.end!.longitude)
-            self.endCoordinates.append(coordinate)
-            return coordinate
-        }
-        for coordinate in 0...startCoordinates.count - 1 {
-
-            let coordinates = [startCoordinates[coordinate], endCoordinates[coordinate]]
-
-            mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
-
-        }
-
-        mapView.setRegion(region, animated: true)
-    }
-    func addAnnotation(mapView: MKMapView) {
-        guard
-            let locationPost = self.travel?.locationPosts,
-            locationPost.count > 0 else {
-                return
-        }
-        let coordinates = locationPost.map { coordinate -> CLLocationCoordinate2D in
-            guard let locaitonPost = coordinate as? LocationPost else {
-                return CLLocationCoordinate2D()
-            }
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locaitonPost.latitude, longitude: locaitonPost.longitude)
-            return coordinate
-        }
-        var pointAnnotations = [MKPointAnnotation]()
-        for coordinate in coordinates {
-            let point = MKPointAnnotation()
-            point.coordinate = coordinate
-//            point.title = "\(coordinate.latitude), \(coordinate.longitude)"
-            pointAnnotations.append(point)
-        }
-        mapView.addAnnotations(pointAnnotations)
-    }
-    func showDeleteDialog(animated: Bool = true) {
-        // Prepare the popup
-        let title = "確定刪除?"
-        let message = "若刪除紀錄，將無法再次回復唷QAQ"
-        // Create the dialog
-        let popup = PopupDialog(title: title,
-                                message: message,
-                                buttonAlignment: .horizontal,
-                                transitionStyle: .bounceUp,
-                                tapGestureDismissal: true,
-                                panGestureDismissal: true,
-                                hideStatusBar: true) {
-        }
-        // Create first button
-        let buttonOne = CancelButton(title: "取消") {
-        }
-        // Create second button
-        let buttonTwo = DestructiveButton(title: "刪除") { [weak self] in
-            self?.deleteHandler?()
-        }
-        // Add buttons to dialog
-        popup.addButtons([buttonOne, buttonTwo])
-        // Present dialog
-        DispatchQueue.main.async {
-            self.present(popup, animated: animated, completion: nil)
-        }
     }
 }
 
 extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return RecordDetailSeciton.allCases.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        switch section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue: section) else { return 0 }
+        switch recordDetailSeciton {
+        case .map:
             return 1
-        case 1:
+        case .description:
             return 1
-        case 2:
+        case .route:
             guard let locations = travel?.locationPosts,
             locations.count > 0 else {
                 return 0
             }
             return locations.count
-        default:
-            return 0
         }
 
     }
@@ -219,8 +100,11 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath)
         -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue:
+            indexPath.section) else {
+                return UITableViewCell() }
+        switch recordDetailSeciton {
+        case .map:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: MapTableViewCell.self),
                 for: indexPath
@@ -229,11 +113,10 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             mapCell.mapView.delegate = self
             mapCell.mapView.isZoomEnabled = true
             mapCell.mapView.isScrollEnabled = true
-            loadMap(mapView: mapCell.mapView)
-            mapCell.mapView.removeAnnotations(mapCell.mapView.annotations)
-            addAnnotation(mapView: mapCell.mapView)
+            MapManager.addOverlays(mapView: mapCell.mapView, travel: self.travel)
+            MapManager.addAnnotations(on: mapCell.mapView, travel: self.travel)
             originalPositionHandler = {[weak self] in
-                self?.loadMap(mapView: mapCell.mapView)
+                MapManager.addOverlays(mapView: mapCell.mapView, travel: self?.travel)
                 self?.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
             changePositionHandler = { [weak self] coordinate in
@@ -245,7 +128,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             return cell
 
-        case 1:
+        case .description:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: RecordDescriptionTableViewCell.self),
                 for: indexPath
@@ -255,7 +138,7 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             recordCell.travelContentLabel.text = self.travel?.content
             recordCell.selectionStyle = .none
             return recordCell
-        case 2:
+        case .route:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: RouteTableViewCell.self),
                 for: indexPath
@@ -290,7 +173,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                         [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,
                          MKLaunchOptionsShowsTrafficKey: true])
                 }
-
                 let option3 = UIAlertAction(title: "編輯", style: .default) { [weak self] (_) in
 
                     let vc = UIStoryboard.mapping.instantiateViewController(
@@ -308,15 +190,15 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 }
 
                 let option2 = UIAlertAction(title: "刪除", style: .destructive) {[weak self] _ in
-                    self?.showDeleteDialog()
-                    self?.deleteHandler = { [weak self] in
+                    guard let strongSelf = self else { return }
+                    MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                         guard let removeOrder = self?.sortedLocationPost?[indexPath.row] else { return }
-                        CoreDataStack.delete(removeOrder)
+                        CoreDataManager.delete(removeOrder)
                         self?.sortedLocationPost?.remove(at: indexPath.row)
-                        tableView.deleteRows(at: [indexPath], with: .fade)
-                        tableView.reloadData()
+                        self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                        self?.tableView.reloadData()
                         MiraMessage.deleteSuccessfully()
-                    }
+                        }, vc: strongSelf)
                 }
 
                 let option1 = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -335,7 +217,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard let currentLocationPost = self.sortedLocationPost?[indexPath.row] else {
                 return cell
             }
-//            print(currentLocationPost.photo?.count)
 
             if currentLocationPost.photo?.count == nil {
                 routeCell.collectionView.isHidden = true
@@ -344,37 +225,32 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             let formattedDate = FormatDisplay.postDate(sortedLocationPost[indexPath.row].timestamp)
             routeCell.pointRecordTimeLabel.text = formattedDate
             return routeCell
-
-        default:
-            return UITableViewCell()
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue: indexPath.section) else { return CGFloat.zero}
+        switch recordDetailSeciton {
+        case .map:
             return 350
-        case 1:
+        case .description:
             return UITableView.automaticDimension
-        case 2:
+        case .route:
             guard (sortedLocationPost?[indexPath.row].photo?.count) != nil else {
                 return 100
             }
-
             return 195
-        default:
-            return 0
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        switch indexPath.section {
-        case 0:
+        guard let recordDetailSeciton = RecordDetailSeciton(rawValue: indexPath.section) else { return }
+        switch recordDetailSeciton {
+        case .map:
             return
-        case 1:
+        case .description:
             originalPositionHandler?()
             return
-        case 2:
+        case .route:
             guard let lat = sortedLocationPost?[indexPath.row].latitude,
                 let long = sortedLocationPost?[indexPath.row].longitude else {
                 return
@@ -382,8 +258,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             changePositionHandler?(coordinate)
             tableView.deselectRow(at: indexPath, animated: true)
-        default:
-            return
         }
     }
 
@@ -393,12 +267,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
 
 extension RecordDetailViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
-        let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = UIColor.red
-        renderer.lineWidth = 10
-        return renderer
+        return MapManager.setPolylineStyle(mapView: mapView, overlay: overlay)
     }
 }

@@ -13,7 +13,8 @@ import RSKPlaceholderTextView
 import PopupDialog
 import SwiftMessages
 
-class EditLocationCViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditLocationCViewController: MapSearchViewController,
+UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var postNameTextFeild: UITextField!
@@ -34,10 +35,7 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
 
     var travel: Travel?
     lazy var locationPost = self.travel?.locationPosts?.allObjects as? [LocationPost]
-    let params: [String] = ["bar", "shop", "restaurant", "cinema"]
     var currentLocation: CLLocationCoordinate2D?
-    var places: [MKMapItem] = []
-    var mapItemList: [MKMapItem] = []
     var seletedPost: LocationPost?
     var saveHandler: (() -> Void)?
 
@@ -98,7 +96,10 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nearByLocation()
+        nearByLocation(region: MKCoordinateRegion(center: currentLocation!,
+                                                  latitudinalMeters: 10,
+                                                  longitudinalMeters: 10),
+                       collectionView: locationNameCollectionView)
     }
 
     @IBAction func cancel(_ sender: UIButton) {
@@ -145,39 +146,10 @@ class EditLocationCViewController: UIViewController, UIImagePickerControllerDele
             }
         }
 
-        CoreDataStack.saveContext()
+        CoreDataManager.saveContext()
         saveHandler?()
         MiraMessage.updateSuccessfully()
         dismiss(animated: true, completion: nil)
-    }
-    @IBAction func deleteLocation(_ sender: UIButton) {
-    }
-
-    func nearByLocation() {
-        let request = MKLocalSearch.Request()
-
-        request.region = MKCoordinateRegion(center: currentLocation!, latitudinalMeters: 10, longitudinalMeters: 10)
-        for param in params {
-            request.naturalLanguageQuery = param
-            let search = MKLocalSearch(request: request)
-            search.start { [weak self] response, _ in
-
-                guard let strongSelf = self else { return }
-
-                guard let response = response else { return }
-                strongSelf.mapItemList = response.mapItems
-                for item in strongSelf.mapItemList {
-                    let annotation = PlaceAnnotation()
-                    annotation.coordinate = item.placemark.location!.coordinate
-                    annotation.title = item.name
-                    annotation.url = item.url
-                    annotation.detailAddress = item.placemark.title
-                    strongSelf.places.append(item)
-                }
-                strongSelf.places.shuffle()
-                strongSelf.locationNameCollectionView.reloadData()
-            }
-        }
     }
 
 }

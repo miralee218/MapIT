@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oqL-eQ-rfg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YOn-tj-PRf">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--個人頁面-->
         <scene sceneID="VWj-8f-3oZ">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="FgZ-wd-CGD" customClass="ProfileViewController" customModule="MapIT" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,20 +39,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gc4-8r-JCF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="個人頁面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-lP-U9U">
-                                        <rect key="frame" x="173" y="10" width="68" height="24"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Gc4-8r-JCF" secondAttribute="height" multiplier="414:44" id="1dP-pH-TjR"/>
-                                    <constraint firstItem="Fy6-lP-U9U" firstAttribute="centerX" secondItem="Gc4-8r-JCF" secondAttribute="centerX" id="6MJ-OP-mk5"/>
-                                    <constraint firstItem="Fy6-lP-U9U" firstAttribute="centerY" secondItem="Gc4-8r-JCF" secondAttribute="centerY" id="ebq-MO-yil"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBu-gO-BT9">
@@ -106,14 +97,14 @@ to love and be loved.</string>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2b-QE-Ws6">
-                                <rect key="frame" x="139" y="375" width="2" height="59"/>
+                                <rect key="frame" x="140" y="375" width="2" height="59"/>
                                 <color key="backgroundColor" name="B5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="x4K-ta-Vhd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWp-Hs-Mv2">
-                                <rect key="frame" x="273" y="375" width="2" height="59"/>
+                                <rect key="frame" x="274" y="375" width="2" height="59"/>
                                 <color key="backgroundColor" name="B5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="DxI-MT-Lvi"/>
@@ -143,10 +134,10 @@ to love and be loved.</string>
                             <constraint firstItem="1wa-NL-qdX" firstAttribute="trailing" secondItem="LBu-gO-BT9" secondAttribute="trailing" constant="16" id="E5p-Rj-LsZ"/>
                             <constraint firstItem="0Ho-Oo-3V4" firstAttribute="centerX" secondItem="nAB-jk-Upc" secondAttribute="centerX" id="HKJ-F5-ru1"/>
                             <constraint firstItem="0Ho-Oo-3V4" firstAttribute="top" secondItem="LBu-gO-BT9" secondAttribute="bottom" constant="8" id="Jph-Sh-hPa"/>
-                            <constraint firstItem="p2b-QE-Ws6" firstAttribute="leading" secondItem="MGC-wL-B08" secondAttribute="leading" id="KI1-vi-8Os"/>
+                            <constraint firstItem="p2b-QE-Ws6" firstAttribute="leading" secondItem="MGC-wL-B08" secondAttribute="leading" constant="1" id="KI1-vi-8Os"/>
                             <constraint firstItem="p2b-QE-Ws6" firstAttribute="height" secondItem="MGC-wL-B08" secondAttribute="height" id="N6b-r0-shN"/>
                             <constraint firstItem="Gc4-8r-JCF" firstAttribute="leading" secondItem="1wa-NL-qdX" secondAttribute="leading" id="PIO-Gn-9Dz"/>
-                            <constraint firstItem="rWp-Hs-Mv2" firstAttribute="trailing" secondItem="MGC-wL-B08" secondAttribute="trailing" id="Qhm-b1-GvX"/>
+                            <constraint firstItem="rWp-Hs-Mv2" firstAttribute="trailing" secondItem="MGC-wL-B08" secondAttribute="trailing" constant="1" id="Qhm-b1-GvX"/>
                             <constraint firstItem="1wa-NL-qdX" firstAttribute="trailing" secondItem="u4G-30-Uyk" secondAttribute="trailing" id="Sl0-6a-WrI"/>
                             <constraint firstItem="rWp-Hs-Mv2" firstAttribute="height" secondItem="MGC-wL-B08" secondAttribute="height" id="UtQ-i5-JPR"/>
                             <constraint firstItem="tHq-Jz-ioN" firstAttribute="top" secondItem="nAB-jk-Upc" secondAttribute="top" id="XvF-eQ-CaG"/>
@@ -172,14 +163,16 @@ to love and be loved.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1wa-NL-qdX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VgR-zR-Dxk"/>
+                    <navigationItem key="navigationItem" title="個人頁面" id="VgR-zR-Dxk">
+                        <barButtonItem key="backBarButtonItem" title=" " id="mUd-wg-YyD"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="BsF-pV-Y1N" id="0D3-S1-2hl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eo6-df-OGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="986.95652173913049" y="-165.40178571428569"/>
+            <point key="canvasLocation" x="1897.1014492753625" y="-165.40178571428569"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Vha-uI-vPE">
@@ -313,7 +306,7 @@ to love and be loved.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EM9-ql-cFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2334.7826086956525" y="-137.27678571428569"/>
+            <point key="canvasLocation" x="3244.9275362318845" y="-137.27678571428569"/>
         </scene>
         <!--Login Container View Controller-->
         <scene sceneID="hYj-th-tOh">
@@ -466,6 +459,28 @@ to love and be loved.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KkF-4u-Ptd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3403" y="428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qY1-C4-39a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YOn-tj-PRf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fas-lj-lZg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FgZ-wd-CGD" kind="relationship" relationship="rootViewController" id="hJM-dO-Nc5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QjD-Ii-Nge" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986.95652173913049" y="-165.40178571428569"/>
         </scene>
     </scenes>
     <resources>

@@ -297,14 +297,14 @@ open class AZImagePresenterViewController: UIViewController {
                 this.imageView?.frame = CGRect(x: 0, y: 0, width: sWidth, height: sHeight)
                 this.imageView?.center = this.view.center
                 this.view.backgroundColor = this.backgroundColor
-            }}) { bool in
-            self.imageView?.contentMode = .scaleAspectFit
-            self.imageView?.frame = self.view.frame
-            //self.imageView?.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-            self.scrollView.view = self.imageView
-            self.scrollView.setZoomScale()
-
-        }
+            }}, { _ in
+                self.imageView?.contentMode = .scaleAspectFit
+                self.imageView?.frame = self.view.frame
+                //self.imageView?.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+                self.scrollView.view = self.imageView
+                self.scrollView.setZoomScale()
+                
+        })
     }
     fileprivate func hideBars(hide: Bool) {
         self.navigationController?.setNavigationBarHidden(hide, animated: true)
@@ -352,7 +352,7 @@ open class AZImagePresenterViewController: UIViewController {
             //animate rect to original image center and same rect size
             baseView.center = center
             baseView.frame = rect
-        }, completion: { complete -> Void in
+        }, completion: { _ -> Void in
             self.prepareForDismiss()
         })
     }
