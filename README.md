@@ -24,7 +24,7 @@ Spotify 登入
 
 | 瀏覽紀錄   | 刪除紀錄 | 導航及分享 |
 |:--------:|:--------:|:--------:|
-| ![image](https://github.com/miralee218/MapIT/blob/master/GifFiles/%E7%80%8F%E8%A6%BD%E9%A0%81%E9%9D%A2.gif)   | <img src="https://i.imgur.com/lCTqdtL.gif" width="180" height="360">     | <img src="https://i.imgur.com/MYu9N9E.gif" width="180" height="360">   |
+| <img src="https://github.com/miralee218/MapIT/blob/master/GifFiles/%E7%80%8F%E8%A6%BD%E9%A0%81%E9%9D%A2.gif" width="180" height="360">   | <img src="https://i.imgur.com/lCTqdtL.gif" width="180" height="360">     | <img src="https://i.imgur.com/MYu9N9E.gif" width="180" height="360">   |
 
 
 * **紀錄旅程**
@@ -40,7 +40,7 @@ Spotify 登入
 
 | 瀏覽相冊並分享   |
 |:--------:|
-| ![image](https://github.com/miralee218/MapIT/blob/master/GifFiles/%E7%9B%B8%E7%B0%BF%E5%8A%9F%E8%83%BD.gif)  | 
+| <img src="https://github.com/miralee218/MapIT/blob/master/GifFiles/%E7%9B%B8%E7%B0%BF%E5%8A%9F%E8%83%BD.gif" width="180" height="360">   | 
 
 ## Libraries
 * Crashlytics
