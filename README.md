@@ -24,7 +24,7 @@ Spotify 登入
 
 | 瀏覽紀錄   | 刪除紀錄 | 導航及分享 |
 |:--------:|:--------:|:--------:|
-| <img src="https://imgur.com/4sshuo3.gif" width="180" height="360">   | <img src="https://i.imgur.com/lCTqdtL.gif" width="180" height="360">     | <img src="https://i.imgur.com/MYu9N9E.gif" width="180" height="360">   |
+| <img src="https://i.imgur.com/N4rrbkU.gif" width="180" height="360">   | <img src="https://i.imgur.com/lCTqdtL.gif" width="180" height="360">     | <img src="https://i.imgur.com/MYu9N9E.gif" width="180" height="360">   |
 
 
 * **紀錄旅程**
@@ -40,7 +40,7 @@ Spotify 登入
 
 | 瀏覽相冊並分享   |
 |:--------:|
-| <img src="https://i.imgur.com/q4JsxEw.gif" width="180" height="360">   | 
+| <img src="https://i.imgur.com/vYePa4F.gif" width="180" height="360">   | 
 
 ## Libraries
 * Crashlytics
