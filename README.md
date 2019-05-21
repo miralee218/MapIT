@@ -1,6 +1,7 @@
 # MapIT
 Track yourself with memories jotted down.
 分享或回憶自己的旅程時，無法詳細地描述當時細節與位置，導致。MapIT 是一款即時紀錄個人移動路徑的日誌，讓使用者可以隨時錄製自己走過的行蹤以及標註地點，透過地圖搭配圖文以及相簿管理功能，可以隨時紀錄並存取風景，回味當時的回憶及感動！
+
 [<img src="https://github.com/nick1ee/Shalk/raw/master/screenshot/DownloadAppStoreBadge.png" width="160" height="50" align=center>](https://itunes.apple.com/us/app/mapit/id1462021812?l=zh&ls=1&mt=8)
 
 
