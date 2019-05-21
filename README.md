@@ -33,14 +33,14 @@ Spotify 登入
 
 | 紀錄旅程   | 新增地點 | 儲存旅程 |
 |:--------:|:--------:|:--------:|
-| <img src="https://i.imgur.com/glLahFb.gif" width="180" height="360">   | <img src="https://i.imgur.com/MDecW5y.gif" width="180" height="360">     | <img src="https://i.imgur.com/ZgUxBkp.gif" width="180" height="360">   |
+| <img src="https://i.imgur.com/glLahFb.gif" width="180" height="360">   | <img src="https://i.imgur.com/vLrptdU.gif" width="180" height="360">     | <img src="https://i.imgur.com/wq3gf7M.gif" width="180" height="360">   |
   
 * **相冊**
     * 瀏覽所有旅程的相片，亦可分享分享至社群媒體
 
 | 瀏覽相冊並分享   |
 |:--------:|
-| <img src="https://i.imgur.com/mSQlfKC.gif" width="180" height="360">   | 
+| <img src="https://i.imgur.com/q4JsxEw.gif" width="180" height="360">   | 
 
 ## Libraries
 * Crashlytics
