@@ -9,8 +9,21 @@
 import CoreData
 
 class CoreDataManager {
+    
+    enum Entity: String, CaseIterable {
+        
+        case travel = "Travel"
+        
+    }
+    
+    static let shared = CoreDataManager()
+    
+    struct TravelTime {
+        
+        static let createTime = "createTimestamp"
+    }
 
-    static let persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "MapIT")
         
@@ -25,18 +38,18 @@ class CoreDataManager {
         return container
     }()
 
-    static var context: NSManagedObjectContext { return persistentContainer.viewContext }
+    var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
 
-    class func saveContext () {
+    func saveContext () {
         
-        let context = persistentContainer.viewContext
-
-        guard context.hasChanges else {
+        guard viewContext.hasChanges else {
             return
         }
 
         do {
-            try context.save()
+            try viewContext.save()
             print("Save")
         } catch {
             let nserror = error as NSError
@@ -44,13 +57,13 @@ class CoreDataManager {
         }
 
     }
-    class func fetch<T: NSManagedObject>(_ objectType: T.Type) -> [T] {
+    func fetch<T: NSManagedObject>(_ objectType: T.Type) -> [T] {
 
         let entityName = String(describing: objectType)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
 
         do {
-            let fetchObjects = try context.fetch(fetchRequest) as? [T]
+            let fetchObjects = try viewContext.fetch(fetchRequest) as? [T]
             return fetchObjects ?? [T]()
         } catch {
             print(error)
@@ -58,11 +71,43 @@ class CoreDataManager {
         }
     }
     //DELETE
-    class func delete(_ object: NSManagedObject) {
-        context.delete(object)
+    func delete(_ object: NSManagedObject) {
+        viewContext.delete(object)
         saveContext()
     }
-//    let fileManager = FileManager.default
-//    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
 
+    typealias AllTravels = (Result<[Travel]>) -> Void
+
+    func getAllTravels(completion: AllTravels) {
+        let request = NSFetchRequest<Travel>(entityName: Entity.travel.rawValue)
+        request.sortDescriptors = [NSSortDescriptor(key: TravelTime.createTime, ascending: true)]
+        request.predicate = NSPredicate(format: "isEditting == %@", EdittingStatus.noEditting.rawValue)
+        request.fetchLimit = 0
+
+        do {
+            let count = try viewContext.count(for: request)
+            if count == 0 {
+                print("no present")
+            } else {
+                let allTravels = try viewContext.fetch(request)
+                completion(Result.success(allTravels))
+            }
+        } catch {
+            completion(Result.failure(error))
+        }
+
+    }
+
+}
+
+enum Result<T> {
+    
+    case success(T)
+    
+    case failure(Error)
+}
+
+enum EdittingStatus: String {
+    case isEditting = "1"
+    case noEditting = "0"
 }

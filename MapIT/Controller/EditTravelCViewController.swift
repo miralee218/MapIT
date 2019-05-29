@@ -44,7 +44,7 @@ class EditTravelCViewController: UIViewController {
 
         self.travel?.content = self.contentTextView.text
         self.travel?.title = self.travelNameTextField.text
-        CoreDataManager.saveContext()
+        CoreDataManager.shared.saveContext()
         saveHandler?()
 
     }

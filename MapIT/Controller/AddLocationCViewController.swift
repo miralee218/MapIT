@@ -89,7 +89,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         self.coordinate = locValue
 
-        let newLocation = LocationPost(context: CoreDataManager.context)
+        let newLocation = LocationPost(context: CoreDataManager.shared.viewContext)
 
         newLocation.timestamp = Date()
         newLocation.title = self.locationName.text
@@ -129,7 +129,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         newLocation.travel = travel
         self.travel?.locationPosts?.adding(newLocation)
 
-        CoreDataManager.saveContext()
+        CoreDataManager.shared.saveContext()
 
     }
 

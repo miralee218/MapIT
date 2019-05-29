@@ -41,7 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        CoreDataManager.saveContext()
+
+        CoreDataManager.shared.saveContext()
 
     }
 

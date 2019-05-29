@@ -146,7 +146,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
             }
         }
 
-        CoreDataManager.saveContext()
+        CoreDataManager.shared.saveContext()
         saveHandler?()
         MiraMessage.updateSuccessfully()
         dismiss(animated: true, completion: nil)

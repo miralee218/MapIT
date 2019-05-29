@@ -71,17 +71,19 @@ class RecordViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAllTravel()
+        fetchData()
         tableView.reloadData()
         collectionView.reloadData()
     }
-    private func getAllTravel() {
-        allTravel = MapManager.getAllTravel(noDataAction: { [weak self] in
-            self?.noDataView.isHidden = false
-            self?.layoutBtn.isEnabled = false
-            }, hadDataAction: { [weak self] in
-                self?.noDataView.isHidden = true
-                self?.layoutBtn.isEnabled = true
+    func fetchData() {
+        CoreDataManager.shared.getAllTravels(completion: { result in
+            switch result {
+            case .success(let travels):
+                self.allTravel = travels
+                self.noDataView.isHidden = true
+            case .failure(_):
+                self.noDataView.isHidden = false
+            }
         })
         tableView.reloadData()
         collectionView.reloadData()
@@ -231,8 +233,8 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let strongSelf = self else { return }
                 MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                    CoreDataManager.delete(removeOrder)
-                    self?.getAllTravel()
+                    CoreDataManager.shared.delete(removeOrder)
+                    self?.fetchData()
                     self?.tableView.reloadData()
                     MiraMessage.deleteSuccessfully()
                 }, vc: strongSelf)
@@ -304,8 +306,9 @@ extension RecordViewController: UICollectionViewDataSource, UICollectionViewDele
                 guard let strongSelf = self else { return }
                 MiraDialog.showDeleteDialog(animated: true, deleteHandler: { [weak self] in
                     guard let removeOrder = self?.allTravel?[indexPath.row] else { return }
-                    CoreDataManager.delete(removeOrder)
-                    self?.getAllTravel()
+//                    CoreDataManager.delete(removeOrder)
+                    CoreDataManager.shared.delete(removeOrder)
+                    self?.fetchData()
                     self?.collectionView.reloadData()
                     MiraMessage.deleteSuccessfully()
                 }, vc: strongSelf)

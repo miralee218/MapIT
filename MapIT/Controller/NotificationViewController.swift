@@ -41,14 +41,22 @@ class NotificationViewController: UIViewController {
             identifier: String(describing: NormalPictureCollectionViewCell.self), bundle: nil)
 
     }
+    let coreDataManager = CoreDataManager()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        allTravel = MapManager.getAllTravel(noDataAction: { [weak self] in
-            self?.noDataView.isHidden = false
-        }, hadDataAction: { [weak self] in
-            self?.noDataView.isHidden = true
-        })
+        fetchData()
         collectionView.reloadData()
+    }
+    func fetchData() {
+        CoreDataManager.shared.getAllTravels(completion: { result in
+            switch result {
+            case .success(let travels):
+                self.allTravel = travels
+                self.noDataView.isHidden = true
+            case .failure(_):
+                self.noDataView.isHidden = false
+            }
+        })
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

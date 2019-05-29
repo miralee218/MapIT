@@ -82,7 +82,7 @@ class StoredMapCViewController: UIViewController {
             guard let removeOrder = self?.travel else {
                 return
             }
-            CoreDataManager.delete(removeOrder)
+            CoreDataManager.shared.delete(removeOrder)
             MiraMessage.giveUpTravel()
             NotificationCenter.default.post(name: .newTravel, object: nil)
             self?.dismiss(animated: true, completion: nil)
@@ -104,7 +104,7 @@ class StoredMapCViewController: UIViewController {
         self.travel?.endTimestamp = Date()
         self.travel?.content = self.contentTextView.text
         self.travel?.title = self.travelNameTextField.text
-        CoreDataManager.saveContext()
+        CoreDataManager.shared.saveContext()
 
     }
 }
