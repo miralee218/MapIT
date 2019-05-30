@@ -17,6 +17,7 @@ class RecordTableViewCell: UITableViewCell {
             collectionView.dataSource = self
         }
     }
+    @IBOutlet weak var blockView: UIView!
     @IBOutlet weak var travelNameLabel: UILabel!
     @IBOutlet weak var travelTimeLabel: UILabel!
     @IBOutlet weak var travelContentLabel: UILabel!
@@ -39,6 +40,7 @@ class RecordTableViewCell: UITableViewCell {
         backView.layer.shadowRadius = 8
         backView.layer.shadowOffset = CGSize(width: 5, height: 5)
         backView.layer.cornerRadius = 10
+        collectionView.reloadData()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,11 +61,14 @@ class RecordTableViewCell: UITableViewCell {
 extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         count = 0
+
         var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
         guard let allLocationCount = allLocationPost?.count else {
+            self.blockView.isHidden = false
             return 0
         }
         guard allLocationCount > 0 else {
+            self.blockView.isHidden = false
             return 0
         }
         for localPost in 0...allLocationCount - 1 {
@@ -71,7 +76,6 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
                 count += allLocationPhotoCount
             }
         }
-
         return count
     }
 
@@ -83,7 +87,10 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
             withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
             for: indexPath
         )
-        guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
+        guard let photoCell = cell as? NormalPictureCollectionViewCell else {
+            self.blockView.isHidden = false
+            return cell
+            }
             photos.removeAll()
             var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
             for localPost in 0...allLocationPost!.count - 1 {
@@ -96,19 +103,25 @@ extension RecordTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
                 }
 
             }
-            let photo = photos[indexPath.row]
+            if photos.count == 0 {
+                self.blockView.isHidden = false
+            } else {
+                self.blockView.isHidden = true
+            }
+            let photo = self.photos[indexPath.row]
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
             let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-            let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-
+            let paths               = NSSearchPathForDirectoriesInDomains(
+                nsDocumentDirectory, nsUserDomainMask, true)
+            
             if let dirPath = paths.first {
                 let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(photo)
                 let image    = UIImage(contentsOfFile: imageURL.path)
                 photoCell.photoImageView.image = image
                 // Do whatever you want with the image
             }
+            return photoCell
 
-        return photoCell
     }
 
 }

@@ -21,6 +21,7 @@ class RecordCollectionViewCell: GeminiCell {
     @IBOutlet weak var travelTimeLabel: UILabel!
     @IBOutlet weak var travelContentLabel: UILabel!
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var blockView: UIView!
     var actionBlock: (() -> Void)?
     var travel = Travel() {
         didSet {
@@ -50,9 +51,11 @@ extension RecordCollectionViewCell: UICollectionViewDataSource, UICollectionView
         count = 0
         var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
         guard let allLocationCount = allLocationPost?.count else {
+            self.blockView.isHidden = false
             return 0
         }
         guard allLocationCount > 0 else {
+            self.blockView.isHidden = false
             return 0
         }
         for localPost in 0...allLocationCount - 1 {
@@ -70,7 +73,11 @@ extension RecordCollectionViewCell: UICollectionViewDataSource, UICollectionView
                 withReuseIdentifier: String(describing: NormalPictureCollectionViewCell.self),
                 for: indexPath
             )
-            guard let photoCell = cell as? NormalPictureCollectionViewCell else { return cell }
+            guard let photoCell = cell as? NormalPictureCollectionViewCell else {
+                self.blockView.isHidden = false
+                return cell
+                
+            }
             photos.removeAll()
             var allLocationPost = travel.locationPosts?.allObjects as? [LocationPost]
             for localPost in 0...allLocationPost!.count - 1 {
@@ -80,6 +87,11 @@ extension RecordCollectionViewCell: UICollectionViewDataSource, UICollectionView
                     }
                     continue
                 }
+            }
+            if photos.count == 0 {
+                self.blockView.isHidden = false
+            } else {
+                self.blockView.isHidden = true
             }
             let photo = photos[indexPath.row]
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory

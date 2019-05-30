@@ -37,6 +37,31 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtM-yQ-9BD">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="TA6-DT-kiw">
+                                        <rect key="frame" x="19" y="55" width="102" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="SaQ-ni-lzJ"/>
+                                            <constraint firstAttribute="width" secondItem="TA6-DT-kiw" secondAttribute="height" multiplier="171:67" id="fWg-fH-xhh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尚未紀錄任何相片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3I-Sw-jvW">
+                                        <rect key="frame" x="18" y="103" width="104.5" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="B5"/>
+                                <constraints>
+                                    <constraint firstItem="E3I-Sw-jvW" firstAttribute="centerX" secondItem="TA6-DT-kiw" secondAttribute="centerX" id="CD1-nT-Qmk"/>
+                                    <constraint firstItem="E3I-Sw-jvW" firstAttribute="top" secondItem="TA6-DT-kiw" secondAttribute="bottom" constant="8" id="UMx-6P-ert"/>
+                                    <constraint firstItem="TA6-DT-kiw" firstAttribute="centerY" secondItem="GtM-yQ-9BD" secondAttribute="centerY" id="Y2N-8G-QnZ"/>
+                                    <constraint firstItem="TA6-DT-kiw" firstAttribute="centerX" secondItem="GtM-yQ-9BD" secondAttribute="centerX" constant="-5" id="nIP-zC-d7f"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrD-I8-2x0">
                                 <rect key="frame" x="140" y="0.0" width="250" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,17 +104,21 @@
                             <constraint firstItem="gP9-xo-XeR" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="8" id="DWv-D3-zpE"/>
                             <constraint firstItem="ZPz-Z9-px5" firstAttribute="top" secondItem="Gl5-oe-B1W" secondAttribute="bottom" constant="4" id="GJv-so-oXB"/>
                             <constraint firstAttribute="width" constant="400" id="Gg8-aX-qta"/>
+                            <constraint firstItem="GtM-yQ-9BD" firstAttribute="height" secondItem="8W2-0P-p0Z" secondAttribute="height" id="KKr-kG-f8x"/>
                             <constraint firstItem="2Wz-3o-euB" firstAttribute="leading" secondItem="Gl5-oe-B1W" secondAttribute="trailing" constant="8" id="Mqe-ga-dHu"/>
                             <constraint firstItem="Gl5-oe-B1W" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" constant="6" id="NYL-lh-CEW"/>
                             <constraint firstAttribute="trailing" secondItem="2Wz-3o-euB" secondAttribute="trailing" constant="12" id="P4A-bk-oxi"/>
                             <constraint firstAttribute="trailing" secondItem="qrD-I8-2x0" secondAttribute="trailing" constant="10" id="Tbw-gk-bKj"/>
                             <constraint firstItem="qrD-I8-2x0" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="-10" id="Tka-5A-hDf"/>
+                            <constraint firstItem="GtM-yQ-9BD" firstAttribute="width" secondItem="8W2-0P-p0Z" secondAttribute="width" id="Wgu-HN-pA8"/>
                             <constraint firstItem="ZPz-Z9-px5" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="8" id="XU0-jP-wZN"/>
                             <constraint firstItem="2Wz-3o-euB" firstAttribute="centerY" secondItem="Gl5-oe-B1W" secondAttribute="centerY" id="axz-B8-0dq"/>
                             <constraint firstItem="qrD-I8-2x0" firstAttribute="top" secondItem="B7p-rA-GdZ" secondAttribute="top" id="cMC-6Y-xjS"/>
                             <constraint firstItem="8W2-0P-p0Z" firstAttribute="leading" secondItem="B7p-rA-GdZ" secondAttribute="leading" id="duC-fw-mpF"/>
                             <constraint firstItem="gP9-xo-XeR" firstAttribute="top" secondItem="ZPz-Z9-px5" secondAttribute="bottom" constant="9" id="fZS-Jv-2rc"/>
+                            <constraint firstItem="GtM-yQ-9BD" firstAttribute="centerX" secondItem="8W2-0P-p0Z" secondAttribute="centerX" id="miM-gU-b5P"/>
                             <constraint firstAttribute="bottom" secondItem="8W2-0P-p0Z" secondAttribute="bottom" id="n1C-HW-Nwp"/>
+                            <constraint firstItem="GtM-yQ-9BD" firstAttribute="centerY" secondItem="8W2-0P-p0Z" secondAttribute="centerY" id="reh-Gj-hJt"/>
                             <constraint firstAttribute="bottom" secondItem="qrD-I8-2x0" secondAttribute="bottom" id="tLB-PP-ACk"/>
                             <constraint firstItem="Gl5-oe-B1W" firstAttribute="leading" secondItem="8W2-0P-p0Z" secondAttribute="trailing" constant="8" id="y3E-WP-NFP"/>
                         </constraints>
@@ -106,6 +135,7 @@
             <size key="customSize" width="400" height="150"/>
             <connections>
                 <outlet property="backView" destination="B7p-rA-GdZ" id="ud1-oT-cJE"/>
+                <outlet property="blockView" destination="GtM-yQ-9BD" id="SHW-f6-qIc"/>
                 <outlet property="collectionView" destination="8W2-0P-p0Z" id="eo1-GC-kCO"/>
                 <outlet property="travelContentLabel" destination="gP9-xo-XeR" id="1QU-ue-3nK"/>
                 <outlet property="travelNameLabel" destination="Gl5-oe-B1W" id="qa7-qY-CEA"/>
@@ -116,6 +146,7 @@
     </objects>
     <resources>
         <image name="Icons_more" width="32" height="32"/>
+        <image name="Image_Logo" width="171" height="67"/>
         <namedColor name="B2">
             <color red="0.396078431372549" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -124,6 +155,9 @@
         </namedColor>
         <namedColor name="B4">
             <color red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="B5">
+            <color red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

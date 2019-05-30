@@ -85,7 +85,8 @@ class RecordViewController: UIViewController {
                     self.allTravel = travels
                     self.noDataView.isHidden = true
                 }
-            case .failure(_):
+            case .failure(let error):
+                print(error)
                 self.noDataView.isHidden = false
             }
         })
