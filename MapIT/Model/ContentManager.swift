@@ -10,16 +10,25 @@ import Foundation
 
 class ContentManager {
     
-    enum ContentMassege: String {
+    enum NullCase: String {
         case noTitle = "未命名"
         case noDescription = "未編輯內容"
     }
-    static func handleContent(input: inout String, case: ContentMassege) -> String? {
-        guard input != "" else {
-            input = ContentMassege.noTitle.rawValue
+    static func handleNullContent(input: inout String?, nullCase: NullCase) -> String? {
+        switch nullCase {
+        case .noTitle:
+            guard input != "" else {
+                input = NullCase.noTitle.rawValue
+                return input
+            }
             return input
+        case .noDescription:
+            guard input != "" else {
+                input = NullCase.noDescription.rawValue
+                return input
+            }
+            return input
+            
         }
-        return input
     }
 }
-

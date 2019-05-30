@@ -106,8 +106,12 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func store(_ sender: UIButton) {
-        self.seletedPost?.title = self.postNameTextFeild.text
-        self.seletedPost?.content = self.contentTextView.text
+        self.seletedPost?.title = ContentManager.handleNullContent(
+            input: &self.postNameTextFeild.text,
+            nullCase: .noTitle)
+        self.seletedPost?.content = ContentManager.handleNullContent(
+            input: &self.contentTextView.text,
+            nullCase: .noDescription)
 
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first

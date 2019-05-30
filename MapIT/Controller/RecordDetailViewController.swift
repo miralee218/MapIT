@@ -158,7 +158,6 @@ extension RecordDetailViewController: UITableViewDelegate, UITableViewDataSource
                 let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
                 let option4 = UIAlertAction(title: "地圖導航", style: .default) { (_) in
-                    print("To Apple Map")
                     let lat = sortedLocationPost[indexPath.row].latitude
                     let long = sortedLocationPost[indexPath.row].longitude
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)

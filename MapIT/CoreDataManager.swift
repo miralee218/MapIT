@@ -85,15 +85,8 @@ class CoreDataManager {
         request.fetchLimit = 0
 
         do {
-            let count = try viewContext.count(for: request)
-            if count == 0 {
-                print("no present")
-                completion(Result.nothing)
-               
-            } else {
-                let allTravels = try viewContext.fetch(request)
-                completion(Result.success(allTravels))
-            }
+            let allTravels = try viewContext.fetch(request)
+            completion(Result.success(allTravels))
         } catch {
             completion(Result.failure(error))
         }
@@ -105,8 +98,6 @@ class CoreDataManager {
 enum Result<T> {
     
     case success(T)
-    
-    case nothing
     
     case failure(Error)
 }

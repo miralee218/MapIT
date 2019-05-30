@@ -51,10 +51,12 @@ class NotificationViewController: UIViewController {
         CoreDataManager.shared.getAllTravels(completion: { result in
             switch result {
             case .success(let travels):
-                self.allTravel = travels
-                self.noDataView.isHidden = true
-            case .nothing:
-                self.noDataView.isHidden = false
+                if travels.count == 0 {
+                    self.noDataView.isHidden = false
+                } else {
+                    self.allTravel = travels
+                    self.noDataView.isHidden = true
+                }
             case .failure(_):
                 self.noDataView.isHidden = false
             }

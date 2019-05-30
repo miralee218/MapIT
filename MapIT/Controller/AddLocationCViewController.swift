@@ -86,14 +86,17 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     }
     private func saveLocation() {
         guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
         self.coordinate = locValue
 
         let newLocation = LocationPost(context: CoreDataManager.shared.viewContext)
 
         newLocation.timestamp = Date()
-        newLocation.title = self.locationName.text
-        newLocation.content = self.contentTextView.text
+        newLocation.title = ContentManager.handleNullContent(
+            input: &self.locationName.text,
+            nullCase: .noTitle)
+        newLocation.content = ContentManager.handleNullContent(
+            input: &self.contentTextView.text,
+            nullCase: .noDescription)
         newLocation.latitude = locValue.latitude
         newLocation.longitude = locValue.longitude
 
@@ -119,7 +122,6 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
                     }
                 }
             } catch {
-                print("couldn't wirte image")
             }
             newLocation.photo = imageFilePath
         } else {
@@ -197,7 +199,7 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                                 }
                                 if UIApplication.shared.canOpenURL(settingsUrl) {
                                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                        print("Settings opened: \(success)") // Prints true
+
                                     })
                                 }
                             }
@@ -207,7 +209,6 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
                             self.present(alertController, animated: true, completion: nil)
                             return
                         case .authorized:
-                            print("Authorized, proceed")
                             DispatchQueue.main.async {
                                 AccessPhoto.accessCamera(viewController: self)
                             }
@@ -257,7 +258,6 @@ extension AddLocationCViewController: UICollectionViewDelegate, UICollectionView
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let image = info[.editedImage] as? UIImage
             else {
-                print("selected image is nil")
                 return
         }
 //        // resize our selected image

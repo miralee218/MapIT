@@ -221,7 +221,7 @@ class MapManager {
             
             if count == 0 {
                 // no matching object
-                print("no present")
+
                 return (false, nil)
             } else if count == 1 {
                 // at least one matching object exists
@@ -237,32 +237,6 @@ class MapManager {
         }
         return (false, nil)
     }
-//    static func getAllTravel(noDataAction: @escaping () -> Void, hadDataAction: @escaping () -> Void) -> ([Travel]?) {
-//        let fetchRequest: NSFetchRequest<Travel> = Travel.fetchRequest()
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Travel.createTimestamp), ascending: true)]
-//        let isEditting = "0"
-//        fetchRequest.predicate  = NSPredicate(format: "isEditting == %@", isEditting)
-//        fetchRequest.fetchLimit = 0
-//        do {
-//            let context = CoreDataManager.shared.viewContext
-//            let count = try context.count(for: fetchRequest)
-//            if count == 0 {
-//                // no matching object
-//                noDataAction()
-//                print("no present")
-//                return []
-//            } else {
-//                // at least one matching object exists
-//                guard let allTravel = try? context.fetch(fetchRequest) else { return []}
-//                hadDataAction()
-//                print("have \(allTravel.count)")
-//                return allTravel
-//            }
-//        } catch let error as NSError {
-//            print("Could not fetch \(error), \(error.userInfo)")
-//        }
-//        return []
-//    }
     static func addTest(xxx: Int, yyy: Int) -> Int {
         return xxx + yyy
     }

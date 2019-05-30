@@ -34,7 +34,6 @@ class FullScreenImageViewController: UIViewController, UIScrollViewDelegate {
         pageController.pageIndicatorTintColor = .lightGray
         for index in 0...photos.count - 1 {
             let photo = photos[index]
-            print(photo)
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
             let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
             let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)

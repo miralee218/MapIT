@@ -41,9 +41,12 @@ class EditTravelCViewController: UIViewController {
     }
 
     func saveTravelContent() {
-
-        self.travel?.content = self.contentTextView.text
-        self.travel?.title = self.travelNameTextField.text
+        self.travel?.title = ContentManager.handleNullContent(
+            input: &self.travelNameTextField.text,
+            nullCase: .noTitle)
+        self.travel?.content = ContentManager.handleNullContent(
+            input: &self.contentTextView.text,
+            nullCase: .noDescription)
         CoreDataManager.shared.saveContext()
         saveHandler?()
 

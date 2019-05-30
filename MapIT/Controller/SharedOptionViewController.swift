@@ -26,8 +26,6 @@ class SharedOptionViewController: UIViewController {
         optaionList.append("行程表圖檔")
         tableView.mr_registerCellWithNib(
             identifier: String(describing: SharedOptionTableViewCell.self), bundle: nil)
-        print(selectedElement)
-        print("selectedElement123\(selectedElement)")
         tableView.reloadData()
     }
     @IBAction func cancel(_ sender: UIButton) {
@@ -75,7 +73,6 @@ extension SharedOptionViewController: UITableViewDelegate, UITableViewDataSource
     }
     func buttonDidTap(_ sender: SharedOptionTableViewCell, _ indexPath: IndexPath) {
         guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-        print(tappedIndexPath)
         if let tappedIndexPath = selectedElement[indexPath.row] {
             if tappedIndexPath == optaionList[indexPath.row] {
                 selectedElement.removeValue(forKey: indexPath.row)
@@ -83,7 +80,6 @@ extension SharedOptionViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         selectedElement.updateValue(optaionList[indexPath.row], forKey: indexPath.row)
-        print("update\(selectedElement)")
 
     }
 }

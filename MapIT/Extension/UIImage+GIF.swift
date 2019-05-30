@@ -38,7 +38,6 @@ extension UIImage {
     public class func gif(data: Data) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
-            print("SwiftGif: Source for the image does not exist")
             return nil
         }
 
@@ -48,12 +47,10 @@ extension UIImage {
     public class func gif(url: String) -> UIImage? {
         // Validate URL
         guard let bundleURL = URL(string: url) else {
-            print("SwiftGif: This image named \"\(url)\" does not exist")
             return nil
         }
         // Validate data
         guard let imageData = try? Data(contentsOf: bundleURL) else {
-            print("SwiftGif: Cannot turn image named \"\(url)\" into NSData")
             return nil
         }
 

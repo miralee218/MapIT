@@ -233,7 +233,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
                 }
                 if UIApplication.shared.canOpenURL(settingsUrl) {
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
                         self.authorizationView.isHidden = true
                     })
                 }
@@ -329,7 +328,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         authorizationView.isHidden = false
-        print("Unable to access your current location")
     }
     func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
         authorizationView.isHidden = true
@@ -340,7 +338,6 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             authorizationView.isHidden = false
         case .authorizedAlways:
             authorizationView.isHidden = true
-            print("Access")
             locationService()
             changeWithEditStatus()
         case .notDetermined, .authorizedWhenInUse :

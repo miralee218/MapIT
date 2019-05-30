@@ -233,7 +233,6 @@ extension RecordListCViewController: UITableViewDelegate, UITableViewDataSource 
             NSSortDescriptor(key: "timestamp", ascending: true)]) as? [LocationPost] {
             sortResults = sortedArray
         }
-        print(sortResults)
         return sortResults
     }
 

@@ -102,27 +102,15 @@ class StoredMapCViewController: UIViewController {
     func saveTravelContent() {
         self.travel?.isEditting = false
         self.travel?.endTimestamp = Date()
-        self.travel?.content = self.contentTextView.text
-        
-//        if self.travelNameTextField.text == "" {
-//            self.travelNameTextField.text = "未命名"
-//            self.travel?.title = self.travelNameTextField.text
-//        } else {
-//            self.travel?.title = self.travelNameTextField.text
-//        }
-
-        self.travel?.title = name(inputTextField: &self.travelNameTextField.text)
-    
+        self.travel?.title = ContentManager.handleNullContent(
+            input: &self.travelNameTextField.text,
+            nullCase: .noTitle)
+        self.travel?.content = ContentManager.handleNullContent(
+            input: &self.contentTextView.text,
+            nullCase: .noDescription)
         CoreDataManager.shared.saveContext()
+    }
 
-    }
-    func name(inputTextField: inout String?) -> String? {
-        guard inputTextField != "" else {
-            inputTextField = "未命名"
-            return inputTextField
-        }
-        return inputTextField
-    }
 }
 
 extension StoredMapCViewController: UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
