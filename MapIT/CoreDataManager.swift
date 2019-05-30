@@ -76,7 +76,7 @@ class CoreDataManager {
         saveContext()
     }
 
-    typealias AllTravels = (Result<[Travel]>) -> Void
+    typealias AllTravels = (Result<[Travel], Error>) -> Void
 
     func getAllTravels(completion: AllTravels) {
         let request = NSFetchRequest<Travel>(entityName: Entity.travel.rawValue)
@@ -94,12 +94,9 @@ class CoreDataManager {
     }
 
 }
-
-enum Result<T> {
-    
-    case success(T)
-    
-    case failure(Error)
+enum AnErrorType: Error {
+    case failureReason1
+    case failureReason2
 }
 
 enum EdittingStatus: String {
