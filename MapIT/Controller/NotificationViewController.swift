@@ -53,6 +53,8 @@ class NotificationViewController: UIViewController {
             case .success(let travels):
                 self.allTravel = travels
                 self.noDataView.isHidden = true
+            case .nothing:
+                self.noDataView.isHidden = false
             case .failure(_):
                 self.noDataView.isHidden = false
             }

@@ -103,9 +103,25 @@ class StoredMapCViewController: UIViewController {
         self.travel?.isEditting = false
         self.travel?.endTimestamp = Date()
         self.travel?.content = self.contentTextView.text
-        self.travel?.title = self.travelNameTextField.text
+        
+//        if self.travelNameTextField.text == "" {
+//            self.travelNameTextField.text = "未命名"
+//            self.travel?.title = self.travelNameTextField.text
+//        } else {
+//            self.travel?.title = self.travelNameTextField.text
+//        }
+
+        self.travel?.title = name(inputTextField: &self.travelNameTextField.text)
+    
         CoreDataManager.shared.saveContext()
 
+    }
+    func name(inputTextField: inout String?) -> String? {
+        guard inputTextField != "" else {
+            inputTextField = "未命名"
+            return inputTextField
+        }
+        return inputTextField
     }
 }
 

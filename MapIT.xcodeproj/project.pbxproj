@@ -65,6 +65,7 @@
 		497AC92622687D90005E8856 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92522687D90005E8856 /* Coordinate.swift */; };
 		497AC92C22698A74005E8856 /* NormalPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */; };
 		497AC92D22698A74005E8856 /* NormalPictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */; };
+		497ADE5F229F686E00454B6F /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497ADE5E229F686E00454B6F /* ContentManager.swift */; };
 		497F3C87227D5CF2001D12C3 /* MapMark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C86227D5CF2001D12C3 /* MapMark.gif */; };
 		497F3C89227D5D49001D12C3 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */; };
 		497F3C8B227D6BB6001D12C3 /* CameraLottieFiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */; };
@@ -175,6 +176,7 @@
 		497AC92522687D90005E8856 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinate.swift; path = ../Controller/Coordinate.swift; sourceTree = "<group>"; };
 		497AC92A22698A74005E8856 /* NormalPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		497AC92B22698A74005E8856 /* NormalPictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalPictureCollectionViewCell.xib; sourceTree = "<group>"; };
+		497ADE5E229F686E00454B6F /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		497F3C86227D5CF2001D12C3 /* MapMark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MapMark.gif; sourceTree = "<group>"; };
 		497F3C88227D5D49001D12C3 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		497F3C8A227D6BB4001D12C3 /* CameraLottieFiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CameraLottieFiles.json; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				49DA06422282A50D006BFC09 /* MiraDialog.swift */,
 				49DA06442282A725006BFC09 /* LaunchScreen.swift */,
 				4977969B228549660087C575 /* RecordDetailSeciton.swift */,
+				497ADE5E229F686E00454B6F /* ContentManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				49CCC8F32277A26000478B6A /* FullScreenImageViewController.swift in Sources */,
 				497A05DD2266C2420010D142 /* PlaceAnnotation.swift in Sources */,
 				4981D1B1227DBC8E00D24ED6 /* RecordCollectionViewCell.swift in Sources */,
+				497ADE5F229F686E00454B6F /* ContentManager.swift in Sources */,
 				4911692E2254614600347310 /* UIImage+Extension.swift in Sources */,
 				49DA06452282A725006BFC09 /* LaunchScreen.swift in Sources */,
 				4911693C2254645500347310 /* RecordViewController.swift in Sources */,
