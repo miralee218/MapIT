@@ -48,6 +48,7 @@
                                         <rect key="frame" x="101.5" y="153.5" width="171" height="67"/>
                                         <color key="tintColor" name="B4"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="upz-iB-ldL"/>
                                             <constraint firstAttribute="width" secondItem="5l0-XG-9xr" secondAttribute="height" multiplier="171:67" id="yJs-8R-Lw8"/>
                                         </constraints>
                                     </imageView>

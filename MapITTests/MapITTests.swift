@@ -96,17 +96,17 @@ class MapITTests: XCTestCase {
         XCTAssertEqual(tableViewCell.travelContentLabel.text, "!")
     }
     
-    func test_formatDisplay_travelDate() {
-        // Arrange
-        allTravel = MapManager.getAllTravel(noDataAction: {
-            }, hadDataAction: {
-        })
-        let timestamp: Date = (allTravel?.first!.createTimestamp)!
-        // Act
-        let formatted = FormatDisplay.travelDate(timestamp)
-        // Assert
-        XCTAssertEqual(formatted, "2019/05/15 ")
-    }
+//    func test_formatDisplay_travelDate() {
+//        // Arrange
+//        allTravel = MapManager.getAllTravel(noDataAction: {
+//            }, hadDataAction: {
+//        })
+//        let timestamp: Date = (allTravel?.first!.createTimestamp)!
+//        // Act
+//        let formatted = FormatDisplay.travelDate(timestamp)
+//        // Assert
+//        XCTAssertEqual(formatted, "2019/05/15 ")
+//    }
     
     func testFetchRequestWithMockedManagedObjectContext() {
         

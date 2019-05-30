@@ -93,6 +93,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         locationManager.stopUpdatingLocation()
         locationList.removeAll()
         MapManager.removeAnnotations(on: mapView)
+        self.puaseShadowView.isHidden = true
+        buttonView.pauseButton.setImage(UIImage(named: ImageAsset.Icons_Puase.rawValue)!, for: .normal)
     }
     @objc func addAnnotations(_ notification: NSNotification) {
         MapManager.addAnnotations(on: mapView, travel: self.travel)
@@ -109,7 +111,9 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     func changeWithEditStatus() {
         if self.isEditting == true {
-            MRProgressHUD.coutinueRecord(view: self.view)
+            if self.puaseShadowView.isHidden == true {
+                MRProgressHUD.coutinueRecord(view: self.view)
+            }
             buttonView.addRecordButton.alpha = 0
             buttonView.moreOptionButton.alpha = 1
             locationManager.startUpdatingLocation()
