@@ -95,21 +95,20 @@ class RecordViewController: UIViewController {
     }
     @IBAction func switchView(_ sender: UIBarButtonItem) {
         isListLayout = !isListLayout
-        collectionView.reloadData()
-        tableView.reloadData()
     }
     private func showListLayout() {
-        layoutBtn.image = UIImage.asset(.Icons_verticalCell)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
+            self.layoutBtn.image = UIImage.asset(.Icons_verticalCell)
+            self.tableView.alpha = 0
             self.collectionView.alpha = 1
-            })
-
+        }, completion: nil)
     }
     private func showGridLayout() {
-        layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
-        UIView.animate(withDuration: 0.8, animations: {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, animations: {
+            self.layoutBtn.image = UIImage.asset(.Icons_horizontalCell)
+            self.tableView.alpha = 1
             self.collectionView.alpha = 0
-        })
+        }, completion: nil)
     }
     var searchByCalendar = false
     @IBAction func searchByCalendar(_ sender: UIBarButtonItem) {
