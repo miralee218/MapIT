@@ -25,7 +25,7 @@ class RecordListCViewController: PullUpController {
     }
     var initialPointOffset: CGFloat {
 
-        return swipeView.frame.height + 50
+        return swipeView.frame.height + 70
 
     }
     @IBOutlet weak var firstPreviewView: UIView!
