@@ -81,6 +81,8 @@ class MappingViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         super.viewWillDisappear(animated)
 //        self.travel?.locations = NSOrderedSet(array: locationList)
 //        CoreDataStack.saveContext()
+        NotificationCenter.default.removeObserver(self, name: .newTravel, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .addAnnotations, object: nil)
         
     }
     @objc func newTravel() {

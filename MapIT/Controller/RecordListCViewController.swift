@@ -75,6 +75,10 @@ class RecordListCViewController: PullUpController {
         super.viewWillAppear(true)
 //        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: .reloadRecordList, object: nil)
+    }
     @objc func reloadRecordList() {
 //        (isEditting, travel) = MapManager.checkEditStatusAndGetCurrentTravel()
         self.locationPost = travel?.locationPosts?.allObjects as? [LocationPost]
